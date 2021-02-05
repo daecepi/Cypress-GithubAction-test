@@ -1,0 +1,10 @@
+<div class="c-list-card__card c-list-card__card--centered no-margin">
+  {% if entry.clickthrough is not null and entry.clickthrough.url|length %}
+    <a class="c-card__clickthrough" href="{{ entry.clickthrough.url }}"></a>
+  {% endif %}
+  <div class="c-list-card__image c-list-card__image--text c-list-card__card--no-outline c-valign--middle">
+    {% set image = entry.image.one() %}
+    <img src="{{ image.url }}" alt="{{ image.title }}">
+  </div>
+  <p class="p-sm">{{ entry.paragraph }}</p>
+</div>

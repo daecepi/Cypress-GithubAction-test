@@ -1,0 +1,772 @@
+
+{% extends "_top-nav.html" %}
+
+{% block topNav %}
+{% if 'huro=ori' in craft.request.getQueryString %}
+	{% include '_index-variant.html'  %}
+{% else %}
+
+
+
+<script>
+  var lastGifVidExecuted = [];
+</script>
+{#{% block criticalCss %}
+  <style>
+    {{ source('templates/index_critical.min.css', ignore_missing = true) }}
+  </style>
+{% endblock %}#}
+<!-- {% if webBanner.webBannerStatus is defined and webBanner.webBannerStatus == 1 %}
+<div id="webBannerDoc" class="webBanner" style="background:{{webBanner.webBannerColor|default('white')}}" data-webbanneractive="{{webBanner.webBannerStatus}}" > 
+  <a class="link-overlay" href="{{webBanner.webBannerLink.url|default('copper.com')}}"></a>
+  <div class="webBanner-desktop-text d-none d-md-flex ">{{webBanner.webBannerTextDesktop|default('Copper your best CRM choice')}}</div>
+  <div class="webBanner-mobile-text d-md-none d-sm-flex">{{webBanner.webBannerTextMobile|default('Copper your best CRM choice')}}</div> 
+  <div class="webBanner-button">
+  <span>
+    <a class="c-button c-button--white-outline" href="{{webBanner.webBannerLink.url|default('copper.com')}}">
+        {{webBanner.webBannerLink.text|default('copper.com')}}
+    </a>
+  </span>
+  </div>
+</div>
+{% endif %} -->
+  {% set recentWebinarModuleposition = '' %}
+  {% if entry.recentWebinarModulePosition is defined and entry.recentWebinarModulePosition is not null %}
+    {% set recentWebinarModuleposition = entry.recentWebinarModulePosition %}
+  {% endif %}
+
+    {# Home Page Test #}
+{#     {% if (craft.request.getQuery('homepage') == 'welcome') %}
+ #}    
+    {# NEW HOMEPAGE STARTS HERE #}
+
+    {% include 'sections/home/_home-hero-form.html' %}
+
+
+		<style>
+			@media screen and (max-width: 419px) {
+				#temp-logo-module--images{
+					width: calc(100% / 2 - 25px);
+					min-width: unset;
+				}
+			}
+		</style>
+    <section id="" class="c-single-column  bottom-padding-mobile home-proof background--cemento home-logo-module">
+      <div class="container">
+    
+          <div class="col-md-12">
+            <div class="text-center extra-bottom-margin--small"><p>Over 25,000+ companies trust Copper.</p></div>
+            <div class="smb-logo-icons">
+              <ul class="logo-section--one-column">
+								<li id="temp-logo-module--images" class="logo-section--images ">
+										<picture>
+											<source type="image/webp" srcset="https://copper.objects.frb.io/imgs/homepage/logos-module/customer_logo_IDEO@2x.webp" alt="Ideo graphic">
+											<source type="image/png" srcset="https://copper.objects.frb.io/imgs/homepage/logos-module/customer_logo_IDEO@2x.png" alt="Ideo graphic">
+											<img style="width: calc(100% / 1.3) !important;" src="https://copper.objects.frb.io/imgs/homepage/logos-module/customer_logo_IDEO@2x.png" alt="Ideo graphic">
+										</picture>
+								</li>
+								<li id="temp-logo-module--images" class="logo-section--images ">
+										<picture>
+											<source type="image/webp" srcset="https://copper.objects.frb.io/imgs/homepage/logos-module/customer_logo_masterclass@2x.webp" alt="Masterclass graphic">
+											<source type="image/png" srcset="https://copper.objects.frb.io/imgs/homepage/logos-module/customer_logo_masterclass@2x.png" alt="Masterclass graphic">
+											<img style="width: calc(100% / 1.3) !important;" src="https://copper.objects.frb.io/imgs/homepage/logos-module/customer_logo_masterclass@2x.png" alt="Masterclass graphic">
+										</picture>
+								</li>
+								<li id="temp-logo-module--images" class="logo-section--images ">
+										<picture>
+											<source type="image/webp" srcset="https://copper.objects.frb.io/imgs/homepage/logos-module/customer_logo_swell@2x.webp" alt="Swell graphic">
+											<source type="image/png" srcset="https://copper.objects.frb.io/imgs/homepage/logos-module/customer_logo_swell@2x.png" alt="Swell graphic">
+											<img style="width: calc(100% / 1.3) !important;" src="https://copper.objects.frb.io/imgs/homepage/logos-module/customer_logo_swell@2x.png" alt="Swell graphic">
+										</picture>
+								</li>
+								<li id="temp-logo-module--images" class="logo-section--images ">
+									<picture>
+										<source type="image/webp" srcset="https://copper.objects.frb.io/imgs/homepage//logos-module/Logo_Mailchimp.webp" alt="Bubbles graphic">
+										<source type="image/png" srcset="https://copper.objects.frb.io/imgs/homepage//logos-module/Logo_Mailchimp.png" alt="Bubbles graphic">
+										<img style="width: calc(100% / 1.3) !important;" src="https://copper.objects.frb.io/imgs/homepage//logos-module/Logo_Mailchimp.png" alt="Bubbles graphic">
+									</picture>
+									{#<img src="//d2ydtwisqcxv72.cloudfront.net/landing/logo_Snyder-eq@2x_200810_183440.png" alt="Logo Snyder eq 2x">#}
+								</li>
+								<li id="temp-logo-module--images" class="logo-section--images ">
+										<picture>
+											<source type="image/webp" srcset="https://copper.objects.frb.io/imgs/homepage/logos-module/Logo_Softbank.webp" alt="Bubbles graphic">
+											<source type="image/png" srcset="https://copper.objects.frb.io/imgs/homepage/logos-module/Logo_Softbank.png" alt="Bubbles graphic">
+											<img style="width: calc(100% / 1.3) !important;" src="https://copper.objects.frb.io/imgs/homepage/logos-module/Logo_Softbank.png" alt="Bubbles graphic">
+										</picture>
+										{#<img src="//d2ydtwisqcxv72.cloudfront.net/landing/logo_Stink-eq@2x_200810_183441.png" alt="Logo Stink eq 2x">#}
+								</li>
+								<li id="temp-logo-module--images" class="logo-section--images ">
+										<picture>
+											<source type="image/webp" srcset="https://copper.objects.frb.io/imgs/homepage/logos-module/customer_logo_zipi@2x.webp" alt="Swell graphic">
+											<source type="image/png" srcset="https://copper.objects.frb.io/imgs/homepage/logos-module/customer_logo_zipi@2x.png" alt="Swell graphic">
+											<img style="width: calc(100% / 1.3) !important;" src="https://copper.objects.frb.io/imgs/homepage/logos-module/customer_logo_zipi@2x.png" alt="Swell graphic">
+										</picture>
+								</li>
+								<li id="temp-logo-module--images" class="logo-section--images ">
+									<picture>
+										<source type="image/webp" srcset="https://copper.objects.frb.io/imgs/homepage/logos-module/customer_logo_houwzer2x.webp" alt="Bubbles graphic">
+										<source type="image/png" srcset="https://copper.objects.frb.io/imgs/homepage/logos-module/customer_logo_houwzer2x.png" alt="Bubbles graphic">
+										<img style="width: calc(100% / 1.3) !important;" src="https://copper.objects.frb.io/imgs/homepage/logos-module/customer_logo_houwzer2x.png" alt="Bubbles graphic">
+									</picture>
+									{#<img src="//d2ydtwisqcxv72.cloudfront.net/landing/logo_psych-eq@2x_200810_183439.png" alt="Logo psych eq 2x">#}
+							</li>
+              </ul>
+              
+            </div>
+          </div>
+    
+      </div>
+    </section>
+
+    <style>
+      #theAnimation{
+        height: 100vh;
+      }
+      #theAnimation .c-animation-container{
+        opacity:1;
+        top: 0px;
+        position: absolute;
+        width: 100%;
+        height: fit-content;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      /* #theAnimation .c-animation-container.thetwo .col_copy,#theAnimation .c-animation-container.thetwo .c-image,
+      #theAnimation .c-animation-container.thethree .col_copy,#theAnimation .c-animation-container.thethree .c-image{
+        opacity: 0!important;
+      } */
+    </style>
+
+
+    <section id="theAnimation" class="c-cols c-cols-landing   h-padding-bottom">
+
+			<!-- Form Code -->
+					<!-- Image Code -->
+					<div class="container c-animation-container theone">
+						<h2 class="extra-bottom-margin--x-small" style="text-align: center;"></h2>
+									<div class="row column-reverse">
+							<div class="col-md-6 d-flex align-items-center order-1 ">
+								<div class="c-image c-image--center c-image--shadow h-remove-shadow">
+									{% import "components/simple-elements/_index.html" as simpleElements %}
+									{{ simpleElements.createVideoAsGifElement('vid-1-1', 'https://copper.objects.frb.io/videos/homepage/features/CopperHome-Features-Adoption', 'mp4', 'h-remove-shadow', 'max-width: 100%;', 'https://copper.objects.frb.io/imgs/homepage/thumbnails/features/features-thumb-1.png') }}
+																							{#<img class="h-remove-shadow" src="//d2ydtwisqcxv72.cloudfront.net/landing/Image-Gsuite.png" alt="Image Gsuite">#}
+														</div>
+							</div>
+							<div class="col-md-5 offset-md-1 c-valign--middle order-2">
+								<div class="col_copy">
+																<pre class="c-eyebrow c-eyebrow--dark">THE CRM FOR G SUITE USERS</pre>
+															<h3>We’re known for our G&nbspSuite integration.</h3><p>Use G Suite? Then you already know how to use Copper. Work out of your inbox with the CRM recommended for G Suite and Chrome.</p>
+																							<div class="c-hero__buttons">
+									<div class="flex-column">
+							<a href="/g-suite-crm" class="t-link ">Learn more</a>  
+						</div>
+						</div>                 
+								</div>
+							</div>
+						</div>
+						 
+					</div>
+					<div class="container c-animation-container thetwo d-none">
+						<h2 class="extra-bottom-margin--x-small" style="text-align: center;"></h2>
+									<div class="row column-reverse">
+							<div class="col-md-6 d-flex align-items-center order-1 ">
+								<div class="c-image c-image--center c-image--shadow h-remove-shadow">
+									{% import "components/simple-elements/_index.html" as simpleElements %}
+									{{ simpleElements.createVideoAsGifElement('vid-2','https://copper.objects.frb.io/videos/homepage/features/CopperHome-Features-Opportunities', 'mp4', 'h-remove-shadow', 'max-width: 100%;', 'https://copper.objects.frb.io/imgs/homepage/thumbnails/features/features-thumb-2.png') }}
+																							{#<img class="h-remove-shadow" src="//d2ydtwisqcxv72.cloudfront.net/landing/Image-Gsuite.png" alt="Image Gsuite">#}
+								</div>
+							</div>
+							<div class="col-md-5 offset-md-1 c-valign--middle order-2">
+								<div class="col_copy">
+																<pre class="c-eyebrow c-eyebrow--dark">BUILD BETTER RELATIONSHIPS</pre>
+															<h3>Never drop an opportunity again.</h3><p>You’ll have perfect visibility into all the activity that goes into closing a deal across your whole team.</p>
+																							<div class="c-hero__buttons">
+									<div class="flex-column">
+							<a href="/track-leads" class="t-link ">Learn more</a>  
+						</div>
+						</div>                 
+								</div>
+							</div>
+						</div>
+						 
+					</div>
+					<div class="container c-animation-container thethree d-none">
+						<h2 class="extra-bottom-margin--x-small" style="text-align: center;"></h2>
+									<div class="row column-reverse">
+							<div class="col-md-6 d-flex align-items-center order-1 ">
+								<div class="c-image c-image--center c-image--shadow h-remove-shadow">
+									{% import "components/simple-elements/_index.html" as simpleElements %}
+									{{ simpleElements.createVideoAsGifElement('vid-3','https://copper.objects.frb.io/videos/homepage/features/CopperHome-Features-Gsuite', 'mp4', 'h-remove-shadow', 'max-width: 100%;', 'https://copper.objects.frb.io/imgs/homepage/thumbnails/features/features-thumb-3.png') }}
+																							{#<img class="h-remove-shadow" src="//d2ydtwisqcxv72.cloudfront.net/landing/Image-Gsuite.png" alt="Image Gsuite">#}
+														</div>
+							</div>
+							<div class="col-md-5 offset-md-1 c-valign--middle order-2">
+								<div class="col_copy">
+																<pre class="c-eyebrow c-eyebrow--dark">EASY TO ADOPT</pre>
+															<h3>The CRM your team will actually love.</h3><p>Zero learning curve. Zero data entry. Workflows the way you want them. Copper is the fastest path to your most productive team.</p>
+																							<div class="c-hero__buttons">
+									<div class="flex-column">
+							<a href="/manage-contacts" class="t-link ">Learn more</a>  
+						</div>
+						</div>                 
+								</div>
+							</div>
+						</div>
+						 
+					</div>
+				</section>
+
+{% import "./components/three-column-slider/_three-column-slider" as videoSliderBuilder %}
+{{ videoSliderBuilder.createNormalVideoSlider({title: "What our clients are saying."}) }}
+
+  <section class="c-single-column bottom-padding-mobile home-proof">
+    <div class="container">
+      <div class="col-md-8 offset-md-2 c-single-column__container c-align--center no-padding-top">
+        <h3 class="col-md-10">Never leave your inbox.</h3>
+        <p class="col-md-12">Add leads, update deals, look up past interactions, create Google Calendar events, and follow up on tasks—right from your Gmail inbox.</p>
+        <div class="c-single-column__buttons">
+          <a class="c-button sendUTMsToAmplitude" href="{{ craft.app.config.general.signUpUrl }}">Try Free</a>
+          <a class="c-button c-button--outline" href="/demos" style="margin-right: 0px;">Request Demo</a>
+        </div>
+      </div>          
+    </div>
+  </section>
+
+  <style>
+    #theAnimation2{
+      height: 100vh;
+	}
+	#theAnimation2 .radios-box .radio-box{
+		transition:0.25s;
+	}
+	#theAnimation2 .radios-box .radio-box:hover{
+		border: 1px solid transparent;
+		transition:0.25s;
+	}
+    #theAnimation2 .c-animation-container{
+      opacity:1;
+      top: 0px;
+      position: absolute;
+      width: 100%;
+      height: fit-content;
+      top: 66%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+		}
+		#theAnimation2 .radios-box .radio-box{
+			transition:0.25s;
+		}
+		#theAnimation2 .radios-box .radio-box:hover{
+			border: 1px solid transparent;
+			transition:0.25s;
+		}
+    .thecircle {
+      position: absolute;
+      background: #F4F9FA;
+      width: 1500px;
+      height: 1500px;
+      border-radius: 1000px;
+      right: -750px;
+      bottom: -750px;
+    }
+    .slick-track{
+      display: flex !important;
+    }
+    .slick-slide{
+      height: inherit !important;
+    }
+      .slick-dots { position: absolute; bottom: -45px; list-style: none; display: block; text-align: center; padding: 0; width: 100%; }
+      .slick-dots li { position: relative; display: inline-block; height: 20px; width: 20px; margin: 0 5px; padding: 0; cursor: pointer; }
+      .slick-dots li button { border: 0; background: transparent; display: block; height: 20px; width: 20px; outline: none; line-height: 0; font-size: 0; color: transparent; padding: 5px; cursor: pointer; }
+      .slick-dots li button:hover, .slick-dots li button:focus { outline: none; }
+      .slick-dots li button:hover:before, .slick-dots li button:focus:before { opacity: 1; }
+      .slick-dots li button:before { position: absolute; top: 0; left: 0; content: "•"; width: 20px; height: 20px; font-family: "slick"; font-size: 6px; line-height: 5px; text-align: center; color: black; opacity: 0.25; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+      .slick-dots li.slick-active button:before { color: black; opacity: 0.75; }
+    /* #theAnimation .c-animation-container.thetwo .col_copy,#theAnimation .c-animation-container.thetwo .c-image,
+    #theAnimation .c-animation-container.thethree .col_copy,#theAnimation .c-animation-container.thethree .c-image{
+      opacity: 0!important;
+    } */
+  </style>
+  <script>
+    LazyLoad.js([
+      'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js',
+      '//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js',
+      '//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.min.js',
+      'https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/animation.gsap.min.js',
+      'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js',
+      'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js'
+    ],function(){
+      LazyLoad.css(['https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css']);
+      LazyLoad.js(['https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js',],function(){
+        $(".three-column-slider .container > .container .row").slick({
+          infinite: false,
+          mobileFirst: true,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          dots: true,
+          rows:0,
+          appendDots: ".dots-box",
+          appendArrows: ".buttons-box",
+          prevArrow: '<a id="arrowBack" target="" class="button-slide-change t-link inverted-arrow">Prev</a>',
+          nextArrow: '<a id="arrowNext" target="arrowNext"  class="button-slide-change t-link">Next</a>',
+          // the magic
+          responsive: [{
+            breakpoint: 769,
+            settings: {
+                                slidesToShow: 3,
+                                slidesToScroll: 1,
+								rows: 0
+                    	} // destroys slick
+						}]
+					});
+					$(window).on('resize', function() {
+						$('.three-column-slider .container > .container .row').slick('resize');
+					});
+			})
+
+
+
+			$(document).ready(function(){
+				var myInterval = setInterval(function(){  
+					var videoOne = document.getElementById('vid-1');
+					if(videoOne.readyState >= 3 || videoOne.loadStart){
+						$('#vid-1-placeholder').css('opacity','0')
+						clearInterval(myInterval);
+					}
+				}, 200);
+				/* var videoOne = document.getElementById('vid-1');
+				console.log(videoOne.readyState);
+				if(videoOne.readyState >= 3 || videoOne.loadStart){
+					$('#vid-1-placeholder').css('opacity','0')
+				}*/ 
+
+				// init
+				// var controller = new ScrollMagic.Controller();
+				gsap.registerPlugin(ScrollTrigger);
+				let tlOne = gsap.timeline({
+					scrollTrigger:{
+						// markers:true,
+						trigger:'#theAnimation',
+						scrub:1,
+						pin:true,
+						snap:{
+							snapTo:'labels',
+							duration: {min: 0.2, max: 0.5},
+							delay:1
+						}
+					}
+				});
+				$('#theAnimation .c-animation-container.d-none').removeClass('d-none');
+				tlOne
+				.addLabel('first')
+					.add(()=>{
+						$('#theAnimation .c-animation-container.theone').css('zIndex','999');
+						$('#theAnimation .c-animation-container.thetwo').css('zIndex','1');
+						$('#theAnimation .c-animation-container.thethree').css('zIndex','1');
+					}
+						,'first') 		
+					.fromTo("#theAnimation .c-animation-container.theone .col_copy", 1, {opacity: 1, y:0}, {opacity: 0,y:-200, ease: Linear.easeNone,onStart:function(){videoPlayer('1-1')}})  // in from left
+					.fromTo("#theAnimation .c-animation-container.thetwo .col_copy", 1, {autoAlpha: 0,opacity: 0, y:200}, {autoAlpha: 1,opacity: 1,y:0, ease: Linear.easeNone})  // in from left
+					.fromTo("#theAnimation .c-animation-container.theone .c-image", 1, {opacity: 1}, {opacity: 0, ease: Linear.easeNone,onComplete:function(){videoPlayer(2)}})  // in from left
+					.fromTo("#theAnimation .c-animation-container.thetwo .c-image", 1, {autoAlpha: 0,opacity: 0}, {autoAlpha: 1,opacity: 1, ease: Linear.easeNone})
+				.addLabel('second')
+					.add(()=>{
+						$('#theAnimation .c-animation-container.theone').css('zIndex','1');
+						$('#theAnimation .c-animation-container.thetwo').css('zIndex','999');
+						$('#theAnimation .c-animation-container.thethree').css('zIndex','1');
+					}
+						,'second') 
+					.fromTo("#theAnimation .c-animation-container.thetwo .col_copy", 1, {opacity: 1, y:0}, {opacity: 0,y:-200, ease: Linear.easeNone})  // in from left
+					.fromTo("#theAnimation .c-animation-container.thethree .col_copy", 1, {autoAlpha: 0,opacity: 0, y:200}, {autoAlpha: 1,opacity: 1,y:0, ease: Linear.easeNone})
+					.fromTo("#theAnimation .c-animation-container.thetwo .c-image", 1, {opacity: 1}, {opacity: 0, ease: Linear.easeNone,onComplete:function(){videoPlayer(3)}})
+					.fromTo("#theAnimation .c-animation-container.thethree .c-image", 1, {autoAlpha: 0,opacity: 0}, {autoAlpha: 1,opacity: 1, ease: Linear.easeNone})
+				.addLabel('third')
+				.add(()=>{
+						$('#theAnimation .c-animation-container.theone').css('zIndex','1');
+						$('#theAnimation .c-animation-container.thetwo').css('zIndex','1');
+						$('#theAnimation .c-animation-container.thethree').css('zIndex','999');
+					}
+						,'third') ;
+				let secondAnomationLength = gsap.utils.toArray('#theAnimation2 .c-animation-container');
+				// console.log(secondAnomationLength.length)
+				let tlTwo = gsap.timeline({
+					scrollTrigger:{
+						// markers:true,
+						trigger:'#theAnimation2',
+						scrub:1,
+						end:'=+3000',
+						pin:true,
+						snap:{
+							snapTo:'labels',
+							duration: {min: 0.2, max: 0.5},
+							delay:1
+						}
+					}
+				});
+				$('#theAnimation2 .c-animation-container.d-none').removeClass('d-none');
+					tlTwo
+					.addLabel('third')
+						.fromTo('#but1',{checked:false},{checked:true})
+						.fromTo("#theAnimation2 .c-animation-container.theone2 .col_copy", 1, {opacity: 1, y:0}, {opacity: 0,y:-200, ease: Linear.easeNone,onStart:()=>{
+								videoPlayer(4);
+							}
+						})  // in from left
+						.fromTo("#theAnimation2 .thecircle", 1, {y:0 ,x:0}, {y:-675 ,x:75, ease: Linear.easeNone},'-=0.5')  // in from left
+						.fromTo("#theAnimation2 .c-animation-container.thetwo2 .col_copy", 1, {autoAlpha: 0,opacity: 0, y:200}, {autoAlpha: 1,opacity: 1,y:0, ease: Linear.easeNone})  // in from left
+						.fromTo("#theAnimation2 .c-animation-container.theone2 .c-image", 1, {opacity: 1}, {opacity: 0, ease: Linear.easeNone,onComplete:()=>{
+							videoPlayer(5);
+							
+							}
+						})  // in from left
+						.fromTo("#theAnimation2 .c-animation-container.thetwo2 .c-image", 1, {autoAlpha: 0,opacity: 0}, {autoAlpha: 1,opacity: 1, ease: Linear.easeNone})
+						.fromTo('#but1',{checked:true},{checked:false})
+						.fromTo('#but2',{checked:false},{checked:true})
+					.addLabel('fourth')
+						.fromTo("#theAnimation2 .c-animation-container.thetwo2 .col_copy", 1, {opacity: 1, y:0}, {opacity: 0,y:-200, ease: Linear.easeNone})  // in from left
+						.fromTo("#theAnimation2 .thecircle", 1, {y:-675 ,x:75}, {y:750 ,x:750, ease: Linear.easeNone},'-=0.5')  // in from left
+						.fromTo("#theAnimation2 .c-animation-container.thethree2 .col_copy", 1, {autoAlpha: 0,opacity: 0, y:200}, {autoAlpha: 1,opacity: 1,y:0, ease: Linear.easeNone})
+						.fromTo("#theAnimation2 .c-animation-container.thetwo2 .c-image", 1, {opacity: 1}, {opacity: 0, ease: Linear.easeNone,onComplete:()=>{
+							videoPlayer(6);
+						}})
+						.fromTo("#theAnimation2 .c-animation-container.thethree2 .c-image", 1, {autoAlpha: 0,opacity: 0}, {autoAlpha: 1,opacity: 1, ease: Linear.easeNone})
+						.fromTo('#but2',{checked:true},{checked:false})
+						.fromTo('#but3',{checked:false},{checked:true})
+					.addLabel('fifth')
+						// create scene to pin and link animation
+					function videoPlayer(video){
+						var videos = $('#vid-'+video);
+						
+						// var videoId = document.getElementById(video)
+						// console.log(video)
+						// videoId.play()
+						videos.trigger('play');
+					}
+					// new ScrollMagic.Scene({
+					// 	triggerElement: "#theAnimation2",
+					// 	triggerHook: "onLeave",
+					// 	duration: "300%"
+					// })
+					// .setPin("#theAnimation2")
+					// .setTween(wipeAnimation2)
+					// // .addIndicators({name:'1 - test'}) // add indicators (requires plugin)
+					// .addTo(controller);
+					function getPos(newpos) {
+						var position = $('.flagForAnimation').offset().top;
+						var divHeight = $('#theAnimation2').height()+240;
+						if(newpos == '#uno'){
+							// $('#but1').attr('checked', '');
+							// $('#but2').removeAttr('checked');
+							// $('#but3').removeAttr('checked');
+							$('html, body').animate({
+								scrollTop: position
+							}, 1000)
+						}else if(newpos == '#dos'){
+							// console.log(newpos)
+								// $('#but1').removeAttr('checked');
+								// $('#but2').attr('checked', '');
+								// $('#but3').removeAttr('checked');
+								$('html, body').animate({
+									scrollTop: position +  (divHeight * 1.5)
+								}, 1000)
+						}else if(newpos == '#tres'){
+								// $('#but1').removeAttr('checked');
+								// $('#but2').removeAttr('checked');
+								// $('#but3').attr('checked', '');
+								$('html, body').animate({
+									scrollTop: (position + (3 * divHeight))
+								}, 1000)
+						}
+					}
+					$(document).on("click", "a[href^='#']", function (e) {
+						var id = $(this).attr("href");
+						if (id.length > 0) {
+							e.preventDefault();
+							getPos(id);
+						}
+					});
+			})
+		});
+		</script>
+
+<div class='flagForAnimation'></div>
+      <section id="theAnimation2" class="c-cols c-cols-landing h-padding-bottom">
+
+        <div class="thecircle"></div>           
+        <div class="row disappear-mobile" style="position: absolute;
+        top: 20%;
+        width: 100%;
+        z-index: 99;">
+          <div class="col-md-12">
+
+						<h4 class="extra-bottom-margin--x-small" style="text-align: center;">Why your team will love Copper.</h4>
+						<div class="radios-box">
+							<a href="#uno" style="color: inherit;">
+								<div class="radio-box">
+										<input type="radio" checked class="radio-selector" id="but1" name="sel_button">
+										<label for="but1">
+											<strong>It's quick to launch</strong>
+										</label>
+								</div>
+							</a>
+								<a href="#dos" style="color: inherit;">
+									<div class="radio-box">
+											<input type="radio" class="radio-selector" id="but2" name="sel_button">
+											<label for="but2">
+												<strong>There's no busy work</strong>
+											</label>
+									</div>
+								</a>
+								<a href="#tres" style="color: inherit;">
+								<div class="radio-box">
+										<input type="radio" class="radio-selector" id="but3" name="sel_button">
+										<label for="but3">
+											<strong>It's made for closing</strong>
+										</label>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+					<div class="container c-animation-container theone2">
+									<div class="row column-reverse">
+							<div class="col-md-6 d-flex align-items-center order-1 ">
+								<div class="c-image c-image--center c-image--shadow h-remove-shadow">
+									{% import "components/simple-elements/_index.html" as simpleElements %}
+									{{ simpleElements.createVideoAsGifElement('vid-4','https://copper.objects.frb.io/videos/homepage/why/CopperHome-Why-Team-new-new', 'mp4', 'h-remove-shadow', 'max-width: 100%;', 'https://copper.objects.frb.io/imgs/homepage/thumbnails/why/why-thumb-1.png') }}
+																							{#<img class="h-remove-shadow" src="//d2ydtwisqcxv72.cloudfront.net/landing/Image-Gsuite.png" alt="Image Gsuite">#}
+														</div>
+							</div>
+							<div class="col-md-5 offset-md-1 c-valign--middle order-2">
+								<div class="col_copy">
+									<div class="radios-box appear-mobile" style="margin-bottom: 20px;">
+										<div class="radio-box">
+												<input type="radio" checked class="radio-selector" id="bu1" name="independent1">
+												<label for="bu1">
+													It's quick to launch
+												</label>
+										</div>
+									</div>
+															<h4>Make Your Mark… Fast!</h4>
+															<p>Burned by expensive and lengthy implementation cycles in the past? Put that behind you. With Copper, you can be up and running in days, not weeks (or months). </p>
+																							<div class="c-hero__buttons">
+									<div class="flex-column">
+							{#<a href="/project-management-crm" class="t-link ">Learn more</a>#}
+						</div>
+						</div>                 
+								</div>
+							</div>
+						</div>
+							
+					</div>
+						<div class="container c-animation-container d-none thetwo2">
+							<h2 class="extra-bottom-margin--x-small" style="text-align: center;"></h2>
+										<div class="row column-reverse">
+								<div class="col-md-6 d-flex align-items-center order-1 ">
+									<div class="c-image c-image--center c-image--shadow h-remove-shadow">
+										{% import "components/simple-elements/_index.html" as simpleElements %}
+										{{ simpleElements.createVideoAsGifElement('vid-5','https://copper.objects.frb.io/videos/homepage/why/CopperHome-Why-Automation-new', 'mp4', 'h-remove-shadow', 'max-width: 100%;', 'https://copper.objects.frb.io/imgs/homepage/thumbnails/why/why-thumb-2.png') }}
+																								{#<img class="h-remove-shadow" src="//d2ydtwisqcxv72.cloudfront.net/landing/Image-Gsuite.png" alt="Image Gsuite">#}
+															</div>
+								</div>
+								<div class="col-md-5 offset-md-1 c-valign--middle order-2">
+									<div class="col_copy">
+										<div class="radios-box appear-mobile" style="margin-bottom: 20px;">
+											<div class="radio-box">
+													<input type="radio" checked class="radio-selector" id="bu2" name="independent2">
+													<label for="bu2">
+														There's no busy work
+													</label>
+											</div>
+										</div>
+																<h4>Thousands of tasks off your plate.</h4><p>Automate everything with simple, intuitive workflow and task automation. No coding required!</p>
+																								<div class="c-hero__buttons">
+										<div class="flex-column">
+								{#<a href="/project-management-crm" class="t-link ">There's no busy work</a>#}
+							</div>
+							</div>                 
+									</div>
+								</div>
+							</div>
+							 
+						</div>
+
+            <div class="container c-animation-container d-none thethree2">
+
+							<h2 class="extra-bottom-margin--x-small" style="text-align: center;"></h2>
+										<div class="row column-reverse">
+								<div class="col-md-6 d-flex align-items-center order-1 ">
+									<div class="c-image c-image--center c-image--shadow h-remove-shadow">
+										{% import "components/simple-elements/_index.html" as simpleElements %}
+										{{ simpleElements.createVideoAsGifElement('vid-6','https://copper.objects.frb.io/videos/homepage/why/CopperHome-Why-ROI-new', 'mp4', 'h-remove-shadow', 'max-width: 100%;', 'https://copper.objects.frb.io/imgs/homepage/thumbnails/why/why-thumb-3.png') }}
+																								{#<img class="h-remove-shadow" src="//d2ydtwisqcxv72.cloudfront.net/landing/Image-Gsuite.png" alt="Image Gsuite">#}
+															</div>
+								</div>
+								<div class="col-md-5 offset-md-1 c-valign--middle order-2">
+									<div class="col_copy">
+										
+										<div class="radios-box appear-mobile" style="margin-bottom: 20px;">
+											<div class="radio-box">
+												<input type="radio" checked class="radio-selector" id="bu3" name="independent3">
+												<label for="bu3">
+													It's made for closing
+												</label>
+											</div>
+										</div>
+																<h4>The CRM for relationship builders</h4>
+																<p>Take care of your prospects with perfect visibility into all your interactions and activity, and build an enduring business.</p>
+																								<div class="c-hero__buttons">
+										<div class="flex-column">
+								{#<a href="/project-management-crm" class="t-link ">It's made for closing</a>#}
+							</div>
+							</div>                 
+									</div>
+								</div>
+							</div>
+							 
+						</div>
+					</section>
+
+<section id="" class="c-cols c-cols-landing modified-new-volt small-section-padding">
+<!-- Form Code -->
+    <!-- Image Code -->
+    <div class="container c-animation-container">
+      <h2 class="extra-bottom-margin--x-small" style="text-align: center;"></h2>
+            <div class="row">
+        <div class="col-md-6 d-flex align-items-center offset-md-1 order-2 ">
+          <div class="c-image c-image--center c-image--shadow h-remove-shadow">
+                                        {#<img class="h-remove-shadow" src="//d2ydtwisqcxv72.cloudfront.net/landing/Group-437.png" alt="Group 437">#}
+
+															{% import "components/simple-elements/_index.html" as simpleElements %}
+    													{{ simpleElements.createVideoAsGifElement('vid-7','https://copper.objects.frb.io/videos/homepage/projects/CopperHome-Projects-v4', 'mp4', 'h-remove-shadow onViewport', 'max-width: 100%;', 'https://copper.objects.frb.io/imgs/homepage/thumbnails/projects/projects-thumb-1.png') }}
+											</div>
+				</div>
+				<div class="col-md-5 c-valign--middle order-1">
+					<pre class="c-eyebrow c-eyebrow--light">REAL-TIME COLLABORATION</pre>
+										<h2>Keep going after the deal is closed.</h2>
+										<p>With Projects, you can close the deal, and deliver the work, all within Copper.</p>
+																	<div class="c-hero__buttons">
+						<div class="flex-column">
+				<a href="/project-management-crm" class="t-link h-white">Learn more</a>  
+			</div>
+			</div>               
+				</div>
+			</div>
+				
+		</div>
+	</section>
+
+
+	<section id="" class="c-cols c-cols-landing   h-padding-bottom">
+				<div class="container c-animation-container">
+					<h2 class="extra-bottom-margin--x-small" style="text-align: center;"></h2>
+								<div class="row column-reverse">
+						<div class="col-md-6 d-flex align-items-center order-1 ">
+							<div class="c-image c-image--center c-image--shadow h-remove-shadow">
+																						{#<img class="h-remove-shadow" src="//d2ydtwisqcxv72.cloudfront.net/landing/Image-Gsuite.png" alt="Image Gsuite">#}
+															{% import "components/simple-elements/_index.html" as simpleElements %}
+    													{{ simpleElements.createVideoAsGifElement('vid-8','https://copper.objects.frb.io/videos/homepage/productivity/CopperHome-Productivity', 'mp4', 'onViewport', 'max-width: 100%;', 'https://copper.objects.frb.io/imgs/homepage/thumbnails/productivity/productivity-thumb-1.png') }}
+													</div>
+						</div>
+						<div class="col-md-5 offset-md-1 c-valign--middle order-2">
+							<div class="col_copy">
+							<pre class="c-eyebrow c-eyebrow--dark">SALES & SERVICE</pre>
+						<h2>Make your team wildly productive.</h2>
+						<p>Copper is not just for sales teams. Whether you’re closing deals, partners, vendors or distributors, you’re always winning with Copper.</p>
+					<div class="c-hero__buttons">
+						<div class="flex-column">
+							{#<a href="/project-management-crm" class="t-link ">Learn more</a>#}
+						</div>
+					</div>                 
+							</div>
+						</div>
+					</div>
+					 
+				</div>
+			</section>
+
+
+<!--Hot pink final section-->
+<section id="" class="c-cols c-cols pricing-style hot-pink">
+  <div style="
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 50%;
+    height: 100%;
+"><div class="disappear-mobile" style="
+    width: 100%;
+    position: relative;
+    height: 100%;
+">
+    <picture>
+      <source type="image/webp" srcset="/imgs/pricing/Pricing_CTA-image-dots@2x.webp" alt="Bubbles graphic">
+      <source type="image/png" srcset="/imgs/pricing/Pricing_CTA-image-dots@2x.png" alt="Bubbles graphic">
+      <img class="drop-right__img h-remove-shadow bubbles-raw" style="
+      max-width: auto;
+      height: 135%;
+      position: absolute;
+      z-index: 2;
+      left: 50%;
+      top: 50%;
+      width: auto;
+      right: 0px;
+      transform: translateX(-50%) translateY(-50%);
+      " src="/imgs/pricing/Pricing_CTA-image-dots@2x.png" alt="Bubbles graphic">
+    </picture>
+    <picture>
+      <source type="image/webp" srcset="/imgs/pricing/Pricing_CTA-image-bubbles@2x.webp" alt="Bubbles graphic">
+      <source type="image/png" srcset="/imgs/pricing/Pricing_CTA-image-bubbles@2x.png" alt="Bubbles graphic">
+      <img class="drop-right__img h-remove-shadow bubbles-user" style="
+      max-width: 650px;
+      height: auto;
+      position: absolute;
+      z-index: 2;
+      left: 50%;
+      top: 50%;
+      width: 100%;
+      transform: translateX(-50%) translateY(-50%);
+      min-width: 200px;
+      " src="/imgs/pricing/Pricing_CTA-image-bubbles@2x.png" alt="Bubbles graphic">
+    </picture>
+    </div></div>
+  <div class="container c-animation-container" style="position: static;">
+    <h2 class="extra-bottom-margin--x-small" style="text-align: center;"></h2>
+    <div class="row column-reverse" style="position: static;">
+    <div class="col-md-6 d-flex align-items-center order-1 " style="position: static;">
+      <div class="c-image c-image--extended-left c-image--shadow h-remove-shadow" style="position: static;">
+        <div class="appear-mobile" style="
+        width: 100%;
+        height: auto;
+        position: relative;
+        z-index: 2;
+        bottom: unset;
+        left: 0px;
+        right: 0px;
+        margin-left: 0px;">
+          <picture>
+            <source type="image/webp" srcset="/imgs/pricing/pricing_cta-image-mobile@2x.webp" alt="Bubbles graphic">
+            <source type="image/png" srcset="/imgs/pricing/pricing_cta-image-mobile@2x.png" alt="Bubbles graphic">
+            <img class="drop-right__img h-remove-shadow" src="/imgs/pricing/pricing_cta-image-mobile@2x.png" alt="Bubbles graphic">
+          </picture>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 c-valign--middle order-2">
+      <h2>Try Copper for free</h2>
+      <p>14-day free trial. Instant activation, no credit card required. Give Copper a try today.<br></p>
+      <div class="c-hero__buttons" style="flex-direction: row;">
+          <a class="c-button sendUTMsToAmplitude c-button--white  section-background-flavor" style="justify-content: center;margin-right:5px; width: fit-content;" href="https://www.copper.com/signup">Try For Free</a>
+          <a class="c-button c-button--outline  section-background-flavor " href="/demos" style="justify-content: center;margin-left:5px; width: fit-content;">Request Demo</a>
+      </div>                     
+    </div>
+    </div>
+  </div>
+</section>
+
+<script>
+
+</script>
+
+{% endif %}
+{% endblock %}

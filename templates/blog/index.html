@@ -1,0 +1,54 @@
+{% set title = "Copper Blog" %}
+
+{% extends "_side-nav.html" %}
+
+{% set page = craft.app.request.getParam('pg') %}
+
+{% block sideNav %}
+<div class="c-blog-content__main container c-blog-content__main--index"> 
+
+  {# Give vue page type #}
+  <div id="vue-blog-page-type" style="display:none;">index</div>
+  <div id="vue-blog-page-num" style="display:none;">{{page}}</div>
+  {% set adLink = "" %}
+  {% if entry.clickthrough %}
+    {% set adLink = entry.clickthrough.url %}
+  {% endif %}
+  <div id="vue-blog-ad-link" style="display:none;">{{adLink}}</div>
+  {% set adImage = "" %}
+  {% if entry.featuredImage.one() %}
+    {% set adImage = entry.featuredImage.one().url %}
+  {% endif %}
+  <div id="vue-blog-ad-image" style="display:none;">{{adImage}}</div>
+
+  {% verbatim %}
+
+    <script src="/js/vue.min.js"></script>
+    <script src="/js/vue/main.js" type="module"> </script>
+    <div id="app"></div>
+
+  {% endverbatim %}
+
+  <div class="row">
+    <div class="col-md-5 c-copper-chronicles__title">
+      <h3>Authors</h3>
+    </div>
+  </div>
+  <div class="row">
+    {% set authors = entry.featuredAuthors.all() %}
+    {% for author in authors %}
+      <div class="col-xl-6 col-lg-12 c-copper-chronicles__topics t-horizontal-line-above">
+        {% include  "sections/blog/_author_card.html" %}
+      </div>
+    {% endfor %}
+    <div class="col-md-12">
+      <div class="c-author c-author--cickable">
+        <div class="c-author__link c-author__link--all-authors">
+          <a class="t-link" href="/blog/authors" >See all authors</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+{% endblock %}

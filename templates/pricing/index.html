@@ -1,0 +1,217 @@
+{% extends "_top-nav.html" %}
+
+{% block topNav %}
+
+{% set priceValidity = now|date_modify("+365 days") %}
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "prices",
+    "itemListElement":[
+      {
+        "@type": "ListItem",
+        "position": "1",
+        "item": {
+          "@type": "Product",
+          "url": "https://www.copper.com/pricing#basic-plan",
+          "name": "Copper Basic plan",
+          "image": [
+            "https://d2ydtwisqcxv72.cloudfront.net/landing/copper-logo.png"
+          ],
+          "description": "The recommended CRM for G Suite. Everything you need to manage people, companies, and opportunities, right inside your inbox.",
+          "sku":"copper-basic-plan",
+          "offers":{
+            "@type":"Offer",
+            "price":"19.00",
+            "priceCurrency":"USD",
+            "priceValidUntil": "{{ priceValidity.iso8601 }}",
+            "availability": "https://schema.org/OnlineOnly"
+          }
+        }
+      }, 
+      {
+        "@type": "ListItem",
+        "position": "2",
+        "item": {
+          "@type": "Product",
+          "url": "https://www.copper.com/pricing#professional-plan",
+          "name": "Copper Professional plan",
+          "image": [
+            "https://d2ydtwisqcxv72.cloudfront.net/landing/copper-logo.png"
+          ],
+          "description": "The all-in-one recommended CRM for G Suite. Smooth collaboration and delivery at every customer touch point.",
+          "offers":{
+            "@type":"Offer",
+            "price":"49.00",
+            "priceCurrency":"USD",
+            "priceValidUntil": "{{ priceValidity.iso8601 }}",
+            "availability": "https://schema.org/OnlineOnly"
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": "3",
+        "item": {
+          "@type": "Product",
+          "url": "https://www.copper.com/pricing#business-plan",
+          "name": "Copper Business plan",
+          "image": [
+            "https://d2ydtwisqcxv72.cloudfront.net/landing/copper-logo.png"
+          ],
+          "description": "The all-in-one recommended CRM for G Suite with more integrations, larger storage, and extra customization to suit the needs of larger revenue teams.",
+          "offers":{
+            "@type":"Offer",
+            "price":"119.00",
+            "priceCurrency":"USD",
+            "priceValidUntil": "{{ priceValidity.iso8601 }}",
+            "availability": "https://schema.org/OnlineOnly"
+          }
+        }
+      } 
+    ]
+  }
+</script>
+
+
+{% for matrixBlock in entry.pricingBlocks.all() %}
+{% set loopIndex = loop.index %}
+{% switch matrixBlock.type %}
+
+  {% case "pricingHero" %}
+    {% include 'sections/pricing/hero.html' %}
+  {% case "pricingTable" %}
+    {% if matrixBlock.lastInstance %}   
+    {% include 'sections/pricing/table.html' %}
+    <div class="floating-ending-point--pricing"></div>
+
+    <script>
+      // Scrolling logic
+      window.addEventListener('scroll', function (e){
+        // Positions
+        var startingFloatingEl = $('.floating-starting-point--pricing').first().offset().top;
+        var endingFloatingEl = $('.floating-ending-point--pricing').first().offset().top;
+        var scrollTop = $(window).scrollTop();
+        
+        if( endingFloatingEl < scrollTop + 90 ){
+          $('.floating-container--pricing').removeClass('floating-active');
+        }else if( startingFloatingEl < scrollTop ){
+          $('.floating-container--pricing').addClass('floating-active');
+        }else{
+          $('.floating-container--pricing').removeClass('floating-active');
+        }
+      });
+    </script>
+    {#<div class="col-md-12 c-align--center c-case-study__link">
+      <a class="t-link" href="/features" target="_blank">See all features</a>
+    </div>
+
+    <div class="custom-table container" style="padding-top: 40px" >
+      <h4 class="no-nav" style="left:15px">Customer Support</h4>
+      <div class="c-pricing-table--cornflower">
+        <div class="c-pricing-table__row--cornflower">
+          <div class="col-6" style="margin:0px"><p style="margin:0px" class="p-sm">Customer Support</p></div>
+          <div class="col-6" style="margin:0px"><p style="margin:0px" class="p-sm text-center">Monday - Friday 24/5, Weekends 9 - 5 ET.</p></div>
+        </div>
+        <div class="c-pricing-table__row--cornflower">
+          <div class="col-6" style="margin:0px"><p style="margin:0px" class="p-sm">Training & Certification</p></div>
+          <div class="col-6" style="margin:0px"><p style="margin:0px" class="p-sm text-center">Daily Live Sessions</p></div>
+        </div>
+        <div class="c-pricing-table__row--cornflower">
+          <div class="col-6" style="margin:0px"><p style="margin:0px" class="p-sm">Customer Management</p></div>
+          <div class="col-6" style="margin:0px"><p style="margin:0px" class="p-sm text-center">Contact our Sales team to find out more</p></div>
+        </div>
+      </div>
+    </div>#}
+    {% else %}
+      {% include 'sections/pricing/table.html' %}
+    {% endif %}
+  {% case "cta" %}
+    {% include 'sections/pricing/cta.html' %}
+  {% case "pricingFaq" %}
+    {% include 'sections/accordion.html' %}
+  {% case "finalPlea" %}
+    {% include 'sections/final-plea.html' %}
+
+{% endswitch %}
+{% endfor %}
+
+<section id="" class="c-cols c-cols pricing-style hot-pink">
+  <div style="
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 50%;
+    height: 100%;
+"><div class="disappear-mobile" style="
+    width: 100%;
+    position: relative;
+    height: 100%;
+">
+    <picture>
+      <source type="image/webp" srcset="/imgs/pricing/Pricing_CTA-image-dots@2x.webp" alt="Bubbles graphic">
+      <source type="image/png" srcset="/imgs/pricing/Pricing_CTA-image-dots@2x.png" alt="Bubbles graphic">
+      <img class="drop-right__img h-remove-shadow bubbles-raw" style="
+      max-width: auto;
+      height: 135%;
+      position: absolute;
+      z-index: 2;
+      left: 50%;
+      top: 50%;
+      width: auto;
+      right: 0px;
+      transform: translateX(-50%) translateY(-50%);
+      " src="/imgs/pricing/Pricing_CTA-image-dots@2x.png" alt="Bubbles graphic">
+    </picture>
+    <picture>
+      <source type="image/webp" srcset="/imgs/pricing/Pricing_CTA-image-bubbles@2x.webp" alt="Bubbles graphic">
+      <source type="image/png" srcset="/imgs/pricing/Pricing_CTA-image-bubbles@2x.png" alt="Bubbles graphic">
+      <img class="drop-right__img h-remove-shadow bubbles-user" style="
+      max-width: 650px;
+      height: auto;
+      position: absolute;
+      z-index: 2;
+      left: 50%;
+      top: 50%;
+      width: 100%;
+      transform: translateX(-50%) translateY(-50%);
+      min-width: 200px;
+      " src="/imgs/pricing/Pricing_CTA-image-bubbles@2x.png" alt="Bubbles graphic">
+    </picture>
+    </div></div>
+  <div class="container c-animation-container" style="position: static;">
+    <h2 class="extra-bottom-margin--x-small" style="text-align: center;"></h2>
+    <div class="row column-reverse" style="position: static;">
+    <div class="col-md-6 d-flex align-items-center order-1 " style="position: static;">
+      <div class="c-image c-image--extended-left c-image--shadow h-remove-shadow" style="position: static;">
+        <div class="appear-mobile" style="
+        width: 100%;
+        height: auto;
+        position: relative;
+        z-index: 2;
+        bottom: unset;
+        left: 0px;
+        right: 0px;
+        margin-left: 0px;">
+          <picture>
+            <source type="image/webp" srcset="/imgs/pricing/pricing_cta-image-mobile@2x.webp" alt="Bubbles graphic">
+            <source type="image/png" srcset="/imgs/pricing/pricing_cta-image-mobile@2x.png" alt="Bubbles graphic">
+            <img class="drop-right__img h-remove-shadow" src="/imgs/pricing/pricing_cta-image-mobile@2x.png" alt="Bubbles graphic">
+          </picture>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 c-valign--middle order-2">
+      <h2>Try Copper for free</h2>
+      <p>Instant activation, no credit card required. Give Copper a try today.<br></p>
+      <div class="c-hero__buttons">
+          <a class="c-button sendUTMsToAmplitude c-button--white  section-background-flavor" style="color: black; justify-content: center;" href="https://www.copper.com/signup">Try For Free</a>
+          <a class="c-button c-button--outline  section-background-flavor " href="/demos" style="justify-content: center;">Request Demo</a>
+      </div>                     
+    </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

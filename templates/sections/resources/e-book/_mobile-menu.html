@@ -1,0 +1,30 @@
+<div class="c-nav--mobile__overlay">
+  <div class="c-nav--mobile__links">
+    <div class="c-e-book-builder__header col-md-12">
+      <span class="t-eyebrow hot-pink"><strong>{{entry.eyebrow}}</strong></span>
+      <div class="col-md-10 offset-md-1 t-vertical-line-below">
+        <h2>{{ entry.title }}</h2>
+      </div>
+      <h3>{{ entry.subText }}</h3>
+    </div>
+
+    <div class="c-e-book-builder__table-of-content c-e-book-builder__table-of-content--mobile-menu col-md-12">
+      {% for entry in entry.tableOfContent.all() %}
+        <div class="c-e-book__mobile-menu-entry">
+          {% include 'sections/resources/e-book/_table-of-content.html' %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{# Close mobile menu when you click entry #}
+<script>
+  LazyLoad.js(['https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'],function(){
+    $('.c-e-book__mobile-menu-entry').click(function(){
+      $('#nav-icon2').removeClass('open');
+      $('body').toggleClass('body--stop-scrolling');
+      $('.c-nav--mobile__overlay').removeClass('open');
+    });
+  })
+</script>

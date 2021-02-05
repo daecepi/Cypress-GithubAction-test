@@ -1,0 +1,171 @@
+/* Color blocks */
+.colorblock {
+	@at-root {
+		
+		/* coloring */
+		#{&}--eggplant {
+			.c-case-study__container{
+				.c-case-study__content{
+					.c-panel__blockquote{
+						color: $color-white;
+					}
+				}
+			}
+			&:after {
+				content: '';
+				position: absolute;
+				background: $color-eggplant;
+				width: 100%;
+				height: 100%;
+			}
+		}
+		#{&}--soft-eggplant {
+			&:after {
+				content: '';
+				position: absolute;
+				background: $color-soft-eggplant;
+				width: 100%;
+		    height: 100%;
+				color: $color-white;
+			}
+		}
+		#{&}--hot-pink {
+			&:after {
+				content: '';
+				position: absolute;
+				background: $color-hot-pink;
+				width: 100%;
+		    height: 100%;
+			}
+		}
+		#{&}--light-pink {
+			&:after {
+				content: '';
+				position: absolute;
+				background: $color-light-pink;
+				width: 100%;
+		    	height: 100%;
+			}
+		}
+		#{&}--teal {
+			&:after {
+				content: '';
+				position: absolute;
+				background: $color-teal;
+				width: 100%;
+		    	height: 100%;
+			}
+		}
+		#{&}--mint {
+			&:after {
+				content: '';
+				position: absolute;
+				background: $color-mint;
+				width: 100%;
+		    height: 100%;
+			}
+		}
+		#{&}--midnight {
+			&:after {
+				content: '';
+				position: absolute;
+				background: $color-midnight;
+				width: 100%;
+		    height: 100%;
+			}
+		}
+		#{&}--soft-midnight {
+			&:after {
+				content: '';
+				position: absolute;
+				background: $color-soft-midnight;
+				width: 100%;
+		    height: 100%;
+			}
+		}
+		#{&}--light-mint {
+			&:after {
+				content: '';
+				position: absolute;
+				background: $color-light-mint;
+				width: 100%;
+		    height: 100%;
+			}
+		}
+		#{&}--putty {
+			&:after {
+				content: '';
+				position: absolute;
+				background: $color-putty;
+				width: 100%;
+		    height: 100%;
+			}
+		}
+		#{&}--volt {
+			&:after {
+				content: '';
+				position: absolute;
+				background: $color-volt;
+				width: 100%;
+		    height: 100%;
+			}
+		}
+		#{&}--indigo {
+			&:after {
+				content: '';
+				position: absolute;
+				background: $color-indigo;
+				width: 100%;
+		    	height: 100%;
+			}
+		}
+		#{&}--purple-rain {
+			&:after {
+				content: '';
+				position: absolute;
+				background: $color-purple-rain;
+				width: 100%;
+		    	height: 100%;
+			}
+		}
+
+			/* positioning */
+			#{&}--top--left {
+				&:after {
+					content: '';
+					position: absolute;
+					top: -25px;
+					left: -25px;
+					z-index: 0;
+				}
+			}
+			#{&}--top--right {
+				&:after {
+					content: '';
+					position: absolute;
+					top: -25px;
+					right: -25px;
+					z-index: 0;
+				}
+			}
+			#{&}--bottom--left {
+				&:after {
+					content: '';
+					position: absolute;
+					bottom: -25px;
+					left: -25px;
+					z-index: 0;
+				}
+			}
+			#{&}--bottom--right {
+				position: relative;
+				&:after {
+					content: '';
+					position: absolute;
+					bottom: -25px;
+					right: -25px;
+					z-index: 0;
+				}
+			}
+		}
+	}

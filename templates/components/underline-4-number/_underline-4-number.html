@@ -1,0 +1,92 @@
+{% macro underline4NumberComponent(underline4Data) %}
+  {% set content = {
+    image: underline4Data.image,
+    eyebrow: underline4Data.eyebrow,
+    copy: underline4Data.copy,
+    numbersTable: underline4Data.numbersTable
+  } %}
+
+
+  {% set contentImage = content.image.one() %}
+
+{% if contentImage is not null and contentImage|length %}
+  <div class="c-numbers--full">
+    <img src="{{ contentImage.url }}" class="c-numbers__background-image" alt="{{ contentImage.title }}">
+    <div class="c-numbers__container">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <pre class="c-eyebrow" style="top:0; margin-left:0;">{{content.eyebrow}}</pre>
+            {{ content.copy }}
+          </div>
+          <div class="col-md-8">
+            {% if content.numbersTable is defined and content.numbersTable is not null and content.numbersTable|length > 0 %}
+              {% set endElement = 1 %}
+              {% for numberElement in content.numbersTable %}
+                {% if endElement == 1 %}
+                  <div class="row">
+                    <div class="c-number col-md-5">
+                      <span class="t-numbers">{{ numberElement.number }}</span>
+                      <p>{{ numberElement.description }}</p>
+                    </div>              
+                  {% set endElement = 0 %}
+                {% else %}
+                    <div class="c-number col-md-5 offset-md-1">
+                      <span class="t-numbers">{{ numberElement.number }}</span>
+                      <p>{{ numberElement.description }}</p>
+                    </div>
+                  </div>
+                  {% set endElement = 1 %}
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+{% else %}
+  <div class="c-numbers--full">
+    <div class="c-numbers__container extra-top-margin--medium" style="top: 0px;">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <pre class="c-eyebrow" style="top:0; margin-left:0;">{{content.eyebrow}}</pre>
+            {{ content.copy }}
+          </div>
+          <div class="col-md-8">
+            {% if content.numbersTable is defined and content.numbersTable is not null and content.numbersTable|length > 0 %}
+              {% set endElement = 1 %}
+              {% for numberElement in content.numbersTable %}
+                {% if endElement == 1 %}
+                  <div class="row">
+                    <div class="c-number col-md-5">
+                      <span class="t-numbers">{{ numberElement.number }}</span>
+                      <p>{{ numberElement.description }}</p>
+                    </div>              
+                  {% set endElement = 0 %}
+                {% else %}
+                    <div class="c-number col-md-5 offset-md-1">
+                      <span class="t-numbers">{{ numberElement.number }}</span>
+                      <p>{{ numberElement.description }}</p>
+                    </div>
+                  </div>
+                  {% set endElement = 1 %}
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+{% endif %}
+
+{% endmacro %}
+
+{% set var = value %}

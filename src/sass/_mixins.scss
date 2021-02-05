@@ -1,0 +1,338 @@
+// Mixin itself
+@mixin clearfix() {
+  &::after {
+    display: block;
+    content: "";
+    clear: both;
+  }
+}
+
+// Add percentage of white to a color
+@function tint($color, $percent){
+  @return mix(white, $color, $percent);
+}
+
+// Add percentage of black to a color
+@function shade($color, $percent){
+  @return mix(black, $color, $percent);
+}
+
+// Add a placeholder mixin
+@mixin placeholder {
+  ::-webkit-input-placeholder {@content}
+  :-moz-placeholder           {@content}
+  ::-moz-placeholder          {@content}
+  :-ms-input-placeholder      {@content}  
+}
+
+@mixin backgroundColor{
+  &.off-white {
+    background: $color-putty;
+  }
+  &.teal-dark{
+	  background: $color-teal-dark;
+  }
+  &.hot-pink {
+    background: $color-hot-pink;
+    //color: $color-white;
+  }
+  &.gray-white {
+    background: $color-gray-white;
+    //color: $color-white;
+  }
+  &.eggplant {
+    background: $color-eggplant;
+    //color: $color-white;
+	}
+	&.midnight {
+    background: $color-midnight;
+    //color: $color-white;
+  }
+	&.soft-midnight {
+    background: $color-soft-midnight;
+    //color: $color-white;
+	}
+	&.burgundy {
+    background: $color-burgundy;
+    //color: $color-white;
+  }
+  
+	&.mint {
+    background: $color-mint;
+    //color: $color-white;
+  }
+  
+  &.volt {
+    background: $color-volt;
+    //color: $color-white;
+  }
+  
+  &.purple {
+    background: $color-purple;
+    //color: $color-white;
+	}
+
+	&.soft-gray {
+    background: $color-soft-gray;
+    //color: $color-black;
+	}
+
+	&.extra-soft-gray {
+    background: $color-soft-gray;
+    //color: $color-black;
+	}
+
+	&.final-plea {
+		background: #56468f;
+	}
+}
+
+@mixin linearBackgroundSkeleton ($color, $direction) {
+  background: -webkit-linear-gradient($direction, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 50%, $color 50%, $color 100%);
+  background: -o-linear-gradient($direction, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 50%, $color 50%, $color 100%);
+  @if $direction == left{
+    background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 50%, $color 50%, $color 100%);
+  }@else if $direction == right{
+    background: linear-gradient(to left, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 50%, $color 50%, $color 100%);
+  }
+  @include media-breakpoint-down(sm){
+    background: -webkit-linear-gradient(bottom, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 50%, $color 50%, $color 100%);
+    background: -o-linear-gradient(bottom, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 50%, $color 50%, $color 100%);
+    background: linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 50%, $color 50%, $color 100%);
+   }
+}
+// Agregar font color to the rest of backgrounds
+@mixin linearBackgroundMixin ($direction) {
+  &.gray-white {
+    h2,p{
+      color: #3C3F40;
+    }
+    @include linearBackgroundSkeleton($color-gray-white, $direction);
+  }
+  &.off-white {
+    @include linearBackgroundSkeleton($color-white, $direction);
+  }
+  &.mint {
+    @include linearBackgroundSkeleton($color-mint, $direction);
+  }
+  &.volt {
+    @include linearBackgroundSkeleton($color-volt, $direction);
+  }
+  &.purple{
+    @include linearBackgroundSkeleton($color-purple, $direction);
+  }
+  &.teal-dark{
+    @include linearBackgroundSkeleton($color-teal-dark, $direction);
+  }
+  &.hot-pink {
+    @include linearBackgroundSkeleton($color-hot-pink, $direction);
+  }
+  &.eggplant {
+    @include linearBackgroundSkeleton($color-eggplant, $direction);
+	}
+	&.midnight {
+    @include linearBackgroundSkeleton($color-midnight, $direction);
+	}
+	&.soft-midnight {
+    @include linearBackgroundSkeleton($color-soft-midnight, $direction);
+	}
+	&.burgundy {
+    @include linearBackgroundSkeleton($color-burgundy, $direction);
+	}
+	&.soft-gray {
+    @include linearBackgroundSkeleton($color-soft-gray, $direction);
+	}
+	&.extra-soft-gray {
+    @include linearBackgroundSkeleton($color-extra-soft-gray, $direction);
+	}
+	&.final-plea {
+    @include linearBackgroundSkeleton($color-final-plea, $direction);
+	}
+}
+
+
+@mixin ctasSectionBackgroundReuse($backgroundColor, $style){
+  .c-hero__buttons{
+    .c-button.section-background-flavor{
+      color: $backgroundColor;
+      //border: 1px solid $backgroundColor;
+  
+      &:hover{
+       background: $backgroundColor;
+       color: $color-white;
+       border: 1px solid $color-white;
+      }
+    }
+
+    .c-button.c-button--outline.section-background-flavor{
+      color: $color-white;
+      border: 1px solid $color-white;
+  
+      &:hover{
+        color: $backgroundColor;
+        background: $color-white;
+      }
+
+    }
+  }
+
+}
+
+@mixin containerBackgroundConfigurations(){
+	&.purple{
+		background: $color-purple;
+		color: $color-white;
+
+		@include ctasSectionBackgroundReuse($color-purple, normal);
+	}
+
+
+	&.gray-white{
+		background-color: $color-gray-white;
+
+		@include ctasSectionBackgroundReuse($color-gray-white, normal);
+	}
+
+  &.h-off-white {
+		background-color: $color-putty;
+
+		@include ctasSectionBackgroundReuse($color-putty, normal);
+  }
+  &.off-white {
+		background-color: $color-putty;
+		
+		@include ctasSectionBackgroundReuse($color-putty, normal);
+	}
+	&.white{
+		background-color: $color-white;
+		color: $color-black;
+
+		@include ctasSectionBackgroundReuse($color-white, normal);
+	}
+  &.teal-dark{
+	  background-color: $color-teal-dark;
+		color: $color-white;
+		@include ctasSectionBackgroundReuse($color-teal-dark, normal);
+  }
+  &.mint{
+	background-color: $color-mint;
+	color: $color-white;
+
+	@include ctasSectionBackgroundReuse($color-mint, normal);
+  }
+  &.hot-pink {
+    background-color: $color-hot-pink;
+    color: $color-white;
+    pre.c-eyebrow.c-eyebrow--dark {
+      color: $color-white;
+      &:before {
+        border-bottom: 2px solid #fff;
+      }
+		}
+		@include ctasSectionBackgroundReuse($color-hot-pink, normal);
+	}
+	&.putty{
+    background-color: $color-putty;
+    color: $color-black;
+	    pre.c-eyebrow.c-eyebrow--dark {
+	      color: $color-black;
+	      &:before {
+	        border-bottom: 2px solid $color-black;
+	      }
+			}
+			@include ctasSectionBackgroundReuse($color-putty, normal);
+	}
+  &.eggplant {
+    background-color: $color-eggplant;
+    color: $color-white;
+    pre.c-eyebrow.c-eyebrow--dark {
+      color: $color-white;
+      &:before {
+        border-bottom: 2px solid #fff;
+      }
+		}
+		
+		@include ctasSectionBackgroundReuse($color-eggplant, normal);
+	}
+	&.midnight {
+    background-color: $color-midnight;
+    color: $color-white;
+	    pre.c-eyebrow.c-eyebrow--dark {
+	      color: $color-white;
+	      &:before {
+	        border-bottom: 2px solid #fff;
+	      }
+			}
+			@include ctasSectionBackgroundReuse($color-midnight, normal);
+	}
+	&.soft-midnight {
+    background-color: $color-soft-midnight;
+    color: $color-white;
+	    pre.c-eyebrow.c-eyebrow--dark {
+	      color: $color-white;
+	      &:before {
+	        border-bottom: 2px solid #fff;
+	      }
+			}
+			@include ctasSectionBackgroundReuse($color-soft-midnight, normal);
+	}
+	&.burgundy {
+    background-color: $color-burgundy;
+    color: $color-white;
+	    pre.c-eyebrow.c-eyebrow--dark {
+	      color: $color-white;
+	      &:before {
+	        border-bottom: 2px solid $color-white;
+	      }
+			}
+			@include ctasSectionBackgroundReuse($color-burgundy, normal);
+	}
+
+	&.soft-gray {
+    background-color: $color-soft-gray;
+    color: $color-black;
+	    pre.c-eyebrow.c-eyebrow--dark {
+	      color: $color-black;
+	      &:before {
+	        border-bottom: 2px solid $color-black;
+	      }
+			}
+			@include ctasSectionBackgroundReuse($color-soft-gray, normal);
+	}
+
+	&.extra-soft-gray {
+    background-color: $color-extra-soft-gray;
+    color: $color-black;
+	    pre.c-eyebrow.c-eyebrow--dark {
+	      color: $color-black;
+	      &:before {
+	        border-bottom: 2px solid $color-black;
+	      }
+			}
+			@include ctasSectionBackgroundReuse($color-extra-soft-gray, normal);
+	}
+
+	&.final-plea {
+		background-color: #56468f;
+		.c-image {
+			padding: 0;
+			display: none;
+			@include media-breakpoint-up(md) {
+				display: block;
+			}
+		}
+		@include media-breakpoint-up(md) {
+			padding-top: 80px;
+			min-height: 600px;
+			.c-image {
+				width: 58vw;
+				left: 42vw;
+				min-height: 600px;
+			}
+		}
+		&:after {
+			background-color: #56468f;
+		}
+		@include ctasSectionBackgroundReuse(#56468f, normal);
+	}
+}

@@ -1,0 +1,67 @@
+{% if matrixBlock.linkToNav|length %}
+  {% set linkId = matrixBlock.linkToNav |camel %}
+  {% set sectionId = entry[linkId] |camel %}
+  <a class="anchor" id="{{sectionId}}"></a>
+{% endif %}
+{% if matrixBlock.includeNavigation %}
+<div class="l-pricing-tables--container">
+{% endif %}
+<section id="{% if matrixBlock.stickyNavName != '' %}{{matrixBlock.stickyNavName |lower }}{% endif %}" class="c-pricing-table--cornflower {{ matrixBlock.lastInstance ? 'last-instance' : '' }} {{ matrixBlock.includeNavigation ? 'nav-added' : '' }}">
+    {% if matrixBlock.includeNavigation %}
+    <div class="c-pricing-table--cornflower__navigation js-pricing-nav">
+      <div class="c-pricing-table__row--cornflower">
+        <div class="container c-pricing-table--cornflower__navigation--container">
+          <div class="c-pricing-table__info--cornflower md"><p></p></div>
+          {% set headerLogoOne = matrixBlock.headerLogoOne.one() %}
+          {% if headerLogoOne|length %}
+          <div class="c-pricing-table__logo__container">
+            <img class="c-pricing-table__logo" src="{{ headerLogoOne.url }}" alt="{{ headerLogoTwo.title }}" title="{{ headerLogoOne.title }}">
+          </div>
+          {% endif %}
+          {% set headerLogoTwo = matrixBlock.headerLogoTwo.one() %}
+          {% if headerLogoTwo|length %}
+          <div class="c-pricing-table__logo__container">
+            <img class="c-pricing-table__logo" src="{{ headerLogoTwo.url }}" alt="{{ headerLogoTwo.title }}" title="{{ headerLogoTwo.title }}">
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    {% endif %}
+    <div class="container">
+      <h4 class="{{ matrixBlock.includeNavigation ? 'include-nav' : 'no-nav' }}">{{ matrixBlock.tableTitle }}</h4>
+      <div class="c-pricing-table__table--cornflower">
+        {% for feature in matrixBlock.features.all() %}
+        <div class="c-pricing-table__row--cornflower">
+          <div class="c-pricing-table__info--cornflower md">{{ feature.description }}</div>
+          <div class="c-pricing-table__tier--cornflower">
+            {% if feature.copperCheckmark %}
+              <i class="notranslate material-icons done">done</i>
+            {% elseif feature.copperText|length %}
+              <p class="p-sm">{{ feature.copperText }}</p>
+            {% else %}
+              <i class="notranslate material-icons close">close</i>
+            {% endif %}
+          </div>
+          <div class="c-pricing-table__tier--cornflower">
+            {% if feature.competitorCheckmark %}
+              <i class="notranslate material-icons done">done</i>
+            {% elseif feature.competitorText|length %}
+              <p class="p-sm">{{ feature.competitorText }}</p>
+            {% else %}
+              <i class="notranslate material-icons close">close</i>
+            {% endif %}
+          </div>
+        </div>
+        {% endfor %}
+        {% if matrixBlock.footnote|length %}
+        <div class="c-pricing-table__footnote">
+          {{ matrixBlock.footnote }}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+</section>
+{% if matrixBlock.lastInstance %}
+</div>
+{% endif %}

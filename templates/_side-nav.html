@@ -1,0 +1,194 @@
+{% extends "_layout" %}
+
+{% block content %}
+
+  </head>
+  {# The display:none gives us time to decide if we want to show the homepage animation or not #}
+  <body class="ltr {{ craft.app.request.segments|last ?: 'home' }} blog-body" >
+    {% set expiry = now|date_modify('+30 days') %}
+    {% header "Cache-Control: max-age=" ~ (expiry.timestamp - now.timestamp) %}
+    {% header "Pragma: cache" %}
+    {% header "Expires: " ~ expiry|date('D, d M Y H:i:s', 'GMT') ~ " GMT" %}
+    <div id="cookie-message" style="display:none;">
+      <div class="container">
+        <div class="row justify-content-center">
+          <p class="col-lg-10 col-md-9 sm">We use cookies to ensure that we provide you with the best experience on our website. If you continue without changing your settings, you are agreeing to receive all cookies on the Copper website. You can change your cookie settings at any time. To find detailed information about how cookies are used on this website click <a href="/cookies">Find out more.</a></p>
+          <p class="col-lg-2 col-md-3 buttons">
+            <button class="c-button c-button--white-outline js-kill-cookie">Got It</button>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    {% include 'sections/nav_blog.html' %}
+    
+    <main id="content" class="c-blog-content no-banner" role="main">
+      <div class="c-blog-content__search">
+        <div class="yext-searchbar-container blog-style">
+          <div class="search-bar-menu-delimiter">
+            <div class="search-bar-container-desktop"></div>
+            <span class="search-free-close"></span>
+          </div>
+          <span class="search-free-open white-search-start" style="position: relative; right: 0px;"></span>
+          <a class="c-button sendUTMsToAmplitude blogCTA" target="_blank" href="/signup" style="margin-left: 17px; margin-right: 15px;">Try Copper free</a>
+        </div>
+        {#<div id="js-blog-search-open" class="c-blog-content__search__default active">
+          <i class="material-icons notranslate">search</i>
+        </div>
+        <div id="js-blog-search-close" class="c-blog-content__search__searching">
+          <form action="{{ url('blog/results') }}" class="c-blog-content__search__searching__form">
+            <input id="js-blog-search-input" class="c-blog-content__search__searching__input" placeholder="Search Copper Chronicles" type="search" name="q" >
+          </form>
+          <i class="material-icons notranslate">close</i>
+        </div>#}
+      </div>
+      <script>
+        LazyLoad.js([
+        'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js',
+        ],function(){
+            $('.blogCTA').on('click', function(e){
+              // Setting UTM for this experiment
+              Cookies.set('utm_content', 'blog_header', { domain:  sndleveldomain });
+              return 1;
+            });
+        });
+      </script>
+
+      {% block sideNav %}
+        <p>If you see me, you haven’t set your <code>{% verbatim %}{% block sideNav %}…{% endblock %}{% endverbatim %}</code> yet.</p>
+        <p>See Twig’s <a href="http://twig.sensiolabs.org/doc/templates.html#template-inheritance">Template Inheritance</a> documentation for an explanation.</p>
+      {% endblock %}
+
+<script>
+  LazyLoad.css(['https://assets.sitescdn.net/answers/v1.5/answers.css']);
+  LazyLoad.js([
+  'https://assets.sitescdn.net/answers/v1.5/answers.min.js',
+  'https://cdn.jsdelivr.net/npm/typed.js@2.0.11',
+  'https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js',
+  'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js',
+  ],function(){var apiKey = "adf8d85d3ee2b2a9c35ed2695353d2d6";
+  var experienceKey= "answers";
+  var experienceVersion = "PRODUCTION";
+  var businessId= "3335022";
+  var locale = "en";
+  var redirectUrl = "/search";
+  var javascriptVersion = "1.7";
+  var yextProductionUrl = "https://answers-embed.copper.com.pagescdn.com/";
+  ANSWERS.init({
+    apiKey: apiKey,
+    experienceKey: experienceKey,
+    businessId: businessId,
+    experienceVersion: experienceVersion,
+    locale: locale,
+    redirectUrl: redirectUrl,
+    javascriptVersion: javascriptVersion,
+    production_url: yextProductionUrl,
+    onReady: function() {
+      this.addComponent("SearchBar", {
+        container: ".search-bar-container",
+        name: "faq-search",
+        redirectUrl: redirectUrl,
+        placeholdertext: "Search..."
+      });
+      this.addComponent("SearchBar", {
+        container: ".search-bar-container-desktop",
+        name: "faq-search-desktop",
+        redirectUrl: redirectUrl,
+        placeholdertext: "Search..."
+      });
+      $('.yxt-SearchBar-input').attr('placeholder', 'Search...');
+      // Make API Call to Options
+      var url = 'https://liveapi-cached.yext.com/v2/accounts/me/answers/autocomplete';
+      url += '?v=20190101';
+      url += '&api_key=' + apiKey;
+      url += '&sessionTrackingEnabled=false';
+      url += '&experienceKey=' + experienceKey;
+      url += '&input=';
+      url += '&version=' + experienceVersion;
+      url += '&locale=' + locale;
+      axios.get(url).then(function(response) {
+        // Get strings from response
+        const strings = response.data.response.results.map(function(r) {
+          return r.value;
+        });
+        // console.log("Response object", response)
+        // Set up Typed
+        var options = {
+          strings: strings,
+          showCursor: true,
+          cursorChar: "|",
+          typeSpeed: 45,
+          backSpeed: 20,
+          smartBackspace: true,
+          loop: true,
+          startDelay: 500,
+          backDelay: 2000,
+          attr: "placeholder",
+        };
+        var typed = new Typed(".js-yext-query", options);
+
+        /*var searchBarSimpleLogo = `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+        <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="88px" height="88px" viewBox="0 0 88 88" enable-background="new 0 0 88 88" xml:space="preserve">  <image id="image0" width="88" height="88" x="0" y="0"
+            href="data:image/png;base64,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" />
+        </svg>  
+        `;*/
+
+        // Remove yext logo
+        $('.Icon--yext_animated_forward').empty();
+        // $('.Icon--yext_animated_forward').append(searchBarSimpleLogo);
+
+        $('.Icon--yext_animated_reverse').empty();
+        // $('.Icon--yext_animated_reverse').append(searchBarSimpleLogo);
+        
+      });
+      
+    },
+  });
+  })
+</script>
+<script>
+  LazyLoad.js([
+  'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js',
+  ],function(){
+      $('.search-free-open').on('click', function(){
+          $('.search-bar-menu-delimiter').addClass('show-delimiter');
+      });
+      $('.search-free-close').on('click', function(){
+          $('.search-bar-menu-delimiter').removeClass('show-delimiter');
+      })
+  })
+</script>
+      
+      {# {% include 'sections/footer_blog.html' %} #}
+      {% include 'sections/footer.html' %}
+    </main>
+
+    {% include '_request-demo.html' %}
+  </body>
+
+{% endblock %}

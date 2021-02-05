@@ -1,0 +1,25 @@
+  </div>
+</div>
+{% set image = matrixBlock.featuredImage.one() %}
+{% set chapter = matrixBlock.chapterDetails.one() %}
+
+{% if chapter is not null %}
+  <div id="e-book-chapter-anchor-{{chapter.number}}"></div>
+  {% if image|length %}
+    <div class="c-resource__featured-image d-none d-md-flex" style="background: url( '{{image.url}}' ) no-repeat center center; background-attachment: fixed; background-size: auto 100vh;"></div>
+    <img src="{{ image.url }}" alt="{{ chapter.header }}" class="c-resource__featured-image--mobile d-flex d-md-none">
+  {% endif %}
+  <div class="c-resource-content__container container">
+    <div class="col-sm-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+      {# <div id="e-book-chapter-anchor-{{chapter.number}}"></div> #}
+      <div class="c-resource-header__chapter col-12">
+        <span class="t-eyebrow hot-pink"><strong>Chapter {{chapter.number}}</strong></span>
+        <div class="col-10 offset-1 t-vertical-line-below">
+          <h2 >{{ chapter.header }}</h2>
+        </div>
+      </div>
+      {% set tldr = chapter.paragraph %}
+      <div class="t-center">
+        {% include 'sections/resources/_tldr.html' %}
+      </div>
+{% endif %}

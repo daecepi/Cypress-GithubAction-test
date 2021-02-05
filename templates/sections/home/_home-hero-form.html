@@ -1,0 +1,153 @@
+<!-- c-hero--general-signup-form eggplant c-hero--split -->
+{% if 'huro=orig' in  craft.request.getQueryString %}
+    <!-- Hero Form --> 
+    <section class="c-hero--signup-form split-background--purple">
+      <div class="container">
+        <div class="row">
+          {# <div class="col-md c-valign--middle"> #}
+          <div class="col-md-6 c-valign--middle">
+            <h1>Finally... a CRM<br>for G Suite.</h1>
+            <p class="form-subtitle">Manage all your contacts, deals, emails, files, and more in one place.</p>
+            <div class="form_container">
+              <form class="signup_form" id="signup_form" action="https://app.prosperworks.com/users" accept-charset="UTF-8" method="post">
+                <input name="utf8" type="hidden" value="✓">
+                <input type="hidden" name="authenticity_token" value="lAAB/AYz9RxQR4RN74ZQgCErmru66/VW8Kzw3EeKrJrJC4AjlOsOIwvmktA9F0k1HVJQkSEber78cUBqUaYwhw==">
+                <a class="google_light_btn" href="https://app.prosperworks.com/auth/auto_login?continue_with_google=true&amp;failure_url=https%3A%2F%2Fapp.prosperworks.com%2Fusers%2Fsign_up%3Fauth_error%3DAuthentication%2Bfailed.%2BPlease%2Benter%2Byour%2Bemail%2Bbelow%2Bto%2Bcontinue.&amp;prompt=consent&amp;provider=google_oauth2_extended">
+                    <img class="google_icon" src="imgs/google-g-0cf576a5dab9315daac7ffe29d29ed585e0ff9850e59408d0f25f38dc1da037b.svg" alt="Google g">
+                    <span class="google_light_btn_label">
+                        Continue with Google
+                    </span>
+                </a>
+                <div class="signup_form_subtext">
+                    or use your email to sign up:
+                </div>
+                <div class="field">
+                    <div class="form_text_field_container">
+                        <label for="user[full_name]">Full Name</label>
+                        <input class="text_field" size="30" placeholder="Jane Doe" type="text" name="user[full_name]" id="user_full_name">
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="form_text_field_container">
+                        <label for="user[email]">Work Email</label>
+                        <input size="30" class="text_field" placeholder="janedoe@example.com" type="email" name="user[email]" id="user_email">
+                    </div>
+                </div>
+                <input type="hidden" name="amp_device_id" value="" >
+                <input type="hidden" name="utm_source" value="" >
+                <input type="hidden" name="utm_campaign" value="" >
+                <input type="hidden" name="utm_medium" value="" >
+                <input type="hidden" name="utm_adgroup" value="" >
+                <input type="hidden" name="utm_content" value="" >
+                <input type="hidden" name="utm_term" value="" >
+                <input type="hidden" name="gclid" value="" >
+                <input type="hidden" name="visitor_token" value="" >
+                <div class="submit-button-row">
+                  <input type="submit" name="commit" value="Try Free" class="justify-content-center c-button submit_button is-pink">
+                </div>
+              </form>
+              <p class="disclaimer">By signing up, I agree to Copper’s <a href="/privacy">privacy policy</a> & <a href="/terms">terms of service.</a></p>
+            </div>
+          </div>
+          <div class="col-md c-valign--middle">
+            <div class="c-image">
+              <picture>
+              <source type="image/webp" 
+                  srcset="/imgs/Home_variant_B_HERO_3new-@1x.webp 1x, /imgs/Home_variant_B_HERO_3new-@1x.webp"
+                  media='(max-width: 576px)'
+                  class="home-floating-image" 
+                  alt="Home variant image 8">
+                <source type="image/webp" 
+                  srcset="/imgs/Home_variant_B_HERO_2new-@1x.webp 1x, /imgs/Home_variant_B_HERO_2new-@1x.webp"
+                  media='(max-width: 768px)'
+                  class="home-floating-image" 
+                  alt="Home variant image 8">
+                <source type="image/webp" srcset="/imgs/Home_variant_B_HERO_2new-@1x.webp" class="home-floating-image"
+                  alt="Home variant image 8">
+                <source type="image/png" srcset="/imgs/Home_variant_B_HERO.png" class="home-floating-image"
+                  alt="Home variant image 8">
+                <img class="home-floating-image" src="/imgs/Home_variant_B_HERO.png" alt="Home variant image 8">
+              </picture>
+            </div>            
+          </div>
+        </div>
+      </div>
+    </section>
+
+{% else %}
+<style>
+  .dotted-circle-home{
+      position: absolute;
+      top: 44px;
+      left: 65%;
+      width: 18%;
+  }
+</style>
+<section class="landing-hero c-hero--signup-form enclosed-form no-transition split-background--purple  hero-mod-purple" style="
+">
+<img class="dotted-circle-home disappear-mobile" src="https://copper.objects.frb.io/imgs/homepage/DotPattern-Circle.svg" alt="Dotted circle adition">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 c-valign--middle signup-aconditioner enclosed-transparent ">
+        <div style="margin-top: 60px;">
+          <h1 class="more-space">Win clients for life with Copper.</h1>
+          <p class="form-subtitle">Focus on what matters most: building enduring business relationships. We’ll take care of the rest.</p>
+          <div class="form_container">
+            <form class="signup_form" id="signup_form" action="https://app.prosperworks.com/users" accept-charset="UTF-8" method="post">
+              <input name="utf8" type="hidden" value="✓">
+              <input type="hidden" name="authenticity_token" value="lAAB/AYz9RxQR4RN74ZQgCErmru66/VW8Kzw3EeKrJrJC4AjlOsOIwvmktA9F0k1HVJQkSEber78cUBqUaYwhw==">
+              <a class="google_light_btn" href="https://app.prosperworks.com/auth/auto_login?continue_with_google=true&amp;failure_url=https%3A%2F%2Fapp.prosperworks.com%2Fusers%2Fsign_up%3Fauth_error%3DAuthentication%2Bfailed.%2BPlease%2Benter%2Byour%2Bemail%2Bbelow%2Bto%2Bcontinue.&amp;prompt=consent&amp;provider=google_oauth2_extended">
+                  <img class="google_icon" src="//d3jas8421cca9z.cloudfront.net/assets/google-g-0cf576a5dab9315daac7ffe29d29ed585e0ff9850e59408d0f25f38dc1da037b.svg" alt="Google g">
+                  <span class="google_light_btn_label">
+                      Continue with Google
+                  </span>
+              </a>
+              <div class="signup_form_subtext" style="font-size: 13px; margin-bottom: 25px;">
+                  or use your email to sign up:
+              </div>
+              <div class="field">
+                  <div class="form_text_field_container">
+                      <label for="user[full_name]">Full Name</label>
+                      <input class="text_field" size="30" placeholder="Jane Doe" type="text" name="user[full_name]" id="user_full_name">
+                  </div>
+              </div>
+              <div class="field">
+                  <div class="form_text_field_container">
+                      <label for="user[email]">Work Email</label>
+                      <input size="30" class="text_field" placeholder="janedoe@example.com" type="email" name="user[email]" id="user_email">
+                  </div>
+              </div>
+              <input type="hidden" name="amp_device_id" value="" >
+                <input type="hidden" name="utm_source" value="" >
+                <input type="hidden" name="utm_campaign" value="" >
+                <input type="hidden" name="utm_medium" value="" >
+                <input type="hidden" name="utm_adgroup" value="" >
+                <input type="hidden" name="utm_content" value="" >
+                <input type="hidden" name="utm_term" value="" >
+                <input type="hidden" name="gclid" value="" >
+                <input type="hidden" name="visitor_token" value="" >
+              <input type="hidden" name="ampDeviceID" value="">
+              <div class="submit-button-row">
+                <input type="submit" name="commit" value="Try Free" class="submit_button is-pink with-no-border">
+              </div>
+            </form>
+            <p class="disclaimer">By signing up, I agree to Copper’s <a href="/privacy">privacy policy</a> &amp; <a href="/terms">terms of service.</a></p>
+          </div>
+
+        </div>
+      </div>
+        <div class="col-md-6 c-valign--middle c-image invert-sm-spacing c-valign--middle" style="position: relative; left: 0px; min-height: 500px;">
+            {#<img style="object-fit: initial; height: auto;" class="h-image-contain" src="//d2ydtwisqcxv72.cloudfront.net/landing/Image-Hero.png" alt="Image Hero">#}
+        {% import "components/simple-elements/_index.html" as simpleElements %}
+        <div style='position:relative'>
+          <img id='vid-1-placeholder' style='width: 68.5%;max-width: 450px;position: relative;left: 9.3%;top: 1%;' src='https://copper.objects.frb.io/imgs/homepage/thumbnails/hero/hero-thumb.png' />
+          <div style='position:absolute;left:0px;top:-4%'>
+            {{ simpleElements.createVideoAsGifElement('vid-1', 'https://copper.objects.frb.io/videos/homepage/hero/01CopperHome-HeroAnimation3-v4', 'mp4', 'h-remove-shadow onViewport', 'max-width: 100%;', '') }}
+          </div>
+        </div>
+        {#{{ simpleElements.createVideoAsGifElement('vid-1', 'https://copper.objects.frb.io/videos/homepage/hero/01CopperHome-HeroAnimation3-v4', 'mp4', 'h-remove-shadow onViewport', 'max-width: 100%;', 'https://copper.objects.frb.io/imgs/homepage/thumbnails/hero/hero-thumb.png') }}#}
+    </div>
+    </div>
+  </div>
+</section>
+{% endif %}

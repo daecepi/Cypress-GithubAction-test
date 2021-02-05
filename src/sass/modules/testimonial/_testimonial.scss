@@ -1,0 +1,53 @@
+.c-testimonial__image {
+  max-width: 355px;
+  box-shadow: $global-shadow;
+  z-index: 100;
+  position: relative;
+  padding-bottom: 60px;
+  img {
+    width: 100%;
+    z-index: 10;
+    position: relative;
+  }
+}
+
+.c-testimonial__content {
+  background-color: $color-eggplant;
+  z-index: 10;
+  position: relative;
+  padding: 120px 0;
+  .t-eyebrow {
+    color: $color-white;
+    padding-bottom: 40px;
+    display: block;
+  }
+}
+
+.c-testimonial__quote {
+  justify-content: center;
+  color: $color-white;
+  display: flex;
+  flex-direction: column;
+  cite {
+    font-style: normal;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 600;
+    span {
+      text-transform: none;
+    }
+  }
+  img {
+    width: auto;
+    max-width: 140px;
+    max-height: 40px;
+  }
+}
+
+.c-testimonial__logo {
+  margin-top: 20px;
+}
+
+.c-testimonial__author {
+  display: block;
+}

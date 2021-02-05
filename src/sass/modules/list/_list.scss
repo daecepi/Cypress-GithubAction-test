@@ -1,0 +1,140 @@
+.c-list {
+  padding: $global-mobile-padding;
+  @include media-breakpoint-up(md) { 
+    padding: $global-desktop-padding;
+  }
+  &.product-page {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  .p-sm {
+    color: #8A8C8B;
+  }
+  .row {
+    padding-bottom: 44px;
+    &:last-child {
+      padding-bottom: 0;
+    }
+    
+    div[class*='col-']{
+	    margin-bottom: 30px;
+    }
+    
+    @include media-breakpoint-down(sm){
+	    display: block;
+	    padding-bottom: 0;
+    }
+  }
+  
+  .icon {
+	  img {
+	  	max-width: 60px;
+			margin-top: -18px;
+			margin-left: 0;
+			
+			@include media-breakpoint-up(sm){
+				margin-left: -6px;
+			}
+    }
+  }
+}
+
+.c-list__header {
+  margin-bottom: 65px;
+  @include media-breakpoint-up(lg) { 
+    margin-bottom: 120px;
+  }
+  p {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+.c-list__copy {
+  margin-bottom: 32px;
+}
+
+.c-list__entry {
+  padding: 0 35px;
+  position: relative;
+}
+
+.c-list__icon--top {
+  padding-bottom: 40px;
+}
+
+.c-list__icon--top-sm{
+  padding-bottom: 30px;
+}
+
+// Special types of listing appliers
+
+//Applied in Terms page
+//Applied in Terms page
+.li-tittling-green-underline{
+    ol>.menu-item{
+      position: relative;
+      padding-top: 0px;
+      z-index: 2;
+      padding-right: 0.3em;
+      @include media-breakpoint-down(sm){
+        word-break: break-all;
+      }
+      &>strong:first-child{
+        font-size: 34px;
+        line-height: 40px;
+        display: inline;
+        align-items: center;
+        width: fit-content;
+        //border-bottom: 7px solid $color-volt;
+        height: 40px;
+        box-shadow: inset 0 -12px 1px -3px $color-volt;
+
+        &::before{
+          content: '';
+          display: block;
+          height: 8px;
+          top: 32px;
+          left: 32px;
+          width: 80px;
+          position: absolute;
+          background: $color-volt;
+          z-index: -1;
+
+          @include media-breakpoint-down(sm){
+            word-break: keep-all;
+            left: 0px;
+          }
+        }
+      }
+      &::before{
+        font-size: 34px;
+        line-height: 40px;
+        font-weight: bold;
+        color: $color-black;
+        top: 1px;
+        position: relative;
+        word-break: keep-all;
+      }
+
+      ul, ol, ol ol {
+        li strong, li::before{
+          font-size: 16px;
+          line-height: 24px;
+          background:initial;
+          color: initial;
+          word-break: keep-all;
+
+        }
+        li strong{
+          display: inline;
+          height: fit-content;
+          border-bottom: unset;
+          box-shadow: none;
+        }
+        li strong::before{
+          content: none;
+        }
+      }
+    }
+}

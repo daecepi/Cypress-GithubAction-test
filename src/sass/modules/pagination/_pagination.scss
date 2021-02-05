@@ -1,0 +1,134 @@
+.c-pagination{
+  display: flex;
+  margin: auto;
+  padding: 60px 0 40px;
+  @include media-breakpoint-up(md) {
+    padding: 15px 0;
+  }
+}
+
+.c-pagination--disabled{
+  cursor: auto !important;
+  .c-pagination__text{
+    color:#d9d9d9 !important;
+  }
+}
+
+.c-pagination__extremity{
+  display: flex;
+}
+
+.c-pagination__text{
+  font-size: 14px;
+  margin: 0;
+  z-index: 1;
+  position: relative;
+  color: #8A8C8B;
+  &:not(.material-icons){
+    text-transform: uppercase;
+  }
+}
+
+.c-pagination__previous{
+  padding-right: 20px;
+  margin-bottom: -5px;
+  cursor: pointer;
+
+  .t-strikethrough__container__title{
+    display: none;
+  }
+
+  @include media-breakpoint-up(md) {
+    &:not(.c-pagination--disabled):hover{
+      .t-strikethrough__container__title{
+        display: block;
+      }
+      & .c-pagination__text{
+        color: #3C3F40;
+      }
+    }
+  }
+}
+
+.c-pagination__previous--mobile{
+  padding: 24px 15px;
+}
+
+.c-pagination__next{
+  padding-left: 10px;
+  margin-bottom: -5px;
+  cursor: pointer;
+
+  .t-strikethrough__container__title{
+    display: none;
+  }
+
+  @include media-breakpoint-up(md) {
+    &:not(.c-pagination--disabled):hover{
+      .t-strikethrough__container__title{
+        display: block;
+      }
+      & .c-pagination__text{
+        color: #3C3F40;
+      }
+    }
+  }
+}
+
+.c-pagination__next--mobile{
+  padding: 24px 15px;
+}
+
+.c-pagination__number{
+  padding-right: 10px;
+  cursor: pointer;
+
+  .t-strikethrough__container__title{
+    display: none;
+  }
+
+  @include media-breakpoint-up(md) {
+    &:hover{
+      .t-strikethrough__container__title{
+        display: block;
+      }
+  
+      & .c-pagination__text{
+        color: #3C3F40;
+      }
+    }
+  }
+
+  
+
+  &.active{
+    .t-strikethrough__container__title{
+      display: block;
+    }
+    & .c-pagination__text{
+      color: #3C3F40;
+    }
+
+  }
+}
+
+.c-pagination__number--mobile{
+  padding: 30px 15px;
+  // padding-top: 6px;
+}
+
+.c-pagination__ellipsis{
+  padding-right: 10px;
+}
+
+.c-pagination__ellipsis--mobile{
+  padding: 30px 15px;
+  // padding-right: 30px;
+  // padding-top: 6px;
+}
+
+.t-strikethrough__container__title--pagination{
+  height: 5px;
+  width: 100%;
+  transform: translateY(-180%);
+}

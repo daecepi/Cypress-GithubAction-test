@@ -1,0 +1,21 @@
+{% if matrixBlock.linkToNav|length %}
+    {% set linkId = matrixBlock.linkToNav |camel %}
+    {% set sectionId = entry[linkId] |camel %}
+    <a class="anchor" id="{{sectionId}}"></a>
+{% endif %}
+<section id="{% if matrixBlock.stickyNavName != '' %}{{matrixBlock.stickyNavName |lower }}{% endif %}" class="c-quote-callout text-md-center {{ matrixBlock.noBottomPadding ? 'no-bottom-padding' }}">
+    <div class="container">
+        <div class="row">
+            <div class="c-quote-callout__copy col-lg-10 offset-lg-1">
+                <h2>{{ matrixBlock.header }}</h2>
+                <p>{{ matrixBlock.subHeader }}</p>
+                {% if matrixBlock.cta|length %}
+                    {% set ctas = matrixBlock.cta %}
+                    {% include 'components/cta/_index.html' %}
+                {% endif %} 
+            </div>
+        </div>
+  
+        <div class="h-divider extra-top-margin--medium"></div>
+    </div>
+</section>

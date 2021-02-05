@@ -1,0 +1,201 @@
+.c-side-nav{
+  position: fixed;
+  transform: translateX(-100%);
+  overflow: auto;
+  bottom: 0;
+  top: 70px;
+  background-color: $color-white;
+  z-index: 500;
+  width: 100%;
+  transition: transform 0.18s ease-in-out;
+  padding: 0 0 50px;
+  @include media-breakpoint-up(md) {
+    min-width: $side-nav-width ;
+    max-width: $side-nav-width ;
+    box-shadow: 0 6px 20px 0 rgba(0,0,0,0.08);
+    z-index: 12;
+    padding: 25px;
+    position: sticky;
+    transform: translateX(0);
+    min-height: 100vh;
+    top: 0;
+  }
+  .c-side-nav__logo {
+    display: none;
+    @include media-breakpoint-up(md) {
+     display: block;
+     padding-bottom: 15px;
+    }
+  }
+  .c-side-nav__logo img {
+    height: 48px;
+  }
+  .c-side-nav__categories {
+    .c-side-nav__categories__container {
+      padding: 0;
+      list-style: none;
+      padding-top: 10px;
+      @include media-breakpoint-up(md) {
+        padding-top: 8px;
+      }
+    }
+    .c-side-nav__categories__title {
+      font-size: 16px;	
+      line-height: 28px;
+      padding-top: 24px;
+      @include media-breakpoint-up(md) {
+        font-size: 13px;	
+        line-height: 18px;
+        padding-top: 8px;
+      }
+    }
+    li {
+      line-height: 25px;
+    }
+  }
+  .c-blog-nav__form {
+    padding-top: 8px;
+    p {
+      margin: 0;
+      font-family: "Graphik-Light";
+      font-size: 28px;
+      line-height: 40px;
+      // margin-bottom: 25px;
+      @include media-breakpoint-up(md) {
+        font-family: "Graphik-Regular";
+        font-size: 16px;
+        line-height: 30px;
+      }
+    }
+  }
+  .c-side-nav__cta {
+    position: relative;
+    z-index: 10;
+    margin-bottom: 70px;
+    @include media-breakpoint-down(sm) {
+      margin-bottom: 0px;
+    }
+    p {
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+  }
+  .c-side-nav__link {
+    font-size: 28px;		
+    line-height: 40px;
+    color: $color-graphite;
+    font-family: $light-font;
+    transition: color 0.15s ease-in-out;
+    @include media-breakpoint-up(md) {
+      font-size: 16px;	
+      line-height: 26px;
+      font-family: $regular-font;
+    }
+    &:hover {
+      color: $color-hot-pink;
+      text-decoration: none;
+    }
+  }
+  .c-side-nav__utility {
+    width: 100%;
+    bottom: 18px;
+    @include media-breakpoint-up(md) {
+      position: absolute;
+    }
+  }
+  .c-side-nav__search__container {
+    margin: 8px 0;
+    position: relative;
+    display: block;
+    @include media-breakpoint-up(md) {
+      display: none;
+    }
+    i {
+      font-size: 34px;
+      color: #d9d9d9;
+      position: absolute;
+      right: 0;
+      top: 14px;
+    }    
+  }
+  .c-side-nav__mobile__search {
+    width: 100%;
+    outline: 0;
+    border: 0;
+    border-bottom: 1px solid #d9d9d9;
+    padding: 12px 0;
+    margin: 8px 0;
+
+    &::placeholder {
+      color: #B1B2B4;
+    }
+
+    &:focus{
+      border-bottom: 1px solid $color-hot-pink;
+
+      & ~ i {
+        color: $color-hot-pink;
+      }
+    }
+  }
+  .c-side-nav__social {
+    display: flex;
+    justify-content: space-between;
+    max-width: 137px;
+    padding-top: 40px;
+    svg {
+      height: 22px;
+      @include media-breakpoint-up(md) {
+        height: 15px;
+      }
+    }
+    a {
+      svg g {
+        height: 20px;
+        fill: #D9D9D9;
+        transition: fill 0.15s ease-in-out;
+        @include media-breakpoint-up(md) {
+          height: 15px;
+        }
+      }
+      &:hover {
+        svg g {
+          fill: $color-hot-pink;
+        }
+      }       
+    }
+  }
+  .t-link__gray {
+    font-size: 16px;
+    @include media-breakpoint-up(md) {
+      font-size: 13px;
+    }
+  }
+}
+
+//Mobile Burger
+.c-side-nav__burger {
+  top: 0;
+  height: 70px;
+  position: fixed;
+  width: 100%;
+  background-color: $color-white;
+  z-index: 1000;
+  box-shadow: $global-shadow;
+  @include media-breakpoint-up(md) {
+    display: none;
+  }
+  .c-side-nav__logo img {
+    height: 42px;
+    top: 15px;
+    left: 15px;
+    position: relative;
+  }
+  .c-nav--mobile__burger {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    right: 5px;
+    top: 5px;
+  }
+}

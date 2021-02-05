@@ -1,0 +1,95 @@
+<!-- Hero -->
+<section class="c-hero--split background--press">
+    <div class="c-image">
+        <picture>
+          <source type="image/webp" srcset="/imgs/press/press-hero.webp"    alt="Press Center" align="middle">
+          <source type="image/png" srcset="/imgs/press/press-hero.jpg"    alt="Press Center" align="middle">
+          <img     src="/imgs/press/press-hero.jpg"   alt="Press Center" align="middle" >
+</picture>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 c-valign--middle">
+            <pre class="c-eyebrow">Press Center</pre>
+            <h1 class="graphite">Newsroom</h1>
+            <p>All the Copper press and news</p>
+          <div class="c-hero__buttons">
+              {# <a class="c-button"  href="/demos">Request Demo</a>
+              <a class="c-button c-button--outline sendUTMsToAmplitude" href="{{ craft.app.config.general.signUpUrl }}">Try Free</a> #}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% for matrixBlock in entry.pressBlocks.all() %}
+  {% set loopIndex = loop.index %}
+  {% switch matrixBlock.type %}
+
+    {% case "popular" %}
+      {% include 'sections/press/popular.html' %}
+    {% case "articles" %}
+      {% include 'sections/press/articles.html' %}
+
+
+  {% endswitch %}
+{% endfor %}
+
+<!-- Content Jumble -->
+<section class="c-jumble c-jumble-background--eggplant c-jumble--align-right" style="margin-bottom:240px;">
+    <div class="container">
+  
+      <div class="c-jumble__container col-md-10 offset-md-2 no-padding">
+        <div class="c-jumble__content">
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="c-image c-image--left c-image--shadow c-press--embelleshment">
+                      <picture>
+          <source type="image/webp" srcset="/imgs/press/press-kit.webp"    alt="Press kit image" style="max-width: 522px;">
+          <source type="image/png" srcset="/imgs/press/press-kit.jpg"    alt="Press kit image" style="max-width: 522px;">
+          <img     src="/imgs/press/press-kit.jpg"   alt="Press kit image" style="max-width: 522px;" >
+</picture>
+                    </div>
+                  </div>
+              <div class="col-md-5 c-valign--middle">	
+                <div>
+                    <pre class="c-eyebrow c-eyebrow--light">Brand Assets</pre>
+                    <h2>Press Kit</h2>
+                    <p>Get our approved media kit with company information, logos, product screenshots and photography. Questions or inquiries? Please email us at <a href="mailto:press@copper.com">press@copper.com</a></p>
+                    <a class="c-button" href="https://s3.us-east-2.amazonaws.com/copper-marketing/Copper-Press-Kit.zip">Download Assets</a>
+                </div>
+
+              </div>
+  
+            </div>
+                    
+        </div>
+      </div>
+  
+    </div>
+  </section>
+
+<!-- Hero -->
+<section class="c-hero--split background--leavebehind">
+    <div class="c-image">
+      <picture>
+          <source type="image/webp" srcset="/imgs/UI_ipad_final-plea-update-new.webp"    alt="Ipad UI update image">
+          <source type="image/png" srcset="/imgs/UI_ipad_final-plea-update-new.jpg"    alt="Ipad UI update image">
+          <img     src="/imgs/UI_ipad_final-plea-update-new.jpg"   alt="Ipad UI update image" >
+</picture>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 c-valign--middle">
+          <pre class="c-eyebrow c-eyebrow--light">Goodbye Data Entry</pre>
+          <h2 class="t-white">Hello Copper.</br>Try it free!</h2>
+          <p style="max-width: 420px;">No credit card required. Start your 14-day free trial today.</p>
+          <div class="c-hero__buttons">
+              <a class="c-button"  href="/demos">Request Demo</a>
+              <a class="c-button c-button--outline sendUTMsToAmplitude" href="{{ craft.app.config.general.signUpUrl }}">Try Free</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

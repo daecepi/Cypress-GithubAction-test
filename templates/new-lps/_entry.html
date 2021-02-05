@@ -1,0 +1,14 @@
+{% extends "_top-nav.html" %}
+
+{% block topNav %}
+  {% switch entry.type %}
+    {% case 'freeTrialPers' %}
+      {% include 'new-lps/_free-trial-pers.html' %}
+    {% case 'hello' %}
+      {% include 'new-lps/_hello.html' %}
+    {% case 'demoRequestPers' %}
+      {% include 'new-lps/_demo-request-pers.html' %}
+    {% case 'generalLps' %}
+      {% include 'new-lps/_general-lps.html' %}
+  {% endswitch %}
+{% endblock %} 

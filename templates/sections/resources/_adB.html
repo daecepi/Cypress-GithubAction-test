@@ -1,0 +1,16 @@
+<div class="col-12 c-resource-ad1 c-single-column__container c-align--center h-hairline">
+  <span class="t-eyebrow">{{matrixBlock.eyebrow}}</span>
+  <h2 class="{{matrixBlock.pinkPeriodAfterHeader ? 't-resource-period--hot-pink'}}">{{matrixBlock.header}}</h2>
+  <p class="">{{matrixBlock.paragraph}}</p>
+  <div class="c-single-column__buttons c-resource-ad1__button">
+   {% for cta in matrixBlock.ctas.all() %}
+      {% set buttonColor = cta.buttonColor.one() %}
+      {% if cta.modalTrigger %}
+        <a class="c-button c-button--{{ buttonColor ? buttonColor.slug : 'white' }}" href="/demos" >{{ cta.button.text }}</a>
+      {% else %}
+      {% set buttonColor = cta.buttonColor.one() %}
+      <a class="c-button c-button--{{ buttonColor ? buttonColor.slug : 'white' }}" {% if cta.button.target == 1 %} target="_blank" {% endif %} href="{{ cta.button.url }}">{{ cta.button.text }}</a>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>

@@ -1,0 +1,196 @@
+.c-numbers {
+  padding-bottom: 45px;
+  overflow: visible;
+  @at-root {
+		#{&}--background-image {
+			.c-numbers-background {
+				position: relative;
+				height: 50vh;
+				overflow: hidden;
+				img {
+					width: 100%;
+					height: 100%;
+					object-fit: cover;
+				}
+			}
+		  .container {
+			  box-shadow: 0 6px 20px 0 rgba(60,63,64,0.07);
+			  margin-top: -110px;
+		    position: relative;
+		    z-index: 1;
+		    background: #fff;
+		    padding: 60px 60px 30px;
+		    
+		    @include media-breakpoint-down(md) {
+			    box-shadow: none;
+			    padding-bottom: 0;
+		    }
+		  }
+		  .t-eyebrow {
+			  color: $color-graphite;
+		  }
+		  .c-number__entry {
+		    .t-numbers {
+			    position: relative;
+			    color: $color-graphite !important;
+			    span {
+				    position: relative;
+				    z-index: 1;
+				    &:after {
+					    content: '';
+					    position: absolute;
+					    width: 100%;
+					    bottom: 10px;
+					    left: 0px;
+					    height: 16px;
+					    background-color: $color-volt;
+					    z-index: -1;
+					    
+					    @include media-breakpoint-down(md) {
+						    bottom: 5px;
+					    }
+				    }
+			    }
+		    }
+		  }
+		}
+	}
+  &.rectangle {
+	  @at-root {
+			#{&}--top--left {
+			  &:before {
+				  position: absolute;
+				  top: -50px;
+				  left: -50px;
+				  z-index: -1;
+			  }
+			}
+		}
+  }
+  h2 {
+    text-align: center;
+  }
+  .c-number__entry {
+    text-align: center;
+    padding: 5px 35px;
+    @include media-breakpoint-up(md) {
+      padding: 25px 35px;
+    }
+    @include media-breakpoint-up(md) {
+      text-align: left;
+
+      &.center{
+        text-align: center;
+      }
+    }
+    .t-numbers {
+	    color: $color-midnight;
+	    font-size: 72px;
+	    @include media-breakpoint-up(md) {
+		    font-size: 100px;
+	    }
+    }
+    p {
+      position: relative;
+      top: -30px;
+    }
+  }
+  
+  .c-numbers__title {
+	  margin-bottom: 30px;
+  }
+  
+  .c-number__description {
+	  width: 80%;
+	  @include media-breakpoint-down(md) {
+		  margin: 0 auto;
+	  }
+  }
+  
+  .insights &,
+  .collaboration & {
+	  padding: 80px 0px 20px;
+	  margin: 50px;
+    width: calc(100% - 100px);
+    @include media-breakpoint-down(md) {
+	    margin: 0;
+	    width: 100%;
+    }
+  }
+
+  &.about{
+    padding: 80px 0 0;
+  }
+}
+
+.c-numbers--full {
+  .c-numbers__background-image {
+    object-fit: cover;
+    height: 300px;
+    width: 100%;
+    @include media-breakpoint-up(md) {
+      height: 640px;
+    }
+  }
+  .t-numbers {
+    position: relative;
+    &:before {
+      height: 18px;
+      width: 130px;
+      background-color: #B8FF01;
+      position: absolute;
+      content: "";
+      display: inline;
+      bottom: 25px;
+      left: 0;
+      z-index: -1;
+    }
+  }
+  .c-numbers__container {
+    box-shadow: $global-shadow;
+    top: -40px;
+    position: relative;
+    background-color: $color-white;
+    z-index: 10;
+    padding: $global-mobile-padding;
+    @include media-breakpoint-up(md) {
+      padding: 65px 0;
+    }
+    @include media-breakpoint-up(lg) {
+      padding: 100px 40px;
+      max-width: 80vw;
+      left: 0;
+      top: -100px;
+    }
+    p {
+      margin-top: 0;
+    }    
+  }
+}
+
+.t-numbers{
+  &.add-underline{
+    // remove the color and hardcode it in the about us page if default text is required
+    z-index: 1;
+    width: fit-content;
+    position: relative;
+    &:before {
+      height: 18px;
+      width: 130px;
+      background-color: #B8FF01;
+      position: absolute;
+      content: "";
+      display: inline;
+      bottom: 22px;
+      left: 0;
+      z-index: -1;
+    }
+    &.extended-line{
+      margin-right: auto;
+      margin-left: auto;
+      &:before{
+        width: 100%;
+      }
+    }
+  }
+}

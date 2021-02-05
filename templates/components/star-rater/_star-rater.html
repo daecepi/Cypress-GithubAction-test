@@ -1,0 +1,17 @@
+{% set ceiledValue = (starsRating + 1)|round(0, 'ceil') %}
+<div class="stars-container">
+  {# Loop for filled stars #}
+  {% for star in range(1, starsRating|round(0, 'floor')) %}
+    <img class="star" alt="Filled start image" src="/imgs/slider/Single-filled-star.svg">
+  {% endfor %}
+  {% if starsRating matches '/^[-+]?[0-9]+\\.?[1-9]+$/' %}
+    {# Printing the odd star #}
+    <img class="star" alt="Half star image" src="/imgs/slider/Half-star.svg">
+  {% endif %}
+  {# If 5 stars haven't been printed #}
+  {% if ceiledValue < 6 %}
+    {% for star in range(ceiledValue, 5) %}
+      <img class="star" alt="Empty star image" src="/imgs/slider/null-star.svg">
+    {% endfor %}
+  {% endif %}
+</div>

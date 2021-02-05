@@ -1,0 +1,71 @@
+<div id="testimonial-slide-{{loop.index - 1}}" class="testimonial-slider {% if loop.index == 1 %} active {% endif %}">
+    <div class="c-image c-image--shadow testimonial-image">
+      {% set slideContentImage = slideContent.image.one() %}
+      {% if slideContentImage|length %}
+        <img src="{{slideContentImage.url}}" alt="{{slideContentImage.title}}">
+      {% else %}
+        <picture>
+          <source type="image/webp" srcset="imgs/landing/projects-crm/brooke-cagle-NoRsyXmHGpI-unsplash-1.webp"    alt="Brooke cagle No Rsy Xm H Gp I unsplash 1">
+          <source type="image/png" srcset="imgs/landing/projects-crm/brooke-cagle-NoRsyXmHGpI-unsplash-1.png"    alt="Brooke cagle No Rsy Xm H Gp I unsplash 1">
+          <img     src="imgs/landing/projects-crm/brooke-cagle-NoRsyXmHGpI-unsplash-1.png"   alt="Brooke cagle No Rsy Xm H Gp I unsplash 1" >
+</picture>
+
+      {% endif %}
+      
+    </div>
+    <div class="testimonial-container">
+      <div class="c-panel__blockquote c-valign--middle">
+        <blockquote class="multiple-11-card-trailer">{{slideContent.quote}}</blockquote>
+        <cite>{{ slideContent.author }}<span class="c-panel__blockquote--position">{{ slideContent.jobTitle }}</span></cite>
+      </div>
+      <div class="control-box">
+        <div class="dots-box">
+          {% for item in 0..(slidesNumber-1) %}
+          <div id="check-{{item}}" data-target-slide="testimonial-slide-{{item}}" data-target-index="{{item}}" class="check-icon check-icon-{{item}} {% if item == 0 %} active {% endif %}">
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle data-target-slide="testimonial-slide-{{item}}" data-target-index="{{item}}" class="check-color" cx="5" cy="5" r="5" fill="#DCE3E6"/>
+            </svg>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="buttons-box">
+          <a target="" href="http://copper.com/" class="button-slide-change t-link ">Next</a>
+        </div>
+      </div>
+    </div>
+    {% import "logic-lifter/_schema-lib.html" as schemaLib %} 
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org/",
+        "@type": "Review",
+        "itemReviewed": {
+          "@type": "Product",
+          "image": "https://d2ydtwisqcxv72.cloudfront.net/landing/copper-logo.png",
+          "description": "CRM that allows you to focus on what matters and integrates easily with the g-suite tools that you usually use.",
+          "name": "Copper CRM",
+          "priceRange": "$19 - $119",
+          "telephone": "1234567",
+          "Address":{
+            "@type":"PostalAddress",
+            "streetAddress":"301 Howard St. 600",
+            "addressLocality":"San Francisco",
+            "addressRegion":"CA",
+            "postalCode":"94105",
+            "addressCountry":"USA"
+          },
+          {{ schemaLib.returnCopperOffers() }},
+          {{ schemaLib.returnCopperAggregateRating() }}
+        },
+        "name": "{{ slideContentImage.title }}",
+        "author": {
+          "@type": "Person",
+          "name": "{{ slideContent.author }}"
+        },
+        "reviewBody": "{{ slideContent.quote }}",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Copper"
+        }
+      }
+    </script>
+</div>

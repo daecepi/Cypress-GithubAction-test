@@ -1,0 +1,34 @@
+{
+  "buttons": ["html", "formatting", "bold", "italic", "unorderedlist", "orderedlist", "link", "image", "video"],
+  "plugins": ["fullscreen", "video","alignment"],
+  "linkNewTab": true,
+  "imagePosition": true,
+  "toolbarFixed": true,
+  "buttonsAdd": ["underline", "line", "undo"],
+  "formattingAdd": {
+    "terms-header": {
+        "title": "Bold text for menu",
+        "api": "module.inline.format",
+        "args": {
+            "tag": "strong",
+            "class": "terms-title-item assign-to-floating-menu "
+        }
+      },
+    "red-p-add": {
+        "title": "Terms list title",
+        "api": "module.block.format",
+        "args": {
+            "tag": "ol",
+            "class": "terms--list-title-represantation assign-to-hover-menu "
+        }
+      },
+      "terms-li-modifier": {
+          "title": "Make the liste item ",
+          "api": "module.inline.format",
+          "args": {
+              "tag": "li",
+              "class": "terms-redactor-li assign-to-floating-menu "
+          }
+        }
+    }
+}

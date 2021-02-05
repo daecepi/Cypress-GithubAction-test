@@ -1,0 +1,67 @@
+// Makes eybrow in blog card grey
+.entry_categories {
+  margin-bottom: 5px;
+  span {
+    color: #8A8C8B;
+  }
+}
+
+
+.h-blog-modal {
+  max-width: 840px;
+  padding: 0;
+  margin: 0 auto;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.25);
+  border-radius: 2px;
+  position: relative;
+  form {
+    padding: 0;
+  }
+  .c-blog-modal__image {
+    min-height: 553px;
+    position: absolute;
+  }
+  .form_inside {
+    max-height: 553px;
+    background-color: $color-white;
+  }
+  .c-form__text {
+    position: relative;
+    padding-right: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
+    min-height: 553px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    @include media-breakpoint-up(md) {
+      padding-left: 268px;
+    }
+  }
+  .c-blog-modal__logo {
+    padding-bottom: 48px;
+  }
+  .c-blog-modal__image {
+    background-image: url('../imgs/blog-modal-image.jpg');
+    background-size: cover;
+    width: 220px;
+    min-height: 553px;
+    height: 100%;
+    display: none;
+    @include media-breakpoint-up(md) {
+      display: block;
+    }
+  }
+  h2 {
+    color: $color-indigo;
+    font-weight: bold;
+    margin-bottom: 16px;
+  }
+  p {
+    margin-top: 0;
+  }
+  h4 {
+    color: #424242;
+    opacity: 0.5;
+  }
+}

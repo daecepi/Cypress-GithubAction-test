@@ -1,0 +1,17 @@
+<div id="wistia-script">
+  {#Script appened on click#}
+  {# <script type="text/javascript" src="https://fast.wistia.com/assets/external/E-v1.js" async="async"></script> #}
+</div>
+
+<div id="choose-webinar-option1" class="d-none" >
+{% for matrixBlock in entry.demoBlocks.all() %}
+  {# to verify if blocks are being pulled in #}
+  <div class="d-none">{{matrixBlock.type }}</div>
+  {% switch matrixBlock.type %}
+    {% case "demoThumbnails" %}
+      {% include 'sections/demo/_thumbnails.html' %}
+
+  {% endswitch %}
+{% endfor %}
+</div>
+

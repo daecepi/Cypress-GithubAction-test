@@ -1,0 +1,26 @@
+{# Set <ctas> in parent using e.g. {% set ctas = matrixBlock.cta %} #}
+<div class="c-hero__buttons">
+  {% for cta in ctas.all() %}
+    {% switch cta.type %}
+      {% case 'ctas' %}
+        {% set buttonColor = cta.buttonColor.one() %}
+        {% if cta.modalTrigger %}
+          <a class="c-button c-button--{{ buttonColor ? buttonColor.slug : 'white' }}  {% if cta.takeBackgroundColor %} section-background-flavor {% endif %}" href="/demos" >{{ cta.button.text }}</a>
+        {% else %}
+          {# Check if the cta have the try free string to add the sendUTMsToAmplitude class #}
+          {% if cta.button.text|lower == 'try free' %}
+            <a class="c-button sendUTMsToAmplitude c-button--{{ buttonColor ? buttonColor.slug : 'white' }} {% if cta.takeBackgroundColor %} section-background-flavor {% endif %}" {% if cta.button.target == 1 %} target="_blank" {% endif %} href="{{ cta.button.url }}">{{ cta.button.text }}</a>
+          {% else %}
+            <a class="c-button c-button--{{ buttonColor ? buttonColor.slug : 'white' }} {% if cta.takeBackgroundColor %} section-background-flavor {% endif %}" {% if cta.button.target == 1 %} target="_blank" {% endif %} href="{{ cta.button.url }}">{{ cta.button.text }}</a>
+          {% endif %}
+        {% endif %}
+    {% case 'imageCta' %}
+      {% set image = cta.backgroundImage.one() %}
+        <a class="c-button-image" {% if cta.button.target == 1 %} target="_blank" {% endif %}  href="{{ cta.button.url }}" ><img src="{{image.url}}" alt="{{image.title}}"></a>
+    {% case 'link' %}
+      <div class="flex-column">
+        <a {% if cta.button.target == 1 %} target="_blank" {% endif %}  href="{{ cta.button.url }}" class="t-link {{cta.ctaRemoveUnderline ? 'no-underline'  : '' }}">{{ cta.button.text }}</a>  
+      </div>
+    {% endswitch %}
+  {% endfor %}
+</div>

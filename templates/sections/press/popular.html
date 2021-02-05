@@ -1,0 +1,32 @@
+<div class="c-press__popular">
+    
+  <div class="container">
+    <h2>Press Coverage & Awards</h2>
+    <div class="row">
+        {% for entry in matrixBlock.popularArticle.all() %}
+        <div class="col-md-4">
+            <div class="c-card__entry extended-card notranslate">
+              <a class="c-card__clickthrough" href="{{ entry.articleUrl }}" target="_blank"></a>
+              {% set image = entry.image.one() %}
+              {% if image|length %}
+                <div class="c-card__default__image" style="background-image: url('{{ image.url }}');"></div>
+              {% endif %}
+              <div class="c-card__entry__content">
+                <div class="c-card__source">{{ entry.source }}</div>
+                <h4 class="c-card__entry-title">
+                  <a class="underline_from_lefsettt" href="{{ entry.articleUrl }}">{{ entry.articleTitle }}</a>
+                </h4>
+              </div>
+              <div class="c-card__meta">
+                <p class="p-sm">{{ entry.postDate | date("M d, Y") }}</p>
+              </div>
+            </div>
+        
+          </div>
+        
+        {% endfor %} 
+    </div>
+  </div>
+
+</div>
+

@@ -1,0 +1,465 @@
+{
+    "data": [
+    {
+        "title": "Test resources",
+        "url": "https://copper.local/resources/test-resources",
+        "id": "15335",
+        "image": "//d2ydtwisqcxv72.cloudfront.net/_635x331_crop_center-center_none/181128-3ImporantKPIs_Header.jpg",
+        "description": null,
+        "eyebrow": "ebook",
+        "categories": ["sales"],
+        "featuredResource": false
+    },
+    {
+        "title": "How to Seal the Deal: The Pro Guide to Closing Sales",
+        "url": "https://copper.local/resources/how-to-seal-the-deal",
+        "id": "13555",
+        "image": "//d2ydtwisqcxv72.cloudfront.net/_635x331_crop_center-center_none/Cover-02.png",
+        "description": "A step-by-step playbook on how to finalize sales after you make your pitch.",
+        "eyebrow": "ebook",
+        "categories": ["sales"],
+        "featuredResource": false
+    },
+    {
+        "title": "Strategies for Reducing Churn",
+        "url": "https://copper.local/resources/strategies-for-reducing-churn",
+        "id": "14606",
+        "image": "//d2ydtwisqcxv72.cloudfront.net/_635x331_crop_center-center_none/Cover@2x.png",
+        "description": "Learn about how to reduce churn, keep customers and clients with you longer, and build valuable long-term relationships.",
+        "eyebrow": "ebook",
+        "categories": "",
+        "featuredResource": false
+    },
+    {
+        "title": "Sales Battlecard Template",
+        "url": "https://copper.local/resources/sales-battlecard-template",
+        "id": "13968",
+        "image": "//d2ydtwisqcxv72.cloudfront.net/_635x331_crop_center-center_none/190813_Blog_SalesBattleCards-Header.jpg",
+        "description": null,
+        "eyebrow": "tools",
+        "categories": "",
+        "featuredResource": false
+    },
+    {
+        "title": "The Impact of CRM in the Relationship Era",
+        "url": "https://copper.local/resources/roi-survey_impact-of-crm-in-the-relationship-era_ebook",
+        "id": "11111",
+        "image": "//d2ydtwisqcxv72.cloudfront.net/Resources/_635x331_crop_center-center_none/190717_ROISurveyImpact_LP_hero-01.jpg",
+        "description": null,
+        "eyebrow": "ebook",
+        "categories": "",
+        "featuredResource": false
+    },
+    {
+        "title": "6-Day Sales Email Boot Camp",
+        "url": "https://copper.local/resources/6-day-sales-email-boot-camp",
+        "id": "13220",
+        "image": "//d2ydtwisqcxv72.cloudfront.net/_635x331_crop_center-center_none/Artboard-5@2x.png",
+        "description": null,
+        "eyebrow": "tools",
+        "categories": "",
+        "featuredResource": false
+    },
+    {
+        "title": "The Guide to Team Selling in the Relationship Era",
+        "url": "https://copper.local/resources/the-guide-to-team-selling-in-the-relationship-era",
+        "id": "11110",
+        "image": "//d2ydtwisqcxv72.cloudfront.net/Resources/_635x331_crop_center-center_none/190716_GuidetoSelling_LP_hero_v9.jpg",
+        "description": null,
+        "eyebrow": "ebook",
+        "categories": "",
+        "featuredResource": false
+    },
+    {
+        "title": "The Impact of CRM in the Relationship Era",
+        "url": "https://copper.local/resources/infographic_roi-survey_impact-of-crm-in-the-relationship-era",
+        "id": "11109",
+        "image": "//d2ydtwisqcxv72.cloudfront.net/Resources/_635x331_crop_center-center_none/190716_InfographicROISurvey_LP_hero_v4.jpg",
+        "description": null,
+        "eyebrow": "tools",
+        "categories": "",
+        "featuredResource": false
+    },
+    {
+        "title": "The State of Customer Management in the Relationship Era",
+        "url": "https://copper.local/resources/the-state-of-customer-management-in-the-relationship-era",
+        "id": "11108",
+        "image": "//d2ydtwisqcxv72.cloudfront.net/_635x331_crop_center-center_none/Customer_Management_in_the_Relationship_Era.png",
+        "description": null,
+        "eyebrow": "ebook",
+        "categories": "",
+        "featuredResource": false
+    },
+    {
+        "title": "The Future of Relationship Management",
+        "url": "https://copper.local/resources/crm-benchmark-report-2018",
+        "id": "11107",
+        "image": "//d2ydtwisqcxv72.cloudfront.net/Resources/_635x331_crop_center-center_none/190717_BenchmarkSurvey_LP_hero.jpg",
+        "description": null,
+        "eyebrow": "ebook",
+        "categories": "",
+        "featuredResource": false
+    },
+    {
+        "title": "Agency CRM Best Practices Ebook",
+        "url": "https://copper.local/resources/agency-crm-best-practices-ebook",
+        "id": "11106",
+        "image": "//d2ydtwisqcxv72.cloudfront.net/Resources/_635x331_crop_center-center_none/190716_CRMAgency_LP_hero_v3.jpg",
+        "description": "Does your agency need a productivity boost? Download the free guide.",
+        "eyebrow": "ebook",
+        "categories": "",
+        "featuredResource": false
+    },
+    {
+        "title": "The CRM Best Practices Ebook for VCs",
+        "url": "https://copper.local/resources/vc-crm-best-practices-ebook",
+        "id": "13984",
+        "image": "//d2ydtwisqcxv72.cloudfront.net/Resources/_635x331_crop_center-center_none/ebook_VC_lp-02_1440x720@2x.jpg",
+        "description": null,
+        "eyebrow": "ebook",
+        "categories": "",
+        "featuredResource": false
+    },
+    {
+        "title": "Win/Loss Analysis Checklist",
+        "url": "https://copper.local/resources/win-loss-checklist",
+        "id": "11045",
+        "image": "//d2ydtwisqcxv72.cloudfront.net/Resources/_635x331_crop_center-center_none/190716_WinLossChecklist_LP_hero_v2.jpg",
+        "description": null,
+        "eyebrow": "ebook",
+        "categories": "",
+        "featuredResource": false
+    },
+    {
+        "title": "Sales Pipeline Report Template",
+        "url": "https://copper.local/resources/sales-pipeline-report-template",
+        "id": "11046",
+        "image": "//d2ydtwisqcxv72.cloudfront.net/Resources/_635x331_crop_center-center_none/sales_template.png",
+        "description": null,
+        "eyebrow": "tools",
+        "categories": "",
+        "featuredResource": false
+    },
+    {
+        "title": "CRM Best Practices for Tech Ebook",
+        "url": "https://copper.local/resources/technology-crm-best-practices-ebook",
+        "id": "11047",
+        "image": "//d2ydtwisqcxv72.cloudfront.net/Resources/_635x331_crop_center-center_none/190716_CRMBestPractices_LP_hero.jpg",
+        "description": null,
+        "eyebrow": "ebook",
+        "categories": "",
+        "featuredResource": false
+    },
+    {
+        "title": "The Guide to Maximizing CRM ROI",
+        "url": "https://copper.local/resources/guide-to-maximizing-crm-roi-ebook",
+        "id": "11048",
+        "image": "//d2ydtwisqcxv72.cloudfront.net/Resources/_635x331_crop_center-center_none/190716_MaximizeROI_LP_hero_v6.jpg",
+        "description": null,
+        "eyebrow": "ebook",
+        "categories": "",
+        "featuredResource": false
+    },
+    {
+        "title": "CRM Best Practices for Corp Dev eBook",
+        "url": "https://copper.local/resources/crm-best-practices-for-corp-dev-ebook",
+        "id": "11043",
+        "image": "//d2ydtwisqcxv72.cloudfront.net/_635x331_crop_center-center_none/ebook_corpdev_lp-02_1440x720@2x.png",
+        "description": null,
+        "eyebrow": "ebook",
+        "categories": "",
+        "featuredResource": false
+    },
+    {
+        "title": "Ideal Customer Profile Worksheet",
+        "url": "https://copper.local/resources/ideal-customer-profile-worksheet",
+        "id": "11044",
+        "image": "//d2ydtwisqcxv72.cloudfront.net/Resources/_635x331_crop_center-center_none/190716_IdealCustomerProfile_LP_hero.jpg",
+        "description": null,
+        "eyebrow": "ebook",
+        "categories": "",
+        "featuredResource": false
+    },
+    {
+        "title": "From Spreadsheets to CRM: Beyond Contacts",
+        "url": "https://copper.local/webinars/processes-to-crm",
+        "id": "9807",
+        "image": "//d2ydtwisqcxv72.cloudfront.net/webinars/_635x331_crop_center-center_none/190625_Webinar_SpreadsheetstoCRM-hero.jpg",
+        "description": null,
+        "eyebrow": "video",
+        "categories": "",
+        "featuredResource": false
+    },
+    {
+        "title": "Accelerate Your Sales Process",
+        "url": "https://copper.local/webinars/accelerate-your-sales-process",
+        "id": "11741",
+        "image": "//d2ydtwisqcxv72.cloudfront.net/webinars/_635x331_crop_center-center_none/190715_Webinar_Docusign-hero.png",
+        "description": null,
+        "eyebrow": "video",
+        "categories": "",
+        "featuredResource": false
+    },
+    {
+        "title": "Filter Through the Noise of a CRM",
+        "url": "https://copper.local/webinars/maximize-your-data",
+        "id": "11970",
+        "image": "//d2ydtwisqcxv72.cloudfront.net/_635x331_crop_center-center_none/Filtering@2x.png",
+        "description": null,
+        "eyebrow": "video",
+        "categories": "",
+        "featuredResource": false
+    },
+    {
+        "title": "Goodbye Data Entry, Hello Automation",
+        "url": "https://copper.local/webinars/workflow-automation",
+        "id": "13602",
+        "image": "//d2ydtwisqcxv72.cloudfront.net/_635x331_crop_center-center_none/190813_Webinar_GoodbyeData_jump-header3.jpg",
+        "description": null,
+        "eyebrow": "video",
+        "categories": "",
+        "featuredResource": false
+    },
+    {
+        "title": "Strategies for Closing Sales Faster",
+        "url": "https://copper.local/webinars/close-more-deals",
+        "id": "13946",
+        "image": "//d2ydtwisqcxv72.cloudfront.net/_635x331_crop_center-center_none/190822_PandaDoc_CloseDeals-header.png",
+        "description": null,
+        "eyebrow": "video",
+        "categories": "",
+        "featuredResource": false
+    },
+    {
+        "title": "Goodbye Data Entry, Hello Automation",
+        "url": "https://copper.local/webinars/workflow-automation-customers",
+        "id": "14656",
+        "image": "//d2ydtwisqcxv72.cloudfront.net/_635x331_crop_center-center_none/190813_Webinar_GoodbyeData_jump-header3.jpg",
+        "description": null,
+        "eyebrow": "video",
+        "categories": "",
+        "featuredResource": false
+    },
+    {
+        "title": "The Sales Pipeline Management Handbook",
+        "url": "https://copper.local/resources/sales-pipeline-management-handbook",
+        "id": "9490",
+        "image": "//d2ydtwisqcxv72.cloudfront.net/Resources/_635x331_crop_center-center_none/C0.jpg",
+        "description": "Learn about the most powerful tool that sales leaders are using to take a scientific approach to growing their businesses—and how you can use it too.",
+        "eyebrow": "ebook",
+        "categories": "",
+        "featuredResource": false
+    },
+    {
+        "title": "The Win/Loss Analysis Handbook",
+        "url": "https://copper.local/resources/win-loss-analysis-handbook",
+        "id": "9416",
+        "image": "//d2ydtwisqcxv72.cloudfront.net/Resources/_635x331_crop_center-center_none/Copper_WinLoss-01.jpg",
+        "description": "Learn how to avoid common pitfalls and get the results you want.",
+        "eyebrow": "ebook",
+        "categories": "",
+        "featuredResource": false
+    },
+    {
+        "title": "The Customer Data Management Handbook",
+        "url": "https://copper.local/resources/customer-data-management-handbook",
+        "id": "9348",
+        "image": "//d2ydtwisqcxv72.cloudfront.net/_635x331_crop_center-center_none/customer-data-management_lp-02_1440x600.jpg",
+        "description": null,
+        "eyebrow": "ebook",
+        "categories": "",
+        "featuredResource": false
+    },
+    {
+        "title": "The Sales Recruiting Handbook",
+        "url": "https://copper.local/resources/sales-recruiting-handbook",
+        "id": "9139",
+        "image": "//d2ydtwisqcxv72.cloudfront.net/webinars/_635x331_crop_center-center_none/Cover_withLogo.jpg",
+        "description": "Everything you need to know about hiring and recruiting, from where to find candidates to setting compensation and more.",
+        "eyebrow": "ebook",
+        "categories": "",
+        "featuredResource": false
+    },
+    {
+        "title": "How to Run a Sales Demo That Sells",
+        "url": "https://copper.local/webinars/run-a-sales-demo-that-sells",
+        "id": "9201",
+        "image": "//d2ydtwisqcxv72.cloudfront.net/webinars/_635x331_crop_center-center_none/190612_Webinar_RunningaSalesDemo-hero.jpg",
+        "description": null,
+        "eyebrow": "video",
+        "categories": "",
+        "featuredResource": false
+    },
+    {
+        "title": "CRM Best Practices for Agencies",
+        "url": "https://copper.local/webinars/crm-best-practices-for-agencies",
+        "id": "8878",
+        "image": "//d2ydtwisqcxv72.cloudfront.net/_635x331_crop_center-center_none/190513_webinar_header_updated.jpg",
+        "description": null,
+        "eyebrow": "video",
+        "categories": "",
+        "featuredResource": false
+    },
+    {
+        "title": "Moving from Spreadsheets to CRM",
+        "url": "https://copper.local/webinars/spreadsheets-to-crm",
+        "id": "8971",
+        "image": "//d2ydtwisqcxv72.cloudfront.net/webinars/_635x331_crop_center-center_none/190514_Webinar_SpreadsheetstoCRM-hero.jpg",
+        "description": null,
+        "eyebrow": "video",
+        "categories": "",
+        "featuredResource": false
+    },
+    {
+        "title": "A Real Estate Secret Weapon: CRM",
+        "url": "https://copper.local/webinars/a-real-estate-secret-weapon-crm",
+        "id": "8502",
+        "image": "//d2ydtwisqcxv72.cloudfront.net/webinars/_635x331_crop_center-center_none/190416_Webinar_CRMRealEstate-header.jpg",
+        "description": null,
+        "eyebrow": "video",
+        "categories": "",
+        "featuredResource": false
+    },
+    {
+        "title": "Maximizing Your CRM ROI",
+        "url": "https://copper.local/webinars/maximizing-your-crm-roi",
+        "id": "8491",
+        "image": "//d2ydtwisqcxv72.cloudfront.net/webinars/_635x331_crop_center-center_none/190423_Webinar_MaximizingROI.jpg",
+        "description": null,
+        "eyebrow": "video",
+        "categories": "",
+        "featuredResource": false
+    },
+    {
+        "title": "5 Ways for Sales to Prospect More Effectively",
+        "url": "https://copper.local/webinars/5-ways-for-sales-to-prospect-more-effectively",
+        "id": "8486",
+        "image": "//d2ydtwisqcxv72.cloudfront.net/webinars/_635x331_crop_center-center_none/190423_Webinar_PersistIQ.jpg",
+        "description": null,
+        "eyebrow": "video",
+        "categories": "",
+        "featuredResource": false
+    },
+    {
+        "title": "The 7 Habits Reps Need to Crush Their Quota",
+        "url": "https://copper.local/webinars/the-7-habits-reps-need-to-crush-their-quota",
+        "id": "8487",
+        "image": "//d2ydtwisqcxv72.cloudfront.net/webinars/_635x331_crop_center-center_none/190423_Webinar_HelloCopper.jpg",
+        "description": null,
+        "eyebrow": "video",
+        "categories": "",
+        "featuredResource": false
+    },
+    {
+        "title": "Hello Copper. Goodbye scattered deal data.",
+        "url": "https://copper.local/webinars/hello-copper-goodbye-scattered-deal-data",
+        "id": "8488",
+        "image": "//d2ydtwisqcxv72.cloudfront.net/webinars/_635x331_crop_center-center_none/190423_Webinar_HelloCopper.jpg",
+        "description": null,
+        "eyebrow": "video",
+        "categories": "",
+        "featuredResource": false
+    },
+    {
+        "title": "Smoothing out the customer journey with Copper + Zendesk",
+        "url": "https://copper.local/webinars/smoothing-out-the-customer-journey-with-copper-zendesk",
+        "id": "8489",
+        "image": "//d2ydtwisqcxv72.cloudfront.net/webinars/_635x331_crop_center-center_none/190423_Webinar_CopperZendesk.jpg",
+        "description": null,
+        "eyebrow": "video",
+        "categories": "",
+        "featuredResource": false
+    },
+    {
+        "id": "11050",
+        "featuredArticle": true,
+        "title": "How an NYC Agency Beats the Competition with Automation",
+        "consolidatedTitle": "How an NYC Agency Automates 1,000+ Tasks",
+        "readingTime": "7 min",
+        "url": "https://www.copper.com/blog/jump-450-agency-crm-case-study",
+        "image": "//d2ydtwisqcxv72.cloudfront.net/_635x331_crop_center-center_none/0jump450.jpg",
+        "imageGradient": "",
+        "childCategories": ["Case Studies"],
+        "parentCategories": ["Copper"],
+        "description": "Learn how an NYC agency uses Copper CRM to automate 1000+ tasks per week, get more time for creative work & help its clients win 20mil users + subscribers.",
+        "eyebrow": "case-study",
+        "categories": "",
+        "featuredResource": false
+    },
+    {
+        "id": "1560",
+        "featuredArticle": true,
+        "title": "How Apptegy Found a CRM Its Team Loves to Use",
+        "consolidatedTitle": null,
+        "readingTime": "4 min",
+        "url": "https://www.copper.com/blog/apptegy-crm-case-study",
+        "image": "//d2ydtwisqcxv72.cloudfront.net/_635x331_crop_center-center_none/Apptegy-CS.jpg",
+        "imageGradient": "",
+        "childCategories": ["Case Studies"],
+        "parentCategories": ["Copper"],
+        "description": "See how Apptegy, a school marketing platform, explored its CRM options and finally chose Copper over the most established CRM on the market.",
+        "eyebrow": "case-study",
+        "categories": "",
+        "featuredResource": false
+    },
+    {
+        "id": "1548",
+        "featuredArticle": true,
+        "title": "How the ICPSR at the University of Michigan Gathers and Archives Research Data With a CRM",
+        "consolidatedTitle": null,
+        "readingTime": "6 min",
+        "url": "https://www.copper.com/blog/icpsr-university-of-michigan-crm-case-study",
+        "image": "//d2ydtwisqcxv72.cloudfront.net/_635x331_crop_center-center_none/MICPSR-CS.jpg",
+        "imageGradient": "",
+        "childCategories": ["Case Studies"],
+        "parentCategories": ["Copper"],
+        "description": "Learn about how ICPSR, one of the oldest and largest data archives in the world (at the University of Michigan) uses a CRM to gather and archive data.",
+        "eyebrow": "case-study",
+        "categories": "",
+        "featuredResource": false
+    },
+    {
+        "id": "1110",
+        "featuredArticle": true,
+        "title": "How Advoc8 Handles Events for SXSW & CNN with a CRM",
+        "consolidatedTitle": null,
+        "readingTime": "6 min",
+        "url": "https://www.copper.com/blog/advoc8-agency-case-study",
+        "image": "//d2ydtwisqcxv72.cloudfront.net/_635x331_crop_center-center_none/Advoc8-CS.jpg",
+        "imageGradient": "",
+        "childCategories": ["Case Studies"],
+        "parentCategories": ["Copper"],
+        "description": "Learn about how Advoc8, an experiential agency with clients such as Google and CNN, manages huge events and keeps its finances clear with a CRM.",
+        "eyebrow": "case-study",
+        "categories": "",
+        "featuredResource": false
+    },
+    {
+        "id": "40",
+        "featuredArticle": true,
+        "title": "Houwzer Grows Team of Real Estate Agents While Using Copper",
+        "consolidatedTitle": null,
+        "readingTime": "3 min",
+        "url": "https://www.copper.com/blog/houwzer-case-study",
+        "image": "//d2ydtwisqcxv72.cloudfront.net/_635x331_crop_center-center_none/Houwzer-CS.jpg",
+        "imageGradient": "",
+        "childCategories": ["Case Studies"],
+        "parentCategories": ["Copper"],
+        "description": "See how Houwzer uses Copper CRM to manage real estate agents, clients and open houses, and close more deals.",
+        "eyebrow": "case-study",
+        "categories": "",
+        "featuredResource": false
+    }],
+    "meta":
+    {
+        "pagination":
+        {
+            "total": 37,
+            "count": 37,
+            "per_page": 100,
+            "current_page": 1,
+            "total_pages": 1,
+            "links": []
+        }
+    }
+}

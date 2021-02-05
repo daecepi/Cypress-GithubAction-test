@@ -1,0 +1,16 @@
+{% extends "_top-nav.html" %}
+
+{% block topNav %}
+  <div class="c-legal">
+    {% switch entry.type %}
+      {% case 'privacy' %}
+        {% include 'legal/_privacy.html' %}
+      {% case 'tos' %}
+        {% include 'legal/_tos.html' %}
+      {% case 'cookies' %}
+        {% include 'legal/_cookies.html' %}
+      {% case 'legalTemplate' %}
+        {% include 'legal/_template.html' %}              
+    {% endswitch %}
+  </div>
+{% endblock %}

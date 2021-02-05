@@ -1,0 +1,166 @@
+.t-resource-bold-text{
+  font-size: 24px;
+  line-height: 38px;
+  font-weight: bold;
+}
+
+.t-remove-copy-margin{
+  p {
+    margin: 0;
+  }
+}
+
+.t-resource-bold-text--quote{
+  line-height: 40px;
+  font-size: 28px;
+  font-weight: 500;
+}
+
+.t-horizontal-line-above {
+  margin-top: 15px;
+
+  &:before{
+    background-color: $color-light-text;
+    content: " ";
+    height: 1px;
+    left: 15px;
+    top: -15px;
+    position: absolute;
+    width: calc( 100% - 30px);
+    z-index: 0;
+  }
+}
+
+.t-vertical-line-below {
+  margin-bottom: 130px;
+
+  &:after{
+    background-color: $color-hot-pink;
+    content: " ";
+    height: 70px;
+    left: 50%;
+    position: absolute;
+    bottom: -100px;
+    width: 1px;
+    z-index: 0;
+  }
+}
+
+.t-vertical-line-left {
+  position: relative;
+
+  &:after{
+    background-color: $color-hot-pink;
+    content: " ";
+    height: 100%;
+    top: 0;
+    left: -30px;
+    position: absolute;
+    width: 4px;
+    z-index: 0;
+  }
+}
+
+.t-resource-period--hot-pink{
+  &:after{
+    content: '.';
+    color: $color-hot-pink;
+  }
+}
+
+.t-resource-quotes--hot-pink{
+  &:before{
+    content: '“';
+    color: $color-hot-pink;
+  }
+  &:after{
+    content: '”';
+    color: $color-hot-pink;
+  }
+}
+
+.t-pink-bullet-points{
+  @include media-breakpoint-up(md) {
+    ul, ol{
+      padding-inline-start: 0;
+      margin-block-start: 0em;
+      padding: 30px 0;
+      margin-bottom: 0;
+
+      li{
+        padding-left: 2em;
+        padding-bottom: 5px;
+
+        &:not(:last-child){
+          padding-bottom: 20px;
+        }
+
+      }
+    }
+  }
+
+  ul{
+    list-style: none; 
+    li {
+      position: relative;
+    }
+    li::before {
+      content: "•"; 
+      color: $color-hot-pink;
+      position: absolute;
+      @include media-breakpoint-up(md) {
+        left: 10px;
+      }
+      left: -24px;
+      top: -8px;
+      font-size: 1.4em;
+    }
+  }
+}
+
+.t-aqua-mint-bullet-points{
+  @include media-breakpoint-up(md) {
+    ul, ol{
+      padding-inline-start: 0;
+      margin-block-start: 0em;
+      padding: 10px 0px 30px 20px;
+      margin-bottom: 0;
+
+      li{
+        padding-left: 2em;
+        padding-bottom: 5px;
+
+        &:not(:last-child){
+          padding-bottom: 20px;
+        }
+
+      }
+    }
+  }
+
+  ul{
+    list-style: none; 
+    li {
+      position: relative;
+    }
+    li::before {
+      content: "•"; 
+      color: $color-aqua-mint;
+      position: absolute;
+      @include media-breakpoint-up(md) {
+        left: 10px;
+      }
+      left: -24px;
+      top: -8px !important;
+      font-size: 1.4em;
+    }
+  }
+}
+
+.t-pink-bullet-points--pull-left{
+  @include media-breakpoint-up(md) {
+    ul, ol{
+      margin-inline-start: -2em
+    }
+  }
+}

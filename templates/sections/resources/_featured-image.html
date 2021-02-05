@@ -1,0 +1,16 @@
+{% set image = entry.featuredImage.one() %} 
+<div class="c-resource--header">
+  {% if entry.type == 'blog' or entry.type == 'blogBuilder' %}
+    {% if entry.imageGradient.last() %}
+      {% set gradient = entry.imageGradient.last() %}
+      <div class="c-resource--header__gradient c-resource--header__gradient--{{gradient.slug}}"></div>
+    {% endif %}
+  {% endif %}
+  {% if image %}
+    {% if entry.type == 'blog' or entry.type == 'blogBuilder' %}
+      <img src="{{ image.url }}" alt="{{ entry.title }}" class="c-resource--header__background-image">
+    {% else %}
+      <img src="{{ image.url }}" alt="{{ entry.title }}" class="c-resource--header__background-image c-resource--header__background-image--fullscreen">
+    {% endif %}
+  {% endif %}
+</div>

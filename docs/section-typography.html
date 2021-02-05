@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BAM Style guide</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="generator" content="kss-node">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,300">
+    <link rel="stylesheet" href="kss-assets/vendor/prism.css">
+    <link rel="stylesheet" href="kss-assets/css/kss.css">
+    <link rel="stylesheet" href="bam-assets/css/styles.css">
+
+  </head>
+
+  <body class="kss-body">
+
+    <!-- header. -->
+    <header class="kss-header">
+      <section class="kss-header__inner">
+        <a class="kss-header__hamburger-trigger">
+          <div class="kss-header__hamburger"></div>
+        </a>
+        <h1 class="kss-header__title kss-title">BAM Style guide</h1>
+      </section>
+    </header>
+    <!-- /header. -->
+
+
+    <!-- navigation. -->
+    <section class="kss-navigation">
+      <h1 class="kss-navigation__title kss-title">BAM Style guide</h1>
+      <ul class="kss-nav">
+        <li class="kss-nav__item">
+          <a href="index.html">
+            <span class="kss-nav__ref">0</span>
+            <span class="kss-nav__name">Introduction</span>
+          </a>
+        </li>
+          <li class="kss-nav__item">
+            <a class="" href="section-blog.html">
+              <span class="kss-nav__ref">1</span>
+              <span class="kss-nav__name">Blog</span>
+            </a>
+          </li>
+          <li class="kss-nav__item">
+            <a class="" href="section-components.html">
+              <span class="kss-nav__ref">2</span>
+              <span class="kss-nav__name">Components</span>
+            </a>
+          </li>
+          <li class="kss-nav__item">
+            <a class="" href="section-layout.html">
+              <span class="kss-nav__ref">3</span>
+              <span class="kss-nav__name">Layout</span>
+            </a>
+          </li>
+          <li class="kss-nav__item">
+            <a class="kss-state-active" href="section-typography.html">
+              <span class="kss-nav__ref">4</span>
+              <span class="kss-nav__name">Typography</span>
+            </a>
+                <ul class="kss-nav__subnav">
+                    <li class="kss-nav__item ">
+                      <a href="section-typography.html#kssref-typography-content">
+                        <span class="kss-nav__ref">4.1</span>
+                        <span class="kss-nav__name">Typography.Content</span>
+                      </a>
+                    </li>
+                    <li class="kss-nav__item kss-nav__item--grandchild">
+                      <a href="section-typography.html#kssref-typography-content-blockquote">
+                        <span class="kss-nav__ref">4.1.1</span>
+                        <span class="kss-nav__name">Blockquote</span>
+                      </a>
+                    </li>
+                    <li class="kss-nav__item kss-nav__item--grandchild">
+                      <a href="section-typography.html#kssref-typography-content-eyebrow">
+                        <span class="kss-nav__ref">4.1.2</span>
+                        <span class="kss-nav__name">Number Eyebrow</span>
+                      </a>
+                    </li>
+                    <li class="kss-nav__item kss-nav__item--grandchild">
+                      <a href="section-typography.html#kssref-typography-content-link">
+                        <span class="kss-nav__ref">4.1.3</span>
+                        <span class="kss-nav__name">Links</span>
+                      </a>
+                    </li>
+                    <li class="kss-nav__item kss-nav__item--grandchild">
+                      <a href="section-typography.html#kssref-typography-content-numbers">
+                        <span class="kss-nav__ref">4.1.4</span>
+                        <span class="kss-nav__name">Numbers</span>
+                      </a>
+                    </li>
+                    <li class="kss-nav__item ">
+                      <a href="section-typography.html#kssref-typography-helper">
+                        <span class="kss-nav__ref">4.2</span>
+                        <span class="kss-nav__name">Typography.Helper</span>
+                      </a>
+                    </li>
+                    <li class="kss-nav__item kss-nav__item--grandchild">
+                      <a href="section-typography.html#kssref-typography-helper-center-text">
+                        <span class="kss-nav__ref">4.2.1</span>
+                        <span class="kss-nav__name">Center Text</span>
+                      </a>
+                    </li>
+                    <li class="kss-nav__item ">
+                      <a href="section-typography.html#kssref-typography-titles">
+                        <span class="kss-nav__ref">4.3</span>
+                        <span class="kss-nav__name">Typography.Titles</span>
+                      </a>
+                    </li>
+                    <li class="kss-nav__item kss-nav__item--grandchild">
+                      <a href="section-typography.html#kssref-typography-titles-eyebrow">
+                        <span class="kss-nav__ref">4.3.1</span>
+                        <span class="kss-nav__name">Eyebrow</span>
+                      </a>
+                    </li>
+                    <li class="kss-nav__item kss-nav__item--grandchild">
+                      <a href="section-typography.html#kssref-typography-titles-h1">
+                        <span class="kss-nav__ref">4.3.2</span>
+                        <span class="kss-nav__name">H1</span>
+                      </a>
+                    </li>
+                    <li class="kss-nav__item kss-nav__item--grandchild">
+                      <a href="section-typography.html#kssref-typography-titles-h2">
+                        <span class="kss-nav__ref">4.3.3</span>
+                        <span class="kss-nav__name">H2</span>
+                      </a>
+                    </li>
+                    <li class="kss-nav__item kss-nav__item--grandchild">
+                      <a href="section-typography.html#kssref-typography-titles-h3">
+                        <span class="kss-nav__ref">4.3.4</span>
+                        <span class="kss-nav__name">H3</span>
+                      </a>
+                    </li>
+                    <li class="kss-nav__item kss-nav__item--grandchild">
+                      <a href="section-typography.html#kssref-typography-titles-h4">
+                        <span class="kss-nav__ref">4.3.5</span>
+                        <span class="kss-nav__name">H4</span>
+                      </a>
+                    </li>
+                    <li class="kss-nav__item kss-nav__item--grandchild">
+                      <a href="section-typography.html#kssref-typography-titles-h5">
+                        <span class="kss-nav__ref">4.3.6</span>
+                        <span class="kss-nav__name">H5</span>
+                      </a>
+                    </li>
+                </ul>
+          </li>
+      </ul>
+    </section>
+    <!-- /navigation. -->
+
+
+    <!-- documentation. -->
+    <section class="kss-documentation">
+
+        <!--
+          display each section, in order.
+          the "root" element comes first in this loop, and can be detected using
+          the "#if @first" block as seen below.
+        -->
+            <header class="kss-section kss-section--depth-1" id="kssref-typography">
+
+            <article class="kss-section__content">
+
+              <a class="kss-section__permalink" href="#kssref-typography">
+                <h1 class="kss-section__item kss-section__item--depth-1">
+                  <span class="kss-section__ref">4</span>
+                  <span class="kss-section__name">Typography</span>
+                </h1>
+              </a>
+
+
+            </article>
+
+
+            </header>
+            <section class="kss-section kss-section--depth-2" id="kssref-typography-content">
+
+            <article class="kss-section__content">
+
+              <a class="kss-section__permalink" href="#kssref-typography-content">
+                <h2 class="kss-section__item kss-section__item--depth-2">
+                  <span class="kss-section__ref">4.1</span>
+                  <span class="kss-section__name">Typography.Content</span>
+                </h2>
+              </a>
+
+
+            </article>
+
+
+            </section>
+            <section class="kss-section kss-section--depth-3" id="kssref-typography-content-blockquote">
+
+            <article class="kss-section__content">
+                <p class="kss-section__source">Source: <span>_typography.scss</span>, line <span>193</span></p>
+
+              <a class="kss-section__permalink" href="#kssref-typography-content-blockquote">
+                <h3 class="kss-section__item kss-section__item--depth-3">
+                  <span class="kss-section__ref">4.1.1</span>
+                  <span class="kss-section__name">Blockquote</span>
+                </h3>
+              </a>
+
+                <div class="kss-section__description"><p>Default blockquote styling</p>
+</div>
+
+            </article>
+
+              <article class="kss-section__modifiers">
+                <h1 class="kss-modifiers__heading">Example</h1>
+
+
+                <div class="kss-modifiers__example"><blockquote>Quote Text</blockquote></div>
+
+              </article>
+
+                <article class="kss-section__markup">
+                  <pre><code class="language-markup">&lt;blockquote&gt;Quote Text&lt;/blockquote&gt;</code></pre>
+                </article>
+
+            </section>
+            <section class="kss-section kss-section--depth-3" id="kssref-typography-content-eyebrow">
+
+            <article class="kss-section__content">
+                <p class="kss-section__source">Source: <span>_typography.scss</span>, line <span>292</span></p>
+
+              <a class="kss-section__permalink" href="#kssref-typography-content-eyebrow">
+                <h3 class="kss-section__item kss-section__item--depth-3">
+                  <span class="kss-section__ref">4.1.2</span>
+                  <span class="kss-section__name">Number Eyebrow</span>
+                </h3>
+              </a>
+
+                <div class="kss-section__description"><p>Number Eyebrow styling</p>
+</div>
+
+            </article>
+
+              <article class="kss-section__modifiers">
+                <h1 class="kss-modifiers__heading">Examples</h1>
+
+                  <h2 class="kss-modifiers__name">Default styling</h2>
+
+                <div class="kss-modifiers__example"><span class="t-eyebrow [modifier class]">Eyebrow Text</span></div>
+
+                  <article class="kss-modifiers__modifier">
+                    <h2 class="kss-modifiers__name">.hot-pink</h2>
+                    <p class="kss-modifiers__description">pink eyebrow</p>
+                    <div class="kss-modifiers__example"><span class="t-eyebrow hot-pink">Eyebrow Text</span></div>
+                  </article>
+                  <article class="kss-modifiers__modifier">
+                    <h2 class="kss-modifiers__name">.volt</h2>
+                    <p class="kss-modifiers__description">volt eyebrow</p>
+                    <div class="kss-modifiers__example"><span class="t-eyebrow volt">Eyebrow Text</span></div>
+                  </article>
+                  <article class="kss-modifiers__modifier">
+                    <h2 class="kss-modifiers__name">.eggplant</h2>
+                    <p class="kss-modifiers__description">eggplant eyebrow</p>
+                    <div class="kss-modifiers__example"><span class="t-eyebrow eggplant">Eyebrow Text</span></div>
+                  </article>
+                  <article class="kss-modifiers__modifier">
+                    <h2 class="kss-modifiers__name">.mint</h2>
+                    <p class="kss-modifiers__description">mint eyebrow</p>
+                    <div class="kss-modifiers__example"><span class="t-eyebrow mint">Eyebrow Text</span></div>
+                  </article>
+              </article>
+
+                <article class="kss-section__markup">
+                  <pre><code class="language-markup">&lt;span class&#x3D;&quot;t-eyebrow [modifier class]&quot;&gt;Eyebrow Text&lt;/span&gt;</code></pre>
+                </article>
+
+            </section>
+            <section class="kss-section kss-section--depth-3" id="kssref-typography-content-link">
+
+            <article class="kss-section__content">
+                <p class="kss-section__source">Source: <span>_typography.scss</span>, line <span>233</span></p>
+
+              <a class="kss-section__permalink" href="#kssref-typography-content-link">
+                <h3 class="kss-section__item kss-section__item--depth-3">
+                  <span class="kss-section__ref">4.1.3</span>
+                  <span class="kss-section__name">Links</span>
+                </h3>
+              </a>
+
+                <div class="kss-section__description"><p>Link styling</p>
+</div>
+
+            </article>
+
+              <article class="kss-section__modifiers">
+                <h1 class="kss-modifiers__heading">Example</h1>
+
+
+                <div class="kss-modifiers__example"><a class="t-link">Issa Link</a></div>
+
+              </article>
+
+                <article class="kss-section__markup">
+                  <pre><code class="language-markup">&lt;a class&#x3D;&quot;t-link&quot;&gt;Issa Link&lt;/a&gt;</code></pre>
+                </article>
+
+            </section>
+            <section class="kss-section kss-section--depth-3" id="kssref-typography-content-numbers">
+
+            <article class="kss-section__content">
+                <p class="kss-section__source">Source: <span>_typography.scss</span>, line <span>275</span></p>
+
+              <a class="kss-section__permalink" href="#kssref-typography-content-numbers">
+                <h3 class="kss-section__item kss-section__item--depth-3">
+                  <span class="kss-section__ref">4.1.4</span>
+                  <span class="kss-section__name">Numbers</span>
+                </h3>
+              </a>
+
+                <div class="kss-section__description"><p>Block numbers styling</p>
+</div>
+
+            </article>
+
+              <article class="kss-section__modifiers">
+                <h1 class="kss-modifiers__heading">Example</h1>
+
+
+                <div class="kss-modifiers__example"><span class="t-numbers">100</span></div>
+
+              </article>
+
+                <article class="kss-section__markup">
+                  <pre><code class="language-markup">&lt;span class&#x3D;&quot;t-numbers&quot;&gt;100&lt;/span&gt;</code></pre>
+                </article>
+
+            </section>
+            <section class="kss-section kss-section--depth-2" id="kssref-typography-helper">
+
+            <article class="kss-section__content">
+
+              <a class="kss-section__permalink" href="#kssref-typography-helper">
+                <h2 class="kss-section__item kss-section__item--depth-2">
+                  <span class="kss-section__ref">4.2</span>
+                  <span class="kss-section__name">Typography.Helper</span>
+                </h2>
+              </a>
+
+
+            </article>
+
+
+            </section>
+            <section class="kss-section kss-section--depth-3" id="kssref-typography-helper-center-text">
+
+            <article class="kss-section__content">
+                <p class="kss-section__source">Source: <span>_typography.scss</span>, line <span>323</span></p>
+
+              <a class="kss-section__permalink" href="#kssref-typography-helper-center-text">
+                <h3 class="kss-section__item kss-section__item--depth-3">
+                  <span class="kss-section__ref">4.2.1</span>
+                  <span class="kss-section__name">Center Text</span>
+                </h3>
+              </a>
+
+                <div class="kss-section__description"><p>Helper class to center text</p>
+</div>
+
+            </article>
+
+              <article class="kss-section__modifiers">
+                <h1 class="kss-modifiers__heading">Example</h1>
+
+
+                <div class="kss-modifiers__example"><h3 class="t-center">Center me</h3></div>
+
+              </article>
+
+                <article class="kss-section__markup">
+                  <pre><code class="language-markup">&lt;h3 class&#x3D;&quot;t-center&quot;&gt;Center me&lt;/h3&gt;</code></pre>
+                </article>
+
+            </section>
+            <section class="kss-section kss-section--depth-2" id="kssref-typography-titles">
+
+            <article class="kss-section__content">
+
+              <a class="kss-section__permalink" href="#kssref-typography-titles">
+                <h2 class="kss-section__item kss-section__item--depth-2">
+                  <span class="kss-section__ref">4.3</span>
+                  <span class="kss-section__name">Typography.Titles</span>
+                </h2>
+              </a>
+
+
+            </article>
+
+
+            </section>
+            <section class="kss-section kss-section--depth-3" id="kssref-typography-titles-eyebrow">
+
+            <article class="kss-section__content">
+                <p class="kss-section__source">Source: <span>_typography.scss</span>, line <span>135</span></p>
+
+              <a class="kss-section__permalink" href="#kssref-typography-titles-eyebrow">
+                <h3 class="kss-section__item kss-section__item--depth-3">
+                  <span class="kss-section__ref">4.3.1</span>
+                  <span class="kss-section__name">Eyebrow</span>
+                </h3>
+              </a>
+
+                <div class="kss-section__description"><p>Eyebrow styling - used above headers</p>
+</div>
+
+            </article>
+
+              <article class="kss-section__modifiers">
+                <h1 class="kss-modifiers__heading">Examples</h1>
+
+                  <h2 class="kss-modifiers__name">Default styling</h2>
+
+                <div class="kss-modifiers__example"><pre class="c-eyebrow [modifier class]">Eyebrows on fleek</pre></div>
+
+                  <article class="kss-modifiers__modifier">
+                    <h2 class="kss-modifiers__name">.c-eyebrow--dark</h2>
+                    <p class="kss-modifiers__description">dark eyebrow</p>
+                    <div class="kss-modifiers__example"><pre class="c-eyebrow c-eyebrow--dark">Eyebrows on fleek</pre></div>
+                  </article>
+                  <article class="kss-modifiers__modifier">
+                    <h2 class="kss-modifiers__name">.c-eyebrow--light</h2>
+                    <p class="kss-modifiers__description">light eyebrow (text turns white)</p>
+                    <div class="kss-modifiers__example"><pre class="c-eyebrow c-eyebrow--light">Eyebrows on fleek</pre></div>
+                  </article>
+              </article>
+
+                <article class="kss-section__markup">
+                  <pre><code class="language-markup">&lt;pre class&#x3D;&quot;c-eyebrow [modifier class]&quot;&gt;Eyebrows on fleek&lt;/pre&gt;</code></pre>
+                </article>
+
+            </section>
+            <section class="kss-section kss-section--depth-3" id="kssref-typography-titles-h1">
+
+            <article class="kss-section__content">
+                <p class="kss-section__source">Source: <span>_typography.scss</span>, line <span>39</span></p>
+
+              <a class="kss-section__permalink" href="#kssref-typography-titles-h1">
+                <h3 class="kss-section__item kss-section__item--depth-3">
+                  <span class="kss-section__ref">4.3.2</span>
+                  <span class="kss-section__name">H1</span>
+                </h3>
+              </a>
+
+                <div class="kss-section__description"><p>Default H1 styling</p>
+</div>
+
+            </article>
+
+              <article class="kss-section__modifiers">
+                <h1 class="kss-modifiers__heading">Example</h1>
+
+
+                <div class="kss-modifiers__example"><h1>Issa H1</h1></div>
+
+              </article>
+
+                <article class="kss-section__markup">
+                  <pre><code class="language-markup">&lt;h1&gt;Issa H1&lt;/h1&gt;</code></pre>
+                </article>
+
+            </section>
+            <section class="kss-section kss-section--depth-3" id="kssref-typography-titles-h2">
+
+            <article class="kss-section__content">
+                <p class="kss-section__source">Source: <span>_typography.scss</span>, line <span>62</span></p>
+
+              <a class="kss-section__permalink" href="#kssref-typography-titles-h2">
+                <h3 class="kss-section__item kss-section__item--depth-3">
+                  <span class="kss-section__ref">4.3.3</span>
+                  <span class="kss-section__name">H2</span>
+                </h3>
+              </a>
+
+                <div class="kss-section__description"><p>Default H2 styling</p>
+</div>
+
+            </article>
+
+              <article class="kss-section__modifiers">
+                <h1 class="kss-modifiers__heading">Example</h1>
+
+
+                <div class="kss-modifiers__example"><h2>Issa H2</h2></div>
+
+              </article>
+
+                <article class="kss-section__markup">
+                  <pre><code class="language-markup">&lt;h2&gt;Issa H2&lt;/h2&gt;</code></pre>
+                </article>
+
+            </section>
+            <section class="kss-section kss-section--depth-3" id="kssref-typography-titles-h3">
+
+            <article class="kss-section__content">
+                <p class="kss-section__source">Source: <span>_typography.scss</span>, line <span>83</span></p>
+
+              <a class="kss-section__permalink" href="#kssref-typography-titles-h3">
+                <h3 class="kss-section__item kss-section__item--depth-3">
+                  <span class="kss-section__ref">4.3.4</span>
+                  <span class="kss-section__name">H3</span>
+                </h3>
+              </a>
+
+                <div class="kss-section__description"><p>Default H3 styling</p>
+</div>
+
+            </article>
+
+              <article class="kss-section__modifiers">
+                <h1 class="kss-modifiers__heading">Example</h1>
+
+
+                <div class="kss-modifiers__example"><h3>Issa H3</h3></div>
+
+              </article>
+
+                <article class="kss-section__markup">
+                  <pre><code class="language-markup">&lt;h3&gt;Issa H3&lt;/h3&gt;</code></pre>
+                </article>
+
+            </section>
+            <section class="kss-section kss-section--depth-3" id="kssref-typography-titles-h4">
+
+            <article class="kss-section__content">
+                <p class="kss-section__source">Source: <span>_typography.scss</span>, line <span>100</span></p>
+
+              <a class="kss-section__permalink" href="#kssref-typography-titles-h4">
+                <h3 class="kss-section__item kss-section__item--depth-3">
+                  <span class="kss-section__ref">4.3.5</span>
+                  <span class="kss-section__name">H4</span>
+                </h3>
+              </a>
+
+                <div class="kss-section__description"><p>Default H4 styling</p>
+</div>
+
+            </article>
+
+              <article class="kss-section__modifiers">
+                <h1 class="kss-modifiers__heading">Example</h1>
+
+
+                <div class="kss-modifiers__example"><h4>Issa H4</h4></div>
+
+              </article>
+
+                <article class="kss-section__markup">
+                  <pre><code class="language-markup">&lt;h4&gt;Issa H4&lt;/h4&gt;</code></pre>
+                </article>
+
+            </section>
+            <section class="kss-section kss-section--depth-3" id="kssref-typography-titles-h5">
+
+            <article class="kss-section__content">
+                <p class="kss-section__source">Source: <span>_typography.scss</span>, line <span>117</span></p>
+
+              <a class="kss-section__permalink" href="#kssref-typography-titles-h5">
+                <h3 class="kss-section__item kss-section__item--depth-3">
+                  <span class="kss-section__ref">4.3.6</span>
+                  <span class="kss-section__name">H5</span>
+                </h3>
+              </a>
+
+                <div class="kss-section__description"><p>Default H5 styling</p>
+</div>
+
+            </article>
+
+              <article class="kss-section__modifiers">
+                <h1 class="kss-modifiers__heading">Example</h1>
+
+
+                <div class="kss-modifiers__example"><h5>Issa H5</h5></div>
+
+              </article>
+
+                <article class="kss-section__markup">
+                  <pre><code class="language-markup">&lt;h5&gt;Issa H5&lt;/h5&gt;</code></pre>
+                </article>
+
+            </section>
+    </section>
+    <!-- /documentation. -->
+
+
+
+  <!-- scripts. -->
+  <script src="kss-assets/vendor/jquery.js"></script>
+  <script src="kss-assets/vendor/prism.js"></script>
+  <script src="kss-assets/js/kss.js"></script>
+  <script src="bam-assets/app.min.js"></script>
+
+  <!-- /scripts. -->
+
+  </body>
+</html>

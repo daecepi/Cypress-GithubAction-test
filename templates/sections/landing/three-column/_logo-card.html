@@ -1,0 +1,31 @@
+<a 
+{% if entry.urlText is not null and entry.urlText|length > 0 %}
+  href="{{ entry.urlText }}"
+{% endif %}
+>
+  <div class="c-card__entry  no-card-background logo-card-styling c-align--center">
+    
+    <div class="c-card-image">
+      {% if entry.image is not null %}
+        {% set image = entry.image.one() %}
+        <img class="" src="{{ image.url }}" alt="{{image.title}}">
+      {% endif %}
+    </div>
+    <div class="c-card__entry__content">
+      <span class="t-eyebrow">{{ entry.eyebrow }}</span>
+      <h4 class="c-card__entry-title single-line-trailer">
+        <a
+          class="underline_from_lefsettt"
+          {% if entry.urlText is not null and entry.urlText|length > 0 %} href="{{entry.urlText}}" {% endif %}
+          style="{{entry.variableHeaderColor is not null and entry.variableHeaderColor|length > 0 ? 'color: {color}'|t( {'color': entry.variableHeaderColor} ) : ''}}">
+          {{ entry.header }}
+        </a>
+      </h4>
+      <p class="p-sm multiple-4-card-trailer no-bottom-margin">{{ entry.paragraph }}</p>
+    </div>
+    {% if entry.ctas|length %}
+      {% set ctas = entry.ctas %}
+      {% include 'components/cta/_index.html' %}
+    {% endif %}
+  </div>
+</a>

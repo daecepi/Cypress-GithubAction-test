@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+  {% set rss = craft.entries.section('blog') %}
+
+  <channel>
+    <title>Copper RSS Feed</title>
+    <link>https://www.copper.com/blog</link>
+    <description>Official Copper Blog</description>
+    <language>en-us</language>
+    <atom:link href="{{ url() }}" rel="self" type="application/rss+xml" />
+
+    {% for item in rss.all() %}
+    <item>
+      <title>{{ item.title }}</title>
+      <link>{{ item.url() }}</link>
+      <description>{{ item.title }}</description>
+      <pubDate>{{ item.postDate|date('D, d M Y H:i:s O')  }}</pubDate>
+      <guid>{{ item.url() }}</guid>
+    </item>
+    {% endfor %}
+  </channel>
+</rss>

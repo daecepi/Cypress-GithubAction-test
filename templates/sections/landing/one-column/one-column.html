@@ -1,0 +1,32 @@
+{% set backgroundColor = matrixBlock.backgroundColor.one() %}
+{% if matrixBlock.linkToNav|length %}
+    {% set linkId = matrixBlock.linkToNav |camel %}
+    {% set sectionId = entry[linkId] |camel %}
+    <a class="anchor" id="{{sectionId}}"></a>
+{% endif %}
+<!-- Three Column -->
+<section id="{% if matrixBlock.stickyNavName != '' %}{{matrixBlock.stickyNavName |lower }}{% endif %}" class="c-single-column {{ matrixBlock.addBottomPadding ? 'h-padding-bottom' : '' }} {{ backgroundColor ? backgroundColor.slug : 'white' }}">
+  <div class="container">
+  {% if matrixBlock.header|length or matrixBlock.subText|length %}
+    <div class="col-md-8 offset-md-2 c-single-column__container {{ matrixBlock.configurations is defined and matrixBlock.configurations|length > 0 and matrixBlock.configurations[0].removeSpacingBottom ? 'no-bottom-padding' : '' }}">
+      {% if matrixBlock.header|length %}
+        <h2>{{ matrixBlock.header }}</h2>
+      {% endif %}
+      {% if matrixBlock.subText|length %}
+        <p>{{ matrixBlock.subText }}</p>
+      {% endif %}     
+    </div>
+    {% endif %}
+    {% if matrixBlock.copy %}
+      {{matrixBlock.copy |raw }} 
+    {% endif %} 
+      {% for entry in matrixBlock.entries.all() %}
+          {% switch entry.type %}
+            {% case "video" %}
+              {% include 'sections/landing/one-column/_video.html' %}
+            {% case "image" %}
+              {% include 'sections/landing/one-column/_image.html' %}                
+          {% endswitch %}
+      {% endfor %}    
+  </div>
+</section>

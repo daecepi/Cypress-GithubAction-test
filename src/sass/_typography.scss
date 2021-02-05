@@ -1,0 +1,665 @@
+// Material icons
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:300,500,700');
+@import url('https://rsms.me/inter/inter.css');
+
+@font-face {
+  font-display: swap;
+  font-family: 'Graphik-Light';
+  src: url('../fonts/../fonts/Graphik-Light-Web.eot');
+  src: url('../fonts/../fonts/Graphik-Light-Web.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/../fonts/Graphik-Light-Web.woff2') format('woff2'),
+  url('../fonts/../fonts/Graphik-Light-Web.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Graphik-Regular';
+  src: url('../fonts/../fonts/Graphik-Regular-Web.eot');
+  src: url('../fonts/../fonts/Graphik-Regular-Web.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/../fonts/Graphik-Regular-Web.woff2') format('woff2'),
+  url('../fonts/../fonts/Graphik-Regular-Web.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+
+@font-face {
+  font-display: swap;
+  font-family: 'Graphik-Medium';
+  src: url('../fonts/Graphik-Medium-Web.eot');
+  src: url('../fonts/Graphik-Medium-Web.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/Graphik-Medium-Web.woff2') format('woff2'),
+  url('../fonts/Graphik-Medium-Web.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+// H1
+//
+// Default H1 styling
+//
+// Markup:
+// <h1>Issa H1</h1>
+//
+// Styleguide Typography.Titles.H1 
+  
+h1, .h1 {
+    /* Heading 1: */
+  font-family: $medium-font;
+  font-weight: 500;
+  font-size: 54px;
+  line-height: 58px;
+  letter-spacing: 0px; 
+  margin: 0 !important;
+  @include media-breakpoint-up(md) { 
+    font-size: 68px;
+    line-height: 74px;
+    letter-spacing: 0px;
+  }
+
+} 
+
+// H2
+//
+// Default H2 styling
+//
+// Markup:
+// <h2>Issa H2</h2>
+//
+// Styleguide Typography.Titles.H2
+
+h2, .h2 {
+    /* Heading 2: */
+  font-family: $medium-font;
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 54px;
+  letter-spacing: 0px;            
+  @include media-breakpoint-up(md) { 
+    font-size: 54px;
+    line-height: 65px;
+    letter-spacing: 0px;
+  }
+  
+  .color-hot-pink{
+    color: $color-hot-pink;
+  }
+}
+
+// H3
+//
+// Default H3 styling
+//
+// Markup:
+// <h3>Issa H3</h3>
+//
+// Styleguide Typography.Titles.H3
+h3, .h3 {
+  /* Heading 3: */
+  font-family: $medium-font;
+  font-weight: 500;
+  font-size: 34px;
+  letter-spacing: 0;
+  line-height: 40px; 
+  @include media-breakpoint-up(md) { 
+    font-size: 42px;
+    line-height: 54px;
+    letter-spacing: 0px;
+  }
+}
+
+// H4
+//
+// Default H4 styling
+//
+// Markup:
+// <h4>Issa H4</h4>
+//
+// Styleguide Typography.Titles.H4
+h4 {
+  /* Heading 4: */
+  font-family: $medium-font;
+  font-weight: 500;
+  font-size: 28px;
+  letter-spacing: 0;
+  line-height: 34px;
+  @include media-breakpoint-up(md) { 
+    font-size: 34px;
+    line-height: 40px;
+    letter-spacing: 0px;
+  }
+}
+
+h4 + p {
+  margin-top: 6px;
+}
+
+// H5
+//
+// Default H5 styling
+//
+// Markup:
+// <h5>Issa H5</h5>
+//
+// Styleguide Typography.Titles.H5
+h5, .h5 {
+  /* Heading 5: */
+  font-family: $light-font;
+  font-weight: 400;
+  font-size: 22px;
+  letter-spacing: 0;
+  line-height: 26px;
+  text-transform: uppercase;
+  @include media-breakpoint-up(md) { 
+    font-size: 28px;
+    line-height: 34px;
+    letter-spacing: 0px;
+  }
+}
+
+h6, .h6 {
+  /* Heading 6: */
+  font-family: $light-font;
+  font-weight: 400;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: 30px;
+  text-transform: uppercase;
+  @include media-breakpoint-up(md) { 
+    font-size: 22px;
+    line-height: 26px;
+    letter-spacing: 0px;
+  }
+}
+
+// Eyebrow
+//
+// Eyebrow styling - used above headers
+//
+// Markup:
+// <pre class="c-eyebrow {{modifier_class}}">Eyebrows on fleek</pre>
+//
+// .c-eyebrow--dark - dark eyebrow
+// .c-eyebrow--light - light eyebrow (text turns white)
+// 
+// Styleguide Typography.Titles.Eyebrow
+pre {
+	&.c-eyebrow {
+		font-size: 14px;
+    text-transform: uppercase;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 500;
+    overflow-y: hidden;
+		&:before {
+			content: '';
+			margin-right: 8px;
+	    width: 34px;
+	    border-bottom: 2px solid $color-graphite;
+	    display: block;
+	    position: relative;
+	    float: left;
+      top: 10px;
+      height: 2px;
+		}
+		
+		&.c-eyebrow--dark {
+			color: $color-graphite;
+			&:before {
+				border-bottom: 2px solid $color-graphite;
+			}
+		}
+		&.c-eyebrow--light {
+			color: $color-white;
+			&:before {
+				border-bottom: 2px solid $color-white;
+			}
+    }
+    
+    &.c-eyebrow--off-white {
+			color: $color-white;
+			&:before {
+				border-bottom: 2px solid $color-white;
+			}
+    }
+    &.c-eyebrow--teal-dark{
+			color: $color-teal-dark;
+			&:before {
+				border-bottom: 2px solid $color-teal-dark;
+			}
+    }
+    &.c-eyebrow--hot-pink {
+      color: $color-hot-pink;
+      &:before {
+        border-bottom: 2px solid $color-hot-pink;
+      }
+    }
+    &.c-eyebrow--eggplant {
+      color: $color-eggplant;
+      &:before {
+        border-bottom: 2px solid $color-eggplant;
+      }
+    }
+    &.c-eyebrow--midnight {
+      color: $color-midnight;
+      &:before {
+        border-bottom: 2px solid $color-midnight;
+      }
+    }
+    &.c-eyebrow--soft-midnight {
+      color: $color-midnight;
+      &:before {
+        border-bottom: 2px solid $color-midnight;
+      }
+    }
+    &.c-eyebrow--burgundy {
+      color: $color-burgundy;
+      &:before {
+        border-bottom: 2px solid $color-burgundy;
+      }
+    }
+
+    &.c-eyebrow--soft-gray {
+      color: $color-soft-gray;
+      &:before {
+        border-bottom: 2px solid $color-soft-gray;
+      }
+    }
+
+    &.c-eyebrow--extra-soft-gray {
+      color: $color-extra-soft-gray;
+      &:before {
+        border-bottom: 2px solid $color-extra-soft-gray;
+      }
+    }
+
+    &.c-eyebrow--final-plea {
+      color: $color-final-plea;
+      &:before {
+        border-bottom: 2px solid $color-final-plea;
+      }
+    }
+  }
+  &.c-plain-eyebrow{
+    font-size: 14px;
+    text-transform: uppercase;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 500;
+  }
+}
+
+
+
+// DO WE NEED THIS?
+// DO WE NEED THIS?Graphite
+//
+// DO WE NEED THIS?Make h1, h2, h3, h4 or p graphite
+//
+// DO WE NEED THIS?Markup:
+// DO WE NEED THIS? <h1 class="graphite">Title Text</h1>
+//
+// DO WE NEED THIS?Styleguide Typography.Titles.Graphite
+h1, h2, h3, h4, p {
+  &.graphite{
+    color: $color-graphite !important;
+  }
+
+  &.t-hot-pink{
+    color: $color-hot-pink !important;
+  }
+
+  &.light-text{
+    color: $color-light-text !important;
+  }
+}
+
+// Blockquote
+//
+// Default blockquote styling
+//
+// Markup:
+// <blockquote>Quote Text</blockquote>
+//
+// Styleguide Typography.Content.Blockquote
+blockquote {
+  /* Quote: */
+  // TODO: Bring " " from carousel lib
+  font-family: $light-font;
+  font-size: 28px;
+  letter-spacing: 0;
+  line-height: 40px;
+}
+
+// TODO - do we p.sm or p-sm
+p, .p {
+  font-size: 20px;
+  line-height: 30px;
+  margin: 16px 0;
+  &.p-xtra-sm {
+    font-size: 14px;
+    line-height: 28px;
+  }  
+  &.p-sm {
+    font-size: 16px;
+    line-height: 26px;
+  }
+  &.p-lg {
+    font-size: 16px;
+    line-height: 26px; 
+    @include media-breakpoint-up(md) {
+      font-size: 20px;
+      line-height: 30px;       
+    }  
+  }
+  &.bold {
+    font-weight: bold;
+  }
+
+  p{
+    font-size: inherit;
+    line-height: inherit;
+  }
+}
+
+// Links
+//
+// Link styling
+//
+// Markup:
+// <a class="t-link">Issa Link</a>
+// 
+// Styleguide Typography.Content.Link
+.t-link {
+/* Link: */
+  font-family: $medium-font;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 20px;
+  border-bottom: 4px solid $color-volt;
+  display: inline-block;
+  color: $color-graphite;
+  padding-bottom: 3px;
+  padding-right: 7px;
+  position: relative;
+  cursor: pointer;
+  &.h-white {
+    color: $color-white;
+    &:after {
+      content: url(../imgs/right-arrow-white.svg);
+    }
+    &:hover {
+      color: $color-white;
+    }
+  }
+  &.underline-strong-green{
+    border-bottom: 4px solid $color-strong-green;
+    padding-bottom: 10px;
+    &:hover {
+      border-bottom: 4px solid $color-white;
+    }
+  } 
+  &.no-arrow{
+    padding-right: 0px;
+    &:after{
+      content: none;
+    }
+  }
+
+  &.inverted-arrow{
+    padding-left: 4px;
+    padding-right: 0px;
+    &:after{
+      content: none;
+    }
+    &:before {
+      padding-left: 5px;
+      content: url(../imgs/left-arrow.svg);
+      position: relative;
+      top: 1px;
+      right: 5px;
+      transition: all 0.1s ease-in-out;
+    }
+  }
+  &.no-underline{
+    border-bottom: 0px solid white;
+  }
+  &.underline-hot-pink{
+    border-bottom: 4px solid $color-hot-pink;
+  }
+  &:after {
+    padding-left: 5px;
+    content: url(../imgs/right-arrow.svg);
+    position: relative;
+    top: 1px;
+    right: -4px;
+    transition: all 0.1s ease-in-out;
+  }
+  &:hover {
+    text-decoration: none;
+    color: $color-graphite;
+    &:after {
+      right: -8px;
+    }
+  }
+}
+
+.t-link__no-underline{
+  border-bottom: 4px solid #FFFFFF;
+}
+
+.t-link__gray {
+  color: $color-graphite;
+  font-size: 13px;
+  line-height: 18px;
+  transition: color 0.15s ease-in-out;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+// Numbers
+//
+// Block numbers styling
+//
+// Markup:
+// <span class="t-numbers">100</span>
+// 
+// Styleguide Typography.Content.Numbers
+.t-numbers {
+  font-family: $medium-font;
+  font-size: 72px;
+  display: block;
+  @include media-breakpoint-up(lg) {
+    font-size: 100px;
+  }
+}
+
+// Number Eyebrow
+//
+// Number Eyebrow styling 
+//
+// Markup:
+// <span class="t-eyebrow {{modifier_class}}">Eyebrow Text</span>
+// 
+// .hot-pink - pink eyebrow
+// .volt - volt eyebrow
+// .eggplant - eggplant eyebrow
+// .mint - mint eyebrow
+// 
+// Styleguide Typography.Content.Eyebrow
+.t-eyebrow {
+  font-size: 14px;
+  text-transform: uppercase;
+  font-family: 'Roboto Mono', monospace;
+  &.hot-pink {
+    color: $color-hot-pink;
+  }
+  &.volt {
+    color: $color-volt
+  }
+  &.eggplant {
+    color: $color-eggplant;
+  }
+  &.mint {
+    color: $color-mint;
+  }
+}
+
+.t-special-eyebrow {
+  font-family: "Roboto Mono";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 19px;
+  text-align: center;
+  padding: 2px 7px;
+  &--lt-pink {
+    background-color: #FFEBEF;
+    color: #B32446;
+  }
+  &--lt-purple {
+    background-color: #F1DFFF;
+    color: #503068;
+
+  }
+  &--lt-mint {
+    background-color: #DEFFFA;
+    color: #018A75;
+
+  }
+  &--lt-blue {
+    background-color: #DEE3FF;
+    color: #1E3192;
+  }
+  @include media-breakpoint-down(sm) {
+    font-size: 10px;
+    line-height: 13px;
+    margin-bottom: 14px;
+    display: inline-block;
+  }
+
+}
+
+// Center Text
+//
+// Helper class to center text
+//
+// Markup:
+// <h3 class="t-center">Center me</h3>
+// 
+// Styleguide Typography.Helper.Center Text
+.t-center {
+  width: 100%;
+  text-align: center;
+}
+ 
+// TODO: Create button file and add all button related content
+.c-hero__buttons {
+  margin-top: 35px;
+  display: flex;
+  flex-wrap: wrap;     
+  justify-content: center;   
+  @include media-breakpoint-up(md) {
+    display: block;
+  }
+
+  .c-button-image{
+    padding-right: 20px;
+    margin-bottom: 20px;
+    &:last-child {
+      margin-right: 0;
+    }    
+  }
+}
+
+a, a:not([href]).t-normal-link {
+  text-decoration: none;
+  color: $color-hot-pink;
+  font-weight: 500;
+  line-height: 26px;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+    color: #FF5D84;
+  
+  }
+
+  &.round-logo-cover{
+    height: 50px;
+    width: 51px;
+  }
+}
+
+a.t-link--volt__container{
+  color: inherit;
+  .t-link--volt__link{
+    color: #3C3F40;
+    margin-bottom: 12px;
+    border-bottom: 4px solid $color-volt;
+    display: inherit;
+  }
+  &:hover {
+    text-decoration: none;
+  }
+  @include media-breakpoint-up(md) {
+    &:hover {
+      .t-link--volt__link{
+        background: linear-gradient($color-volt, $color-volt);
+        background-size: auto 45%;
+        background-repeat: no-repeat;
+        background-position-y: 105%;
+        animation: link-slide-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+      }
+    }
+  }
+}
+
+
+
+@keyframes link-slide-top {
+  0% {
+    background-position-y: 205%;
+  }
+  100% {
+    background-position-y: 105%;
+  }
+}
+
+a.custom-link {
+  text-decoration: none;
+  color: inherit;
+  // font-weight: 500;
+  line-height: inherit;
+  &:hover {
+    color: inherit;
+  }
+}
+
+/* Usage 
+<div class="t-strikethrough">
+  <div class="t-strikethrough__container">
+  <h3>TITLE</h3>
+  <div class="t-strikethrough__container__title"></div>
+  </div>
+</div>
+*/
+.t-strikethrough{
+  display: flex;
+}
+.t-strikethrough__container{
+  position: relative;
+}
+
+.t-strikethrough__container__title{
+  width: 110%;
+  height: 30%;
+  background: #B8FF01;
+  -webkit-transform: translateY(-150%);
+  transform: translateY(-150%);
+  z-index: -1;
+  position: absolute;
+}

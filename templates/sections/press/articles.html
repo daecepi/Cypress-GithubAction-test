@@ -1,0 +1,37 @@
+<section class="c-press-articles">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <pre class="c-eyebrow">Recent Stories</pre>
+        <h3 class="h1">Hot off the Press</h3>
+      </div>
+      <div class="col-md-7 offset-md-1">
+
+       
+        {% paginate matrixBlock.pressArticle.limit(6) as pageInfo, articles %} 
+        {% for article in articles %}
+        <div class="c-press-entry notranslate">
+          <div class="c-press-articles__source">{{ article.source }}</div>
+          <a class="t-link--volt__container" href="{{ article.articleUrl }}" target="_blank">
+            <h3 class="t-link--volt__link">{{ article.articleTitle }}</h3>
+          </a>
+          <div class="c-press-articles__date">{{ article.postDate | date("M d, Y") }}</div>
+        </div>
+        {% endfor %}
+        <div class="c-press-pagination">
+          <a href="{{ pageInfo.firstUrl }}">« </a>
+          {% if pageInfo.prevUrl %}
+          <a href="{{ pageInfo.prevUrl }}">‹</a>{% endif %} {% for page, url in pageInfo.getNextUrls(5) %}
+          <a href="{{ url }}">{{ page }}</a>
+          {% endfor %} 
+          {% if pageInfo.nextUrl %}
+            <a href="{{ pageInfo.nextUrl }}">›</a>
+          {% endif %}
+          <a href="{{ pageInfo.lastUrl }}"> »</a>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</section>

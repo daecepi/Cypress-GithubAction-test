@@ -1,0 +1,116 @@
+{% extends "_top-nav.html" %}
+
+{% set entryType = craft.entries().section('tools').all() %}
+
+{% import "/tools/_macros.html" as macro %}
+
+{% block topNav %}
+<!-- Hero -->
+<section class="c-hero--split c-hero--split--animation background--midnight">
+  <div class="c-image c-image--left">
+      {% if entry.heroImage.one().url is defined %}
+        {% set heroImage = entry.heroImage.one() %}
+        <img src="{{ heroImage.url }}" alt="{{ heroImage.title }}">
+      {% else %}
+        <picture>
+          <source type="image/webp" srcset="/imgs/tools/BusinessTools-Hero.webp"    alt="Business tool hero image">
+          <source type="image/png" srcset="/imgs/tools/BusinessTools-Hero.png"    alt="Business tool hero image">
+          <img     src="/imgs/tools/BusinessTools-Hero.png"   alt="Business tool hero image" >
+</picture>
+      {% endif %}
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 c-valign--middle">
+        <pre class="c-eyebrow c-eyebrow--light">{{ entry.eyebrow }}</pre>
+        <h1 class="t-white">{{ entry.header }}</h1>
+        <p>{{ entry.heroText }}</p>
+        {% if entry.ctas|length %}
+          {% set ctas = entry.ctas %}
+          {% include 'components/cta/_index.html' %}
+        {% else %}
+        <div class="c-hero__buttons">
+          <a class="c-button" href="{{ craft.app.config.general.signUpUrl }}">Free Trial</a>
+          <a class="c-button c-button--outline" href="/demos">Request Demo</a>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Three card column | Tools Categories -->
+<section class="h-section-padding">
+  <div class="container tools-category">
+    <h2 class="text-center">{{ entry.secondaryHeadline }}</h2>
+    <div class="container">
+      <div class="row extra-top-margin--small">
+        <img class="dotted-circle-svg" src="/imgs/dots-circle-mint.svg" alt="Dotted circle image">
+        {% for toolType in entryType %}
+        <div class="col-md-4 c-card--tool ">
+          <div class="c-card__entry c-card--internal-padding c-card--permanent-shadow c-card--full-height">
+              <h4 class="c-card__entry-title">
+                  {{ toolType.title }}
+                </h4>
+            <ul class="c-card-icons--list">
+              {% for tools in toolType.toolsDetails %}
+              {% switch tools.type %}
+              {% case "toolInfo" %}
+              <li class="c-tooltip c-card--icon">
+                {% if tools.toolIcon.one() %}
+                <img class="" src="{{ tools.toolIcon.one().url }}" width="40px" height="40px"
+                  alt="{{ tools.toolName }}" />
+                <span>{{ tools.toolName }}
+                  <i></i>
+                </span>
+                {% else %}
+                <picture>
+          <source type="image/webp" srcset="/imgs/industry/industry-agency-blog-01@2x.webp"  class=""   alt="Industry agency blog image"/>
+          <source type="image/png" srcset="/imgs/industry/industry-agency-blog-01@2x.jpg"  class=""   alt="Industry agency blog image"/>
+          <img   class=""   src="/imgs/industry/industry-agency-blog-01@2x.jpg"   alt="Industry agency blog image"/ >
+</picture>
+                {% endif %}
+              </li>
+              {% endswitch %}
+              {% endfor %}
+
+            </ul>
+            <div class="c-card__meta c-card__meta--noline c-card__meta--nopadding ">
+              <a class="t-link" href="{{ toolType.url }}">Learn More</a> 
+            </div>
+
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Hero -->
+<section class="c-hero--split background--leavebehind">
+  <div class="c-image">
+    <picture>
+          <source type="image/webp" srcset="/imgs/UI_ipad_final-plea-update.webp"    alt="Ipad UI image">
+          <source type="image/png" srcset="/imgs/UI_ipad_final-plea-update.jpg"    alt="Ipad UI image">
+          <img     src="/imgs/UI_ipad_final-plea-update.jpg"   alt="Ipad UI image" >
+</picture>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 c-valign--middle">
+        <pre class="c-eyebrow c-eyebrow--light">Goodbye Data Entry</pre>
+        <h2 class="t-white">Hello Copper.</br>Try it free!</h2>
+        <p style="max-width: 420px;">No credit card required. Start your 14-day free trial today.</p>
+        <div class="c-hero__buttons">
+          <a class="c-button" href="/demos">Request Demo</a>
+          <a class="c-button c-button--outline sendUTMsToAmplitude" href="{{ craft.app.config.general.signUpUrl }}">Try Free</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

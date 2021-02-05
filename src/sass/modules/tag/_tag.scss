@@ -1,0 +1,11 @@
+.tag{
+  @at-root{
+    #{&}--new{
+      background-color: $color-hot-pink;
+      margin-left: 3px;
+      padding: 3px 6px;
+      color: white;
+      font-size: 11px;
+    }
+  }
+}

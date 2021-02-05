@@ -1,0 +1,193 @@
+.l-demo-thumbnails{
+  padding: 170px 0;
+
+  h2{
+    margin-bottom: 40px;
+  }
+
+  .container{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+
+    .row{
+      .col-md-4{ 
+      margin-bottom: 40px; }
+    }
+  }
+  ul {
+    list-style: none;
+    padding-left: 20px;
+    li {
+      font-size: 20px;
+      max-width: 400px;
+      line-height: 30px;
+      margin: 10px 0px;
+      &:before {
+        content: "•"; 
+        color: $color-hot-pink;
+        display: inline-block; 
+        width: 24px;
+        margin-left: -24px;
+        font-size: 1.2em;
+        position: relative;
+        top: 1px;
+      }
+    }
+  }
+}
+
+
+.c-card__entry.c-card__entry--demo{
+  &:hover{
+    .c-button.c-button--white.c-button--circle{
+      background-color: $color-hot-pink;
+      border: 1px solid $color-hot-pink;
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+
+  .c-card__default__image.thumbnail{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 272px;
+  }
+}
+
+.c-gate-form.c-gate-form--demo{
+  z-index: 0;
+  padding: $global-mobile-padding;
+  @include media-breakpoint-up(lg) {
+    padding: $global-desktop-padding;
+  }
+
+  .container{
+    padding-top: 60px;
+    @include media-breakpoint-down(md) {
+      padding-top: 0;
+    }
+  }
+
+  .c-gate-form--header{
+    margin-bottom: 60px;
+  }
+
+  .c-gate-form__form{
+    min-height: 717px;
+  }
+
+  .c-gate-form__img{
+    display: flex;
+    top: 55px;
+
+    img{
+      position: absolute;
+      right: -90px;
+      max-height: 600px;
+    }
+  }
+  .c-gate-form__confirmation-img{
+    display: flex;
+
+    img{
+      position: absolute;
+      right: -60px;
+      max-height: 700px;
+    }
+  }
+  .c-gate-form--card{
+    display:flex; 
+    flex-direction:column; 
+    align-items: flex-start;
+    padding: 65px;
+
+    .c-eyebrow{
+      padding-top: 15px;
+    }
+
+    .p-sm{
+      color: $color-graphite;
+    }
+
+    .c-button {
+      align-self: flex-start;
+    }
+    img{
+      align-self: center;
+      max-width: 100%;
+    }
+  }
+
+  .c-form.c-form__in-line{
+    box-shadow: none;
+  
+    .h-gdpr{
+      bottom: 0;
+      font-size: 13px;
+      position: unset;
+      margin-top: 5px;
+    }
+  
+    form{
+      padding: 0 !important;
+       #prosperWorks101Date{
+        display: none;
+      }
+      label[for="prosperWorks101Date"]
+      {
+        display:none;
+      }
+  
+      .mktoButtonWrap{
+        margin-top: 20px;
+      }
+    }
+  }
+  
+
+}
+
+#choose-wbeinar-option2{
+  .c-image{
+    max-height: 600px;
+    bottom: 0;
+    top: unset;
+  }
+}
+
+.c-overlay{
+  position: relative;
+
+  .c-overlay__title{ 
+    position: absolute;
+    top: 11%;
+    bottom: 0;
+    left: 6%;
+    right: 12%;
+    h3{
+      margin-bottom: 8%;
+    }
+
+    .c-button{
+      padding: 4% 11%;
+    }
+  }
+
+  .c-overlay__tag-line{
+    position: absolute;
+    bottom: 5%;
+    left: 6%;
+    right: 60%;
+    p {
+      margin: 0;
+    }
+  }
+
+
+}
+
+.wistia_click_to_play{
+  width: 100% !important;
+}

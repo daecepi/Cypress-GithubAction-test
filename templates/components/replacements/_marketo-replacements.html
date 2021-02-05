@@ -1,0 +1,326 @@
+{% macro errorList(errors) %}
+{% if errors %}
+    <ul class="errors">
+        {% for error in errors %}
+            <li>{{ error }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+{% endmacro %}
+
+{% macro htmlReplacement(formId, submitType, slug) %}
+
+{% from _self import errorList %}
+
+<form id="{{formId}}" method="post" action="" accept-charset="UTF-8" class="mktoForm mktoHasWidth mktoLayoutLeft">
+
+<style type="text/css">.mktoForm .mktoButtonWrap.mktoSimple .mktoButton {
+  color:#fff;
+  border:1px solid #75ae4c;
+  padding:0.4em 1em;
+  font-size:1em;
+  background-color:#99c47c;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#99c47c), to(#75ae4c));
+  background-image: -webkit-linear-gradient(top, #99c47c, #75ae4c);
+  background-image: -moz-linear-gradient(top, #99c47c, #75ae4c);
+  background-image: linear-gradient(to bottom, #99c47c, #75ae4c);
+  }
+  .mktoForm .mktoButtonWrap.mktoSimple .mktoButton:hover {
+  border:1px solid #447f19;
+  }
+  .mktoForm .mktoButtonWrap.mktoSimple .mktoButton:focus {
+  outline:none;
+  border:1px solid #447f19;
+  }
+  .mktoForm .mktoButtonWrap.mktoSimple .mktoButton:active{
+  background-color:#75ae4c;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#75ae4c), to(#99c47c));
+  background-image: -webkit-linear-gradient(top, #75ae4c, #99c47c);
+  background-image: -moz-linear-gradient(top, #75ae4c, #99c47c);
+  background-image: linear-gradient(to bottom, #75ae4c, #99c47c);
+  }
+  </style>
+    {{ csrfInput() }}
+    {# Default send to plugin action #}
+    <input type="hidden" name="action" value="contact-form/send">
+
+    <input id="subject" type="hidden" name="subject" value="New lead captured while marketo was offline">
+    {{ message is defined and message ? errorList(message.getErrors('subject')) }}
+
+    {# Page saving saving #}
+    <input id="page-origin-field" type="hidden" name="message[PageOrigin]" value="Copper.com/{{slug}}">
+
+    {# Utm hidden fields #}
+    <input id="utm-source-field" type="hidden" name="message[UtmSource]" value="Not defined">
+    <input id="utm-term-field" type="hidden" name="message[UtmTerm]" value="Not defined">
+    <input id="utm-adgroup-field" type="hidden" name="message[UtmAdgroup]" value="Not defined">
+    <input id="utm-medium-field" type="hidden" name="message[UtmMedium]" value="Not defined">
+    <input id="utm-campaign-field" type="hidden" name="message[UtmCampaign]" value="Not defined">
+
+    <div class="mktoFormRow">
+      <div class="mktoFieldDescriptor mktoFormCol" style="margin-bottom: 10px;">
+        <div class="mktoOffset" style="width: 10px;"></div>
+        <div class="mktoFieldWrap mktoRequiredField"><label for="FirstName" id="LblFirstName" class="mktoLabel mktoHasWidth" style="width: 250px;">
+          <div class="mktoAsterix">*</div>First Name</label>
+          <div class="mktoGutter mktoHasWidth" style="width: 10px;"></div>
+          <input id="FirstName" name="fromName" placeholder="John" maxlength="255" aria-describedby="ValidMsgFirstName" aria-labelledby="LblFirstName InstructFirstName" type="text" class="mktoField mktoTextField mktoHasWidth mktoRequired" aria-required="true" style="width: 250px;">
+          <span id="InstructFirstName" tabindex="-1" class="mktoInstruction">
+            {{ message is defined and message ? errorList(message.getErrors('fromName')) }}
+          </span>
+          <div class="mktoClear"></div>
+        </div>
+        <div class="mktoClear"></div>
+      </div>
+      <div class="mktoClear"></div>
+    </div>
+    <div class="mktoFormRow">
+      <div class="mktoFieldDescriptor mktoFormCol" style="margin-bottom: 10px;">
+        <div class="mktoOffset" style="width: 10px;"></div>
+        <div class="mktoFieldWrap mktoRequiredField">
+          <label for="LastName" id="LblLastName" class="mktoLabel mktoHasWidth" style="width: 250px;"><div class="mktoAsterix">*</div>Last Name</label>
+          <div class="mktoGutter mktoHasWidth" style="width: 10px;"></div>
+          <input id="LastName" name="message[LastName]" placeholder="Doe" maxlength="255" aria-describedby="ValidMsgLastName" aria-labelledby="LblLastName InstructLastName" type="text" class="mktoField mktoTextField mktoHasWidth mktoRequired" aria-required="true" style="width: 250px;">
+          <span id="InstructLastName" tabindex="-1" class="mktoInstruction"></span><div class="mktoClear"></div>
+        </div>
+        <div class="mktoClear"></div>
+      </div>
+      <div class="mktoClear"></div>
+    </div>
+
+
+  <div class="mktoFormRow">
+    <div class="mktoFieldDescriptor mktoFormCol" style="margin-bottom: 10px;">
+      <div class="mktoOffset" style="width: 10px;"></div><div class="mktoFieldWrap mktoRequiredField">
+        <label for="email" id="LblEmail" class="mktoLabel mktoHasWidth" style="width: 250px;">
+          <div class="mktoAsterix">*</div>Work Email</label><div class="mktoGutter mktoHasWidth" style="width: 10px;">
+          </div>
+          <input id="email" name="fromEmail" placeholder="example@email.com" maxlength="255" aria-describedby="ValidMsgEmail" aria-labelledby="LblEmail InstructEmail" type="email" class="mktoField mktoEmailField mktoHasWidth mktoRequired mktoValid" aria-required="true" style="width: 250px;" aria-invalid="false">
+          <span id="InstructEmail" tabindex="-1" class="mktoInstruction">{{ message is defined and message ? errorList(message.getErrors('fromEmail')) }}</span>
+          <div class="mktoClear"></div>
+        </div><div class="mktoClear"></div>
+      </div><div class="mktoClear"></div>
+    </div>
+
+    <div class="mktoFormRow">
+      <div class="mktoFieldDescriptor mktoFormCol" style="margin-bottom: 10px;">
+        <div class="mktoOffset" style="width: 10px;"></div>
+        <div class="mktoFieldWrap mktoRequiredField">
+          <label for="Phone" id="LblPhone" class="mktoLabel mktoHasWidth" style="width: 250px;"><div class="mktoAsterix">*</div>Phone Number</label>
+          <div class="mktoGutter mktoHasWidth" style="width: 10px;"></div>
+          <input id="Phone" name="message[Phone]" placeholder="(555) 555-5555" maxlength="255" aria-describedby="ValidMsgPhone" aria-labelledby="LblPhone InstructPhone" type="tel" class="mktoField mktoTelField mktoHasWidth mktoRequired" aria-required="true" style="width: 250px;">
+          <span id="InstructPhone" tabindex="-1" class="mktoInstruction"></span>
+          <div class="mktoClear"></div>
+        </div>
+        <div class="mktoClear"></div>
+      </div>
+      <div class="mktoClear"></div>
+    </div>
+
+    <div class="mktoFormRow">
+      <div class="mktoFieldDescriptor mktoFormCol" style="margin-bottom: 10px;">
+        <div class="mktoOffset" style="width: 10px;"></div>
+        <div class="mktoFieldWrap mktoRequiredField">
+          <label for="Company" id="LblCompany" class="mktoLabel mktoHasWidth" style="width: 100px;"><div class="mktoAsterix">*</div>Company Name</label>
+          <div class="mktoGutter mktoHasWidth" style="width: 10px;"></div>
+          <input id="Company" name="message[Company]" placeholder="Your Company Name" maxlength="255" aria-describedby="ValidMsgCompany" aria-labelledby="LblCompany InstructCompany" type="text" class="mktoField mktoTextField mktoHasWidth mktoRequired" aria-required="true" style="width: 150px;">
+          <span id="InstructCompany" tabindex="-1" class="mktoInstruction"></span>
+          <div class="mktoClear"></div>
+        </div><div class="mktoClear"></div>
+      </div><div class="mktoClear"></div>
+    </div>
+
+
+    <div class="mktoFormRow">
+      <div class="mktoFieldDescriptor mktoFormCol" style="margin-bottom: 10px;">
+        <div class="mktoOffset" style="width: 10px;"></div>
+        <div class="mktoFieldWrap mktoRequiredField">
+          <label for="companySize" id="LblcompanySize" class="mktoLabel mktoHasWidth" style="width: 250px;"><div class="mktoAsterix">*</div>Company Size</label>
+          <div class="mktoGutter mktoHasWidth" style="width: 10px;"></div>
+          <select id="companySize" name="message[CompanySize]" title="Company Size*" aria-describedby="ValidMsgcompanySize" aria-labelledby="LblcompanySize InstructcompanySize" class="mktoField mktoHasWidth mktoRequired" aria-required="true" style="width: 150px;">
+            <option value="">Select Your Company Size</option>
+            <option value="1">1</option>
+            <option value="2-5">2-5</option>
+            <option value="6-20">6-20</option>
+            <option value="21-50">21-50</option>
+            <option value="51-100">51-100</option>
+            <option value="101-500">101-500</option>
+            <option value="500+">500+</option>
+          </select>
+          <span id="InstructcompanySize" tabindex="-1" class="mktoInstruction">Company Size*</span>
+          <div class="mktoClear"></div>
+        </div>
+        <div class="mktoClear"></div>
+      </div>
+      <div class="mktoClear"></div>
+    </div>
+
+    <input type="hidden" rows="10" cols="40" id="message" name="message[body]">{{ 'New Submission.' }}</input> {# message.message ??  #}
+
+    <div class="mktoButtonRow">
+      <span class="mktoButtonWrap mktoSimple" style="margin-left: 120px;">
+        <button type="submit" class="mktoButton">See Demo</button>
+      </span>
+    </div>
+    {#<input type="submit" value="Send">#}
+</form>
+{% endmacro %}
+
+{% macro lightScriptReplacement(formId, staticAssetsVersion, variation, tempId, tempId2) %}
+      LazyLoad.js([
+      'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js',
+      '/js/vendor/js-cookie.js',
+      '/js/functions.min.{{ staticAssetsVersion }}.js'
+      ],function(){
+
+        if($(".loading-cover").length){
+          $(".loading-cover").each(function () {
+            var loadingElement = $(this);
+            loadingElement.css('display', 'none');
+          });
+        }
+
+        if($("#email-finder-submit").length){
+          $("#email-finder-submit").attr("disabled", false);
+        }
+
+        var localSndDomain = '.copper.com';
+
+        if(Cookies.get('utm_source', { domain:  localSndDomain }) !== undefined) $('#utm-source-field').val(Cookies.get('utm_source', { domain:  localSndDomain }));
+        if(Cookies.get('utm_term', { domain:  localSndDomain }) !== undefined) $('#utm-term-field').val(Cookies.get('utm_term', { domain:  localSndDomain }));
+        if(Cookies.get('utm_adgroup', { domain:  localSndDomain }) !== undefined) $('#utm-adgroup-field').val(Cookies.get('utm_adgroup', { domain:  localSndDomain }));
+        if(Cookies.get('utm_medium', { domain:  localSndDomain }) !== undefined) $('#utm-medium-field').val(Cookies.get('utm_medium', { domain:  localSndDomain }));
+        if(Cookies.get('utm_campaign', { domain:  localSndDomain }) !== undefined) $('#utm-campaign-field').val(Cookies.get('utm_campaign', { domain:  localSndDomain }));
+      });
+      
+      $('#{{formId}}').on('submit', function(e){
+        e.preventDefault();
+
+        // Send it to the server
+        $.post({
+            url: '/',
+            dataType: 'json',
+            data: $(this).serialize(),
+            success: function(response) {
+                if (response.success) {
+                    $('#thanks').fadeIn();
+                } else {
+                    // response.error will be an object containing any validation errors that occurred, indexed by field name
+                    // e.g. response.error.fromName => ['From Name is required']
+                    alert('An error occurred. Please try again.');
+                }
+            }
+        });
+
+        $('#{{formId}}').css('display', 'none');
+        
+        var formSubmitted = {FirstName: $('input#fromEmail').val(), LastName: $('input#LastName').val(), Phone: $('input#Phone').val(), Email: $('input#email').val(), Company: $('input#Company').val(), CompanySize: $('select#companySize').val() };
+        
+        {% if variation == "GA" %}
+          ga('send', 'event', 'Get Demo', 'FormFill', '2164');
+          shDisplayVariationMessage($('#{{formId}}'));
+        {% elseif variation == "ResourcesVariation" %}
+          if (formSubmitted !== ""){
+            // Use the entry id so its unique to that entry not just the form
+            Cookies.set('form_gate_{{formId}}', true, { domain:  sndleveldomain }, 14);
+            {% switch tempId %}
+              {% case 'eBook' %}
+                // Reload so ebook chapter tracker can load properly
+                location.reload();
+              {% case 'webinars' %}
+                // Reload so ebook chapter tracker can load properly
+                location.reload();
+              {% case 'webinarSpecial' %}
+                {% if tempId2 %}
+                  form.getFormElem().css({
+                    "display": "none"
+                  });
+                  $(".js-form-success").css({
+                    "display": "block"
+                  });
+                {% else %}
+                  location.reload();
+                {% endif %}                                
+              {% case 'download' %}
+                form.getFormElem().css({
+                  "display": "none"
+                });
+                $(".js-form-success").css({
+                  "display": "block"
+                });
+                window.open('/', '_blank');
+              {% case 'register' %}
+                form.getFormElem().css({
+                  "display": "none"
+                });
+                $(".js-form-success").css({
+                  "display": "block"
+                });                           
+            {% endswitch %}
+          }
+          function runCapterra() {
+            var capterra_vkey = 'bdf9d93f2565930e2fb6cb6b3c348d8c',
+              capterra_vid = '2100282',
+              capterra_prefix = (('https:' == document.location.protocol) ? 'https://ct.capterra.com' : 'http://ct.capterra.com'); 
+              var ct = document.createElement('script');
+              ct.type = 'text/javascript';
+              ct.async = true;
+              ct.src = capterra_prefix + '/capterra_tracker.js?vid=' + capterra_vid + '&vkey=' + capterra_vkey; var s = document.getElementsByTagName('script')[0];
+              s.parentNode.insertBefore(ct, s); 
+          };
+          runCapterra();
+        {% elseif variation == "SyncedHero" %}
+          var name = `${formSubmitted['FirstName']} ${formSubmitted['LastName']}`;
+          //window.location.hash = '#thank-you';
+          
+          intercomCallUpdate(formSubmitted.Email, name);
+          ga('send', 'event', 'Get Demo', 'FormFill', '{{ formId ? formId : 2164 }}');
+          //return false to prevent the submission handler from taking the lead to the follow up url.
+    
+          shDisplayVariationMessage(formSubmitted);
+        {% elseif variation == "VAL" %}
+          Cookies.set('demo_gate_form', JSON.stringify(formSubmitted), { domain:  sndleveldomain });
+          if(!skipOptionPage){
+            switch (formSubmitted.companySize){
+              case '1':
+              case '2-5':
+                $("#choose-webinar-section1").addClass('d-none');
+                $("#choose-webinar-option1").removeClass('d-none');
+                viewDemosPage()
+                break;
+              //  case '2-5':
+              //    $("#choose-webinar-section1").addClass('d-none');
+              //    $("#choose-webinar-section2").removeClass('d-none');
+              //    $("#choose-webinar-confrimation-medium").removeClass('d-none');
+              //    break;
+              default:
+                $("#choose-webinar-section1").addClass('d-none');
+                $("#choose-webinar-section2").addClass('d-none');
+                $("#choose-webinar-confrimation-large").removeClass('d-none');
+                $("#choose-webinar-confrimation").removeClass('d-none');
+            }
+          } else {
+            $("#choose-webinar-section1").addClass('d-none');
+            $("#choose-webinar-option1").removeClass('d-none');
+          }
+          runCapterra(); 
+        {% elseif variation == "JH" %}
+          $(".js-form-success").css({
+            "display": "block"
+          });
+          $(".js-form-success").addClass('h-demo-success');
+        {% elseif variation == "HeroMarketoForm" %}
+          element.toggleClass('m-fade-in');
+          element.removeClass('invisible-start');
+
+            {% if pageHeroSynced is defined and pageHeroSynced %}
+              $('#c-form--default-hero').css('background', 'transparent').css('box-shadow', 'none');
+              $('#c-thank-you-message--default-hero').css('color', 'white');
+              $('#c-thank-you-message--default-hero>h3, #c-thank-you-message--default-hero>h4, #c-thank-you-message--default-hero>p').css('color', 'white');
+            {% endif %}
+          {% elseif variation == "Partners" %}
+          document.location.hash = "#success";
+          {% elseif variation == "JHShort" %}
+          $(".c-form-blog").addClass('h-form-success');
+        {% endif %}
+      });
+{% endmacro %}

@@ -1,0 +1,10 @@
+{
+  "title": "BAM Style guide",
+  "source": "src/sass/",
+  "destination": "docs/",
+  "builder": "node_modules/michelangelo/kss_styleguide/custom-template/",
+  "css": [
+    "bam-assets/css/styles.css"
+  ],
+  "js":"bam-assets/app.min.js"
+}

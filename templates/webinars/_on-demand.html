@@ -1,0 +1,196 @@
+<div class="c-webinar-form {{ entry.specialStyle is defined and entry.specialStyle == "inspirationSeries" ? "inspiration-series-transform" : "" }}" id="c-webinar-gate">
+  {% set image = entry.featuredImage.one() %}
+  <div class="c-resource--header">
+    {% if image %}
+    {% if entry.type == 'blog' or entry.type == 'blogBuilder' %}
+    <img src="{{ image.url }}" alt="{{ entry.title }}" class="c-resource--header__background-image">
+    {% else %}
+    <img src="{{ image.url }}" alt="{{ entry.title }}"
+      class="c-resource--header__background-image c-resource--header__background-image--fullscreen">
+    {% endif %}
+    {% endif %}
+  </div>
+
+  {% include 'sections/resources/_form.html' %}
+</div>
+
+<div class="c-webinar padding-top d-none" id="c-webinar">
+  <section class="c-webinar-video">
+    <div class="container">
+      
+      {% if entry.embeddedVideo is not null and entry.embeddedVideo|length > 0 %}
+        <div class="c-video">
+          {{ entry.embeddedVideo|raw }}
+        </div>
+      {% else %}
+        <div class="col-md-12 t-center">
+          <h1>Webinar still not available</h1>
+          {% if entry.releaseDate is not null %}
+            <p>Publish time: {{ entry.releaseDate|datetime('short') }}</p>
+          {% else %}
+            <p>Soon the video will be available to watch.</p>
+          {% endif %}
+          
+        </div>
+      {% endif %}
+    </div>
+  </section>
+
+  <section class="c-webinar-content h-section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 bottom-margin-mobile">
+          <p class="c-webinar-content__related-resources">Related Resources</p>
+          <div class="c-webinar-content__related-list">
+            {% for entry in entry.relatedResource.all() %}
+            <a href="{{ entry.url }}">{{ entry.title }}</a>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="col-md-8">
+          <h3>{{ entry.title }}</h3>
+          <p>{{ entry.description }}</p>
+          <div class="c-webinar-hosts extra-top-margin--small ">
+
+            <h3>Hosted By:</h3>
+            <div class="d-flex flex-wrap">
+              {% if entry.featuredAuthors.all()|length > 0 %}
+                {% for user in entry.featuredAuthors.all() %}
+                  <div class="c-author__detail">
+                    {% if user.photo is null %}
+                    <div class="circle-img c-author__img background-{{(user.id%2) +1}}">
+                      <span class="c-author__img--alt">{{ user.firstName|first }}</span>
+                    </div>
+                    {% else %}
+                    <div class="circle-img c-author__img" style="background-image:url('{{ user.photo.url }}')"></div>
+                    {% endif %}
+                    <div class="c-author__meta c-author__meta--detail">
+                      <p class="p-sm"><strong>{{ user.name }}</strong></p>
+                      <p class="p-sm">{{ user.authorTitle }}</p>
+                    </div>
+                  </div>
+                {% endfor %}
+              {% else %}
+                <div class="c-author__detail">
+                  {% if finalDefaultAuthorInfo.photo is null %}
+                  <div class="circle-img c-author__img background-{{(finalDefaultAuthorInfo.id%2) +1}}">
+                    <span class="c-author__img--alt">{{ finalDefaultAuthorInfo.firstName|first }}</span>
+                  </div>
+                  {% else %}
+                  <div class="circle-img c-author__img" style="background-image:url('{{ finalDefaultAuthorInfo.photo.url }}')"></div>
+                  {% endif %}
+                  <div class="c-author__meta c-author__meta--detail">
+                    <p class="p-sm"><strong>{{ finalDefaultAuthorInfo.name }}</strong></p>
+                    <p class="p-sm">{{ finalDefaultAuthorInfo.jobTitle }}</p>
+                  </div>
+                </div>
+              {% endif %}
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% if entry.embeddedVideo is not null and entry.embeddedVideo|length > 0 %}
+  {% import "logic-lifter/_schema-lib.html" as schemaLib %} 
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "VideoObject",
+      "name": "{{ entry.title }}",
+      "description": " {% if entry.seoDescription|length > 0 %} {{ entry.seoDescription|striptags|slice(0, 60)}} {% else %} {{entry.title}} {% endif %}",
+      "thumbnailUrl": [
+      {% if webinar.featuredImage.one() is defined %}
+        {% set image = entry.featuredImage.one() %}
+      {% endif %}
+      {% if image %}
+        {{ schemaLib.resizedImagesForSchemas(image) }}
+      {% else %}
+        {% set defaultImage = craft.image().loadImage('imgs/copper-icon-pink.png') %}
+        {{ schemaLib.resizedImagesForSchemas(defaultImage) }}
+      {% endif %}
+      ],
+      "duration": {{ schemaLib.obtainDurationWebinars(entry.duration) }},
+      "uploadDate": "{{ entry.postDate.iso8601 }}",
+      "interactionStatistic": {
+        "@type": "InteractionCounter",
+        "interactionType": { "@type": "http://schema.org/WatchAction" },
+        "userInteractionCount": 5647018
+      }
+    }
+    // un required properties for the video object
+      //"contentUrl": "https://www.example.com/video/123/file.mp4",
+      //"embedUrl": "https://www.example.com/embed/123",
+    </script>
+{% endif %}
+
+  <!-- Related Posts -->
+  <section class="c-blog__entries h-section-padding">
+    <div class="container">
+      <h2 class="text-center">Recent Webinars</h2>
+      <div class="row extra-top-margin--small">
+        {% for webinar in craft.entries({ section: 'webinars', limit: 3 }) %}
+        <div class="col-md-4">
+          <div class="c-card__entry extended-card">
+            <a class="c-card__clickthrough" href="{{ webinar.url }}"></a>
+            {% if webinar.featuredImage.one() is defined %}
+            {% set image = webinar.featuredImage.one() %}
+            {% endif %}
+            {% if image %}
+            <img class="c-card__default__image" src="{{ image.url }}" alt="{{ entry.title }}" />
+            {% else %}
+            <picture>
+          <source type="image/webp" srcset="/imgs/industry/industry-agency-blog-01@2x.webp"  class="c-card__default__image"   alt="Industry agency blog image" />
+          <source type="image/png" srcset="/imgs/industry/industry-agency-blog-01@2x.jpg"  class="c-card__default__image"   alt="Industry agency blog image" />
+          <img   class="c-card__default__image"   src="/imgs/industry/industry-agency-blog-01@2x.jpg"   alt="Industry agency blog image" / >
+</picture>
+            {% endif %}
+            <div class="c-card__entry__content">
+              <span class="t-eyebrow t-special-eyebrow t-special-eyebrow--lt-purple">{{webinar.releaseDate is not null and webinar.releaseDate >= now|date ? 'Upcoming webinar' : 'Video' }}</span><br />
+              <h4 class="c-card__entry-title">
+                <a class="underline_from_lefsettt" href="{{webinar.url}}">{{ webinar.title }}</a>
+              </h4>
+              <p class="p-sm">{{ webinar.description }}</p>
+            </div>
+            <div class="c-card__meta">
+              <a class="t-link" href="{{ webinar.url }}">Watch Now</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  {% include 'sections/final-plea.html' %}
+</div>
+
+<script>
+  LazyLoad.js(['https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js','/js/vendor/js-cookie.js','/js/functions.min.{{ staticAssetsVersion }}.js'],function(){
+  
+    $('footer, .c-footer__legal').addClass('d-none');
+
+    // Use the entry id so its unique to that entry not just the form
+    var getUserInfo = Cookies.get('form_gate_{{entry.id}}', {
+      domain: sndleveldomain
+    });
+    if (getUserInfo) {
+      $("#c-webinar-gate").addClass('d-none');
+      $("#c-webinar").removeClass('d-none');
+      $('.c-footer--simple').removeClass('d-none');
+      $('.c-footer__legal').removeClass('d-none');
+    } else {
+      $('.c-footer--simple').removeClass('d-none');
+    }
+  
+  $(window).on('beforeunload', function() {
+    $("body").fadeOut("fast");
+    $('html, body').animate( { scrollTop : 0 }, 300 );
+
+    
+
+  });
+})
+</script>

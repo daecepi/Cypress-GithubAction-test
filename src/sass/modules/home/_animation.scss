@@ -1,0 +1,121 @@
+.c-hero--split--animation{
+
+  @include media-breakpoint-up(md) {
+    &:after {
+      left: -55%;
+    }
+    &.to-the-left:after{
+      transform: translateX(100%);
+      transition: transform $hero--split;
+      transition-delay: $eggplant-block-transition-delay;
+    }
+    &.no-transition:after{
+      transform: translateX(100%);
+      transition: none;
+    }
+  }
+
+  .c-eyebrow.c-eyebrow--light, h1, p, .c-hero__buttons {
+    transform: translateY(20px);
+    color: transparent;
+  }
+
+  .c-hero__buttons > .c-button--white,
+  .c-hero__buttons > .c-button--white-outline {
+	  color: transparent;
+    background: transparent;
+    border-color: transparent;
+    box-shadow: none;
+    &:hover {
+	    box-shadow: 0 6px 20px 0 rgba(0,0,0,0.2);
+	    background: tint($color-hot-pink, 10%);
+		  border-color: tint($color-hot-pink, 10%);
+		  color: $color-white;
+    }
+  }
+
+  $text-transition: .5s;
+
+  .c-eyebrow.c-eyebrow--light{
+    @include transition(all $text-transition);
+    transition-delay: 1s;
+  }
+
+  h1{
+    @include transition(all $text-transition);
+    transition-delay: 1.1s;
+  }
+  p{
+    @include transition(all $text-transition);
+    transition-delay: 1.2s;
+  }
+  .c-hero__buttons, .c-hero__buttons > .c-button--white, .c-hero__buttons > .c-button--white-outline {
+    @include transition(all $text-transition);
+    transition-delay: 1.3s;
+  }
+  &.to-the-left{
+
+    .c-eyebrow.c-eyebrow--light, h1, p, .c-hero__buttons {
+      transform: translateY(0);
+      color: #FFF;
+    }
+
+    .c-hero__buttons > .c-button--white {
+	    color: $color-hot-pink;
+      background: $color-white;
+      border-color: $color-white;
+      box-shadow: 0 6px 20px 0 rgba(0,0,0,0.2);
+      &:hover {
+	      box-shadow: 0 6px 20px 0 rgba(0,0,0,0.2);
+		    background: tint($color-hot-pink, 10%);
+		    border-color: tint($color-hot-pink, 10%);
+		    color: $color-white;
+	    }
+    }
+    .c-hero__buttons > .c-button--white-outline {
+	    color: $color-white;
+      border-color: $color-white;
+      &:hover {
+	      box-shadow: 0 6px 20px 0 rgba(0,0,0,0.2);
+		    background: tint($color-hot-pink, 10%);
+		    border-color: tint($color-hot-pink, 10%);
+		    color: $color-white;
+	    }
+    }
+  }
+  &.no-transition{
+    .c-eyebrow.c-eyebrow--light, h1, p, .c-hero__buttons, .c-hero__buttons > .c-button--white, .c-hero__buttons > .c-button--white-outline {
+    	transition:none;
+    }
+
+    .c-eyebrow.c-eyebrow--light, h1, p, .c-hero__buttons {
+      transform: translateY(0);
+      color: #FFF;
+    }
+
+    .c-hero__buttons > .c-button--white {
+	    color: $color-hot-pink;
+      background: $color-white;
+      border-color: $color-white;
+      box-shadow: 0 6px 20px 0 rgba(0,0,0,0.2);
+      transition: all ease-in-out 0.2s;
+      &:hover {
+	      box-shadow: 0 6px 20px 0 rgba(0,0,0,0.2);
+		    background: tint($color-hot-pink, 10%);
+		    border-color: tint($color-hot-pink, 10%);
+		    color: $color-white;
+	    }
+    }
+    .c-hero__buttons > .c-button--white-outline {
+	    color: $color-white;
+	    border-color: $color-white;
+	    transition: all ease-in-out 0.2s;
+	    &:hover {
+		    box-shadow: 0 6px 20px 0 rgba(0,0,0,0.2);
+		    background: tint($color-hot-pink, 10%);
+		    border-color: tint($color-hot-pink, 10%);
+		    color: $color-white;
+	    }
+    }
+  }
+}

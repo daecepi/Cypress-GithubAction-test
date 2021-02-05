@@ -1,0 +1,61 @@
+{% extends "_top-nav.html" %} 
+
+{% block topNav %}
+<!-- Hero -->
+<!-- Customers block -->
+<section class="c-cols extra-top-margin--small">
+    <div class="container">
+      <div class="row d-flex">
+        <div class="col-md-6 offset-md-1 order-2">
+          <div class="c-image c-image--center" style="margin: 0;">
+              <div class="c-form">
+                  {% import "/components/replacements/_marketo-replacements.html" as localLeadReplacements %}
+                  {% if marketoConfigurations.replaceMarketoForms %}
+                    {{ localLeadReplacements.htmlReplacement("mktoForm_1285", 'Lead', entry.slug) }}
+                  {% else %}
+                  <form id="mktoForm_1285"></form>
+                  {% endif %}
+                  <script>
+                     LazyLoad.js(['https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'],function(){
+                      {% if marketoConfigurations.replaceMarketoForms %}
+                        {{ localLeadReplacements.lightScriptReplacement("mktoForm_1285", staticAssetsVersion, "JH", true, true) }}
+                      {% else %}
+                        MktoForms2.loadForm("//app-sj17.marketo.com", "763-DVL-293", 1285, function(form) {
+                          form.onSuccess(function(x, y) {
+                            form.getFormElem().css({
+                              "display": "none"
+                            });
+                            $(".js-form-success").css({
+                              "display": "block"
+                            });
+                            $(".js-form-success").addClass('h-demo-success');
+                            return false;
+                          });
+                        });
+                      {% endif %}
+                })
+                  </script>
+              
+                <div class="js-form-success">
+                  <h3 class="h3">Thanks! We'll be in touch shortly.</h3>
+                  <a class="c-button" data-dismiss="modal" aria-label="Close">Return to site</a>
+                </div>                
+              </div>
+          </div>
+        </div>
+        <div class="col-md-5 order-1">
+          <pre class="c-eyebrow">Partnership</pre>
+          <h2>Sign up today.</h2>
+          <p>Team work is everything. Join our partner program so we can work together and win together!</p>
+          <p>Still have questions? <a href="/contact">Contact us</a></p>
+          <picture>
+          <source type="image/webp" srcset="/imgs/partners/partners-IMG-03@2x.webp"    alt="Partners image" style="position: absolute; bottom: 0; width: 100%;" />
+          <source type="image/png" srcset="/imgs/partners/partners-IMG-03@2x.png"    alt="Partners image" style="position: absolute; bottom: 0; width: 100%;" />
+          <img     src="/imgs/partners/partners-IMG-03@2x.png"   alt="Partners image" style="position: absolute; bottom: 0; width: 100%;" / >
+</picture>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}

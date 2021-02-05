@@ -1,0 +1,83 @@
+{# Marketo script #}
+<script src="//app-sj17.marketo.com/js/forms2/js/forms2.min.js"></script>
+            
+<div id="c-form--default-hero" class="c-form c-form-mkto{{ matrixBlock.heroMarketoId ? matrixBlock.heroMarketoId : 2157 }}">
+  {# form element #}
+  {% import "/components/replacements/_marketo-replacements.html" as localLeadReplacements %}
+  {% if marketoConfigurations.replaceMarketoForms %}
+    {% set formId = "mktoForm_#{matrixBlock.heroMarketoId ? matrixBlock.heroMarketoId : 2157}" %}
+    {{ localLeadReplacements.htmlReplacement(formId, 'Lead', entry.slug) }}
+  {% else %}
+  {% include "components/graphics/_hero-loading.html" %}
+  <form id="mktoForm_{{ matrixBlock.heroMarketoId ? matrixBlock.heroMarketoId : 2157 }}" data-formId="{{ matrixBlock.heroMarketoId ? matrixBlock.heroMarketoId : 2157 }}" data-formInstance="two" >
+    {% if pageHeroSynced is defined and pageHeroSynced %}
+      <h4>Watch Demo<span class="t-hot-pink">.</span></h4>
+    {% elseif matrixBlock.marketoFormCopy|length %}
+      {{ matrixBlock.marketoFormCopy }}
+    {% endif %}
+  </form>
+  {% endif %}
+  <div id="c-thank-you-message--default-hero" class="invisible-start">
+    {% if matrixBlock.marketoThankYouMessage is not null and matrixBlock.marketoThankYouMessage|length > 0 %}
+      {{ matrixBlock.marketoThankYouMessage }}
+      {{matrixBlock.successVideoEmbedCode|raw}}
+    {% else %}
+      <h3>Thank you<span class="hot-pink t-hot-pink">.</span></h3>
+      <p class="p-sm">Someone from our team will be with you shortly</p>
+      {{matrixBlock.successVideoEmbedCode|raw}}
+    {% endif %}
+  </div>
+</div>
+
+
+{# Script that loads marketo form #}
+<script>
+   LazyLoad.js(['https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'],function(){
+  {% if pageHeroSynced %}
+    //$('.c-form-mkto{{ matrixBlock.heroMarketoId ? matrixBlock.heroMarketoId : 2157 }}').css('display', 'none');
+  {% endif %}
+
+
+    {% if marketoConfigurations.replaceMarketoForms %}
+    {% set formId = "mktoForm_#{matrixBlock.heroMarketoId ? matrixBlock.heroMarketoId : 2157}" %}
+      {{ localLeadReplacements.lightScriptReplacement(formId, staticAssetsVersion, "HeroMarketoForm", true, true) }}
+    {% else %}
+        MktoForms2.loadForm("https://app-sj17.marketo.com", "763-DVL-293", {{ matrixBlock.heroMarketoId ? matrixBlock.heroMarketoId : '2157' }} , function (form){
+          //Add an onSuccess handler
+          form.onSuccess(function(values, followUpUrl){
+            //get the form's jQuery element and hide it
+            form.getFormElem().hide();
+            $('#c-thank-you-message--default-hero').each( function (){
+              var element = $(this);
+
+              element.toggleClass('m-fade-in');
+              element.removeClass('invisible-start');
+
+              {% if pageHeroSynced is defined and pageHeroSynced %}
+                $('#c-form--default-hero').css('background', 'transparent').css('box-shadow', 'none');
+                $('#c-thank-you-message--default-hero').css('color', 'white');
+                $('#c-thank-you-message--default-hero>h3, #c-thank-you-message--default-hero>h4, #c-thank-you-message--default-hero>p').css('color', 'white');
+              {% endif %}
+            });
+            
+            ga('send', 'event', 'Get Demo', 'FormFill', '{{ matrixBlock.heroMarketoId ? matrixBlock.heroMarketoId : 2157 }}');
+
+            //return false to prevent the submission handler from taking the lead to the follow up url.
+            return false;
+          });
+        });
+      
+
+      MktoForms2.whenReady(function (form){
+        $( ".loading-cover" ).each( function () {
+          var loadingElement = $(this);
+          loadingElement.css('display', 'none');
+
+          {% if pageHeroSynced is defined and pageHeroSynced %}
+            $('.c-form-mkto{{ matrixBlock.heroMarketoId ? matrixBlock.heroMarketoId : 2157 }}').css('display', 'block');
+          {% endif %}
+        });
+      });
+    {% endif %}
+})
+</script>

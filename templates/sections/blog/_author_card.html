@@ -1,0 +1,25 @@
+<div class="c-author c-author--cickable">
+  <a class="c-card__clickthrough" href="/blog/authors/{{ author.username }}"></a>
+  {% if author.photo|length %}
+    {% set image = author.photo %}
+    <div class="circle-img c-author__img" style="background-image: url(' {{image.url}} ')"></div>
+  {% else %}
+    <div class="circle-img c-author__img background-{{(author.id%2) +1}}">
+      <span v-if="!entry.author.photo" class="c-author__img--alt">{{ author.name|first }}</span>
+    </div>
+  {% endif %}
+  <div class="c-author__meta-container">
+    <div class="c-author__meta">
+      <p class="p-sm  no-margin"><strong>{{ author.name }}</strong></p>
+      {% if author.authorTitle %}
+        <p class="p-sm  no-margin">{{ author.authorTitle }}</p>
+      {% else %}
+        <p class="p-sm  no-margin">Contributor</p>
+      {% endif %}
+    </div>
+    <div class="c-author__link">
+      <a class="t-link">See all articles</a>
+    </div>
+  </div>
+</div>
+

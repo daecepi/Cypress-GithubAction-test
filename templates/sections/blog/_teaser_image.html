@@ -1,0 +1,20 @@
+{% if entryTeaser.featuredImage | length %}
+
+  {% set featuredImage = "" %}
+  {% set img_transform = {
+    mode: 'crop',
+    width: 726,
+    height: 420,
+    position: 'center-center'
+  } %}
+  {% for asset in entryTeaser.featuredImage.all() %}
+    {% set featuredImage = asset.getUrl(img_transform) %}
+  {% endfor %}
+
+  <img class="c-blog-card__image" src="{{featuredImage}}" alt="{{entryTeaser.title}}">
+
+{% else %}
+
+  <div class="c-blog-card__image" style="background-image: url('/imgs/blog-logo.jpg');"></div>
+
+{% endif %}

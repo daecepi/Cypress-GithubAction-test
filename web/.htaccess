@@ -1,0 +1,144 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTP_USER_AGENT} "Fuzz Faster U Fool v0.11git" [NC]
+  RewriteRule .* - [F,L]
+</IfModule>
+# BEGIN EXPIRES
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresDefault "access plus 10 days"
+    ExpiresByType text/css "access plus 1 week"
+    ExpiresByType text/plain "access plus 1 month"
+    ExpiresByType application/x-javascript "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 week"
+    ExpiresByType application/x-icon "access plus 1 year"
+</IfModule>
+# END EXPIRES
+
+#Basic AUTH For staging excluding graph api
+<If "%{HTTP_HOST} == 'copper-staging.frb.io'">
+    SetEnvIfNoCase Request_URI "/graph" noauth
+
+    Authtype Basic
+    AuthName "Login"
+    AuthUserFile /srv/app/copper-staging/htdocs/web/.htpasswd
+    Require user qa
+
+    Order Deny,Allow
+    Deny from all
+    Allow from env=noauth
+
+    Satisfy any
+</If>
+
+### Set Cookies on ProsperWorks.com ###
+<FilesMatch "\cookie.js">
+    <IfModule mod_headers.c>
+        Header set Access-Control-Allow-Origin "prosperworks.com"
+    </IfModule>
+</FilesMatch>
+
+# -----
+# Remove trailing slash from URLs
+# -----
+<IfModule mod_rewrite.c>
+
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_URI} /(.*)/$
+  RewriteRule ^ /%1 [L,R=301]
+
+</IfModule>
+
+# -----
+# rewrite for www and https on production
+#
+<IfModule mod_rewrite.c>
+
+  RewriteEngine On
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Port} !=443
+  RewriteRule (.*) https://%{HTTP_HOST}/$1 [R=301,L] 
+
+</IfModule>
+
+   #### Redirect any press pages to main press page ####
+    RewriteRule ^about/press.*$  /press/ [R=301,L]
+
+### Tell server to read version string in asset ###
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^(.*?\/)*?([a-z\.\-]+)(\d+)\.(bmp|css|cur|gif|ico|jpe?g|js|png|svgz?|webp|webmanifest)$ $1$2$4 [L]
+</IfModule>
+
+# Example to cache images and CSS files
+<ifModule mod_headers.c>
+  #  images expire after 1 month
+  <filesMatch ".(gif|png|jpg|jpeg|ico|pdf|svg|js)$">
+    Header set Cache-Control "max-age=2592000"
+  </filesMatch>
+  # CSS expires after 1 day
+  <filesMatch ".(css)$">
+    Header set Cache-Control "max-age=86400"
+  </filesMatch>
+</ifModule>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    #Blog Redirects
+    Redirect 301 /blog/sales-subject-lines  https://copper.com/blog/sales-email-subject-lines
+    Redirect 301 /blog/sales-pitch-ideas  https://copper.com/blog/sales-pitch
+    Redirect 301 /blog/best-sales-pitch  https://copper.com/blog/sales-pitch
+    Redirect 301 /blog/sales-funnel  https://copper.com/blog/sales-funnel-management
+    Redirect 301 /blog/customer-retention-strategies  https://copper.com/blog/customer-retention
+
+    #Landings redirects
+    Redirect 301 /crm-best-practices-for-corp-dev-ebook  https://www.copper.com/resources/crm-best-practices-for-corp-dev-ebook
+    Redirect 301 /ideal-customer-profile-worksheet  https://www.copper.com/resources/ideal-customer-profile-worksheet
+    Redirect 301 /win-loss-checklist  https://www.copper.com/resources/win-loss-checklist
+    Redirect 301 /sales-pipeline-report-template  https://www.copper.com/resources/sales-pipeline-report-template
+    Redirect 301 /technology-crm-best-practices-ebook  https://www.copper.com/resources/technology-crm-best-practices-ebook
+    Redirect 301 /guide-to-maximizing-crm-roi-ebook  https://www.copper.com/resources/guide-to-maximizing-crm-roi-ebook
+    Redirect 301 /agency-crm-best-practices-ebook  https://www.copper.com/resources/agency-crm-best-practices-ebook
+    Redirect 301 /crm-benchmark-report-2018  https://www.copper.com/resources/crm-benchmark-report-2018
+    Redirect 301 /the-state-of-customer-management-in-the-relationship-era  https://www.copper.com/resources/the-state-of-customer-management-in-the-relationship-era
+    Redirect 301 /infographic_roi-survey_impact-of-crm-in-the-relationship-era  https://www.copper.com/resources/infographic_roi-survey_impact-of-crm-in-the-relationship-era
+    Redirect 301 /roi-survey_impact-of-crm-in-the-relationship-era_ebook  /resources/roi-survey_impact-of-crm-in-the-relationship-era_ebook
+    Redirect 301 /the-guide-to-team-selling-in-the-relationship-era  https://www.copper.com/resources/the-guide-to-team-selling-in-the-relationship-era
+    Redirect 301 /copper-101  https://www.copper.com/demos
+    Redirect 301 /zoho-alternative  https://www.copper.com/crm-comparison/zoho-alternative
+    Redirect 301 /insightly-alternative  https://www.copper.com/crm-comparison/insightly-alternative
+    Redirect 301 /salesforce-alternative https://www.copper.com/crm-comparison/salesforce-alternative
+    Redirect 301 /pipedrive-alternative  https://www.copper.com/crm-comparison/pipedrive-alternative
+    Redirect 301 /zendesk-sell-alternative  https://www.copper.com/crm-comparison/zendesk-sell-alternative
+    Redirect 301 /base-alternative  https://www.copper.com/crm-comparison/base-alternative
+    Redirect 301 /6-day-sales-email-boot-camp  https://www.copper.com/resources/6-day-sales-email-boot-camp
+
+    Redirect 301 /partners-sign-up  https://www.copper.com/partners/sign-up
+    Redirect 301 /5-ways-for-sales-to-prospect-more-effectively-webinar  https://www.copper.com/webinars/5-ways-for-sales-to-prospect-more-effectively
+    Redirect 301 /crm-for-real-estate-webinar  https://www.copper.com/webinars/a-real-estate-secret-weapon-crm
+    Redirect 301 /crm-for-agencies-webinar  https://www.copper.com/webinars/crm-best-practices-for-agencies
+    Redirect 301 /goodbye-scattered-deal-data-webinar  https://www.copper.com/webinars/hello-copper-goodbye-scattered-deal-data
+    Redirect 301 /maximize-your-crm-roi-webinar  https://www.copper.com/webinars/maximizing-your-crm-roi
+    Redirect 301 /copper-and-zendesk-webinar https://www.copper.com/webinars/smoothing-out-the-customer-journey-with-copper-zendesk
+    Redirect 301 /7-habits-reps-need-to-crush-their-quota-webinar  https://www.copper.com/webinars/the-7-habits-reps-need-to-crush-their-quota
+    Redirect 301 /webinars/workflow-automation-customers   https://www.copper.com/webinars/workflow-automation
+    Redirect 301 /customer-research   https://support.copper.com/hc/en-us/community/topics
+    Redirect 301 /blog/project-management-software-for-creatives   https://www.copper.com/blog/copper-introduces-redesigned-projects
+
+    Redirect 301 /blog /resources
+    Redirect 301 /blog-categories/copper https://support.copper.com/hc/en-us/sections/115000861151-Product-Updates-and-Release-Notes
+    RedirectMatch 301 ^/blog-categories/(.*)  /resources/$1
+    RedirectMatch 301 ^/blog/(.*) /resources/$1
+
+
+
+
+
+    # Send would-be 404 requests to Craft
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} !^/(favicon\.ico|apple-touch-icon.*\.png)$ [NC]
+    RewriteRule (.+) index.php/$1 [QSA,L]
+</IfModule>

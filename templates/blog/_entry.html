@@ -1,0 +1,33 @@
+{% extends "_side-nav.html" %}
+
+
+{% set title = "Copper Blog" %}
+
+{% block sideNav %}
+  <progress max="0" value="0"></progress>
+  <div class="c-blog-content__main container c-blog-content__main--blog-entry"> 
+
+  {% switch entry.type %}
+    {% case 'blog' %}
+      {% include 'sections/blog/entry-type/_simple_old.html' %}
+  {% case 'blogBuilder' %}
+      {% include 'sections/blog/entry-type/_builder_new.html' %}      
+  {% endswitch %}
+  </div>
+
+  <script>
+    LazyLoad.js(['https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'],function(){
+    //  Make links in blog entry open in new tab by default  
+    $('.c-resource-content__container a[href^="http"]').attr('target','_blank');
+    // {# Remove height field added by default by redactor #}
+    $('.c-resource-content__container  img').removeAttr('height').removeAttr('width');
+    })
+  </script>
+
+  {# 
+    Exit intent types :
+    - blogSignup
+    - copperSignup 
+  #}
+  {% include "sections/blog/exit_intent.html" with { type:"copperSignup" } %}
+{% endblock %}

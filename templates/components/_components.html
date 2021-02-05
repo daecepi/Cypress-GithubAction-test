@@ -1,0 +1,100 @@
+{% macro logoSection(logo) %}
+    {% set content = {
+        eyebrow:            logo.eyebrow,
+        title:              logo.logotitle,
+        subtitle:           logo.subtitle,
+        copy:               logo.copyText,
+        logoImages:         logo.logoImages,
+        ctas:               logo.cta,
+        backgroundColor:    logo.logobackgroundColor,
+        layout:             logo.layout,
+        oneColSettings:     {textColor:logo.oneColSettings[0].textColor},
+        twoColSettings:     {textColor:logo.twoColSettings[0].textColor,reverseLayout:logo.twoColSettings[0].reverseLayout}
+    } %}
+    <section id="{% if logo.stickyNavName != '' %}{{logo.stickyNavName |lower }}{% endif %}" class="c-single-column {% if content.layout == "2Col" %}c-cols h-padding-bottom{% endif %} bottom-padding-mobile home-proof background--{{ content.backgroundColor is not null and content.backgroundColor.one() is not null ? content.backgroundColor.one().slug|replace({" ":"-"})|lower|default('off-white') : 'white' }}">
+		<div class="container">
+            {% if content.layout == "1Col" %}
+            <div class="col-md-12">
+                {% if content.title is defined and content.title|length > 0 %} <h2 style="color:{{content.oneColSettings.textColor}}" class="text-center">{{content.title}}<br></h2> {% endif %}
+                <p style="color:{{content.oneColSettings.textColor}}" class="text-center">{{content.copy}}</p>
+                <div class="smb-logo-icons">
+                    <ul class="logo-section--one-column">
+                    {% for i in content.logoImages %}
+                        {% if i %}
+                        <li class="logo-section--images">
+                            <img src="{{ i.url }}" alt="{{ i.title }}">
+                        </li>
+                        {% endif %}
+                    {% endfor %}
+                    </ul>
+                    {# <picture>
+          <source type="image/webp" srcset="/imgs/newLps/logo_swell.webp"    alt="Swell logo" style="max-height: 26px;">
+          <source type="image/png" srcset="/imgs/newLps/logo_swell.png"    alt="Swell logo" style="max-height: 26px;">
+          <img     src="/imgs/newLps/logo_swell.png"   alt="Swell logo" style="max-height: 26px;" >
+</picture>
+                    <picture>
+          <source type="image/webp" srcset="/imgs/newLps/logo_jenis.webp"    alt="Jenis logo">
+          <source type="image/png" srcset="/imgs/newLps/logo_jenis.png"    alt="Jenis logo">
+          <img     src="/imgs/newLps/logo_jenis.png"   alt="Jenis logo" >
+</picture>
+                    <picture>
+          <source type="image/webp" srcset="/imgs/newLps/logo_wag.webp"    alt="Wag logo" style="max-height: 36px;">
+          <source type="image/png" srcset="/imgs/newLps/logo_wag.png"    alt="Wag logo" style="max-height: 36px;">
+          <img     src="/imgs/newLps/logo_wag.png"   alt="Wag logo" style="max-height: 36px;" >
+</picture>
+                    <picture>
+          <source type="image/webp" srcset="/imgs/newLps/logo_mailchimp.webp"    alt="Mailchimp logo">
+          <source type="image/png" srcset="/imgs/newLps/logo_mailchimp.png"    alt="Mailchimp logo">
+          <img     src="/imgs/newLps/logo_mailchimp.png"   alt="Mailchimp logo" >
+</picture>
+                    <picture>
+          <source type="image/webp" srcset="/imgs/newLps/logo_ideo.webp"    alt="Ideo logo" style="max-height:25px;">
+          <source type="image/png" srcset="/imgs/newLps/logo_ideo.png"    alt="Ideo logo" style="max-height:25px;">
+          <img     src="/imgs/newLps/logo_ideo.png"   alt="Ideo logo" style="max-height:25px;" >
+</picture>
+ #}
+                </div>
+            </div>
+            {% endif %}
+            {% if content.layout == "2Col" %}
+            <div class="row" style="padding-bottom:0px;">
+                <div class="col-md-6 d-flex align-items-center {% if content.twoColSettings.reverseLayout == "0" %}order-1{% else %}order-2 offset-md-1{% endif %}">
+                    <div class="">
+                        <ul class="logo-section--two-column">
+                        {% for logos in content.logoImages %}
+                            <li class="logo-section--images">
+                                <img src="{{logos.url}}" alt="{{logos.title}}">
+                            </li>
+                        {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-5 c-valign--middle {% if content.twoColSettings.reverseLayout == "0" %}order-2 offset-md-1{% else %}order-1{% endif %}">
+                    <div class="col_copy" style="color:{{content.twoColSettings.textColor}}">
+                        <style>
+                            .c-eyebrow:before{
+                                border-bottom-color:'{{content.twoColSettings.textColor}}!important';
+                            }
+                        </style>
+                        <pre class="c-eyebrow" style="color:{{content.twoColSettings.textColor}}">{{content.eyebrow}}</pre>
+                        <h2 style="color:{{content.twoColSettings.textColor}}">{{content.title}}</h2>
+                        <p style="color:{{content.twoColSettings.textColor}}">{{content.subtitle}}</p>
+                        <div class="c-single-column__buttons">
+                            {% for ctas in content.ctas %}
+                                {% if ctas.buttonColor is defined %}
+                                    <a class="c-button c-button--{{ ctas.buttonColor.one().slug }}" target="{{ ctas.button.target }}"  href="{{ ctas.button.url }}">{{ ctas.button.text }}</a>
+                                {% endif %}
+                            {% endfor %}
+						    {# <a class="c-button sendUTMsToAmplitude" href="{{ craft.app.config.general.signUpUrl }}?_ga=2.232470943.1673287404.1583789002-240034197.1580417519">Try Free</a>
+						    <a class="c-button c-button--outline" href="/demos?utm_source=copper&amp;utm_medium=email&amp;utm_campaign=Copper%20Journey&amp;utm_content=">Request Demo</a> #}
+					    </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}							
+		</div>
+	</section>
+    {% include 'sections/landing/hero-sticky-nav.html' %}
+{% endmacro %}
+
+

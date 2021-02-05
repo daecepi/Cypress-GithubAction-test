@@ -1,0 +1,12 @@
+{% macro createSimpleFullScreenOneColumn(backgroundImageClass, copy, CTAText, CTALink) %}
+<section class="c-single-column {{backgroundImageClass}} extra-top-margin">
+  <div class="container">
+    <div class="col-md-10 offset-md-1 c-single-column__container">
+      {{copy}}
+      {% if CTAText|length and CTALink|length %}
+        <a class="t-link" href="{{CTALink}}">{{CTAText}}</a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% endmacro %}

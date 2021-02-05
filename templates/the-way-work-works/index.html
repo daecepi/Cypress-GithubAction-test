@@ -1,0 +1,143 @@
+{% extends '_top-nav.html' %}
+
+
+{% block topNav %}
+
+<link rel="stylesheet" href="https://use.typekit.net/uaf5vus.css">
+<div class="blur-container">
+  <div class="blur-first-color"></div>
+  <div class="blur-second-color"></div>
+  <div class="blur-third-color"></div>
+</div>
+<link rel="stylesheet" href="https://use.typekit.net/uaf5vus.css">
+<div class="c-webinar-form webinar-special-form">
+  <section class="c-resource-content" id="c-ebook-gate">
+    <div class="c-resource-content__container container">
+
+      <div class="c-ebook-gate">
+        <div class="c-e-book-builder__header col-md-12 text-center">
+          <p class="t-eyebrow">Copper presents</p>
+          <div class="h-title">
+            <h1>the way work works</h1>
+          </div>
+          <p class="t-event-date" style="max-width: 900px;">An exploration to find out how work in this new decade works. We have shifted from the
+            Industrial Age to the age of information. The era of knowledge workers, have our work practices kept up?</p>
+        </div>
+        <div class="col-md-12 ">
+          <section class="c-e-book-gate__form h-padding-bottom">
+            <div class="row column-reverse">
+              <!--Subscription element-->
+              <div id="subcriptionEmailContainer" class="col-md-5 c-valign--middle mobile-spacer">
+                <h2 class="way-work-title">CAN'T GET ENOUGH?</h2>
+                <p class="p-sm">
+                  Register for our latest installment of The Way Work Works, and stay up to date by signing up for our
+                  newsletter.
+                </p>
+                <div class="input-holder extra-top-margin--small" style="color: #000000;">
+                  <div class="c-nav-utility">
+                    <div class="c-form-blog webinar-subscription-form">
+                      {% import "/components/replacements/_marketo-replacements.html" as localLeadReplacements %}
+                      {% if marketoConfigurations.replaceMarketoForms %}
+                        {{ localLeadReplacements.htmlReplacement("mktoForm_1942", 'Webinar', entry.slug) }}
+                      {% else %}
+                        <form id="mktoForm_1942" class="special-webinar maximun-roy"></form>
+                      {% endif %}
+                      <!-- <button type="submit" id="newsletter-submit" class="c-form-blog__submit">
+                            <i class="material-icons">
+                                arrow_forward
+                            </i>                
+                          </button>    -->
+                      <div class="c-blog__form-success">
+                        <div class="c-blog__form-success-container">
+                          <p>Thanks for signing up!</p>
+                          <i class="material-icons js-form-close">
+                            close
+                          </i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--Latest webinar element-->
+              {% set latestWebinar = craft.entries.section('webinars').type('webinarSpecial')|last %}
+              
+              <div id="latest-webinar-container" class="col-md-6 offset-md-1 c-valign-center">
+                <div class="c-card__entry h-webinar col-md-10 coloured-border--border-dark" style="padding-left: 0px; padding-right: 0px;">
+                  {% if latestWebinar %}
+                    <a class="c-card__clickthrough" href="{{ latestWebinar.url|length ? latestWebinar.url : '/webinars' }}"></a>
+                    {% set latestWebinarImage = latestWebinar.featuredImage ? latestWebinar.featuredImage.one() : NULL %}
+                    {% if latestWebinarImage %}
+                      <img class="c-card__default__image"
+                      src="{{ latestWebinarImage.url }}"
+                      alt="Webinar Index">
+                    {% else %}
+                      <picture>
+        <source type="image/webp" srcset="/imgs/webinars/Default-webinar-rectangle.webp"  class="c-card__default__image" alt="Webinar Index">
+        <source type="image/png" srcset="/imgs/webinars/Default-webinar-rectangle.png" class="c-card__default__image"  alt="Webinar Index">
+        <img   class="c-card__default__image" src="/imgs/webinars/Default-webinar-rectangle.png"   alt="Webinar Index" >
+                      </picture>
+                      <img 
+                      src=""
+                      >
+                    {% endif %}
+                    <div class="c-card__entry__content">
+                      <h4 class="c-card__entry-title">
+                        <a class="underline_from_lefsettt" style="color: #000000;" href="{{ latestWebinar.url|length ? latestWebinar.url : '/webinars' }}">
+                          {{ latestWebinar.title|length ? latestWebinar.title : "No title" }}</a>
+                      </h4>
+                      <p class="p-sm">{{ latestWebinar.description|length ? latestWebinar.description : "No description" }}</p>
+                    </div>
+                    <div class="c-card__meta">
+                      <a class="c-button background--mint" href="{{ latestWebinar.url|length ? latestWebinar.url : "/webinars" }}">Watch Now</a>
+                    </div>
+                  {% else %}
+                    <div class="c-card__entry__content">
+                      <h2>There are no recent webinars of this type</h1>
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--On demand section-->
+  {% if craft.entries.section('webinars').type('webinarSpecial')|length > 0  %}
+  <section class="h-section-padding">
+    <div class="container">
+      <h2 class="text-center extra-bottom-margin--small way-work-title">On-Demand</h2>
+      {% for webinar in craft.entries.section('webinars').type('webinarSpecial').limit(7) %} {#  #}
+      <div class="c-webinar-list \">
+        <p class="c-webinar-list__title">{{ webinar.title }}</p>
+        <div class="c-webinar-list__authors">
+          {% for author in webinar.featuredAuthors.all() %}
+          {% if author.photo is null %}
+          <div class="square-img c-author__img h-small background-{{(author.id%2) +1}}">
+            <span class="c-author__img--alt">{{ author.firstName|first }}</span>
+          </div>
+          {% else %}
+          <div class="square-image c-author__img h-small" style="background-image:url('{{ author.photo.url }}')"></div>
+          {% endif %}
+          {% endfor %}
+        </div>
+        <p class="c-webinar-list__duration p-sm sentence-form-text">{{ webinar.duration }}</p>
+        <div>
+          <a href="{{ webinar.url }}" class="c-button background--mint">Watch Now</a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+</div>
+  <script> 
+  LazyLoad.js(['https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'],function(){
+    
+      $('main.no-banner').css("margin-top", "0px");
+    });
+  </script>
+{% endblock %}

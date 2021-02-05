@@ -1,0 +1,147 @@
+.testimonial-slider-holder{
+  height: 0px;
+  @include media-breakpoint-down(sm){
+    height: auto;
+  }
+}
+
+.testimonial-slider {
+  width: 100%;
+  position: absolute;
+  display: none;
+
+  &.active{
+    display: flex;
+  }
+
+
+  .testimonial-image{
+    width: 307px;
+    height: 429px;
+    overflow: hidden;
+    img{
+      margin-top: 0px !important;
+      position: relative !important;
+      width: 300px !important;
+      height: 100% !important;
+      left: -21px !important;
+      top: 0px !important;
+    }
+  }
+
+  @include media-breakpoint-down(md){
+    flex-direction: column;
+    position: relative;
+
+    .testimonial-image{
+      height: fit-content;
+      width: fit-content;
+      overflow: visible;
+      width: 100%;
+
+      img{
+        height: auto !important;
+        left: 0px !important;
+        width: 100% !important;
+      }
+    }
+  }
+
+  @include media-breakpoint-down(sm){
+    .testimonial-image{
+      position: relative;
+      top: 43px;
+      z-index: 4;
+      img{
+      }
+    }
+  }
+  //.testimonial-slider-spacer{
+    //position: absolute;
+    //display: flex;
+    //width: 100%;
+    .testimonial-container{
+      padding: 48px;
+      width: 522px;
+      left: 322px;
+      right: 0px;
+      height: auto;
+      background: #FFFFFF;
+      box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
+      
+
+      @include media-breakpoint-down(sm){
+        width: 100vw;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);    
+        height: auto;
+        padding-right: 15px;
+        padding-left: 15px;
+
+        .c-panel__blockquote{
+          padding-right: 0px;
+        }
+      }
+
+      .c-panel__blockquote{
+        blockquote{
+          color: $color-black
+        }
+      }
+
+      cite{
+        color: #3C3F40;
+      }
+
+      .control-box{
+        display: flex;
+        width: 100%;
+        align-content: center;
+        justify-content: space-between;
+        margin-top: 20px;
+        background: $color-white;
+  
+        .dots-box{
+          height: 100%;
+          display: flex;
+          justify-items: center;
+  
+          .check-icon{
+            height: fit-content;
+            width: fit-content;
+            padding: 8px 4px;
+
+            &.active{
+              cursor: pointer;
+              svg{
+                circle{
+                  fill: #3C3F40;
+                }
+              }
+            }
+  
+            &:hover{
+              cursor: pointer;
+              svg{
+                circle{
+                  fill: #3C3F40;
+                }
+              }
+            }
+          }
+        }
+        .buttons-box{
+          width: 100%;
+          display: flex;
+          align-content: space-between;
+        }
+      }
+    }
+}
+
+.buttons-box{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+} 

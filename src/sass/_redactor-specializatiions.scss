@@ -1,0 +1,26 @@
+
+  .terms--list-title-represantation{
+    li{
+      font-size: 54px;
+      &:before{
+        font-size: 54px;
+      }
+    }
+  }
+
+  .terms-title-item{
+  }
+
+.terms-redactor-li{
+  font-size: 34px;
+  line-height: 40px;
+  font-weight: bold;
+  
+  &::before{
+    font-size: 34px;
+    line-height: 40px;
+  }
+  ul{
+    font-weight: normal;
+  }
+}

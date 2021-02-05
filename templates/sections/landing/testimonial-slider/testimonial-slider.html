@@ -1,0 +1,155 @@
+{#<link rel="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.3/tiny-slider.min.css">#}
+
+<!-- Case Study -->
+<section class="c-case-study c-case-study--align-left home-quote" style="margin-bottom: 150px;">
+  <div class="container colorblock--eggplant">
+
+    <div class="c-case-study__container col-md-12 no-padding">
+
+      <div class="c-case-study__content c-valign--middle no-top-padding no-bottom-padding" style="padding-bottom: 0px;">
+
+        <div class="row row-eq-height">
+
+          <div class="col-md-4">
+            <pre class="c-eyebrow c-eyebrow--light special-padding--short">{{ matrixBlock.eyebrow }}</pre>
+            <div class="c-panel__blockquote c-valign--middle">
+              <h1 style="color: white;font-size: 52px; line-height: 64px;">{{ matrixBlock.contentCopy }}</h1>
+            </div>
+          </div>
+          <div  class="col-md-8 testimonial-slider-holder">
+            {% set slidesNumber = matrixBlock.sliderContent|length %}
+              <div id="testimonial-slider-content">
+                {% for slideContent in matrixBlock.sliderContent %}
+                  {% include "components/slider/_testimonial-slider.html" %}
+                {% endfor %}
+              </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+   LazyLoad.js([
+        'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'],function(){
+      jQuery("#testimonial-slider-content .testimonial-slider .buttons-box a").click(function(e){
+      e.preventDefault();
+      var childLength = jQuery("#testimonial-slider-content .testimonial-slider").size();
+      var index = jQuery("#testimonial-slider-content .testimonial-slider.active").index() + 1;
+      var nextIndex = index+1;
+      if( index == childLength ){
+          nextIndex = 1;
+      }
+      jQuery("#testimonial-slider-content .testimonial-slider.active").removeClass("active");
+      jQuery("#testimonial-slider-content .testimonial-slider:nth-child("+ nextIndex +")").addClass("active");
+      jQuery(".testimonial-slider .control-box .check-icon.active").removeClass("active");
+      jQuery(".testimonial-slider .control-box .check-icon:nth-child("+ nextIndex +")").addClass("active");
+  });
+})
+</script>
+
+
+{#<script  src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.3/min/tiny-slider.js"></script>#}
+<script type="text/javascript">
+  LazyLoad.js([
+        'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'],function(){
+  //Make the style work
+  var currentIndex;
+  $('.check-icon').each( function(i) {
+    $(this).bind('click', function () {
+      var targetElement = $(this);
+      var targetValue = targetElement.attr('data-target-slide');
+      var targetIndex = targetElement.attr('data-target-index');
+
+      jQuery(".testimonial-slider .control-box .check-icon.active").removeClass("active");
+      jQuery("#testimonial-slider-content .testimonial-slider.active").removeClass("active");
+  
+      $(`#${targetValue}`).addClass("active");
+      $(`.check-icon-${targetIndex}`).addClass('active');
+      //jQuery(".testimonial-slider .control-box .check-icon:nth-child("+ (targetIndex +1) +")").addClass("active");
+    });
+  });
+})
+</script>
+  {# Setting up the schema #}
+<script>
+  /*
+  {
+    "@context": "http://schema.org",
+    "@type": "ItemList",
+    "url": "www.copper.com/marketing-landing-gtm-projects",
+    "numberOfItems": "3",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": "1",
+        "url": "www.copper.com/marketing-landing-gtm-projects#testimonial-slider-1",
+        "item": {
+          "@type": "Review",
+          "url": "www.copper.com/marketing-landing-gtm-projects#testimonial-slider-1",
+          "author": "Boss",
+          "itemReviewed": {
+            "@type": "Product",
+            "image": "http://www.example.com/seafood-restaurant.jpg",
+            "name": "Copper CRM",
+            "aggregateRating": {
+              "@type": "Product",
+            
+            }
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": "2",
+        "url": "www.copper.com/marketing-landing-gtm-projects#testimonial-slider-2",
+        "item": {
+          "@type": "Review",
+          "url": "www.copper.com/marketing-landing-gtm-projects#testimonial-slider-2",
+          "author": "Booss"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": "3",
+        "url": "www.copper.com/marketing-landing-gtm-projects#testimonial-slider-3",
+        "item": {
+          "@type": "Review",
+          "url": "www.copper.com/marketing-landing-gtm-projects#testimonial-slider-3",
+          "author": "Booss"
+        }
+      }
+    ]
+  }
+  // Schema simple version
+  {
+    "@context": "http://schema.org",
+    "@type": "ItemList",
+    "url": "www.copper.com/marketing-landing-gtm-projects",
+    "numberOfItems": "3",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": "1",
+        "url": "www.copper.com/marketing-landing-gtm-projects#testimonial-slider-1",
+        "name": "Testimonial 1"
+      },
+      {
+        "@type": "ListItem",
+        "position": "2",
+        "url": "www.copper.com/marketing-landing-gtm-projects#testimonial-slider-2",
+        "name": "Testimonial 2"
+      },
+      {
+        "@type": "ListItem",
+        "position": "3",
+        "url": "www.copper.com/marketing-landing-gtm-projects#testimonial-slider-3",
+        "name": "Testimonial 2"
+      }
+    ]
+  }
+  */
+</script>

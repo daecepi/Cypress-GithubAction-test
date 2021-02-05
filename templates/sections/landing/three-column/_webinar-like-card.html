@@ -1,0 +1,37 @@
+{% macro createWebinarLikeCard(cardParams) %}
+  {% set content = {
+    url: cardParams.urlText,
+    image: cardParams.image,
+    eyebrow: cardParams.eyebrow,
+    header: cardParams.header,
+    paragraph: cardParams.paragraph,
+    condensedStyle: cardParams.condensedStyle
+  } %}
+  <div class="c-card__entry h-webinar webinar-like-styling {% if content.condensedStyle != 'none' %} {{ content.condensedStyle }} {% endif %}">
+    {% if content.url|length %}
+      <a class="c-card__clickthrough" href="{{ content.url }}"></a>{% endif %}
+    {% set image = content.image.one() %}
+    {% if image %}
+    <img class="c-card__default__image" src="{{ image.url }}" alt="{{ image.title }}" />
+    {% else %}
+    <picture>
+          <source type="image/webp" srcset="/imgs/industry/industry-agency-blog-01@2x.webp"  class="c-card__default__image"   alt="Agency blog industry" />
+          <source type="image/png" srcset="/imgs/industry/industry-agency-blog-01@2x.jpg"  class="c-card__default__image"   alt="Agency blog industry" />
+          <img   class="c-card__default__image"   src="/imgs/industry/industry-agency-blog-01@2x.jpg"   alt="Agency blog industry" / >
+</picture>
+    {% endif %}
+    <div class="c-card__entry__content">
+      <span class="t-eyebrow ">{{ content.eyebrow }}</span></span>
+      <h4 class="c-card__entry-title multiple-2-card-trailer">
+        {% if content.url is not null and content.url|length > 0 %}
+          <a class="underline_from_lefsettt" href="{{ content.url }}">{{ content.header }}</a>
+        {% else %}
+          {{ content.header }}
+        {% endif %}
+      </h4>
+      <p class="p-sm multiple-5-card-trailer">{{ content.paragraph }}</p>
+    </div>
+    <div class="c-card__meta">
+    </div>
+  </div>
+{% endmacro %}

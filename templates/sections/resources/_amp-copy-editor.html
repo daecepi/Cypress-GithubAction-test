@@ -1,0 +1,38 @@
+<div {% if (matrixBlock.copyEditorSectionId) | length %}id="{{matrixBlock.copyEditorSectionId}}" {% endif %}class="c-resource-copy__editor">
+  <div class="row">
+    {% if (matrixBlock.calloutSentence | length) %}
+      <div class="col-md-10 callout" >
+        <h2>
+        {{ matrixBlock.calloutSentence
+          |retconAttr('img',{'amp':'true','width':false,'height':false})
+          |retconAttr('video',{'width':'1000','height':'1000'})
+          |replace({
+            '<img':'<amp-img layout="responsive" class="redactorAmpImage" width="1000" height="500"',
+            'amp="true">':'></amp-img>',
+            'target="true"':'target="_blank"',
+            '<iframe':'<amp-iframe width="200" height="100" sandbox="allow-scripts allow-same-origin" layout="responsive" frameborder="0"',
+            '</iframe>':'</amp-iframe>'
+          })
+          |amplify|raw }}
+        </h2>
+      </div>
+    {% endif %}
+    {% if matrixBlock.copy |length > 0 %}
+      <div class="col-md-10 offset-md-1 copy t-pink-bullet-points t-pink-bullet-points--pull-left">
+        {{ matrixBlock.copy |t
+          |retconAttr('img',{'amp':'true','width':false,'height':false})
+          |retconAttr('video',{'width':'1000','height':'1000'})
+          |replace({
+            '<img':'<amp-img layout="responsive" class="redactorAmpImage" width="1000" height="500"',
+            'amp="true">':'></amp-img>',
+            'target="true"':'target="_blank"',
+            '<iframe':'<amp-iframe width="200" height="100" sandbox="allow-scripts allow-same-origin" layout="responsive" frameborder="0"',
+            '</iframe>':'</amp-iframe>',
+            'xml:lang="en"': ''
+          })
+          |retconAttr('amp-iframe',{'name':false,'oallowfullscreen':false,'allowtransparency':false,'msallowfullscreen':false,'mozallowfullscreen':false,'webkitallowfullscreen':false})
+          |amplify|raw }}
+      </div>
+      {% endif %}
+  </div>
+</div>

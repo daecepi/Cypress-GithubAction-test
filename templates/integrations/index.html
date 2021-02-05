@@ -1,0 +1,39 @@
+{% extends "_top-nav.html" %}
+
+{% block topNav %}
+
+
+{% for matrixBlock in entry.integrationsBlocks.all() %}
+  {% set loopIndex = loop.index %}
+    {% switch matrixBlock.type %}
+      {% case "hero" %}
+        {% include 'components/hero/_integrations.html' %}      
+      {% case "twoColumn" %}
+        {% include 'components/two-column/_index.html' %}
+      {% case "moreInfo" %}
+        {% include 'integrations/more-info.html' %}
+    {% endswitch %}
+  {% endfor %}
+  <section class="c-hero--split background--leavebehind no-transition">
+      <div class="c-image">
+        <picture>
+          <source type="image/webp" srcset="/imgs/leave-behind-scaled.webp"    alt="Leave behind image scaled">
+          <source type="image/png" srcset="/imgs/leave-behind-scaled.jpg"    alt="Leave behind image scaled">
+          <img     src="/imgs/leave-behind-scaled.jpg"   alt="Leave behind image scaled" >
+</picture>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 c-valign--middle">
+            <pre class="c-eyebrow c-eyebrow--light">Goodbye Data Entry</pre>
+            <h2 class="t-white">Hello Copper.<br>Try it free!</h2>
+            <p style="max-width: 420px;">No credit card required. Start your 14-day free trial today.</p>
+            <div class="c-hero__buttons">
+                <a class="c-button" href="/demos">Request Demo</a>
+                <a class="c-button c-button--outline" href="https://app.prosperworks.com/users/sign_up">Free Trial</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>   
+{% endblock %}

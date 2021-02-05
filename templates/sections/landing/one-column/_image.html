@@ -1,0 +1,4 @@
+{% set image = entry.image.one() %}
+{% if image|length %}
+  <img src="{{ image.url }}" alt="{{ image.title }}">
+{% endif %}

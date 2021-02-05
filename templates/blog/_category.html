@@ -1,0 +1,84 @@
+{% set entry = craft.entries.section('blogIndex').one() %}
+{% set page = craft.app.request.getParam('pg') %}
+{% set subcategoryId = craft.app.request.getParam('sc') %}
+
+{% extends "_side-nav.html" %}
+
+{% block sideNav %}
+<div class="c-blog-content__main container"> 
+  <div class="row">
+    <div class="col-lg-5 col-md-8">
+      <h2 class="t-resource-period--hot-pink">{{category}}</h2>
+
+      <div class="t-remove-copy-margin">{{category.categoryDescription}}</div>
+    </div>
+  </div>
+
+  {# Give vue page type and category ID #}
+  <div id="vue-blog-page-type" style="display:none;">category</div>
+  <div id="vue-blog-category" style="display:none;">{{category.id}}</div>
+  <div id="vue-blog-category-slug" style="display:none;">{{category.slug}}</div>
+  <div id="vue-blog-query" style="display:none;"></div>
+  <div id="vue-blog-page-num" style="display:none;">{{page}}</div>
+  <div id="vue-blog-subcategory-query" style="display:none;">{{subcategoryId}}</div>
+  {% set adLink = "" %}
+  {% set adImage = "" %}
+  {% if category.clickthrough %}
+    {% set adLink = category.clickthrough.url %}
+  {% endif %}
+  {% if category.featuredImage.one() %}
+    {% set adImage = category.featuredImage.one().url %}
+  {% endif %}
+
+  <div id="vue-blog-ad-link" style="display:none;">{{adLink}}</div>
+  <div id="vue-blog-ad-image" style="display:none;">{{adImage}}</div>
+
+  {% set subAdLink = "" %}
+  {% set subAdImage = "" %}
+
+  {# If subcategoryId set get subcategories ad info #}
+  {% if subcategoryId %}
+     {% set subcategory = craft.categories.id(subcategoryId).one() %}
+    {% if subcategory.clickthrough %}
+      {% set subAdLink = subcategory.clickthrough.url %}
+    {% endif %}
+    {% if subcategory.featuredImage.one() %}
+      {% set subAdImage = subcategory.featuredImage.one().url %}
+    {% endif %}
+  {% endif %}
+
+  <div id="vue-blog-ad-link--sub" style="display:none;">{{subAdLink}}</div>
+  <div id="vue-blog-ad-image--sub" style="display:none;">{{subAdImage}}</div>
+  
+
+  {% verbatim %}
+
+    <script src="/js/vue.min.js"></script>
+    <script src="/js/vue/main.js" type="module"> </script>
+    <div id="app"></div>
+
+  {% endverbatim %}
+
+  <div class="row">
+    <div class="col-lg-5 col-md-8 c-copper-chronicles__title">
+      <h3>Topics</h3>
+      <p>{{entry.topicsDescription}}</p>
+    </div>
+  </div>
+  <div class="row">
+    {% set parentCategories = craft.categories.group('blogCategories').level(1).all() %}
+    {% for parentCategory in parentCategories %}
+      <div class="col-lg-6 c-copper-chronicles__topics t-horizontal-line-above">
+        <a class="c-card__clickthrough" href="{{ parentCategory.url }}"></a>
+        <div class="row">
+          <div class="col-10">
+            <h4>{{parentCategory.title}}</h4>
+            <div class="c-copper-chronicles__topics__description t-remove-copy-margin">{{parentCategory.categoryDescription}}</div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

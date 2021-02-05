@@ -1,0 +1,17 @@
+{% extends "_top-nav.html" %}
+
+
+{% set title = "Copper Blog" %}
+
+{% block topNav %}
+
+  {% switch entry.type %}
+    {% case 'eBook' %}
+      {% include 'sections/resources/types/_e-book.html' %} 
+    {% case 'download' %}
+      {% include 'sections/resources/types/_download.html' %} 
+    {% case 'customerStory' %}
+      {% include 'sections/resources/types/_customer-story.html' %}    
+  {% endswitch %}
+{% endblock %}
+

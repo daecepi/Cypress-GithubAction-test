@@ -1,0 +1,144 @@
+{% extends "_top-nav.html" %}
+
+{% set toolsDetails = entry.toolsDetails.all() %}
+
+{% block topNav %}
+
+<!-- Hero -->
+<section class="c-hero--split c-hero--split--animation background--{{ entry.heroBackgroundColor.one()|lower|replace(' ', '-') }}">
+    <div class="c-image c-image--left">
+        {% if entry.heroImage.one().url is defined %}
+            {% set heroImage = entry.heroImage.one() %}
+        <img src="{{ heroImage.url }}" alt="{{ heroImage.title }}">
+        {% endif %}
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 c-valign--middle">
+                <pre class="c-eyebrow c-eyebrow--light">{{ entry.eyebrow }}</pre>
+                <h1 class="t-white">{{ entry.header }}</h1>
+                <p>{{ entry.heroText }}</p>
+                {% if entry.ctas|length %}
+                    {% set ctas = entry.ctas %}
+                    {% include 'components/cta/_index.html' %}
+                {% else %}
+                <div class="c-hero__buttons">
+                    <a class="c-button c-button--white" href="{{ craft.app.config.general.signUpUrl }}">Free Trial</a>
+                    <a class="c-button c-button--white-outline" href="/demos">Request Demo</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- If first block of tools isn't a tool detail -->
+<section class="c-cols no-bottom-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md order-2">
+                    {{ entry.toolIntroParagraph }}
+                </div>
+                <div class="col-md order-1 tools-category--headline">
+                    {% set lastChar = entry.toolIntroHeadline | raw | striptags | last   %}
+                    {% if 
+                        (lastChar == ".") or
+                        (lastChar == ":") or
+                        (lastChar == "?") or
+                        (lastChar == "!")
+                     %}
+                        <h2>{{ entry.toolIntroHeadline | raw | striptags | slice(0,-1) }}
+                        <span class="highligthed-sign"> {{ entry.toolIntroHeadline | raw | striptags | last }} </span>
+                    </h2>
+                    {% else %}
+                        {{ entry.toolIntroHeadline }}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+</section>
+
+<!-- TOOLS CARD SECTION -->
+<section class="h-section-padding sl_hide">
+    <div class="container">
+        <div class="row">
+            {% for item in toolsDetails %}
+                {% switch item.type %}
+                    {% case "toolInfo" %}
+                        <div class="col-md-6 c-entry__padding_bottom">
+                            <div class="c-card__entry c-card-entry__tool c-card__full__height">
+                                {% if item.toolCardImage.one().url is defined %}
+                                    {% set toolCardImage = item.toolCardImage.one() %}
+                                    <img class="c-card__normal__image" src="{{ toolCardImage.url }}" alt="{{ toolCardImage.title }}">
+                                {% endif %}
+                                <div class="c-card__entry__content">
+                                    <div class="entry_categories">
+                                        <span class="t-eyebrow t-eyebrow--darker">
+                                            {% if loop.index|length <= 1 %}
+                                                0{{ loop.index }} {{ entry.title }}
+                                            {% else %}
+                                                {{ loop.index }} {{ entry.title }}
+                                            {% endif %}
+                                        </span>
+                                    </div>
+                                    <h3 class="c-card__entry-title">
+                                        {{ item.toolName }}
+                                    </h3>
+                                    <p class="tool-sumary" >{{ item.summary | raw | striptags}}</p>
+
+                                </div>
+                                <div class="c-card__meta">
+                                    {% if item.appImage.one().url is defined %}
+                                        {% set appImageUrl = item.appImage.one().url %}
+                                    {% else %}
+                                        {% set appImageUrl = "none" %}
+                                    {% endif %}
+                                    <a  class="t-link c-card__meta--noline" 
+                                        onclick="openToolModal(
+                                                '{{ item.id }}',
+                                                '{{ item.toolName }}',
+                                                '{{ item.description | raw | e('js') }}',
+                                                '{{ entry.title }}',
+                                                '{{ item.pricing }}',
+                                                '{{ item.recommendedFor | raw | e('js') }}',
+                                                '{{ appImageUrl }}'
+                                                )" 
+                                    >Learn More</a>
+                                    
+                                    <i class=" subline_animation " ></i>
+                                </div>
+                            </div>
+                        </div>
+                {% endswitch %}
+            {% endfor %}
+            
+            {% import "/components/popup/_popup.html" as macro %} 
+            {{ macro.popup("tools") }}
+            
+        </div>
+    </div>
+</section>
+
+<!-- TOOL MODAL -->
+
+<!-- Tweet us Last module -->
+<section class="c-cols no-top-padding tools--last-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 order-2 d-none d-lg-block">
+                {% if entry.tweetUsImage.one().url is defined %}
+                    {% set tweetUsImage = entry.tweetUsImage.one() %}
+                    <img class="image-fit" src="{{ tweetUsImage.url }}" alt="{{ tweetUsImage.title }}">
+                {% endif %}
+            </div>
+            <div class="col-lg-6 order-1">
+                {{ entry.tweetUsParagraph }}
+                {% if entry.tweetUsCta.one().button.url is defined %}
+                    <a target="{{ entry.tweetUsCta.one().button.target }}"  href="{{ entry.tweetUsCta.one().button.url }}" class="t-link t-link__no-underline t-link__hover--green-line">{{ entry.tweetUsCta.one().button.text }}</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

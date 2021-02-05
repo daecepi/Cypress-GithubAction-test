@@ -1,0 +1,122 @@
+.c-pricing-table--cornflower {
+    padding-bottom: 40px;
+    &.nav-added.fixed-nav{
+      padding-top:180px;
+    }
+    &.last-instance{
+      padding-bottom: 80px;
+    }
+    h4 {
+      position: relative;
+      left: 15px;
+    }
+    .c-pricing-table--cornflower__navigation--container{
+      display: flex;
+      padding: 0;
+    }
+    .c-pricing-table--cornflower__navigation {
+      padding-bottom: 20px;
+      padding-top: 48px;
+      .c-pricing-table__row--cornflower {
+        background-color: transparent;
+      }
+    }
+    .c-pricing-table__logo__container {
+      flex: 1;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      display: flex;
+      padding-bottom: 12px;
+    }
+    .c-pricing-table__row--cornflower {
+      padding: 13px 0;
+      border-bottom: 1px solid #eaeaea;
+      display: flex;
+      align-items: center;
+      &:hover {
+        background-color: transparent;
+        cursor: default;
+      }
+      .c-pricing-table__info--cornflower {
+        flex: 3;
+        font-size: 16px;
+        position: relative;
+        left: 15px;
+        &.md {
+          flex: 5;
+        }
+      }
+      .c-pricing-table__tier--cornflower {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .done {
+          background-color: $color-mint;
+          border-radius: 50%;
+          padding: 1px;
+          color: $color-white;
+        }
+        .close {
+          opacity: 0.4;
+        }
+        p {
+          margin: 0;
+          opacity: 0.8;
+        }
+      }
+      &.united-bottom{
+        padding-bottom: 0px;
+        margin-bottom: 0px;
+      }
+    }
+    .c-pricing-table__row--cornflower:nth-child(even) {
+      background-color: #fafafa;
+    }
+    h3 {
+      color: #424242;
+      &.fixed-nav {
+        padding-top: 128px;
+        &.bottom-nav {
+          padding-top: 0;
+        }
+      }
+    }
+    .c-pricing-table--cornflower__navigation {
+      max-width: 1105px;
+      margin: 0 auto;
+      &.fixed-nav {
+        position: fixed;
+        width: 100%;
+        margin: 0 auto;
+        top: 60px;
+        padding: 0;
+        background-color: white;
+        z-index: 10;
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 1;
+        transition: opacity 0.15s ease-in-out;
+
+        @include media-breakpoint-up(lg) {
+           // extra 50 coz of prosperworks banner
+          top:150px;
+          // top: 100px;
+        }
+
+        &.bottom-nav {
+          position: relative;
+          opacity: 0;
+        }
+      }
+    }
+    .c-pricing-table__footnote p {
+      font-size: 11px;
+      text-transform: uppercase;
+      color: #4a4a4a;
+      letter-spacing: -0.08px;
+      line-height: 20px;
+    }
+}
+  

@@ -1,0 +1,11 @@
+<div class="c-blog-builder--social-share__content">
+    <a target="_blank" href="https://twitter.com/home?status={{ entry.title }}%20{{ url(craft.app.request.pathInfo) }}">
+      {% include '/icons/social-twitter-outline.svg' %}
+    </a>
+    <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url={{ url(craft.app.request.pathInfo)  }}&title={{ entry.title }}&summary=&source=">
+      {% include '/icons/social-linkedin-outline.svg' %}
+    </a>
+    <a href="mailto:?&subject={{ entry.title }}&body={{ url(craft.app.request.pathInfo)  }}">
+      {% include '/icons/social-mail-outline.svg' %}
+    </a>
+</div>

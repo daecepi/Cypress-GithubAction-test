@@ -1,0 +1,59 @@
+{#
+ # 404 template
+ # ------------
+ #}
+
+{% extends "_top-nav.html" %}
+
+{% set title = "404 Page Not Found" %}
+
+{% block topNav %}
+
+  <style type="text/css">
+    section.white{
+      padding-top: 100px;
+      text-align: center;
+    }
+    h1 {
+      line-height: 14px;
+      font-size: 14px;
+      text-transform: uppercase;
+      margin-bottom: 26px;
+    }
+    img {
+      display: inline-block;
+      margin: 0 auto;
+    }
+    .c-error-number {
+      font-size: 76px;
+      font-weight: 100;
+      line-height: 90px;
+      display: block;
+    }
+    .c-error-dialog {
+      min-width: 280px;
+      margin: 150px auto;
+      position: relative;
+      text-align: center;
+      {# padding: 200px 0; #}
+    }
+
+    .c-error-button:last-child {
+      margin-right: 0;
+    }
+    @media (max-width: 400px) {
+      .c-error-button {
+        margin-right: 0;
+        width: 65%;
+      }
+    }
+  </style>
+<section class="white">
+  <div class="c-error-dialog">
+    <h1><span class="c-error-number">404</span>Page Not Found</h1>
+    <div class="c-error-button__container">
+    <a class="c-button c-button--hot-pink" style="margin-top: 20px; display: inline-block; margin-right: 0; position: relative;" href="/" >Return Home</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

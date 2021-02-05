@@ -1,0 +1,22 @@
+{% set color = entry.color.one() %}
+
+<div class="c-list-card__card c-list-card__card--auto {{ color.slug }}">
+    <div class="c-list-card__border {{ color.slug }}"></div>
+    <span class="t-eyebrow">{{ entry.eyebrow }}</span>
+    {% set icon = entry.icon.one() %}
+    {% if icon|length %}
+    <div class="c-list-card__icon">
+      <img src="{{ icon.url }}" alt="{{ icon.title }}">
+    </div>
+    {% endif %}
+    <div class="c-list-card__copy">
+      {{ entry.richText }}
+    </div>
+    {% if entry.clickthrough|length %}
+    <div>
+      <a href="{{ entry.clickthrough.url }}" class="t-link">
+        {{ entry.clickthrough.text }}
+      </a>
+    </div>
+    {% endif %}
+  </div>

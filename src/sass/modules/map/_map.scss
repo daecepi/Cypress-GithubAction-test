@@ -1,0 +1,14 @@
+#map {
+  height: 100%;
+}
+
+.map-container {
+  height: 400px;
+  position: relative;
+  @include media-breakpoint-up(md) {
+    position: absolute;
+    width: 100%;
+    right: 0;
+    top: 150px;
+  }
+}

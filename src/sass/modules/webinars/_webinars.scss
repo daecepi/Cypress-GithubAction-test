@@ -1,0 +1,150 @@
+.c-webinar-content {
+  .c-webinar-content__related-list {
+    display: flex;
+    flex-direction: column;
+
+    a {
+      color: $color-graphite;
+      font-size: 16px;
+      line-height: 32px;
+      font-weight: 500;
+
+      &:hover {
+        color: $color-hot-pink;
+      }
+    }
+  }
+
+  .c-webinar-hosts {
+    padding-bottom: 40px;
+    border-bottom: 1px solid $color-sky;
+
+    .c-author__detail {
+      padding: 15px 20px 15px 0;
+      flex-direction: row;
+    }
+
+    .c-author__meta--detail {
+      padding-left: 14px;
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+}
+
+.c-webinar-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid $color-sky;
+  padding: 15px 0;
+  flex-direction: column;
+  transition: transform 0.15s ease-in-out;
+  &:last-child {
+    border-bottom: 1px solid $color-sky;
+  }
+  @include media-breakpoint-up(md) {
+    flex-direction: row;
+  }
+  // &:hover {
+  //   background: $color-white;
+  //   transform: scale(1.05);
+  //   border: 0;
+  //   box-shadow: $global-shadow;
+  //   padding: 15px;
+  // }
+}
+
+.c-webinar-list__authors {
+  display: none;
+  justify-content: flex-end;
+  flex: 2;
+
+  @include media-breakpoint-up(md) {
+    display: flex;
+  }
+
+  .c-author__img {
+    margin-left: 14px;
+  }
+}
+
+.c-webinar-list__duration {
+  display: none;
+  flex: 2;
+  text-align: center;
+
+  @include media-breakpoint-up(md) {
+    display: block;
+  }
+}
+
+.c-webinar-content__related-resources {
+  margin: 0 0 16px 0;
+}
+
+.c-webinar-list__title {
+  font-family: $medium-font;
+  font-size: 16px;
+  flex: 4;
+  text-align: center;
+  @include media-breakpoint-up(md) {
+    text-align: left;
+  }
+}
+
+.c-webinar-form {
+  .c-resource--header{
+    img{
+      height: 40vh;
+    }
+  }
+
+  .c-resource-content--overlap {
+    width: auto;
+  }
+  &.inspiration-series-transform{
+    .c-resource--header{
+      img{
+        height: 40vh;
+      }
+    }
+
+    .c-resource-content--overlap {
+      width: auto;
+
+    .c-resource-content__container{
+      padding-top: 50px;
+      .c-ebook-gate{
+        .c-e-book-builder__header{
+          .t-special-eyebrow{
+            font-family: 'Graphik-Medium';
+            font-weight: bolder;
+            font-size: 16px;
+            padding: 15px 23px;
+            margin-bottom: 15px;
+            line-height: 17px;
+            letter-spacing: 0.15em;
+            display: inline-block;
+
+            @include media-breakpoint-down(sm){
+              font-size: 12px;
+              line-height: 13px;
+            }
+          }
+        }
+        .c-e-book-gate__form{
+          padding-top: 40px;
+          .p.p-sm{
+            figure, figure img{
+              max-width: 100%;
+            }
+          }
+        }
+      }
+    }
+    }
+  }
+}

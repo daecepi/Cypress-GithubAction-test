@@ -1,0 +1,36 @@
+{% set lgSettings = block.logoHeaderSettings[0] %}
+{% set logoMobileOptions %}
+    .logo{
+            width: {% if lgSettings.lgLogoWidthMobile %}{{ lgSettings.lgLogoWidthMobile }}px !important{% endif %};
+        }
+{% endset %}
+<style>
+    @media only screen and (max-width:640px) {
+        {{logoMobileOptions}}
+    }
+</style>
+<table class="background-softpink rounded-box" style="background: transparent!important;background-blend-mode:lighten!important;background-repeat:repeat;border-collapse:collapse;border-radius:5px;border-spacing:0;display:table;padding:0;position:relative;text-align:left;vertical-align:top;width:100%">
+    <tbody>
+        <tr style="padding:0;text-align:left;vertical-align:top">
+            <th class="small-6 large-6 columns first" valign="middle" style="Margin:0 auto;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0 auto;padding:0;padding-bottom:0px;padding-left:{% if lgSettings.lgPaddingLeft %}{{lgSettings.lgPaddingLeft}}px{% else %}0px{% endif %};padding-right:20px;text-align:left;width:260px">
+                <table style="border-collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:100%">
+                    <tr style="padding:0;text-align:left;vertical-align:top">
+                        <th style="Margin:0;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left">
+                            {% set blockLogo = block.logo.one() %}
+                            <a href="{% if block.rightLink.url is defined %}{{block.rightLink.url}}{% else %}#{% endif %}" style="Margin:0;color:#2199e8;cursor:pointer;font-family:'Helvetica Neue',Helvetica,Arial,Roboto,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:none"><img class="logo" src="{{blockLogo.getUrl()}}" alt="{{blockLogo.title}}" style="-ms-interpolation-mode:bicubic;border:none;clear:both;display:block;height:auto;{% if lgSettings.lgLogoWidthDesktop %}width:{{lgSettings.lgLogoWidthDesktop}}px;{% endif %}max-width:165px;outline:0;text-decoration:none"></a>
+                        </th>
+                    </tr>
+                </table>
+            </th>
+            <th class="small-6 large-6 columns last" valign="middle" style="Margin:0 auto;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0 auto;padding:0;padding-bottom:0px;padding-left:20px;padding-right:{% if lgSettings.lgPaddingRight %}{{lgSettings.lgPaddingRight}}px{% else %}0px{% endif %};text-align:left;width:260px">
+                <table style="border-collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:100%">
+                    <tr style="padding:0;text-align:left;vertical-align:top">
+                        <th style="Margin:0;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left">
+                            <p class="text-underline text-right top-link text-hotpink small-text" style="Margin:0;Margin-bottom:10px;color:#FF3465;font-family:'Helvetica Neue',Helvetica,Arial,Roboto,sans-serif;font-size:13px;font-weight:400;line-height:1.3;margin:0;margin-bottom:0;padding:0;text-align:right;text-decoration:underline"><a href="https://copper.com" style="Margin:0;color:{{lgSettings.lgTextColor}};cursor:pointer;font-family:'Helvetica Neue',Helvetica,Arial,Roboto,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:underline">{% if block.rightLink.text is defined %}{{block.rightLink.text}}{% endif %}</a></p>
+                        </th>
+                    </tr>
+                </table>
+            </th>
+        </tr>
+    </tbody>
+</table>

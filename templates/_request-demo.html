@@ -1,0 +1,111 @@
+<div class="modal hide fade" id="formModal" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="c-form demo-form demo-form--image">
+      <a class="modal-close" data-dismiss="modal" aria-label="Close">
+          <svg width="14px" height="14px" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <defs></defs>
+            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g id="Request-a-demo-modal---no-logo" transform="translate(-233.000000, -225.000000)">
+                    <g id="baseline-close-24px-copy" transform="translate(228.000000, 220.000000)">
+                        <polygon id="Shape" fill="#FF3465" fill-rule="nonzero" points="19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12"></polygon>
+                        <polygon id="Shape" points="0 0 24 0 24 24 0 24"></polygon>
+                    </g>
+                </g>
+            </g>
+        </svg>
+      </a>
+      <div class="form_inside">
+        <div class="c-form__text">
+          <h2>Request a Demo</h2>
+          <p>Are you interested in learning more about our product? Enter your information in the form and a product expert will contact you shortly.</p>
+          <div class="c-form__text__img"></div>
+        </div>
+        
+        <div id="demo-form-snip" class="sl_swap h-smartling-form">
+        {% import "/components/replacements/_marketo-replacements.html" as localLeadReplacements %}
+          {% if marketoConfigurations.replaceMarketoForms %}
+            
+            {{ localLeadReplacements.htmlReplacement('mktoForm_1234', 'Lead', entry.slug) }}
+          {% else %}
+          <form id="mktoForm_1234">
+              <div class="h-gdpr d-flex">
+                <div class="h-gdpr__container">
+                    <input type="checkbox" name="consent" id="consentBox" value="false"/>
+                </div>
+                
+                <i>I consent to receiving emails about Copper products and  special offers. By submitting this form you agree to our terms. See our <a href="/privacy">privacy policy</a> to learn about how we use your information.</i>
+              </div>  
+          </form>
+          {% endif %}    
+          <div class="js-form-success">
+            <h3 class="h3">Thanks for your interest.</h3>
+            <p>A product specialist will contact you soon.</p>
+            <a href="#" class="c-button" data-dismiss="modal" aria-label="Close">Return to site</a>
+          </div>          
+        </div>
+
+
+        <script id="demo-form-embed" class="sl_swap">
+LazyLoad.js(['https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'],function(){
+        {% if marketoConfigurations.replaceMarketoForms %}
+          {{ localLeadReplacements.lightScriptReplacement('mktoForm_1234', staticAssetsVersion, "JH", true, true) }}
+        {% else %}
+            MktoForms2.loadForm("//app-sj17.marketo.com", "763-DVL-293", 1234, function(form) {
+
+              form.onSubmit(function(){
+                  // Get the form field values
+                  var consentValue =  $('#consentBox').val();
+                  var vals = form.vals({"expressConsentGivenc": consentValue});
+                  // You may wish to call other function calls here, for example to fire google analytics tracking or the like
+                  // callSomeFunction(vals);
+                  // We'll just alert them to show the principle
+                  // alert("Submitted values: " + JSON.stringify(vals));
+                  form.onSuccess(function(x, y) {
+                    form.getFormElem().css({
+                      "display": "none"
+                    });
+                    $(".js-form-success").css({
+                      "display": "block"
+                    });
+                    $(".js-form-success").addClass('h-demo-success');
+                    return false;
+                  });              
+              });
+
+            });
+            MktoForms2.whenReady(function (form) {
+              $('.h-gdpr').css({
+                "display": "block"
+              });
+              $("input").focus(function(){
+                $(this).prevAll("label").addClass("label-focused")
+                $(this).addClass("input-focused");
+              });
+              $("input").focusout(function(){
+                $(this).prevAll("label").removeClass("label-focused")
+                $(this).removeClass("input-focused");
+              });
+              $("select").focus(function(){
+                $(this).prevAll("label").addClass("label-focused")
+                $(this).addClass("input-focused");
+              });
+              $("select").focusout(function(){
+                $(this).prevAll("label").removeClass("label-focused")
+                $(this).removeClass("input-focused");
+              });
+              $("select").change(function(){
+                if($(this).val().length > 1) {
+                  $("select").addClass("select-selected");
+                } else {
+                  $("select").removeClass("select-selected");
+                } 
+              });
+            });    
+          })    
+        {% endif %}
+        </script>
+      </div>
+
+    </div>
+  </div>
+</div>

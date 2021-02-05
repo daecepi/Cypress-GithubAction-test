@@ -1,0 +1,322 @@
+
+// Tools index
+
+// Icon Cards
+.tools-category{
+  &>.container{
+    position: relative;
+  }
+  .c-card--tool{
+    margin-bottom: 40px;
+  }
+  .c-card__entry{
+    background:white;
+  }
+  .c-card--internal-padding {
+    padding: 20px;
+    box-shadow: 0 10px 25px 0 rgba(60,63,64,0.14);
+  }
+  .c-card--permanent-shadow{
+    box-shadow: 0 10px 25px 0 rgba(60,63,64,0.14);
+  }
+  .c-card--full-height{
+    height: 100%;
+  }
+  img.dotted-circle-svg {
+    position: absolute;
+    top: 167px;
+    left: -60px;
+  }
+  img.dotted-circle-right{
+    position: absolute;
+    height: 186px;
+    width: auto;
+    right: -93px;
+    top: 230px;
+
+    @include media-breakpoint-down(sm){
+      top: 500px;
+    }
+  }
+  .c-card__meta{
+    .t-link{
+      border: none;
+      &:hover{
+        border-bottom: 4px solid #B8FF01;
+        margin-bottom: -4px;
+      }
+    }
+  }
+  &.cover-container{
+    z-index: 3;
+    position: relative;
+    .c-card--full-height{
+      height: fit-content;
+      min-height: 100%;
+      padding: 40px;
+      padding-bottom: 0px;
+      
+      .c-top-logo{
+        width: 55%;
+        height: 40px;
+        text-align: center;
+        justify-items: center;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        img{
+          width: auto;
+          height: auto;
+          max-height: 100%;
+          max-width: 100%;
+        }
+      }
+
+      .c-card__meta{
+        position: static;
+
+        .t-link{
+          border-bottom: 4px solid #B8FF01;
+          margin-bottom: -4px;
+        }
+      }
+    }
+    .c-card--tool{
+      &.last-card{
+        display: block;
+    
+        @include media-breakpoint-down(sm){
+          display: none;
+        }
+    
+        &.active{
+          @include media-breakpoint-down(sm){
+            display: block;
+          }
+        }
+      }
+    }
+    .dotted-circle-svg{
+      @include media-breakpoint-down(sm){
+        top: 67px;
+      }
+    }
+  }
+
+}
+.c-image--left{
+    img{
+        object-position: center left;
+    }
+}
+#l-modal--tool--overlay{
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(60, 63, 64, 0.6);
+    z-index: 999;
+    cursor: pointer;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    @include media-breakpoint-up(md) {
+        align-items: center;
+    }
+}
+#tools-Modal{
+
+    .title{
+      margin-bottom: 30px;
+    }
+    
+    .tool--app-image{
+      margin-top: 40px;
+    }
+    #tool-description{
+      margin-top: 0px;
+      padding-right:20px;
+      p{
+        margin-top: 0px;
+        line-height: 26px;
+      }
+    }
+    .tool-data{
+      padding-left: 20px;
+      padding-top: 20px;
+      border-top: 1px solid #F5F6F6;
+      @include media-breakpoint-up(md) {
+        padding-top: 0px;
+        border-top: none;
+      }
+    }
+    .tool-data{
+      .t-eyebrow{
+        font-size: 16px;
+        margin-bottom: 25px;
+        overflow: visible;
+      }
+      .tool-price {
+        margin-bottom: 25px;
+        h5{
+          margin-bottom: 0px;
+          font-family: "Graphik-Medium";
+          text-transform: initial;
+          font-size: 16px;
+        }
+        p{
+          margin-top: 0px;
+          line-height: 26px;
+        }
+      }
+      .tool-recomendation{
+        h5{
+          margin-bottom: 0px;
+          font-family: "Graphik-Medium";
+          text-transform: initial;
+          font-size: 16px;
+        }
+        p{
+          margin-top: 0px;
+          line-height: 26px;
+        }
+      }
+      .tools-category--headline {
+        h2{
+          @include media-breakpoint-up(md) {
+            padding-right: 105px;
+          }
+        }
+      }
+    }
+    .modal-content__contain {
+      height: 90vh;
+      overflow: hidden;
+      .container{
+        height: 100%;
+      }
+  }
+}
+
+.c-card-entry__tool {
+  .c-card__entry__content{
+    padding: 35px;
+    .tool-sumary{
+      font-size: 16px;
+      line-height: 26px;
+    }
+  }
+  .c-card__meta{
+    padding: 0px 35px 35px 35px;
+    margin-top: 35px;
+    bottom: 0px; 
+    .t-link{
+      border: none;
+      &:hover{
+        border-bottom: 4px solid #B8FF01;
+        margin-bottom: -4px;
+      }
+    }
+  }
+}
+.c-card__full__height{
+  height: 100%;
+}
+.c-entry__padding_bottom{
+  margin-bottom: 50px;
+}
+.c-card__entry-title{
+  margin-bottom: 15px;
+  font-size: 28px;
+}
+.c-card-icons--list {
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  .c-tooltip{
+    margin: 10px 0px;
+    width: calc( 100% / 5 );
+    display: flex;
+    justify-content: center;
+    &:hover{
+      &>img{
+        transform: scale(1.2) translateY(-10px);
+        transition: 0.2s;
+      }
+      &>span{
+        text-align: center;
+        transform: translate(-50%, calc(-100% - 10px));
+        transition: opacity 0.8s, transform 0.2s;
+      }
+    }
+    img{
+      transition: 0.2s;
+    }
+    span {
+      top: -20px;
+      left: 50%;
+      transform: translate(-50%, calc(-100% - 10px));
+      transition: opacity 0.8s transform 0.2s;
+      transform-origin: bottom;
+      i{
+        left: 50%;
+        transform:translateX(-50%) ;
+      }
+    }
+  }
+}
+.c-card__meta--nopadding{
+  padding-left: 0px;
+}
+.c-card__normal__image{
+  width: 100%;
+}
+.t-eyebrow.t-eyebrow--darker {
+  color: #3C3F40;
+}
+.tools--last-section{
+  .image-fit{
+    position: absolute;
+    width: 85%;
+    height: auto;
+    right: 0px;
+    top: 0px;
+  }
+  h1,h2,h3,h4,h5,h6{
+    font-size: 34px;
+    line-height: 44px;
+  }
+}
+.t-eyebrow--lightblue{
+  color: #3C54CB;
+}
+.highligthed-sign{
+  color:rgb(255, 52, 101);
+  position:relative;
+  left:-10px;
+  @include media-breakpoint-up(md) {
+    left:-15px
+  }
+}
+.t-link__hover--green-line:hover{
+  border-bottom: 4px solid #B8FF01;
+}
+
+
+// Modularize the c-tootip component in the future for better code structure
+.partners{
+  .c-tooltip{
+    width: calc( 100% / 7 );
+
+    @include media-breakpoint-down(lg){
+      width: calc( 100% / 4 );
+    }
+  }
+}

@@ -1,0 +1,57 @@
+
+
+
+
+{% macro navSelector(entry, section, entryType, entrySlug, utilities) %}
+    
+    {% set slugMatch = false %}
+    {% set typeMatch = false %}
+    {% set sectionMatch = false %}
+
+    {# Nav especific per page #}
+    {% if entrySlug %}
+
+        {% switch entrySlug %}
+            {% case "demo-request-pers" %}
+                {% set utilities = ["requestDemo"] %}
+                {% include 'sections/nav/nav-types/section-nav/lps-nav/_lps-nav.html' with utilities %}
+                {% set slugMatch = true %}
+            
+        {% endswitch %}
+    {% endif %}
+
+    {# Navs per Entry type #}
+    {% if slugMatch == false %}
+        {% switch entryType %}
+
+            {% case "webinarSpecial" %}
+                {% include 'sections/nav/nav-types/entry-type-nav/webinar-special-nav/_webinar-special-nav.html' %}
+                {% set typeMatch = true %}
+                
+        {% endswitch %}
+
+    {% endif %}
+
+    {# Navs per section #}
+    {% if typeMatch == false %}
+        {% switch section %}
+            {% case "lps" %}
+                {% include 'sections/nav/nav-types/section-nav/lps-nav/_lps-nav.html' %}
+            {% case "landingPage" %}
+                {% if entry.landingPageNavigation %}
+                    {% include 'sections/nav/nav-types/section-nav/lps-nav/_lps-nav.html' %}
+                {% else %}
+                    {% include 'sections/nav/nav-types/default-nav/nav.html' %}
+                {% endif %}
+            {% case "resourcesIndex" %}
+                {% include 'sections/nav/nav-types/section-nav/library-nav/_library-nav.html' %}
+
+            {% case 'theWayWorkWorks' %}
+                {% include 'sections/nav/nav-types/entry-type-nav/the-way-work-works-nav/_the-way-work-works-nav.html' %}
+                
+            {% default %}
+                {% include 'sections/nav/nav-types/default-nav/nav.html' %}
+        {% endswitch %}
+
+    {% endif %}
+{% endmacro %}

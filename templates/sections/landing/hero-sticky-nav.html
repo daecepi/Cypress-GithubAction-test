@@ -1,0 +1,33 @@
+      {% set stickyNav = [] %}
+      {% if entry.landingBlocks.all() is defined %}
+        {% for matrixBlock in entry.landingBlocks.all() %}
+          {% if matrixBlock.stickyNavName != '' %}
+            {% set stickyNav = stickyNav|merge([matrixBlock.stickyNavName]) %}
+          {% endif %}
+        {% endfor %}
+
+        {% if stickyNav %}
+          <div class="stickyNav">
+            <div class="stickyNav-mobile">
+              <div class="styckyNav-mobile-menu">
+                <p class="stickyNav-Current">Select</p>
+                <div class="stickyNav-arrow">
+                  <svg width="10" height="7" viewBox="0 0 10 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1.175 0.589844L5 4.40651L8.825 0.589844L10 1.76484L5 6.76484L0 1.76484L1.175 0.589844Z" fill="#3C3F40"/>
+                  </svg>
+                </div>
+              </div>
+              <ul>
+                {% for items in stickyNav %}
+                  <li><a href="#{{items |lower}}">{{items}}</a></li>
+                {% endfor %}
+              </ul>
+            </div>
+            <ul>
+            {% for items in stickyNav %}
+              <li><a href="#{{items |lower}}">{{items}}</a></li>
+            {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+      {% endif %}

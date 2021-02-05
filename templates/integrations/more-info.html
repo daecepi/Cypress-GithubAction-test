@@ -1,0 +1,15 @@
+<section class="c-cols background--putty more-info small-section-padding">
+  <div class="container">
+    <div class="row no-padding">
+      <div class="col-md-6 d-flex align-items-center">
+        <h2>Want more information?</h2>
+      </div>
+      <div class="col-md-5 offset-md-1 align-items-center d-flex">
+        {% if matrixBlock.cta|length %}
+          {% set ctas = matrixBlock.cta %}
+          {% include 'components/cta/_index.html' %}
+        {% endif %} 
+      </div>
+    </div>  
+  </div>
+</section>

@@ -1,0 +1,13 @@
+.canvas-image-container{
+  position: absolute;
+  width: 100%;
+  left: 15px;
+  right: -15px;
+  height: 20px;
+  .c-image{
+    &.base-image{
+      position: relative;
+      width: 50%;
+    }
+  }
+}

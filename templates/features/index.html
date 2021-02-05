@@ -1,0 +1,134 @@
+{% extends "_top-nav.html" %}
+
+{% block topNav %}
+
+<!-- Hero -->
+<section class="c-hero--split background--eggplant">
+  <div class="c-image">
+    <picture>
+          <source type="image/webp" srcset="/imgs/190409_pdp_hero_image.webp"    alt="Pdp hero image">
+          <source type="image/png" srcset="/imgs/190409_pdp_hero_image.png"    alt="Pdp hero image">
+          <img     src="/imgs/190409_pdp_hero_image.png"   alt="Pdp hero image" >
+</picture>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 c-valign--middle">
+        <pre class="c-eyebrow c-eyebrow--light">all our CRM features</pre>
+        <h1 class="t-resource-period--hot-pink">Explore all our CRM features</h1>
+        <div class="c-hero__buttons">
+          <a class="c-button c-button--hot-pink" href="/pricing">See Pricing</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="extra-bottom-margin--medium">
+  <div class="container">
+    <div class="extra-top-margin--small c-flex--end">
+      <pre class="c-plain-eyebrow">Filter by Plan</pre> 
+      <ul class="c-pill c-pill--left-margin">
+        <li id="c-pill__business" onClick="toggleFilter('business')"><a><strong>Business</strong></a></li>
+        <li id="c-pill__professional" onClick="toggleFilter('professional')"><a><strong>Professional</strong></a></li>
+        <li id="c-pill__basic" onClick="toggleFilter('basic')"><a><strong>Basic</strong></a></li>
+      </ul>
+    </div>
+
+    {% for matrixBlock in entry.featureGroupBlocks.all() %}
+      {% switch matrixBlock.type %}
+        {% case "featureGroup" %}
+        <div class="extra-top-margin--small">
+          <hr>
+          <h3 class="extra-top-margin--x-small">{{matrixBlock.header}}</h3>
+          <div class="row extra-top-margin--small">
+            {% for feature in matrixBlock.featureDescription.all() %}
+              <div class="col-md-4 extra-bottom-margin--x-small feature-description-block {{feature.pricingPlan}}">
+                {% if feature.pricingPlan == 'basic'%}
+                  <pre class="c-plain-eyebrow">All Plans</pre>
+                {% elseif feature.pricingPlan == 'professional' %}
+                  <pre class="c-plain-eyebrow">Professional + Business plan</pre> 
+                {% else %}
+                  <pre class="c-plain-eyebrow">{{feature.pricingPlan}}</pre> 
+                {% endif %}
+
+                {% if feature.featureDetailLink %}        
+                  <a class="t-link--volt__container" href="{{feature.featureDetailLink.url}}">        
+                    <h4 class="t-link--volt__link">{{feature.title}}</h4>
+                    <p class="p-sm">{{feature.paragraph}}</p>
+                  </a>
+                {% else %}
+                  <h4>{{feature.title}}</h4>
+                  <p class="p-sm">{{feature.paragraph}}</p>
+                {% endif %}
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      {% endswitch %}
+    {% endfor %}
+
+
+  </div>
+</section>
+
+<!-- Hero -->
+<section class="c-hero--split background--leavebehind">
+  <div class="c-image">
+      <picture>
+          <source type="image/webp" srcset="/imgs/UI_ipad_final-plea-update.webp"    alt="Ipad UI image">
+          <source type="image/png" srcset="/imgs/UI_ipad_final-plea-update.jpg"    alt="Ipad UI image">
+          <img     src="/imgs/UI_ipad_final-plea-update.jpg"   alt="Ipad UI image" >
+</picture>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 c-valign--middle">
+        <pre class="c-eyebrow c-eyebrow--light">GOODBYE DATA ENTRY</pre>
+        <h2 class="t-white">Hello Copper.<br>Try it free!</h2>
+        <p style="max-width: 420px;">No credit card required. Start your 14-day free trial today.</p>
+        <div class="c-hero__buttons">
+            <a class="c-button c-button--white" href="{{ craft.app.config.general.signUpUrl }}">Get Started</a>
+            <a class="c-button c-button--white-outline"  href="/demos">Request Demo</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+   LazyLoad.js(['https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'],function(){
+      // Business is set by deafult
+      $('#c-pill__business').addClass('active');
+   });
+      function toggleFilter(type){
+        // Set selected pill
+        LazyLoad.js(['https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'],function(){
+        $('.c-pill li').removeClass('active');
+        $('#c-pill__'+type).addClass('active');
+        $('.feature-description-block').removeClass('inactive');
+        switch(type){
+          case 'professional':
+            $('.feature-description-block').each( function(){
+              if($(this).attr('class').indexOf('business') > -1 ){
+                $(this).addClass('inactive')
+              }
+            });
+            break;
+          case 'basic':
+            $('.feature-description-block').each( function(){
+              if( $(this).attr('class').indexOf('business') > -1 || $(this).attr('class').indexOf('professional') > -1){
+                $(this).addClass('inactive')
+              }
+            });
+            break;
+
+        }
+        })
+      }
+     
+</script>
+
+
+
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends "_layout" %}
+
+
+{% block content %}
+
+    <!-- hreflang attributes -->
+    <link rel="alternate" class="sl_norewrite" href="https://www.copper.com{{ craft.app.request.url() }}" hreflang="en-us"/>
+    <link rel="alternate" href="https://uk.copper.com{{ craft.app.request.url() }}" hreflang="en-gb"/>
+    <link rel="alternate" href="https://es.copper.com{{ craft.app.request.url() }}" hreflang="es"/>
+    <link rel="alternate" href="https://fr.copper.com{{ craft.app.request.url() }}" hreflang="fr"/>
+    <link rel="alternate" href="https://de.copper.com{{ craft.app.request.url() }}" hreflang="de"/>
+
+    <noscript>
+        <!-- Remove homepage animations if JS is disabled -->
+        <style>
+          .c-eggplant-overlay__block-color, .c-eggplant-overlay__nav{
+            display: none;
+          }
+          .c-hero--split:after{
+            left: 0;
+          }
+
+          .col-md.c-valign--middle > .c-eyebrow.c-eyebrow--light,
+          .col-md.c-valign--middle > h1,
+          .col-md.c-valign--middle > p,
+          .col-md.c-valign--middle > .c-hero__buttons,
+          .col-md.c-valign--middle > .c-hero__buttons >  .c-button--white {
+            transition:none;
+          }
+
+
+          .col-md.c-valign--middle > .c-eyebrow.c-eyebrow--light,
+          .col-md.c-valign--middle > h1,
+          .col-md.c-valign--middle > p,
+          .col-md.c-valign--middle > .c-hero__buttons{
+            transform: translateY(0);
+            color: #FFF;
+          }
+
+          .col-md.c-valign--middle > .c-hero__buttons > .c-button--white{
+            background: #FFF;
+            border-color: #FFF;
+            box-shadow: 0 6px 20px 0 rgba(0,0,0,0.2);
+          }
+        </style>
+    </noscript>
+    {% import "logic-lifter/_schema-lib.html" as schemaLib %} 
+    <script type="application/ld+json">
+      {{ schemaLib.returnWebpageSchema(entry) }}
+    </script>
+      
+  </head>
+  {# The display:none gives us time to decide if we want to show the homepage animation or not #}
+  <body class="ltr {{ craft.app.request.segments|last ?: 'home' }}" >
+    {% set expiry = now|date_modify('+30 days') %}
+    {% header "Cache-Control: max-age=" ~ (expiry.timestamp - now.timestamp) %}
+    {% header "Pragma: cache" %}
+    {% header "Expires: " ~ expiry|date('D, d M Y H:i:s', 'GMT') ~ " GMT" %}
+    <div id="cookie-message" style="display:none;">
+      <div class="container">
+        <div class="row justify-content-center">
+          <p class="col-lg-9 col-md-9 sm">We use cookies to ensure that we provide you with the best experience on our website. If you continue without changing your settings, you are agreeing to receive all cookies on the Copper website. You can change your cookie settings at any time.</p>
+          <p class="col-lg-3 col-md-3 buttons">
+            <a class="c-button c-button--white js-kill-cookie" href="#">Got It</a>
+            <a class="c-button c-button--white-outline c-button--no-margin-bottom" href="/cookies">Learn More</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <main id="content" role="main" style="margin: 0px;">
+      {% block cleanNav %}
+        <p>If you see me, you haven’t set your <code>{% verbatim %}{% block topNav %}…{% endblock %}{% endverbatim %}</code> yet.</p>
+        <p>See Twig’s <a href="http://twig.sensiolabs.org/doc/templates.html#template-inheritance">Template Inheritance</a> documentation for an explanation.</p>
+      {% endblock %}
+    </main>
+
+    {% include '_request-demo.html' %}
+    {% include '_contact-us.html' %}
+  </body>
+
+{% endblock %}

@@ -1,0 +1,351 @@
+	/* Embellishments */
+	.rectangle {
+		@at-root {
+			#{&}--gray {
+				&:before {
+					content: '';
+					background: url(../imgs/dots-rectangle-big.png);
+					width: 300px;
+					height: 300px;
+					display: block;
+				}
+			}
+			#{&}--hot-pink {
+				&:before {
+					content: '';
+					background: url(../imgs/dots-rectangle-hot-pink-big.png);
+					width: 284px;
+					height: 284px;
+					display: block;
+				}
+			}
+			#{&}--mint {
+				&:before {
+					content: '';
+					background: url(../imgs/dots-rectangle-mint-big-1.png);
+					width: 285px;
+					height: 285px;
+					display: block;
+					background-size: 100%;
+				}
+			}
+
+			
+			/* positioning */
+			#{&}--top--left {
+			  &:before {
+				  content: '';
+				  position: absolute;
+				  top: -50px;
+					left: -60px;
+				  z-index: -1;
+					display: block;
+					
+					@include media-breakpoint-down(md) {
+						transform: scale(0.6);
+						transform-origin: top left;
+						z-index: 1;
+					}
+			  }
+		  }
+		  #{&}--top--right {
+			  &:before {
+				  content: '';
+				  position: absolute;
+				  top: -50px;
+					right: -60px;
+				  z-index: -1;
+					display: block;
+					
+					@include media-breakpoint-down(md) {
+						transform: scale(0.6);
+						transform-origin: top right;
+						z-index: 1;
+					}
+			  }
+		  }
+		  #{&}--bottom--left {
+			  &:before {
+				  content: '';
+				  position: absolute;
+				  bottom: -50px;
+					left: -60px;
+				  z-index: -1;
+					display: block;
+					
+					@include media-breakpoint-down(md) {
+						transform: scale(0.6);
+						transform-origin: bottom left;
+						z-index: 1;
+						display: none;
+					}
+			  }
+		  }
+		  #{&}--bottom--right {
+			  &:before {
+				  content: '';
+				  position: absolute;
+				  bottom: -50px;
+					right: -60px;
+				  z-index: -1;
+					display: block;
+					
+					@include media-breakpoint-down(md) {
+						transform: scale(0.6);
+						transform-origin: bottom right;
+						z-index: 1;
+					}
+			  }
+		  }
+			
+			#{&}--z-index-increased{
+				z-index: 0;
+			}
+		}
+	}
+
+	.diamond {
+		@at-root {
+			#{&}--volt {
+				&:before {
+					content: '';
+					background: url(../imgs/dots-diamond-volt.svg);
+					width: 196px;
+					height: 196px;
+					display: block;
+				}
+			}
+			// TRANSFORM APLLIED
+			// If you need to apply further transform append roate to the end
+			// E.g. transform: translate(25%, 35%) rotate(45deg);
+			#{&}--mint {
+				&:before {
+					content: '';
+					background: url(../imgs/dots-rectangle-mint-big.png);
+					transform: rotate(45deg);
+					width: 285px;
+					height: 285px;
+					display: block;
+				}
+			}
+
+			// TRANSFORM APLLIED
+			// If you need to apply further transform append roate to the end
+			// E.g. transform: translate(25%, 35%) rotate(45deg);
+			#{&}--hot-pink {
+				&:before {
+					content: '';
+					background: url(../imgs/dots-rectangle-hot-pink-big.png);
+					transform: rotate(45deg);
+					width: 100px;
+					height: 100px;
+					display: block;
+				}
+			}
+			
+			/* positioning */
+			#{&}--top--left {
+			  &:before {
+				  content: '';
+				  position: absolute;
+				  top: -50px;
+					left: -60px;
+				  z-index: -1;
+					display: block;
+					
+					@include media-breakpoint-down(md) {
+						transform: scale(0.6);
+						transform-origin: top left;
+						z-index: 1;
+					}
+			  }
+		  }
+		  #{&}--top--right {
+			  &:before {
+				  content: '';
+				  position: absolute;
+				  top: -50px;
+					right: -60px;
+				  z-index: -1;
+					display: block;
+					
+					@include media-breakpoint-down(md) {
+						transform: scale(0.6);
+						transform-origin: top right;
+						z-index: 1;
+					}
+			  }
+		  }
+		  #{&}--bottom--left {
+			  &:before {
+				  content: '';
+				  position: absolute;
+				  bottom: -50px;
+					left: -60px;
+				  z-index: -1;
+					display: block;
+					
+					@include media-breakpoint-down(md) {
+						transform: scale(0.6);
+						transform-origin: bottom left;
+						z-index: 1;
+					}
+			  }
+		  }
+		  #{&}--bottom--right {
+			  &:before {
+				  content: '';
+				  position: absolute;
+				  bottom: -50px;
+					right: -60px;
+				  z-index: -1;
+					display: block;
+					
+					@include media-breakpoint-down(md) {
+						transform: scale(0.6);
+						transform-origin: bottom right;
+						z-index: 1;
+					}
+			  }
+		  }
+			
+			#{&}--z-index-increased{
+				z-index: 0;
+			}
+		}
+	}
+
+	.circle {
+		@at-root {
+			#{&}--mint {
+				&:before {
+					content: '';
+					background: url(../imgs/dots-circle-mint.svg);
+					width: 160px;
+					height: 160px;
+					display: block;
+				}
+			}
+			#{&}--volt {
+				&:before {
+					content: '';
+					background: url(../imgs/dots-circle-volt.svg);
+					width: 160px;
+					height: 160px;
+					display: block;
+				}
+			}
+			#{&}--hot-pink {
+				&:before {
+					content: '';
+					background: url(../imgs/dots-circle-hot-pink.svg);
+					width: 180px;
+					height: 180px;
+					display: block;
+				}
+			}
+			/* positioning */
+			#{&}--right {
+			  &:before {
+				  content: '';
+				  position: absolute;
+				  top: -50px;
+					left: -60px;
+				  z-index: -1;
+					display: block;
+					
+					@include media-breakpoint-down(md) {
+						transform: scale(0.6);
+						transform-origin: top left;
+						z-index: 1;
+					}
+			  }
+		  }
+			
+			/* positioning */
+			#{&}--top--left {
+			  &:before {
+				  content: '';
+				  position: absolute;
+				  top: -50px;
+					left: -60px;
+				  z-index: -1;
+					display: block;
+					
+					@include media-breakpoint-down(md) {
+						transform: scale(0.6);
+						transform-origin: top left;
+						z-index: 1;
+					}
+			  }
+		  }
+		  #{&}--top--right {
+			  &:before {
+				  content: '';
+				  position: absolute;
+				  top: -50px;
+					right: -60px;
+				  z-index: -1;
+					display: block;
+					
+					@include media-breakpoint-down(md) {
+						transform: scale(0.6);
+						transform-origin: top right;
+						z-index: 1;
+					}
+			  }
+		  }
+		  #{&}--center--left {
+			  &:before {
+				  content: '';
+				  position: absolute;
+				  bottom: 50%;
+					left: -80px;
+				  z-index: -1;
+					display: block;
+					transform: translateY(50%);
+					
+					@include media-breakpoint-down(md) {
+						transform: scale(0.6) translateY(50%);
+						transform-origin: center left;
+						z-index: 1;
+					}
+			  }
+		  }
+		  #{&}--bottom--left {
+			  &:before {
+				  content: '';
+				  position: absolute;
+				  bottom: -50px;
+					left: -60px;
+				  z-index: -1;
+					display: block;
+					
+					@include media-breakpoint-down(md) {
+						transform: scale(0.6);
+						transform-origin: bottom left;
+						z-index: 1;
+					}
+			  }
+		  }
+		  #{&}--bottom--right {
+			  &:before {
+				  content: '';
+				  position: absolute;
+				  bottom: -50px;
+					right: -60px;
+				  z-index: -1;
+					display: block;
+					
+					@include media-breakpoint-down(md) {
+						transform: scale(0.6);
+						transform-origin: bottom right;
+						z-index: 1;
+					}
+			  }
+			}
+			#{&}--z-index-increased{
+				z-index: 0;
+			}
+		}
+	}

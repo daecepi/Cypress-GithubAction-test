@@ -1,0 +1,64 @@
+<div class="c-form-blog webinar-subscription-form">
+  {% import "/components/replacements/_marketo-replacements.html" as localLeadReplacements %}
+  {% if marketoConfigurations.replaceMarketoForms %}
+    {{ localLeadReplacements.htmlReplacement("mktoForm_1942", 'Webinars', entry.slug, "none", true) }}
+  {% else %}
+    <form id="mktoForm_1942"></form>
+  {% endif %}
+  <!-- <button type="submit" id="newsletter-submit" class="c-form-blog__submit">
+    <i class="material-icons">
+        arrow_forward
+    </i>                
+  </button>    -->
+  <div class="c-blog__form-success">
+    <div class="c-blog__form-success-container">
+      <p>Thanks for signing up!</p>
+      <i class="material-icons js-form-close">
+          close
+      </i> 
+    </div>
+  </div>  
+</div>
+<script>
+  // Load the form normally
+  LazyLoad.js(['https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'],function(){
+  {% if marketoConfigurations.replaceMarketoForms %}
+    {{ localLeadReplacements.lightScriptReplacement("mktoForm_1557", staticAssetsVersion, "JHShort", true, true) }}
+  {% else %}
+      MktoForms2.loadForm("//app-sj17.marketo.com", "763-DVL-293", 1942, function(form) {
+
+        $("#mktoForm_1942 #Email").after('<button type="submit" id="newsletter-submit" class="c-form-blog__submit">'+
+        '<i class="material-icons" style="font-family:Material Icons">'+
+            'arrow_forward'+
+        '</i>'+
+      '</button>');
+      $("#mktoForm_1942 #Email").attr("placeholder","Stay up to date");
+
+        $("#mktoForm_1942 .mktoEmailField").keyup(function() {
+          if ($(this).val() != "") {
+            $(".material-icons").css({"color":"#3C3F40","transition":"0.5s"});
+          } else {
+            $(".material-icons").css({"color":"#D9D9D9","transition":"0.5s"});
+          }
+        });
+      
+      // Find the button element that you want to attach the event to
+      var btn = document.getElementById("newsletter-submit");
+      btn.onclick = function() {
+          // When the button is clicked, get the form object and submit it
+          MktoForms2.whenReady(function (form) {
+              form.submit();
+          });
+      };
+      form.onSuccess(function(x, y) {
+        $(".c-form-blog").addClass('h-form-success');
+        return false;
+      });
+      $('.js-form-close').click(function(){
+        $('input[name=Email]').val('');
+        $(".c-form-blog").removeClass('h-form-success');
+      });
+    });
+  {% endif %}
+})
+</script>

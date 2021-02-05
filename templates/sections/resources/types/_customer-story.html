@@ -1,0 +1,73 @@
+{% include 'sections/resources/_featured-image.html' %}
+
+<section class="c-resource-content">
+  <div class="c-resource-content__container container">
+    <div class="col-md-8 offset-md-2">
+      {# Show category & reading time #}
+      {% if (entry.eyebrow | length) and (entry.readingTime | length)  %}
+        <pre class="col-12 c-eyebrow">{{ entry.eyebrow }} : {{entry.readingTime}}</pre>
+      {% endif %}
+      {# Only show category if no readng time given #}
+      {% if entry.eyebrow | length  and not(entry.readingTime | length) %}
+        <pre class="col-12 c-eyebrow">{{ entry.eyebrow }}</pre>
+      {% endif %}
+      <h2 class="col-12 ">{{ entry.title }}</h2>
+       {# Intro Header #}
+      <div class="col-12 c-customer-story-intro">
+        <div class="c-panel__container c-panel__container--top-mint">
+          <div class="col-10 offset-1">
+            <div class="row">
+              <div class="col-6">
+                <p class="p-sm">Industry</p>
+                <p>{{entry.industry}}</p>
+              </div>
+              <div class="col-6">
+                <p class="p-sm">Headquarters</p>
+                <p>{{entry.headquarters}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <p class="p-sm">Goals</p>
+                <p>{{entry.goals}}</p>
+              </div>
+              <div class="col-6">
+                <p class="p-sm">Obstacles</p>
+                <p>{{entry.obstacles}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <p class="p-sm">Results</p>
+                <p>{{entry.results}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {% for matrixBlock in entry.customerStoryBuilder.all() %}
+        {% switch matrixBlock.type %}
+
+          {% case "tldr" %}
+            {% set tldr = matrixBlock.tldr %}
+            {% include 'sections/resources/_tldr.html' %}
+          {% case "copyEditor" %}
+            {% include 'sections/resources/_copy-editor.html' %}
+          {% case "media" %}
+            {% include 'sections/resources/_media.html'%}
+          {% case "callout" %}
+            {% include 'sections/resources/_callout.html' %}
+          {% case "card" %}
+            {% include 'sections/resources/_card.html' %}
+          {% case "quote" %}
+            {% include 'sections/resources/_quote.html' %}
+
+        {% endswitch %}
+      {% endfor %}
+
+    </div>
+
+
+  </div>
+</section>

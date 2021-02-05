@@ -1,0 +1,162 @@
+{% extends "_top-nav.html" %} 
+
+{% block topNav %}
+<!-- Hero -->
+<section class="c-hero--split background--eggplant">
+    <div class="c-image">
+      <picture>
+          <source type="image/webp" srcset="/imgs/events-hero.webp"    alt="Events Page Hero">
+          <source type="image/png" srcset="/imgs/events-hero.jpg"    alt="Events Page Hero">
+          <img     src="/imgs/events-hero.jpg"   alt="Events Page Hero" >
+</picture>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 c-valign--middle">
+          <pre class="c-eyebrow c-eyebrow--light">On The Road Again</pre>
+          {{ entry.heroText }}
+          {% if entry.ctas|length %}
+            <div class="c-hero__buttons">
+            {% set ctas = entry.ctas %}
+            {% include 'components/cta/_index.html' %}
+            </div>
+          {% endif %} 
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- Table -->
+<section class="h-section-padding">
+  <div class="container">
+    <div class="col-md-8 offset-md-2">
+      <h2 class="text-md-center">What's next?</h2>
+      <p class="text-md-center">Copper is building relationships on the road.</p>
+    </div>
+    <div class="table-responsive">
+      <table class="table c-event-table">
+        <thead>
+          <tr class="d-flex">
+            <th class="col-md-6">Events</th>
+            <th class="col-md-3">Where</th>
+            <th class="col-md-3">When</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for entry in craft.entries.section('eventListing').all() if entry.eventEndDate >= now %}
+            <tr class="d-flex">
+              <td class="col-md-6"><a href="{{ entry.clickthrough.url }}">{{ entry.clickthrough.text }}</a></td>
+              <td class="col-md-3">{{ entry.location }}</td>
+              <td class="col-md-3">{{ entry.eventDate }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</section>
+
+<!-- Content Jumble -->
+<section class="c-jumble c-jumble-background--graphite c-jumble--align-right no-top-margin">
+  <div class="container">
+
+    <div class="c-jumble__container col-md-10 offset-md-2 no-padding">
+      <div class="c-jumble__content c-valign--middle">
+
+        <div class="row column-reverse">
+          <div class="col-md-5 order-md-2">
+            <div class="c-image c-image--video rectangle--bottom--right rectangle--mint">
+              <div id="videoScript-45dro7cdil" class="sl_swap" >
+                <script src="https://fast.wistia.com/embed/medias/45dro7cdil.jsonp" async="async"></script>
+              </div>                                 
+              <div id="videoClick-45dro7cdil" class="sl_swap">
+                <span class="c-card__clickthrough wistia_embed wistia_async_45dro7cdil popover=true popoverContent=link"></span>
+              </div>
+              <div class="c-image--video__container">
+                <picture>
+          <source type="image/webp" srcset="/imgs/events-IMG-2.webp"  alt="Events image"  >
+          <source type="image/png" srcset="/imgs/events-IMG-2.jpg"  alt="Events image"  >
+          <img   alt="Events image"   src="/imgs/events-IMG-2.jpg"   >
+</picture>
+                <a class="c-button c-button--white c-button--circle c-button--circle--large" href="#">
+                  <i class="material-icons notranslate">play_arrow</i>
+                </a>     
+              </div>            
+            </div>
+          </div>
+          <div class="col-md-7 order-md-1">
+            <pre class="c-eyebrow c-eyebrow--light">Copper + Google</pre>
+            <h2>Better together.</h2>
+            <p>Copper is the crm that works for you. It’s made for G Suite, works instantly and has a beautiful user experience. Over 10,000+ companies in over 100 countries use Copper to grow and foster long-lasting business relationships.</p>
+            <p>See why 78% of our customers go live with implementing Copper within 1 week.Try it free today!</p>
+            <div class="c-hero__buttons">
+              <a class="c-button sendUTMsToAmplitude" href="{{ craft.app.config.general.signUpUrl }}">Try Free</a>
+              <a class="c-button c-button--outline" href="#" data-toggle="modal" data-target="#formModal">Request Demo</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Table -->
+<section class="h-section-padding">
+    <div class="container">
+      <div class="col-md-8 offset-md-2">
+        <h2 class="text-md-center">Past Events</h2>
+        <p class="text-md-center">See where we have been.</p>
+      </div>
+      <div class="table-responsive">
+        <table class="table c-event-table">
+          <thead>
+            <tr class="d-flex">
+              <th class="col-md-6">Events</th>
+              <th class="col-md-3">Where</th>
+              <th class="col-md-3">When</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for entry in craft.entries.section('eventListing').all() if entry.eventEndDate < now %}
+              <tr class="d-flex">
+                <td class="col-md-6">{{ entry.clickthrough.text }}</td>
+                <td class="col-md-3">{{ entry.location }}</td>
+                <td class="col-md-3">{{ entry.eventDate }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </section>
+
+<!-- Final Plea -->
+<section class="c-hero--split background--leavebehind">
+    <div class="c-image">
+      <picture>
+          <source type="image/webp" srcset="/imgs/leave-behind-scaled.webp"    alt="Leave behind scaled image">
+          <source type="image/png" srcset="/imgs/leave-behind-scaled.jpg"    alt="Leave behind scaled image">
+          <img     src="/imgs/leave-behind-scaled.jpg"   alt="Leave behind scaled image" >
+</picture>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 c-valign--middle">
+          <pre class="c-eyebrow c-eyebrow--light">Goodbye Data Entry</pre>
+          <h2 class="t-white">Hello Copper.</br>Try it free!</h2>
+          <p style="max-width: 420px;">No credit card required. Start your 14-day free trial today.</p>
+          <div class="c-hero__buttons">
+              <a class="c-button"  href="#" data-toggle="modal" data-target="#formModal">Request Demo</a>
+              <a class="c-button c-button--outline sendUTMsToAmplitude" href="{{ craft.app.config.general.signUpUrl }}">Try Free</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}

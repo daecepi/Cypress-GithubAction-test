@@ -1,0 +1,109 @@
+<section id="library-slider" class="c-hero c-hero--library-slider">
+	<div class="slider-wrapper">
+		<div class="c-resources-card slide">
+			<div class="c-resources-card__image-container">
+				<picture>
+          <source type="image/webp" srcset="/imgs/placeholder/resources/Cover_withLogos22.webp"  class="img-fluid"   alt="Cover image with logos 1">
+          <source type="image/png" srcset="/imgs/placeholder/resources/Cover_withLogos22.png"  class="img-fluid"   alt="Cover image with logos 1">
+          <img   class="img-fluid"   src="/imgs/placeholder/resources/Cover_withLogos22.png"   alt="Cover image with logos 1" >
+</picture>
+			</div>
+			<div class="container">
+				<div class="c-resource-card__content">
+					<span class="t-eyebrow t-eyebrow--lt-pink">Books & Guides</span>
+					<h2>The Win/Loss Analysis Handbook</h2>
+					<a href="" class="c-button c-button--white-outline-black-text">Read More</a>
+				</div>
+			</div>
+		</div>	
+		<div class="c-resources-card slide">
+			<div class="c-resources-card__image-container">
+				<picture>
+          <source type="image/webp" srcset="/imgs/placeholder/resources/Cover_withLogos3.webp"  class="img-fluid"   alt="Cover image with logos 2">
+          <source type="image/png" srcset="/imgs/placeholder/resources/Cover_withLogos3.png"  class="img-fluid"   alt="Cover image with logos 2">
+          <img   class="img-fluid"   src="/imgs/placeholder/resources/Cover_withLogos3.png"   alt="Cover image with logos 2" >
+</picture>
+			</div>
+			<div class="container">
+				<div class="c-resource-card__content">
+					<span class="t-eyebrow t-eyebrow--lt-purple">Videos</span>
+					<h2>Accelerate Your Sales Process</h2>
+					<a href="" class="c-button c-button--white-outline-black-text">Read More</a>
+				</div>
+			</div>
+		</div>	
+		<div class="c-resources-card slide">
+			<div class="c-resources-card__image-container">
+				<picture>
+          <source type="image/webp" srcset="/imgs/placeholder/resources/Cover_withLogos6.webp"  class="img-fluid"   alt="Cover image with logos 3">
+          <source type="image/png" srcset="/imgs/placeholder/resources/Cover_withLogos6.png"  class="img-fluid"   alt="Cover image with logos 3">
+          <img   class="img-fluid"   src="/imgs/placeholder/resources/Cover_withLogos6.png"   alt="Cover image with logos 3" >
+</picture>
+			</div>
+			<div class="container">
+				<div class="c-resource-card__content">
+					<span class="t-eyebrow t-eyebrow--lt-mint">Customer Stories</span>
+					<h2>Corduroy Media</h2>
+					<a href="" class="c-button c-button--white-outline-black-text">Read More</a>
+				</div>
+			</div>
+		</div>	
+		<div class="c-resources-card slide">
+			<div class="c-resources-card__image-container">
+				<picture>
+          <source type="image/webp" srcset="/imgs/placeholder/resources/Cover_withLogos9.webp"  class="img-fluid"   alt="Cover image with logos 4">
+          <source type="image/png" srcset="/imgs/placeholder/resources/Cover_withLogos9.png"  class="img-fluid"   alt="Cover image with logos 4">
+          <img   class="img-fluid"   src="/imgs/placeholder/resources/Cover_withLogos9.png"   alt="Cover image with logos 4" >
+</picture>
+			</div>
+			<div class="container">
+				<div class="c-resource-card__content">
+					<span class="t-eyebrow t-eyebrow--lt-blue">Tools & Templates</span>
+					<h2>The Impact of CRM in the Relationship Era Infographic</h2>
+					<a href="" class="c-button c-button--white-outline-black-text">Read Now</a>
+				</div>
+			</div>
+		</div>	
+		<!-- Next and previous buttons -->
+		<a class="slider-control prev" onclick="plusSlides(-1)"><span></span></a>
+		<a class="slider-control next" onclick="plusSlides(1)"><span></span></a>
+		<div class="indicators">
+			<div class="container">
+				<span class="indicator-line active" onclick="currentSlide(1)"></span>
+				<span class="indicator-line" onclick="currentSlide(2)"></span>
+				<span class="indicator-line" onclick="currentSlide(3)"></span>
+				<span class="indicator-line" onclick="currentSlide(4)"></span>
+			</div>
+		</div>		
+	</div>
+</section>
+<script>
+	var slideIndex = 1;
+	showSlides(slideIndex);
+
+	// Next/previous controls
+	function plusSlides(n) {
+	  showSlides(slideIndex += n);
+	}
+
+	// Thumbnail image controls
+	function currentSlide(n) {
+	  showSlides(slideIndex = n);
+	}
+
+	function showSlides(n) {
+	  var i;
+	  var slides = document.getElementsByClassName("slide");
+	  var dots = document.getElementsByClassName("indicator-line");
+	  if (n > slides.length) {slideIndex = 1}
+	  if (n < 1) {slideIndex = slides.length}
+	  for (i = 0; i < slides.length; i++) {
+	      slides[i].style.display = "none";
+	  }
+	  for (i = 0; i < dots.length; i++) {
+	      dots[i].className = dots[i].className.replace(" active", "");
+	  }
+	  slides[slideIndex-1].style.display = "block";
+	  dots[slideIndex-1].className += " active";
+	}
+</script>

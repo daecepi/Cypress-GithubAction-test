@@ -1,0 +1,150 @@
+{% macro header(title, entryType, subText) %}
+
+<!-- <div class="c-e-book-builder__header col-md-12">
+    {% if entryType == "customerStories"  %}<span class="t-eyebrow hot-pink"><strong>Customer stories</strong></span>{% endif %}
+    <div class="col-md-8 offset-md-2">
+        <h1>{{ title }}</h1>
+    </div>
+</div> -->
+
+<div class="c-e-book-builder__header col-md-12">
+    <span class="t-eyebrow hot-pink"><strong>{% if entryType == "customerStories"  %} Customer stories {% endif %}</strong></span>
+    <div class="col-md-10 offset-md-1 t-vertical-line-below">
+        <h1 class="d-none d-md-flex justify-center">{{ title }}</h1>
+        <h2 class="d-flex d-md-none justify-center">{{ title }}</h2>
+    </div>
+    <h3>{{ subText }}</h3>
+</div>
+
+{% endmacro %}
+
+{% macro tldr(tldr) %}
+
+    <div class="t-resource-bold-text">{{ tldr }}</div>
+
+{% endmacro %}
+
+{% macro copyEditor(copyEditorId, callOutSentence, copy ) %}
+    <div {% if (copyEditorId) | length %}id="{{copyEditorId}}"
+        {% endif %}class="c-resource-copy__editor">
+        <div class="row">
+            {% if (callOutSentence | length) %}
+                <div class="col-md-10 callout">
+                    <h2>{{ callOutSentence }}</h2>
+                </div>
+            {% endif %}
+            <div class="col-md-10 offset-md-1 copy t-pink-bullet-points t-pink-bullet-points--pull-left">
+                {{ copy }}
+            </div>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro media( addMedia, mediaDescription ) %}
+    <div class="c-resource-media" >
+        {% if "iframe" in addMedia %}
+            <div class="" style="position:relative;padding-bottom:56.20%">{{ addMedia }}</div>
+        {% else %}
+            <div class="" style="position:relative">{{ addMedia }}</div>
+        {% endif %}
+        <style> 
+        .c-resource-media iframe{
+            position:absolute;
+            width:100%;
+            height:100%!important;
+            left:0px;
+            top:0px;
+        }
+        </style>
+        {% if mediaDescription %}
+        <pre class="description">{{ mediaDescription }}</pre>
+        {% endif %}
+    </div>
+{% endmacro %}
+
+{% macro wistiaVideo( videoCode ) %}
+    <div class="col-md-12 wistia-responsive-video" style="margin-bottom:80px;">
+        <script src="https://fast.wistia.com/embed/medias/{{videoCode}}.jsonp" async></script>
+        <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+        <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
+            <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+                <div class="wistia_embed wistia_async_{{videoCode}} videoFoam=true" style="height:100%;position:relative;width:100%">
+                    <div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;">
+                        <img src="https://fast.wistia.com/embed/medias/{{videoCode}}/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="Video thumbnail" aria-hidden="true" onload="this.parentNode.style.opacity=1;" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro callOut( copy ) %}
+    <div class="c-resource-callout col-md-10">
+        {{ copy }}
+    </div>
+{% endmacro %}
+
+
+{% macro card( eyebrow, header, copy ) %}
+    <div class="c-resource-card">
+        <div class="c-list-card__card">
+            <div class="c-resource-card__content">
+                <pre class="c-eyebrow">{{ eyebrow }}</pre>
+                <div class="c-resource-card__title">
+                    <div class="c-resource-card__title-container">
+                        <h3>{{ header }}</h3>
+                        <div class="strick-through-title"></div>
+                    </div>
+                </div>
+                <div>{{ copy }}</div>
+            </div>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro quote( quote, author ) %}
+    <div class="col-10 c-resource-quote">
+        <div class="t-resource-bold-text--quote c-resource-quote__block t-vertical-line-left">{{ quote }}</div>
+        <div class="c-resource-quote__author">{{author}}</div>
+    </div>
+{% endmacro %}
+
+{% macro adA( eyebrow, header, paragraph, cta, ad ) %}
+    <div class="c-resources-media--cta d-flex">
+        <div class="c-resources-media__copy">
+            {% if eyebrow|length %}
+            <pre class="c-eyebrow c-eyebrow--dark">{{ eyebrow }}</pre>
+            {% endif %}
+            <h2>{{ header }}</h2>
+            <p>{{ paragraph }}</p>
+            {% if cta|length %}
+                {% set ctas = cta %}
+                {% include 'components/cta/_index.html' %}
+            {% endif %}
+        </div>
+        {% if ad|length %}
+            {% set image = ad.one() %}
+            <div class="c-resources-media__ad" style="background-image:url('{{ image.url }}');"></div>
+        {% endif %}
+    </div>
+{% endmacro %}
+
+{% macro adB( eyebrow, header, pinkPeriodAfterHeader, paragraph, ctas ) %}
+    <div class="col-12 c-resource-ad1 c-single-column__container c-align--center h-hairline">
+        <span class="t-eyebrow">{{ eyebrow }}</span>
+        <h2 class="{{pinkPeriodAfterHeader ? 't-resource-period--hot-pink'}}">{{header}}</h2>
+        <p class="">{{paragraph}}</p>
+        <div class="c-single-column__buttons c-resource-ad1__button">
+            {% for cta in ctas.all() %}
+                {% set buttonColor = cta.buttonColor.one() %}
+                {% if cta.modalTrigger %}
+                    <a class="c-button c-button--{{ buttonColor ? buttonColor.slug : 'white' }}" href="/demos">{{ cta.button.text }}</a>
+                {% else %}
+            {% set buttonColor = cta.buttonColor.one() %}
+            <a class="c-button c-button--{{ buttonColor ? buttonColor.slug : 'white' }}" target="{{ cta.button.target }}"
+                href="{{ cta.button.url }}">{{ cta.button.text }}</a>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+{% endmacro %}

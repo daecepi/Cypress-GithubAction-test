@@ -1,0 +1,28 @@
+progress::-webkit-progress-bar {
+  background-color: transparent;
+}
+
+progress::-webkit-progress-value {
+  background-color: $color-hot-pink;
+}
+
+progress::-moz-progress-bar {
+  background-color: $color-hot-pink;
+}
+
+progress {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  height: 3px;
+  appearance: none;
+  border: none;
+  background-color: transparent;
+  color: $color-hot-pink;
+  @include media-breakpoint-up(md) {
+    left: 283px;
+    height: 4px;
+  }
+}

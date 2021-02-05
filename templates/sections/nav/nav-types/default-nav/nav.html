@@ -1,0 +1,732 @@
+{% set dynamicDefaultCTAName = entry.slug == "homepage" ? 'Get Demo' : 'Try Free' %}
+{% set dynamicDefaultCTAUrl = entry.slug == "homepage" ? '/demos' : craft.app.config.general.signUpUrl %}
+{% set 
+    
+    defaultNav = {
+        autohide: false,
+        menu :{
+            whyCopper : {
+                render : true,
+                name : "Why Copper",
+                dataCy: "why-copper-menu-element",
+                dropdownType: "product-nav",
+                url: "",
+                navAd : "Product",
+                dropdown: [
+                    {
+                        name:"Organize Contacts",
+                        icon: "/imgs/icons/Productivity-2x.png",
+                        description:"Keep all your relationships in one central place",
+                        url:"/manage-contacts",
+                        tag: '',
+                        colPos: 1,
+                    },
+                    {
+                        name:"Automate Tasks",
+                        icon: "/imgs/icons/icon-product-implementation@2x.png",
+                        description:"Create recurring tasks and notifications",
+                        url:"/automate-sales",
+                        tag: '',
+                        colPos: 1,
+                    },
+                    {
+                        name:"Security and Privacy",
+                        icon: "/imgs/icons/icon-product-security@2x.png",
+                        description:"Learn how Copper keeps your data safe",
+                        url:"/security",
+                        tag: '',
+                        colPos: 1,
+                    },
+                    {
+                        name:"Track Deals",
+                        icon: "/imgs/icons/Insights-2x.png",
+                        description:"Set up the pipeline that works for you",
+                        url:"/track-leads",
+                        tag: '',
+                        colPos: 2,
+                    },
+                    {
+                        name:"Get Reports",
+                        icon: "/imgs/icons/Collaboration-2x.png",
+                        description:"See how your business is doing with custom reports",
+                        url:"/sales-reporting",
+                        tag: '',
+                        colPos: 2,
+                    },
+                    {
+                        name: 'Manage Projects',
+                        icon: '/imgs/icons/menu-icon_projects@2x.png',
+                        description: 'Manage your team’s work after the deal is closed',
+                        url: '/project-management-crm',
+                        tag: 'NEW',
+                        colPos: 3,
+                    },
+                    {
+                        name:"Integrations",
+                        icon: "/imgs/icons/Integration-2x.png",
+                        description:"Save time by connecting Copper to popular apps and tools",
+                        url:"/integrations",
+                        tag: '',
+                        colPos: 3,
+                    }
+                ]
+            },
+            industry : {
+                render : true,
+                name: "Industry",
+                dropdownType: "industries-nav",
+                url: "",
+                navAd : "Product",
+                dropdown: [
+                    {
+                        name: "Agencies",
+                        icon: "/imgs/icons/Media-2x.png",
+                        description:"Better client relations for advertising and media agencies.",
+                        url:"/industries/agency-crm",
+                        tag: '',
+                        colPos: 1,
+                    },
+                    {
+                        name: "Consulting",
+                        icon: "/imgs/icons/Business-2x.png",
+                        description:"Manage clients and deals from one central place.",
+                        url:"/industries/consulting-crm",
+                        tag: '',
+                        colPos: 1,
+                    },
+                    {
+                        name: "Technology",
+                        icon: "/imgs/icons/Software-2x.png",
+                        description:"Innovate and scale faster with less crm busy work.",
+                        url:"/industries/software-technology-crm",
+                        tag: '',
+                        colPos: 3,
+                    },
+                    {
+                        name: "Real Estate",
+                        icon: "/imgs/icons/RealState-2x.png",
+                        description:"Real estate professionals manage more listings with Copper.",
+                        url:"/industries/real-estate-crm",
+                        tag: '',
+                        colPos: 2,
+                    },
+                    {
+                        name: "Corporate Development",
+                        icon: "/imgs/icons/Corp-2x.png",
+                        description:"Track and manage deals in one place with Copper.",
+                        url:"/industries/corporate-development-crm",
+                        tag: '',
+                        colPos: 2,
+                    }
+                ]
+                
+            },
+            pricing : {
+                render : true,
+                name: "Pricing",
+                dropdownType: "",
+                url: "/pricing"
+            },
+            demos : {
+                render : true,
+                name: "Demos",
+                dropdownType: "",
+                url: "/demos"
+            },
+            resources : {
+                render : true,
+                name: "Resources",
+                dropdownType: "resources-nav",
+                url: "",
+                navAd : "Resources",
+                dropdown: [
+                    {
+                        name: "Library",
+                        icon: "/imgs/icons/icon-resources-events.png",
+                        description:"Books, guides, videos and tools for growing your small business.",
+                        url:"/library",
+                        tag: '',
+                        colPos: 1,
+                    },
+                    {
+                        name: "Product Updates",
+                        icon: "/imgs/icons/icon-resources-updates.png",
+                        description:"Get updates on our product, best practices and tips.",
+                        url:"/blog-categories/copper?sc=743",
+                        tag: '',
+                        colPos: 1,
+                    },
+                    {
+                        name: "Blog",
+                        icon: "/imgs/icons/icon-resources-blog.png",
+                        description:"News, stories and latest thinking on sales, marketing and more.",
+                        url:"/resources",
+                        tag: '',
+                        colPos: 3,
+                    },
+                    {
+                        name: "Developers",
+                        icon: "/imgs/icons/icon-resources-developers.png",
+                        description:"Use our API to integrate Copper with other apps.",
+                        url:"https://developer.copper.com/",
+                        tag: '',
+                        colPos: 2,
+                    },
+                    {
+                        name: "Help Center",
+                        icon: "/imgs/icons/icon-resources-help.png",
+                        description:"Browse our knowledge base to find answers.",
+                        url:"https://support.copper.com",
+                        tag: '',
+                        colPos: 2,
+                    },
+                    {
+                        name: "Webinars",
+                        icon: "/imgs/icons/icon-resources-webinars.png",
+                        description:"Check our schedule and sign up for our online events.",
+                        url:"/webinars",
+                        tag: '',
+                        colPos: 3,
+                    }
+                ]
+            },
+            company : {
+                render : false,
+                name: "Company",
+                dropdownType: "company-nav",
+                url: "",
+                navAd : "Company",
+                dropdown: [
+                    {
+                        name: "About",
+                        icon: "/imgs/icons/About.png",
+                        description:"Learn about our company.",
+                        url:"/about",
+                        tag: '',
+                        colPos: 1,
+                    },
+                    {
+                        name: "Contact Us",
+                        icon: "/imgs/icons/contact.png",
+                        description:"Get in touch with the team.",
+                        url:"/contact",
+                        tag: '',
+                        colPos: 1,
+                    },
+                    {
+                        name: "Careers",
+                        icon: "/imgs/icons/careers.png",
+                        description:"Search our latest job openings",
+                        url:"/about#careers",
+                        tag: '',
+                        colPos: 2,
+                    },
+                    {
+                        name: "Partners",
+                        icon: "/imgs/icons/Partners.png",
+                        description:"Learn about our partners and how \n to become one.",
+                        url:"/partners",
+                        tag: '',
+                        colPos: 2,
+                    },
+                    {
+                        name: "Press",
+                        icon: "/imgs/icons/Press.png",
+                        description:"Check out all the Copper press and news.",
+                        url:"/press",
+                        tag: '',
+                        colPos: 3,
+                    }
+                ]
+            }
+        },
+        utilities : [
+            {
+                name: dynamicDefaultCTAName,
+                sendUTMsToAmplitude : true,
+                url: dynamicDefaultCTAUrl,
+                color: "white",
+                classes : ["c-button"],
+                desktopClasses: ["c-button"]
+            },
+            {
+                name: "Login",
+                sendUTMsToAmplitude : false,
+                url: "https://app.prosperworks.com/users/sign_in",
+                color: "#FF3465",
+                classes : ["c-button","c-button--outline"],
+                desktopClasses: ["c-nav__login"]
+            },
+        ]
+    }
+
+%}
+
+<style>
+    .search-bar-container-desktop{
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+    .yxt-SearchBar{
+        height: 100%;
+    }
+
+    .yxt-SearchBar-button{
+         
+    }
+    .yxt-SearchBar-container{
+        transform: translateY(23px);
+    }
+</style>
+
+{# Navbar declarations #}
+<script>
+    /*LazyLoad.css(['https://assets.sitescdn.net/answers/v1.5/answers.css']);
+    LazyLoad.js([
+    'https://assets.sitescdn.net/answers/v1.5/answers.min.js',
+    'https://cdn.jsdelivr.net/npm/typed.js@2.0.11',
+    'https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js',
+    'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js',
+    ],function(){var apiKey = "adf8d85d3ee2b2a9c35ed2695353d2d6";
+    var experienceKey= "answers";
+    var experienceVersion = "PRODUCTION";
+    var businessId= "3335022";
+    var locale = "en";
+    var redirectUrl = "/search";
+    var javascriptVersion = "1.7";
+    var yextProductionUrl = "https://answers-embed.copper.com.pagescdn.com/";
+    ANSWERS.init({
+      apiKey: apiKey,
+      experienceKey: experienceKey,
+      businessId: businessId,
+      experienceVersion: experienceVersion,
+      locale: locale,
+      redirectUrl: redirectUrl,
+      javascriptVersion: javascriptVersion,
+      production_url: yextProductionUrl,
+      onReady: function() {
+        this.addComponent("SearchBar", {
+          container: ".search-bar-container",
+          name: "faq-search",
+          redirectUrl: redirectUrl,
+          placeholdertext: "Search..."
+        });
+        this.addComponent("SearchBar", {
+            container: ".search-bar-container-desktop",
+            name: "faq-search-desktop",
+            redirectUrl: redirectUrl,
+            placeholdertext: "Search..."
+          });
+        // Make API Call to Options
+        var url = 'https://liveapi-cached.yext.com/v2/accounts/me/answers/autocomplete';
+        url += '?v=20190101';
+        url += '&api_key=' + apiKey;
+        url += '&sessionTrackingEnabled=false';
+        url += '&experienceKey=' + experienceKey;
+        url += '&input=';
+        url += '&version=' + experienceVersion;
+        url += '&locale=' + locale;
+        axios.get(url).then(function(response) {
+          // Get strings from response
+          const strings = response.data.response.results.map(function(r) {
+            return r.value;
+          });
+          // console.log("Response object", response)
+          // Set up Typed
+          var options = {
+            strings: strings,
+            showCursor: true,
+            cursorChar: "|",
+            typeSpeed: 45,
+            backSpeed: 20,
+            smartBackspace: true,
+            loop: true,
+            startDelay: 500,
+            backDelay: 2000,
+            attr: "placeholder",
+          };
+          var typed = new Typed(".js-yext-query", options);
+
+          // Remove yext logo
+          $('.Icon--yext_animated_forward').empty();
+          $('.Icon--yext_animated_forward').append(`<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+          <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+          <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="88px" height="88px" viewBox="0 0 88 88" enable-background="new 0 0 88 88" xml:space="preserve">  <image id="image0" width="88" height="88" x="0" y="0"
+              href="data:image/png;base64,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" />
+          </svg>
+          `);
+
+          $('.Icon--yext_animated_reverse').empty();
+          $('.Icon--yext_animated_reverse').append(`<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+          <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+          <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="88px" height="88px" viewBox="0 0 88 88" enable-background="new 0 0 88 88" xml:space="preserve">  <image id="image0" width="88" height="88" x="0" y="0"
+              href="data:image/png;base64,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" />
+          </svg>
+          `);
+
+        });
+        
+      },
+    });
+    })*/
+</script>
+{# Mobile Nav #}
+{# <div class="webBanner webBanner-mobile-cta webBanner-mobile-cta-active" style="background:{{webBanner.webBannerColor|default('white')}}" data-webbanneractive="{{webBanner.webBannerStatus}}" > 
+  <div class="webBanner-mobile-text d-md-none d-sm-flex">Meet your simple, intuitive CRM.</div>
+  <div class="webBanner-button">
+      <span>
+          <a class="c-button c-button--white-outline sendUTMsToAmplitude" href="{{ craft.app.config.general.signUpUrl }}">Try Free</a>
+      </span>
+    </div>
+</div> #}
+
+{# {% if webBanner.webBannerStatus is defined and webBanner.webBannerStatus == 1 %}
+<div id="webBannerDoc" class="webBanner" style="background:{{webBanner.webBannerColor|default('white')}}" data-webbanneractive="{{webBanner.webBannerStatus}}" > 
+	<a class="link-overlay" href="{{webBanner.webBannerLink.url|default('copper.com')}}"></a>
+	<div class="webBanner-desktop-text d-none d-md-flex ">{{webBanner.webBannerTextDesktop|default('Copper your best CRM choice')}}</div>
+	<div class="webBanner-mobile-text d-md-none d-sm-flex">{{webBanner.webBannerTextMobile|default('Copper your best CRM choice')}}</div>	
+	<div class="webBanner-button">
+	<span>
+		<a class="c-button c-button--white-outline" href="{{webBanner.webBannerLink.url|default('copper.com')}}">
+				{{webBanner.webBannerLink.text|default('copper.com')}}
+		</a>
+	</span>
+	</div>
+</div>
+{% endif %} #}
+{% set url = craft.app.request.url %}
+<nav class="c-nav--mobile
+{% if craft.app.request.pathInfo == '/' or craft.app.request.pathInfo == '' %}
+  {% if webBanner.webBannerStatus is defined and webBanner.webBannerStatus == 1 %}
+    webBanner-active__nav 
+  {% endif %}
+{% endif %}
+ " style='height:fit-content'>
+ 
+ {% if url == '/' %}
+    {% if webBanner.webBannerStatus is defined and webBanner.webBannerStatus == 1 %}
+    <div id="webBannerDoc" class="webBanner" style="position:relative;background:{{webBanner.webBannerColor|default('white')}}" data-webbanneractive="{{webBanner.webBannerStatus}}" > 
+        <a class="link-overlay" href="{{webBanner.webBannerLink.url|default('copper.com')}}"></a>
+        <div class="webBanner-desktop-text d-none d-md-flex ">{{webBanner.webBannerTextDesktop|default('Copper your best CRM choice')}}</div>
+        <div class="webBanner-mobile-text d-md-none d-sm-flex">{{webBanner.webBannerTextMobile|default('Copper your best CRM choice')}}</div>	
+        <div class="webBanner-button">
+        <span>
+            <a class="c-button c-button--white-outline" href="{{webBanner.webBannerLink.url|default('copper.com')}}">
+                    {{webBanner.webBannerLink.text|default('copper.com')}}
+            </a>
+        </span>
+        </div>
+    </div>
+    {% endif %}
+{% endif  %}
+<div style="position:relative;height:60px;z-index:99999">
+  <a class="c-nav__logo" href="/">
+    {% include "sections/nav/globals/_default-logo.html" %}
+  </a>
+  <div class="c-back js-sub-back">
+      <?xml version="1.0" encoding="UTF-8"?>
+      <svg width="16px" height="8px" viewBox="0 0 16 8" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <defs></defs>
+          <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+              <g id="baseline-arrow_right_alt-24px" transform="translate(-4.000000, -8.000000)">
+                  <polygon id="Shape" points="0 0 24 0 24 24 0 24"></polygon>
+                  <polygon id="Shape" fill="#FFFFFF" fill-rule="nonzero" transform="translate(12.000000, 12.000000) scale(-1, 1) translate(-12.000000, -12.000000) " points="16.01 11 4 11 4 13 16.01 13 16.01 16 20 12 16.01 8"></polygon>
+              </g>
+          </g>
+      </svg>
+  </div>
+  <div class="search-bar-menu-delimiter" style="right: 55px;">
+      <div class="search-bar-container"></div>
+      <span class="search-free-close"></span>
+  </div>
+  {#<span class="search-free-open hot-pink-search-start" style="position: absolute;right: 45px;top: 8px; margin-right: 18px;{{entry.slug == 'pricing' or entry.slug == 'features' ? '' : 'display: none;'}}"></span>#}
+  <div class="c-nav--mobile__burger">
+    <div id="nav-icon2">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  </div>
+  <div class="c-nav--mobile__overlay
+{% if craft.app.request.pathInfo == '/' or craft.app.request.pathInfo == '' %}
+  {% if webBanner.webBannerStatus is defined and webBanner.webBannerStatus == 1 %}
+    webBanner-active__nav 
+  {% endif %}
+{% endif %}" style='overflow:hidden;top:0px'>
+
+    <div class="c-nav--mobile__links" style='padding-top:160px;'>
+      <ul>
+        {% for mobileItems in defaultNav.menu %}
+            {% if mobileItems.render == "true" %}
+                {% if mobileItems.dropdownType != "" %}
+                    <li class="js-dropdown-nav" dropdown-type="{{mobileItems.dropdownType}}-mobile">{{mobileItems.name}}<?xml version="1.0" encoding="UTF-8"?>
+                    <svg width="16px" height="8px" viewBox="0 0 16 8" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <defs></defs>
+                        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g id="baseline-arrow_right_alt-24px" transform="translate(-4.000000, -8.000000)">
+                                <polygon id="Shape" points="0 0 24 0 24 24 0 24"></polygon>
+                                <polygon id="Shape" fill="#FF3465" fill-rule="nonzero" transform="translate(12.000000, 12.000000) scale(-1, 1) translate(-12.000000, -12.000000) " points="16.01 11 4 11 4 13 16.01 13 16.01 16 20 12 16.01 8"></polygon>
+                            </g>
+                        </g>
+                    </svg>
+                    </li>
+                {% else %}
+                    <li><a href="{{mobileItems.url}}">{{mobileItems.name}}</a></li>
+                {% endif %}
+            {% endif %}        
+        {% endfor %}
+        <li>
+        {% for mobileUtilities in defaultNav.utilities %}
+            <a class="{{mobileUtilities.classes |join(' ')}} {% if mobileUtilities.sendUTMsToAmplitude ==  true %}sendUTMsToAmplitude{% endif %}" style="color: {{mobileUtilities.color}}; margin-top: 32px;" href="{{mobileUtilities.url}}" data-cy="general-menu-CTA--mobile">{{mobileUtilities.name}}</a>
+        {% endfor %}
+        </li>
+      </ul>
+    </div>
+    <div class="c-nav--mobile__sub" >
+        {% for mobileSecondLevel in defaultNav.menu %}
+            {% if mobileSecondLevel.render == "true" %}
+                {% if mobileSecondLevel.dropdownType != "" %}
+                    <div class="c-nav__dropdown" id="{{mobileSecondLevel.dropdownType}}-mobile" style='padding-top:160px;'>
+                        <ul>
+                        <span class="c-nav__dropdown__title">{{mobileSecondLevel.name}}</span>
+                            {% for items in mobileSecondLevel.dropdown %}
+                                <a class="c-nav__dropdown__item" href="{{items.url}}">
+                                    <li>{{items.name}}</li>
+                                </a>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            {% endif %}
+        {% endfor %}        
+    </div>
+</div>
+
+</nav>
+
+{# 
+  Macro for ads "navAd( "string" )" 
+  Options : "Production","Resources","Company" 
+  Macro in : sections/_macros.html
+  Variable inside macro
+  #}
+{% import "/sections/_macros.html" as macro %}
+
+
+{# Desktop Nav #}
+<nav class="c-nav c-new-nav" style='flex-wrap:wrap;height:fit-content'>
+ {% if url == '/' %}
+    {% if webBanner.webBannerStatus is defined and webBanner.webBannerStatus == 1 %}
+    <div id="webBannerDoc" class="webBanner" style="position:relative;background:{{webBanner.webBannerColor|default('white')}}" data-webbanneractive="{{webBanner.webBannerStatus}}" > 
+        <a class="link-overlay" href="{{webBanner.webBannerLink.url|default('copper.com')}}"></a>
+        <div class="webBanner-desktop-text d-none d-md-flex ">{{webBanner.webBannerTextDesktop|default('Copper your best CRM choice')}}</div>
+        <div class="webBanner-mobile-text d-md-none d-sm-flex">{{webBanner.webBannerTextMobile|default('Copper your best CRM choice')}}</div>	
+        <div class="webBanner-button">
+        <span>
+            <a class="c-button c-button--white-outline" href="{{webBanner.webBannerLink.url|default('copper.com')}}">
+                    {{webBanner.webBannerLink.text|default('copper.com')}}
+            </a>
+        </span>
+        </div>
+    </div>
+    {% endif %}
+{% endif  %}
+  <div class="c-nav__container">
+    <div class="container" style='flex-wrap:wrap'>
+    <div style='width:100%;display:flex;position:relative;'>
+      <div class="c-nav__logo">
+        <a href="/" style="height: 27px;">
+          {% include "sections/nav/globals/_default-logo.html" %}
+        </a>
+      </div>
+
+      <ul class="c-nav__links">
+        {% for items in defaultNav.menu %}
+            {% if items.render == "true" %}
+                {% if items.dropdownType != "" %}
+                <li class="h-dropdown js-dropdown-nav" {% if items.dataCy is defined %} data-cy="{{items.dataCy}}" {% endif %} dropdown-type="{{ items.dropdownType }}">
+                    {{items.name}}
+                    <span class="carrot">
+                        <svg width="6px" height="4px" viewBox="0 0 6 4" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <defs></defs>
+                        <g id="Website" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g id="Dropdown-Nav" transform="translate(-514.000000, -812.000000)" fill="#FF3465">
+                            <g id="::-Industries-v1" transform="translate(0.000000, 764.000000)">
+                                <g id="dropdown-nav" transform="translate(113.000000, 0.000000)">
+                                <g id="pages" transform="translate(345.000000, 37.000000)">
+                                    <g id="product">
+                                    <polygon id="dropdown" transform="translate(59.000000, 13.000000) rotate(-270.000000) translate(-59.000000, -13.000000) "
+                                        points="57 10 61 13 57 16"></polygon>
+                                    </g>
+                                </g>
+                                </g>
+                            </g>
+                            </g>
+                        </g>
+                        </svg>
+                    </span>
+                </li>
+                {% else %}
+                    <a href="{{items.url}}">
+                        <li>
+                            {{items.name}}
+                        </li>
+                    </a>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+      </ul>
+
+      <div class="search-bar-menu-delimiter">
+          <div class="search-bar-container-desktop"></div>
+          <span class="search-free-close"></span>
+      </div>
+      <ul class="c-nav__utility">
+        {#<span class="search-free-open" style="position: relative; right: 0px; top: 3px; margin-right: 18px;{{entry.slug == 'pricing' or entry.slug == 'features' ? '' : 'display: none;'}}"></span>#}
+        {#<span class="search-free-close"></span>#}
+        <script>
+            /*LazyLoad.js([
+            'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js',
+            ],function(){
+                $('.search-free-open').on('click', function(){
+                    $('.search-bar-menu-delimiter').toggleClass('show-delimiter');
+                });
+                $('.search-free-close').on('click', function(){
+                    $('.search-bar-menu-delimiter').removeClass('show-delimiter');
+                })
+            })*/
+        </script>
+        {% for desktopUtilities in defaultNav.utilities %}
+            <a class="{{desktopUtilities.desktopClasses | join(' ')}} {% if desktopUtilities.sendUTMsToAmplitude ==  true %}sendUTMsToAmplitude{% endif %}" href="{{desktopUtilities.url}}" data-cy="general-menu-CTA">
+                <li>
+                    {{desktopUtilities.name}}
+                </li>
+            </a>
+        {% endfor %}
+      </ul>
+      </div>
+      <div style='position:relative;width:100%'>
+      {% for desktopSecondLevel in defaultNav.menu %}
+        {% if desktopSecondLevel.render == "true" %}
+            {% if desktopSecondLevel.dropdownType != "" %}
+                {% set flag = 0 %}
+                <div class="c-nav__dropdown" data-cy="general-nav-dropdown" id="{{desktopSecondLevel.dropdownType}}" style='top:0px;width:100vw'>
+                    {% for i in 1..3 %}
+                        <ul>
+                            {% for items in desktopSecondLevel.dropdown %}
+                                {% if items.colPos == i %}
+                                <a class="c-nav__dropdown__item" href="{{items.url}}">
+                                    <img class="c-nav__icon" alt="Icon" src="{{items.icon}}">
+                                    <div>
+                                        <li>{{items.name}} {% if items.tag is defined and items.tag != '' %}<span class="tag--new">{{ items.tag }}</span>{% endif %}</li>
+                                        <span class="c-nav__dropdown__detail">{{items.description |nl2br}}</span>
+                                    </div>
+                                </a>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    {% endfor %}
+                    
+                    {# OLD CODE NOT DEPENDANT OF colPos Attribute fixed to 3 items per col #}
+                    {# <ul>
+                        {% for i in 0..2 %}
+                            {% if desktopSecondLevel.dropdown[i] is defined %}
+                                <a class="c-nav__dropdown__item" href="{{desktopSecondLevel.dropdown[i].url}}">
+                                    <img alt="Dropdown icon" class="c-nav__icon" src="{{desktopSecondLevel.dropdown[i].icon}}">
+                                    <div>
+                                        <li>{{desktopSecondLevel.dropdown[i].name}} {% if desktopSecondLevel.dropdown[i].tag is defined and desktopSecondLevel.dropdown[i].tag != '' %}<span class="tag--new">{{ desktopSecondLevel.dropdown[i].tag }}</span>{% endif %}</li>
+                                        <span class="c-nav__dropdown__detail">{{desktopSecondLevel.dropdown[i].description |nl2br}}</span>
+                                    </div>
+                                </a>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                    <ul>
+                        {% for i in 3..4 %}
+                            {% if desktopSecondLevel.dropdown[i] is defined %}
+                                <a class="c-nav__dropdown__item" href="{{desktopSecondLevel.dropdown[i].url}}">
+                                    <img alt="Dropdown icon 2" class="c-nav__icon" src="{{desktopSecondLevel.dropdown[i].icon}}">
+                                    <div>
+                                        <li>{{desktopSecondLevel.dropdown[i].name}} {% if desktopSecondLevel.dropdown[i].tag is defined and desktopSecondLevel.dropdown[i].tag != '' %}<span class="tag--new">{{ desktopSecondLevel.dropdown[i].tag }}</span>{% endif %}</li>
+                                        <span class="c-nav__dropdown__detail">{{desktopSecondLevel.dropdown[i].description |nl2br}}</span>
+                                    </div>
+                                </a>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                    <ul>
+                        {% for i in 5..6 %}
+                            {% if desktopSecondLevel.dropdown[i] is defined %}
+                                <a class="c-nav__dropdown__item" href="{{desktopSecondLevel.dropdown[i].url}}">
+                                    <img alt="Dropdown icon 3" class="c-nav__icon" src="{{desktopSecondLevel.dropdown[i].icon}}">
+                                    <div>
+                                        <li>{{desktopSecondLevel.dropdown[i].name}} {% if desktopSecondLevel.dropdown[i].tag is defined and desktopSecondLevel.dropdown[i].tag != '' %}<span class="tag--new">{{ desktopSecondLevel.dropdown[i].tag }}</span>{% endif %}</li>
+                                        <span class="c-nav__dropdown__detail">{{desktopSecondLevel.dropdown[i].description |nl2br }}</span>
+                                    </div>
+                                </a>
+                            {% endif %}
+                        {% endfor %}
+                    </ul> #}
+                    {{ macro.navAd( desktopSecondLevel.navAd ) }}   
+                </div>
+            {% endif %}
+        {% endif %}
+      {% endfor %}  
+      </div>       
+    </div>
+  </div>
+
+</nav>

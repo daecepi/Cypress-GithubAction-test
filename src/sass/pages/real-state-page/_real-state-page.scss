@@ -1,0 +1,81 @@
+.crm-for-real-estate-agents-and-brokers{
+
+  .c-hero--split{
+
+    &.synced-variation{
+      padding-top: 110px;
+      padding-bottom: 70px;
+    }
+
+    h4{
+      font-size: 26px;
+      line-height: 30px;
+    }
+
+    .c-form{
+      box-shadow: 0px 16px 32px 0px rgba(0,0,0,0.24);
+    }
+
+    #final-asset-container, #default-asset-container{
+      .c-video{
+        padding-left: 0px;
+        width: 100%;
+        height: auto;
+        .wistia_responsive_wrapper{
+          position: relative !important;
+        }
+      }
+    }
+  }
+
+  .c-three-column{
+    .col-md-4{
+      .webinar-like-styling{
+        .c-card__clickthrough{
+          cursor: default;
+        }
+      }
+    }
+  }
+}
+
+#synced-hero{
+  .c-hero--split{
+
+    &.synced-variation{
+      padding-top: 110px;
+      padding-bottom: 70px;
+    }
+
+    h4{
+      font-size: 26px;
+      line-height: 30px;
+    }
+
+    .c-form{
+      box-shadow: 0px 16px 32px 0px rgba(0,0,0,0.24);
+    }
+
+    #final-asset-container, #default-asset-container{
+      .c-video{
+        padding-left: 0px;
+        width: 100%;
+        height: auto;
+        .wistia_responsive_wrapper{
+          position: relative !important;
+        }
+      }
+    }
+  }
+
+  .c-hero--split{
+      min-height: 600px;
+      #main-form{
+        margin-top: 30px;
+        display: none;
+      }
+      #default-asset-container{
+        display: flex;
+      }
+  }
+}

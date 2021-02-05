@@ -1,0 +1,22 @@
+{% extends "_top-nav.html" %}
+
+{% block topNav %}
+  {% switch entry.type %}
+    {% case 'agencies' %}
+      {% include 'industry/_agencies.html' %}
+    {% case 'realEstate' %}
+      {% include 'industry/_real-estate.html' %} 
+    {% case 'technology' %}
+      {% include 'industry/_technology.html' %}
+    {% case 'consulting' %}
+      {% include 'industry/_consulting.html' %}
+    {% case 'corpDev' %}
+      {% include 'industry/_corp-dev.html' %}      
+    {% case 'enterprise' %}
+      {% include 'industry/_enterprise.html' %}      
+    {% case 'midMarket' %}
+      {% include 'industry/_mid-market.html' %}    
+    {% case 'smallBusiness' %}
+      {% include 'industry/_small-business.html' %}                                              
+  {% endswitch %}
+{% endblock %}

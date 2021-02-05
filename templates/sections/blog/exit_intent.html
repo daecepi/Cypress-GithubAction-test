@@ -1,0 +1,152 @@
+{% set 
+    layout = {
+        blogSignup : {
+            eyebrow : "Get Your Fix",
+            title : "Get the latest learnings in your inbox",
+            subtitle : "Want to know everything about growing a business? We'll deliver it straight to your inbox.",
+            disclosure : "By signing up here I agree to receive Copper’s email newsletter and other offers."
+        },
+        copperSignup : {
+            eyebrow : "",
+            title : "Try an actually easy-to-use CRM for free.",
+            subtitle : "Manage all your contacts, deals, emails, files, and more in one place.",
+            disclosure : "By signing up, I agree to Copper’s <a href='/privacy'>privacy policy</a> & <a href='/terms'>terms of service."
+        }
+    }
+%}
+<div class="row">
+    <div id="l-modal--overlay" class='exit-intent-modal'>
+        <div class="l-modal--content">
+            <div class="exit-intent-container pink-modal">
+                <div class="container modal-wrap">
+                    <a href="" id="modal-close-link" class="modal-close">X</a>
+                    <div class="">
+                        {% if layout[type].eyebrow  %}
+                        <pre class="c-eyebrow c-eyebrow--dark">{{ layout[type].eyebrow }}</pre>
+                        {% endif %}
+                        <h2 class="t-resource-period--hot-pink">{{ layout[type].title }}</h2>
+                        <p id="form-text">{{ layout[type].subtitle }}</p>
+                        {% switch type %}
+                            {% case "blogSignup" %}
+                            <form id="popup-newsletter">
+                                <input id="emailAddress" name="emailAddress" type="email" maxlength="255" value="" placeholder="email@example.com" />
+                                <button id="yesPlease" class="c-button button_text" type="submit" name="submit" value="Submit" />Yes Please!</button>
+                                <button id="noThanks" class="c-button c-button--white button_text" />No Thanks </button>
+                            </form>
+                            {% case "copperSignup" %}
+                            <form class="signup_form" id="signup_form" action="https://app.prosperworks.com/users" accept-charset="UTF-8" method="post">
+                                <input name="utf8" type="hidden" value="✓">
+                                <input type="hidden" name="authenticity_token" value="lAAB/AYz9RxQR4RN74ZQgCErmru66/VW8Kzw3EeKrJrJC4AjlOsOIwvmktA9F0k1HVJQkSEber78cUBqUaYwhw==">
+                                <a class="google_light_btn" href="https://app.prosperworks.com/auth/auto_login?continue_with_google=true&amp;failure_url=https%3A%2F%2Fapp.prosperworks.com%2Fusers%2Fsign_up%3Fauth_error%3DAuthentication%2Bfailed.%2BPlease%2Benter%2Byour%2Bemail%2Bbelow%2Bto%2Bcontinue.&amp;prompt=consent&amp;provider=google_oauth2_extended">
+                                    <img class="google_icon" src="//d3jas8421cca9z.cloudfront.net/assets/google-g-0cf576a5dab9315daac7ffe29d29ed585e0ff9850e59408d0f25f38dc1da037b.svg" alt="Google g">
+                                    <span class="google_light_btn_label">
+                                        Continue with Google
+                                    </span>
+                                </a>
+                                <div class="signup_form_subtext">
+                                    or use your email to sign up:
+                                </div>
+                                <div class="field">
+                                    <div class="form_text_field_container">
+                                        <label for="user[full_name]">Full Name</label>
+                                        <input class="text_field" size="30" placeholder="Jane Doe" type="text" name="user[full_name]" id="user_full_name">
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <div class="form_text_field_container">
+                                        <label for="user[email]">Work Email</label>
+                                        <input size="30" class="text_field" placeholder="janedoe@example.com" type="email" name="user[email]" id="user_email">
+                                    </div>
+                                </div>
+                                <input type="hidden" name="ampDeviceID" value="" >
+                                <div class="submit-button-row">
+                                <input type="submit" name="commit" value="Try Free" class="submit_button is-pink">
+                                </div>
+                            </form>
+                        {% endswitch %}
+                        <p class="disclosure">{{ layout[type].disclosure |raw }}</p>
+                        {# {% include "blog/newsletter-form.html" %} #}
+                    </div>
+                </div>
+            </div><!-- Closes Exit intent -->
+            <script>
+                 LazyLoad.js(['https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'],function(){
+            var btnYes = document.getElementById('yesPlease'),
+                theEmail = "",
+                btnNo = document.getElementById('noThanks');
+            if( btnYes ){
+                btnYes.onclick = function(event) {
+                    event.preventDefault();
+                    var form = MktoForms2.getForm(1942);
+                    theEmail = document.getElementById('emailAddress').value;
+                    form.vals({
+                        "Email": theEmail
+                    });
+                    form.submit();
+                    if ($('.pink-modal')) {
+                        ga('send', 'event', {
+                            eventCategory: 'Blog Newsletter',
+                            eventAction: 'pink formfill'
+                        });
+                    } else {
+                        ga('send', 'event', {
+                            eventCategory: 'Blog Newsletter',
+                            eventAction: 'white formfill'
+                        });
+
+                    }
+                    $(".modal-wrap p#form-text").replaceWith("<p>Stay tuned for the latest content on sales, marketing and more delivered straight to your inbox.</p>");
+                    $(".modal-wrap h2.t-resource-period--hot-pink").replaceWith("<h2 class='t-resource-period--hot-pink'>Thanks for signing up</h2>");
+                    $('form#popup-newsletter, p.disclosure').remove();
+                    setTimeout(function() {
+                        $('#l-modal--overlay').fadeOut('fast');
+                    }, 5000);
+                };
+            }
+            if( btnNo ){
+                btnNo.onclick = function(event) {
+                    event.preventDefault();
+                    $('#l-modal--overlay').fadeOut('fast');
+                    ga('send', 'event', {
+                        eventCategory: 'Blog Newsletter',
+                        eventAction: 'closed exit popup thank you'
+                    });
+                };
+            }
+            
+            var modalCloseBtn = document.getElementById('modal-close-link');
+            modalCloseBtn.onclick = function(event) {
+                event.preventDefault();
+                $('#l-modal--overlay').fadeOut('fast');
+                ga('send', 'event', {
+                    eventCategory: 'Blog Newsletter',
+                    eventAction: 'closed exit popup modal x'
+                });
+            };
+            // Exit intent listener.
+            function addEvent(obj, evt, fn) {
+                if (obj.addEventListener) {
+                    obj.addEventListener(evt, fn, false);
+                } else if (obj.attachEvent) {
+                    obj.attachEvent("on" + evt, fn);
+                }
+            };
+            // Exit intent trigger
+            if ((document.documentElement.clientWidth < 701) && !localStorage.getItem('exitintent_show')) {
+                setTimeout(function() {
+                    document.getElementById('l-modal--overlay').setAttribute('style', 'display: flex');
+                    localStorage.setItem('exitintent_show', 'true'); // Set the flag in localStorage
+                }, 7000);
+            } else {
+                addEvent(document, 'mouseout', function(evt) {
+                    if (evt.toElement === null && evt.relatedTarget === null && !localStorage.getItem('exitintent_show')) {
+                        $('#l-modal--overlay').attr('style', 'display: flex');
+                        localStorage.setItem('exitintent_show', 'true'); // Set the flag in localStorage
+                    }
+                });
+            }
+        })
+            </script>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,120 @@
+{% include 'sections/resources/_featured-image.html' %}
+
+
+
+{% set mainCategory = entry.blogCategories.inReverse().one() %}
+<section class="c-resource-content c-resource-content--overlap--blog">
+  <div class="c-blog-builder--social-share">
+    <div class="c-blog-builder--social-share__content">
+        <a target="_blank" href="https://twitter.com/home?status={{ entry.title }}%20{{ url(craft.app.request.pathInfo) }}">
+          {% include '/icons/social-twitter-outline.svg' %}
+        </a>
+        <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url={{ url(craft.app.request.pathInfo)  }}&title={{ entry.title }}&summary=&source=">
+          {% include '/icons/social-linkedin-outline.svg' %}
+        </a>
+        <a href="mailto:?&subject={{ entry.title }}&body={{ url(craft.app.request.pathInfo)  }}">
+          {% include '/icons/social-mail-outline.svg' %}
+        </a>
+    </div>
+  </div> 
+  <div class="c-resource-content__container container">
+    <div class="row">
+      <div class="c-resource-content__container__col col-sm-12">
+        <div class="c-blog-builder--content__title">  
+          {# Show category & reading time #}
+          {% if (mainCategory | length) and (entry.readingTime | length)  %}
+            <pre class="c-eyebrow">{{ mainCategory.title }} : {{entry.readingTime}} read</pre>
+          {% endif %}
+          {# Only show category if no readng time given #}
+          {% if mainCategory | length  and not(entry.readingTime | length) %}
+            <pre class="c-eyebrow">{{ mainCategory.title }}</pre>
+          {% endif %}
+          <h1 class="">{{ entry.title }}</h1>
+        </div>
+        <div class="c-blog-builder--content__meta">
+
+          {% set authorToUse = entry.author ? entry.author : finalDefaultAuthorInfo %}
+          <div class="c-author">
+            {% if authorToUse.photo|length %}
+              {% set image = authorToUse.photo %}
+              <div class="circle-img c-author__img" style="background-image: url(' {{image.url}} ')"></div>
+            {% else %}
+              <div class="circle-img c-author__img background-{{(authorToUse.id%2) +1}}">
+                <span v-if="!authorToUse.photo" class="c-author__img--alt">{{ authorToUse.name|first }}</span>
+              </div>
+            {% endif %}
+            <div class="c-author__meta">
+              <p class="p-sm  no-margin"><strong>{{ authorToUse.name }}</strong></p>
+              {% if authorToUse.authorTitle %}
+                <p class="p-sm  no-margin">{{ authorToUse.authorTitle }}</p>
+              {% else %}
+                <p class="p-sm  no-margin">Contributor</p>
+              {% endif %}
+            </div>
+          </div>
+          <p class="p-sm date">{{ entry.postDate | date("F j, Y") }}</p>
+        </div>
+        <div class="c-blog__entry--post">
+          <div class="c-blog__entry__copy">
+            <div class="c-blog__body-copy">{{ entry.richText }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% set relatedEntries = craft.entries({ section: 'blog', relatedTo: mainCategory, limit: 3, id: 'not ' ~ entry.id }).all() %} 
+{% if relatedEntries|length %}
+  <div class="c-blog-builder__related">
+    <h3 class="c-copper-chronicles__title">Related articles</h3>
+    <div class="row">
+    {% for entryTeaser in relatedEntries %} 
+      <div class="col-xl-4 col-lg-6 col-md-12 c-card-col">
+        {% if entryTeaser.featuredImage | length and entryTeaser.title | length < 55 %}
+          {% include "sections/blog/_entry_teaser_img.html" %} 
+        {% else %}
+          {% include "sections/blog/_entry_teaser.html" %} 
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}
+
+{% include "sections/blog/final-plea.html" %}
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{entry.url}}/#content"
+    },
+    "headline": "{% if entry.seoTitle %} {{entry.seoTitle|slice(0, 110)}} {% else %} {{ entry.title }} {% endif %}",
+    "url": "{{entry.url}}",
+    "description": "{% if entry.seoDescription %} {{entry.seoDescription}} {% else %} {{ entry.title }} {% endif %}",
+    "image": {
+      "@type": "ImageObject",
+      "url": "{{entry.featuredImage.one().url}}",
+      "width": 1440,
+      "height": 752
+    },
+    "author": {
+    "@type": "Person",
+    "name": "{{authorToUse.name}}",
+    "jobTitle": "{{authorToUse.jobTitle}}"
+    },  
+    "publisher": {
+      "@type": "Organization",
+      "name": "Copper",
+      "logo": {
+        "@type":"ImageObject",
+        "url": "https://copper.com",
+        "contentUrl": "/imgs/copper-logo-pink-il.svg"
+      }
+    },
+    "datePublished": "{{entry.postDate|atom }}", {# date("F j, Y") #}
+    "dateModified": "{{entry.dateUpdated|atom }}" {# date("F j, Y") #}
+  }
+  </script>

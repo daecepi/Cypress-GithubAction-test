@@ -1,0 +1,14 @@
+<div class="c-webinar-form {{ entry.specialStyle is defined and entry.specialStyle == "inspirationSeries" ? "inspiration-series-transform" : "" }}">
+{% set image = entry.featuredImage.one() %} 
+<div class="c-resource--header">
+    {% if image %}
+    {% if entry.type == 'blog' or entry.type == 'blogBuilder' %}
+        <img src="{{ image.url }}" alt="{{ entry.title }}" class="c-resource--header__background-image">
+    {% else %}
+        <img src="{{ image.url }}" alt="{{ entry.title }}" class="c-resource--header__background-image c-resource--header__background-image--fullscreen">
+    {% endif %}
+    {% endif %}
+</div>
+
+{% include 'sections/resources/_form.html' %}
+</div>

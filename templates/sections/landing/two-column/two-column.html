@@ -1,0 +1,246 @@
+{% set backgroundColor = matrixBlock.backgroundColor.one() %}
+{% if matrixBlock.linkToNav|length %}
+  {% set linkId = matrixBlock.linkToNav |camel %}
+  {% set sectionId = entry[linkId] |camel %}
+  <a class="anchor" id="{{sectionId}}"></a>
+{% endif %}
+
+<section id="{% if matrixBlock.stickyNavName != '' %}{{matrixBlock.stickyNavName |lower }}{% endif %}" class="c-cols c-cols-landing {{ backgroundColor ? backgroundColor.slug : '' }} {{ matrixBlock.bulletsColor is defined and matrixBlock.bulletsColor|length > 0 ? matrixBlock.bulletsColor.one().slug~'-checks' : '' }} {{ matrixBlock.addBottomPadding ? 'h-padding-bottom' : '' }}">
+
+<!-- Form Code -->
+  {% if matrixBlock.useForm %}
+  <div class="container">
+      <h2 class="extra-bottom-margin--x-small" style="text-align: center;">{{ matrixBlock.sectionsHeader }}</h2>
+      {% switch matrixBlock.imageOrientation %} 
+      {% case "left" %}
+      <div class="row column-reverse">
+        <div class="col-md-6 d-flex align-items-center order-1">
+            {% if matrixBlock.freeTrial %}
+              {% include 'sections/landing/two-column/free-trial.html' %}
+            {% else %}
+            <div class="c-form">
+              {% if matrixBlock.formTitle|length %}<h3>{{ matrixBlock.formTitle }}</h3>{% endif %}
+              <div id="landing-form-snip" class="sl_swap">
+                {{ matrixBlock.formCode|raw }}
+              </div>
+            </div>
+            {% endif %}
+        </div>
+        <div class="col-md-5 offset-md-1 c-valign--middle order-2">
+          <div class="col_copy">
+            {% if matrixBlock.eyebrow|length %}
+              <pre class="c-eyebrow c-eyebrow--{{ matrixBlock.eyebrowColor is not null and matrixBlock.eyebrowColor.one() is not null ? matrixBlock.eyebrowColor.one().slug : 'dark' }}">{{ matrixBlock.eyebrow }}</pre>
+            {% endif %}
+            {{ matrixBlock.copy }}
+          </div>
+        </div>
+      </div>
+      {% case "right" %}
+      <div class="row">
+        <div class="col-md-6 d-flex align-items-center offset-md-1 order-2">
+            {% if matrixBlock.freeTrial %}
+              {% include 'sections/landing/two-column/free-trial.html' %}
+            {% else %}
+            <div class="c-form">
+              {% if matrixBlock.formTitle|length %}<h3>{{ matrixBlock.formTitle }}</h3>{% endif %}
+              <div id="landing-form-snip" class="sl_swap">
+                {{ matrixBlock.formCode|raw }}
+              </div>
+            </div>
+            {% endif %}
+        </div>
+        <div class="col-md-5 c-valign--middle order-1">
+          {% if matrixBlock.eyebrow|length %}
+            <pre class="c-eyebrow c-eyebrow--{{ matrixBlock.eyebrowColor is not null and matrixBlock.eyebrowColor.one() is not null ? matrixBlock.eyebrowColor.one().slug : 'dark' }}">{{ matrixBlock.eyebrow }}</pre>
+          {% endif %}
+          {{ matrixBlock.copy }}
+        </div>
+      </div>
+      {% case "dropRight" %}
+      <div class="row">
+          <div class="col-md-6 offset-md-1 order-2">
+            <div class="c-image c-image--right">
+              {% if matrixBlock.freeTrial %}
+              <div class="c-form">
+                  <form accept-charset="UTF-8" action="{{ craft.config.envUrl }}/users" class="signup_form" id="signup_form" method="post">
+                    <div class="form_header">
+                        <div class="header_caret"></div>
+                    </div>
+                    <div class="field">
+                        <div class="form_text_field_container">
+                            <input class="text_field" id="user_full_name" name="user[full_name]" placeholder="Full Name*" size="30" type="text">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="form_text_field_container">
+                            <input class="text_field" id="user_email" name="user[email]" placeholder="Work Email Address*" size="30" type="email">
+                        </div>
+                    </div>
+                    <div class="get_started" onclick="logUser()">
+                        <input class="submit_form" name="commit" type="submit" value="GET STARTED">
+                        <a class="c-button c-button--indigo" onclick="formPopulate()" href="/demos" tabindex="0">Request a demo</a>
+                    </div>
+                     <div class="footer_text">
+                      <p class="footer_text_p">Signing up indicates that you’ve read and agree to our <a target="_blank" href="https://www.copper.com/terms">terms</a> and <a target="_blank" href="https://www.copper.com/privacy">privacy policy</a>. Google Apps admin? Install ProsperWorks from the <a target="_blank" class="marketplace_link" href="https://chrome.google.com/webstore/detail/prosperworks-crm/pmniggnglpnboegkpgjpncccfpbgnmdj">Google Apps Marketplace.</a></p>
+                      <a target="_blank" href="https://www.copper.com/terms">Legal</a>
+                      <p class="dot"> • </p>
+                      <a target="_blank" href="https://www.copper.com/contact">Contact Us</a>
+                    </div>
+                  </form>                  
+                </div>
+              {% else %}
+              <div class="c-form">
+                {% if matrixBlock.formTitle|length %}<h3>{{ matrixBlock.formTitle }}</h3>{% endif %}
+                <div id="landing-form-snip" class="sl_swap">
+                  {{ matrixBlock.formCode|raw }}
+                </div>
+              </div>
+              {% endif %}
+            </div>
+          </div>
+          <div class="col-md-5 c-valign--middle order-1">
+            {% if matrixBlock.eyebrow|length %}
+              <pre class="c-eyebrow c-eyebrow--{{ matrixBlock.eyebrowColor is not null and matrixBlock.eyebrowColor.one() is not null ? matrixBlock.eyebrowColor.one().slug : 'dark' }}">{{ matrixBlock.eyebrow }}</pre>
+            {% endif %}
+            {{ matrixBlock.copy }}
+          </div>
+        </div>
+      {% endswitch %} 
+    </div>
+  {% else %}
+  <!-- Image Code -->
+    <div class="container c-animation-container" {% if matrixBlock.imageOrientation == "extendedImageRight" or matrixBlock.imageOrientation == "extendedImageLeft" %} style="position: static;" {% endif %} >
+      <h2 class="extra-bottom-margin--x-small" style="text-align: center;">{{ matrixBlock.sectionsHeader }}</h2>
+      {% switch matrixBlock.imageOrientation %} 
+      {% case "left" %}
+      <div class="row column-reverse">
+        <div class="col-md-6 d-flex align-items-center order-1 {{ pageHeroSynced is defined and pageHeroSynced == 1 ? 'animation-element slide-bottom' : ''}}">
+          <div class="c-image c-image--center c-image--shadow {{ matrixBlock.removeShadow ? 'h-remove-shadow' : '' }}">
+            {% if matrixBlock.image|length %}
+              {% set image = matrixBlock.image.one() %}
+              <img class="{{ matrixBlock.removeShadow ? 'h-remove-shadow' : '' }}" src="{{ image.url }}" alt="{{ image.title }}">
+            {% endif %}
+          </div>
+        </div>
+        <div class="col-md-5 offset-md-1 c-valign--middle order-2">
+          <div class="col_copy">
+            {% if matrixBlock.eyebrow|length %}
+              <pre class="c-eyebrow c-eyebrow--{{ matrixBlock.eyebrowColor is not null and matrixBlock.eyebrowColor.one() is not null ? matrixBlock.eyebrowColor.one().slug : 'dark' }}">{{ matrixBlock.eyebrow }}</pre>
+            {% endif %}
+            {{ matrixBlock.copy }}
+            {% if matrixBlock.cta|length %}
+              {% set ctas = matrixBlock.cta %}
+              {% include 'components/cta/_index.html' %}
+            {% endif %}     
+          </div>
+        </div>
+      </div>
+      {% case "right" %}
+      <div class="row">
+        <div class="col-md-6 d-flex align-items-center offset-md-1 order-2 {{ pageHeroSynced is defined and pageHeroSynced == 1 ? 'animation-element slide-bottom' : ''}}">
+          <div class="c-image c-image--center c-image--shadow {{ matrixBlock.removeShadow ? 'h-remove-shadow' : '' }}">
+            {% if matrixBlock.image|length %}
+              {% set image = matrixBlock.image.one() %}
+              <img class="{{ matrixBlock.removeShadow ? 'h-remove-shadow' : '' }}" src="{{ image.url }}" alt="{{ image.title }}">
+            {% endif %}
+          </div>
+        </div>
+        <div class="col-md-5 c-valign--middle order-1">
+          {% if matrixBlock.eyebrow|length %}
+            <pre class="c-eyebrow c-eyebrow--{{ matrixBlock.eyebrowColor is not null and matrixBlock.eyebrowColor.one() is not null ? matrixBlock.eyebrowColor.one().slug : 'dark' }}">{{ matrixBlock.eyebrow }}</pre>
+          {% endif %}
+          {{ matrixBlock.copy }}
+          {% if matrixBlock.cta|length %}
+            {% set ctas = matrixBlock.cta %}
+            {% include 'components/cta/_index.html' %}
+          {% endif %}     
+        </div>
+      </div>
+      {% case "dropRight" %}
+      <div class="row">
+          <div class="col-md-7 d-flex align-items-center order-2 {{ pageHeroSynced is defined and pageHeroSynced == 1 ? 'animation-element slide-bottom' : ''}}">
+            <div class="c-image c-image--drop-right c-image--shadow {{ matrixBlock.removeShadow ? 'h-remove-shadow' : '' }}">
+              {% if matrixBlock.image|length %}
+                {% set image = matrixBlock.image.one() %}
+                <img class="drop-right__img {{ matrixBlock.removeShadow ? 'h-remove-shadow' : '' }}" src="{{ image.url }}" alt="{{ image.title }}">
+              {% endif %}
+            </div>
+          </div>
+          <div class="col-md-5 c-valign--middle order-1">
+            {% if matrixBlock.eyebrow|length %}
+              <pre class="c-eyebrow c-eyebrow--{{ matrixBlock.eyebrowColor is not null and matrixBlock.eyebrowColor.one() is not null ? matrixBlock.eyebrowColor.one().slug : 'dark' }}">{{ matrixBlock.eyebrow }}</pre>
+            {% endif %}
+            {{ matrixBlock.copy }}
+            {% if matrixBlock.cta|length %}
+              {% set ctas = matrixBlock.cta %}
+              {% include 'components/cta/_index.html' %}
+            {% endif %}     
+          </div>
+        </div>
+        {% case "dropLeft" %}
+        <div class="row column-reverse">
+            <div class="col-md-7 d-flex align-items-center order-1 {{ pageHeroSynced is defined and pageHeroSynced == 1 ? 'animation-element slide-bottom' : ''}}">
+              <div class="c-image c-image--drop-left c-image--shadow {{ matrixBlock.removeShadow ? 'h-remove-shadow' : '' }}">
+                {% if matrixBlock.image|length %}
+                  {% set image = matrixBlock.image.one() %}
+                  <img class="drop-right__img {{ matrixBlock.removeShadow ? 'h-remove-shadow' : '' }}" src="{{ image.url }}" alt="{{ image.title }}">
+                {% endif %}
+              </div>
+            </div>
+            <div class="col-md-5 c-valign--middle order-2">
+              {% if matrixBlock.eyebrow|length %}
+                <pre class="c-eyebrow c-eyebrow--{{ matrixBlock.eyebrowColor is not null and matrixBlock.eyebrowColor.one() is not null ? matrixBlock.eyebrowColor.one().slug : 'dark' }}">{{ matrixBlock.eyebrow }}</pre>
+              {% endif %}
+              {{ matrixBlock.copy }}
+              {% if matrixBlock.cta|length %}
+                {% set ctas = matrixBlock.cta %}
+                {% include 'components/cta/_index.html' %}
+              {% endif %}     
+            </div>
+          </div>
+          {% case "extendedImageRight" %}
+          <div class="row" style="position: static;">
+              <div class="col-md-7 d-flex align-items-center order-2 {{ pageHeroSynced is defined and pageHeroSynced == 1 ? 'animation-element slide-bottom' : ''}}" style="position: static;">
+                <div class="c-image c-image--extended-right c-image--shadow {{ matrixBlock.removeShadow ? 'h-remove-shadow' : '' }}">
+                  {% if matrixBlock.image|length %}
+                    {% set image = matrixBlock.image.one() %}
+                    <img class="drop-right__img {{ matrixBlock.removeShadow ? 'h-remove-shadow' : '' }}" src="{{ image.url }}" alt="{{ image.title }}" >
+                  {% endif %}
+                </div>
+              </div>
+              <div class="col-md-5 c-valign--middle order-1">
+                {% if matrixBlock.eyebrow|length %}
+                  <pre class="c-eyebrow c-eyebrow--{{ matrixBlock.eyebrowColor is not null and matrixBlock.eyebrowColor.one() is not null ? matrixBlock.eyebrowColor.one().slug : 'dark' }}">{{ matrixBlock.eyebrow }}</pre>
+                {% endif %}
+                {{ matrixBlock.copy }}
+                {% if matrixBlock.cta|length %}
+                  {% set ctas = matrixBlock.cta %}
+                  {% include 'components/cta/_index.html' %}
+                {% endif %}     
+              </div>
+            </div>
+            {% case "extendedImageLeft" %}
+            <div class="row column-reverse"  style="position: static;">
+                <div class="col-md-7 d-flex align-items-center order-1 {{ pageHeroSynced is defined and pageHeroSynced == 1 ? 'animation-element slide-bottom' : ''}}" style="position: static;">
+                  <div class="c-image c-image--extended-left c-image--shadow {{ matrixBlock.removeShadow ? 'h-remove-shadow' : '' }}">
+                    {% if matrixBlock.image|length %}
+                      {% set image = matrixBlock.image.one() %}
+                      <img class="drop-right__img {{ matrixBlock.removeShadow ? 'h-remove-shadow' : '' }}" src="{{ image.url }}" alt="{{ image.title }}">
+                    {% endif %}
+                  </div>
+                </div>
+                <div class="col-md-5 c-valign--middle order-2">
+                  {% if matrixBlock.eyebrow|length %}
+                    <pre class="c-eyebrow c-eyebrow--{{ matrixBlock.eyebrowColor is not null and matrixBlock.eyebrowColor.one() is not null ? matrixBlock.eyebrowColor.one().slug : 'dark' }}">{{ matrixBlock.eyebrow }}</pre>
+                  {% endif %}
+                  {{ matrixBlock.copy }}
+                  {% if matrixBlock.cta|length %}
+                    {% set ctas = matrixBlock.cta %}
+                    {% include 'components/cta/_index.html' %}
+                  {% endif %}     
+                </div>
+              </div>
+      {% endswitch %} 
+    </div>
+  {% endif %}
+</section>

@@ -1,0 +1,95 @@
+
+
+{###
+###Hero section macro 
+##Parameter : Entry , header(handle), eyebrow(handle), asset(handle)     
+###}
+
+{% macro heroMacro( entry , header , eyebrow , image , type ) %}
+
+<section class="c-hero--split c-hero--split--animation background--midnight">
+    <div class="c-image c-image--left">
+        <picture>
+          <source type="image/webp" srcset="/imgs/tools/BusinessTools-Hero.webp"    alt="Business tool hero image">
+          <source type="image/png" srcset="/imgs/tools/BusinessTools-Hero.png"    alt="Business tool hero image">
+          <img     src="/imgs/tools/BusinessTools-Hero.png"   alt="Business tool hero image" >
+</picture>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 c-valign--middle">
+                <pre class="c-eyebrow c-eyebrow--light">{{ entry.eyebrow }}</pre>
+                <h1 class="t-white">{{ entry.header }}</h1>
+                <p></p>
+                {% if entry.ctas|length %}
+                {% set ctas = entry.ctas %}
+                {% include 'components/cta/_index.html' %}
+                {% else %}
+                <div class="c-hero__buttons">
+                    <a class="c-button" href="{{ craft.app.config.general.signUpUrl }}">Free Trial</a>
+                    <a class="c-button c-button--outline" href="/demos">Request Demo</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endmacro %}
+
+
+
+{###
+# iconCard 
+#Paremeters:
+# entry : craft query of entry.
+# title : Title handle.
+# matrix : Matrix Handle   
+###}
+
+{% macro iconCard( entry, titleHandle, matrixHandle ) %}
+
+    {#-- Pre-process icon images --#}
+    {% set icon = {
+        width: 50,
+        height: 50,
+        quality: 75
+    } %}
+
+    {% for toolType in entry %}
+    <div class="col-md-4 animation-element slide-bottom in-view ">
+        <div class="c-card__entry extended-card c-card--internal-padding c-card--permanent-shadow c-card--full-height">
+            <h4 class="c-card__entry-title">
+                {{ toolType[titleHandle] }}
+            </h4>
+            <ul class="c-card-icons--list">
+                {% for tools in toolType[matrixHandle] %}
+                {% switch tools.type %}
+                {% case "toolInfo" %}
+                <li class="c-tooltip c-card--icon">
+                    {% if tools.toolIcon.one() %}
+                    <img class="" src="{{ tools.toolIcon.one().getUrl(icon) }}" width="35px" height="35px" alt="{{ tools.toolName }}" />
+                    <span>{{ tools.toolName }}
+                        <i></i>
+                    </span>
+                    {% else %}
+                    <picture>
+          <source type="image/webp" srcset="/imgs/industry/industry-agency-blog-01@2x.webp"  class=""   alt="Industry agency blog image" />
+          <source type="image/png" srcset="/imgs/industry/industry-agency-blog-01@2x.jpg"  class=""   alt="Industry agency blog image" />
+          <img   class=""   src="/imgs/industry/industry-agency-blog-01@2x.jpg"   alt="Industry agency blog image" / >
+</picture>
+                    {% endif %}
+                </li>
+                {% endswitch %}
+                {% endfor %}
+
+            </ul>
+            <div class="c-card__meta c-card__meta--noline">
+                <a class="t-link" href="{{ toolType.url }}">Learn More</a>
+            </div>
+
+        </div>
+    </div>
+    {% endfor %}
+
+{% endmacro %}

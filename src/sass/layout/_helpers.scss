@@ -1,0 +1,444 @@
+//Section Padding Helpers
+
+.no-top-padding {
+  padding-top: 0 !important;
+}
+.no-bottom-padding {
+  padding-bottom: 0 !important;
+}
+.no-top-margin {
+  margin-top: 0 !important;
+}
+.no-bottom-margin {
+  margin-bottom: 0 !important;
+}
+.extra-top-margin {
+  margin-top: 200px;
+}
+.extra-top-margin--medium {
+  margin-top: 100px;
+}
+.extra-top-margin--small {
+  margin-top: 50px;
+} 
+.extra-top-margin--x-small {
+  margin-top: 30px;
+}
+.extra-top-margin--xx-medium-small {
+  margin-top: 20px;
+}
+.extra-top-margin--xx-small{
+  margin-top: 10px;
+}
+.extra-bottom-margin--xx-small{
+  margin-bottom: 10px;
+}
+.extra-bottom-margin--xx-medium-small {
+  margin-bottom: 20px;
+}
+.extra-bottom-margin--x-small {
+  margin-bottom: 30px;
+} 
+.extra-bottom-margin--small {
+  margin-bottom: 50px;
+} 
+.extra-bottom-margin--medium {
+  margin-bottom: 100px;
+} 
+.extra-bottom-margin {
+  margin-bottom: 200px;
+}
+.top-margin-mobile {
+  @include media-breakpoint-down(sm) { 
+    margin-top: 120px;
+  }
+}
+.bottom-margin-mobile {
+  @include media-breakpoint-down(sm) { 
+    margin-bottom: 60px;
+  }
+}
+.top-padding-mobile {
+  @include media-breakpoint-down(sm) { 
+    padding-top: 120px;
+  }
+}
+.bottom-padding-mobile {
+  @include media-breakpoint-down(sm) { 
+    padding-bottom: 60px;
+  }
+}
+.h-section-padding {
+  padding: $global-mobile-padding;
+  @include media-breakpoint-up(md) {
+    padding: $global-desktop-padding;
+  }
+}
+
+.small-section-padding {
+  padding: 90px 0 !important;
+}
+
+.padding-top {
+  padding-top: 120px !important;
+}
+
+//Global Padding Helpers
+.extra-bottom-margin--x-small {
+  margin-bottom: 32px;
+} 
+
+.h-remove-shadow {
+  box-shadow: none !important;
+}
+
+.no-padding {
+	padding: 0 !important;
+}
+
+.no-padding-top{
+  padding-top: 0px !important;
+}
+
+.no-margin {
+	margin: 0 !important;
+}
+
+.content-offset {
+	position: relative;
+	left: 8%;
+	@include media-breakpoint-down(lg) { 
+    left: 0;
+  }
+}
+
+.h-divider {
+  width: 100%;
+  height: 1px;
+  background-color: #eaeaea;
+}
+
+// Colors Helpers
+.mint {
+  .t-eyebrow {
+    color: $color-mint;
+  }
+}
+.volt {
+  .t-eyebrow {
+    color: $color-volt;
+  }
+}
+
+.eggplant {
+  .t-eyebrow {
+    color: $color-eggplant;
+  }
+}
+
+.hot-pink {
+  .t-eyebrow {
+    color: $color-hot-pink;
+  }
+}
+
+.default-cursor{
+  cursor: default !important;
+}
+
+
+// Color Helpers
+.t-hot-pink {
+  color: $color-hot-pink;
+}
+
+.h-clear-bottom-margin{
+  margin-bottom: 0 !important;
+}
+
+.h-clear-top-margin{
+  margin-top: 0 !important;
+}
+
+// Background color helpers
+.background {
+	@at-root {
+    #{&}--mint {
+	    background-color: $color-mint;
+    }
+    #{&}--putty {
+      background-color: $color-putty;
+    }
+    #{&}--graphite {
+	    background-color: $color-graphite !important;
+    }
+    #{&}--volt {
+	    background-color: $color-volt;
+    }
+    #{&}--eggplant {
+      background-color: $color-eggplant;
+      .enforced-font-color{
+        color: $color-white !important;
+      }
+    }
+    #{&}--hot-pink {
+      background-color: $color-hot-pink;
+    }
+    #{&}--midnight {
+      background-color: $color-midnight;
+    }
+    #{&}--midnight {
+      background-color: $color-soft-midnight;
+    }
+    #{&}--purple {
+      background-color: $color-purple;
+    }
+    #{&}--burgundy {
+      background-color: $color-burgundy;
+    }
+    #{&}--evergreen {
+      background-color: $color-evergreen;
+    }
+    #{&}--off-white {
+      // background-color: $color-white;
+      background-color: $color-putty;
+    }
+    #{&}--soft-gray {
+      background-color: $color-soft-gray;
+    }
+    #{&}--extra-soft-gray {
+      background-color: $color-extra-soft-gray;
+    }
+    #{&}--cemento {
+      background-color: $color-cemento;
+    }
+    #{&}--press {
+      background-color: #E5E7E9;
+      color: $color-graphite !important;
+      p {
+        color: $color-graphite !important;
+      }
+    }
+  }
+}
+
+// Reduce font-size for long german titles 
+.smartling-de {
+  @include media-breakpoint-up(md) { 
+    h1.t-long-title{
+      font-size: 55px !important;
+    }
+    h2.t-long-title{
+      font-size: 46px !important;
+    }
+  }
+}
+
+.appear-sm-down{
+  @include media-breakpoint-up(md){
+    display: none;
+  }
+}
+
+// Stop nav from breaking
+.smartling-de, .smartling-nl, .smartling-es, .smartling-fr{
+  @media (max-width: 1200px){
+    .c-nav__links li {
+      margin-right: 3%
+    }
+
+    .c-nav__links a{
+      margin-right: 3%
+    }
+  }
+}
+
+.feature-description-block{
+  &.inactive{
+    opacity: 0.2;
+
+    a.t-link--volt__container{
+      pointer-events: none;
+      cursor: default;
+      &:hover .t-link--volt__link{
+        background: none;
+      }
+    }   
+  }
+}
+
+/*
+  Lining features
+*/
+.lining{
+  &.split-left-lining{
+    border-left: 1px solid #B0B7BA;
+    @include media-breakpoint-down(sm){
+      //border-bottom: 1px solid #B0B7BA;
+      border-left: none;
+    }
+  }
+  &.split-right-lining{
+    border-right: 1px solid #B0B7BA;
+    @include media-breakpoint-down(sm){
+      //border-top: 1px solid #B0B7BA;
+      border-right: none;
+    }
+  }
+}
+
+.special-margin{
+  @at-root {
+
+    #{&}--short{
+      @include media-breakpoint-down(sm){
+        margin-top: 60px;
+      }
+    }
+
+  }
+}
+
+  .special-padding{
+    @at-root {
+  
+      #{&}--short{
+        @include media-breakpoint-down(sm){
+          margin-top: 60px;
+        }
+      }
+  
+    }
+
+  @include media-breakpoint-down(sm){
+    margin-top: 100px;
+  }
+
+}
+
+.make-color-hot-pink{
+  color: $color-hot-pink;
+}
+
+// Helpers to make a text bold
+.bold{
+  font-weight: bold;
+}
+
+// Helpers for shadows
+.no-shadow{
+  box-shadow: none !important;
+}
+
+/*
+Remerber thaty in parent div where this is implemented
+Usage:
+  In element that holds or contains the p element in which the text to be trailed is
+Prerequisites:
+  - A set width/max-width: px
+*/
+.single-line-trailer{
+  overflow: hidden;
+  white-space: nowrap !important;
+  text-overflow: ellipsis !important;
+}
+
+
+/*
+  Remember before using this class
+  Usage: 
+    In element that holds or contains the p element in which the text to be trailed is
+  Prerequisites:
+    - A set width/max-width: px 
+
+*/
+.multiple-2-card-trailer{
+  display: -webkit-box!important;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -ms-box-orient: vertical;
+  box-orient: vertical;
+  -webkit-line-clamp: 2;
+  -moz-line-clamp: 2;
+  -ms-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.multiple-4-card-trailer{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -ms-box-orient: vertical;
+  box-orient: vertical;
+  -webkit-line-clamp: 4;
+  -moz-line-clamp: 4;
+  -ms-line-clamp: 4;
+  line-clamp: 4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.multiple-5-card-trailer{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -ms-box-orient: vertical;
+  box-orient: vertical;
+  -webkit-line-clamp: 5;
+  -moz-line-clamp: 5;
+  -ms-line-clamp: 5;
+  line-clamp: 5;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.multiple-11-card-trailer{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -ms-box-orient: vertical;
+  box-orient: vertical;
+  -webkit-line-clamp: 11;
+  -moz-line-clamp: 11;
+  -ms-line-clamp: 11;
+  line-clamp: 11;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// Text transforms
+.sentence-form-text{
+  text-transform: lowercase;
+}
+
+.no-style-link{
+  color: white;
+
+  &:hover{
+    color: white;
+    text-decoration: none;
+  }
+}
+
+//Appearing elements
+
+.mobile-container{
+  display: none !important;
+  @include media-breakpoint-down(sm){
+    display: flex !important;
+  }
+}
+
+.appear-mobile{
+  @include media-breakpoint-up(md){
+    display: none !important;
+  }
+}
+
+.disappear-mobile{
+  @include media-breakpoint-down(sm){
+    display: none !important;
+  }
+}

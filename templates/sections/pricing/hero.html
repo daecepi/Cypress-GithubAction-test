@@ -1,0 +1,196 @@
+{% if matrixBlock.linkToNav|length %}
+  {% set linkId = matrixBlock.linkToNav |camel %}
+  {% set sectionId = entry[linkId] |camel %}
+  <a class="anchor" id="{{sectionId}}"></a>
+{% endif %}
+<section class="c-pricing-hero--cornflower price-hero {{ matrixBlock.reducePadding ? 'h-reduce-padding' : '' }}">
+  <div class="container" {% if matrixBlock.rtpId|length %}id="{{ matrixBlock.rtpId }}"{% endif %}>
+      {# {% if matrixBlock.reducePadding %} #}
+        <h2>{{ matrixBlock.header }}</h2>
+      {# {% else %}
+        <h1>{{ matrixBlock.header }}</h1>
+      {% endif %} #}
+      <p>{{ matrixBlock.subHeader }}</p>
+  </div>
+  <!-- <div class="c-pricing-hero__toggle">
+    <div class="c-pricing-hero__checkbox">
+      <span>Monthly</span>
+      <label class="switch">
+        <input name='pricingCheckToggle' type="checkbox" checked="checked">
+        <span class="toggle-slider round"></span>
+      </label>
+      <span>Annual</span><span class="special pricing-special d-none d-sm-inline-block">Save up to 29%</span>
+      <p class="p-xtra-sm pink-special thin d-sm-none" style="font-size:13px;">Save up to 29% with Annual</p>
+    </div> -->
+    <!--
+      <div class="c-pricing-hero__radio">
+        <label>
+          <input type="radio" name="pricingToggle" checked="checked" value="annual"  />
+          Billed Annually (Save 29%)
+        </label>
+      </div>
+  
+      <div class="c-pricing-hero__radio">  
+        <label>
+          <input type="radio" name="pricingToggle" value="monthly" />
+          Billed Monthly
+        </label>
+      </div>
+    -->
+    <!-- </div> -->
+    <div class="container">
+      <div class="c-pricing-hero__plans-container square--top--left square--hot-pink circle--bottom--right">
+        {% for plan in matrixBlock.pricingPlans.all() %}
+          <div class="c-pricing-hero__plans {{ plan.featured ? 'featured' }}">
+            <div class="c-pricing-hero__plans__title {{ plan.featured ? 'featured' : plan.planType == 'Business' ? 'background--indigo' }}">
+              {% if plan.featured %}<p class="p-sm">MOST POPULAR</p>{% endif %}
+              <h3 id='{{ plan.planType | lower }}-plan'>{{ plan.planType }}</h3>
+            </div>
+            <div class="c-pricing-hero__plans__content{% if plan.planType == 'Business' %} {% endif %} justify-content-between">
+              <div class="c-pricing-hero__billing no-top-margin">
+                <p class="p-sm">{{ plan.paragraph }}</p>
+                <div class="c-pricing-hero__annual desc js-pricingannual">
+                  {% if plan.planType == "Basic" %}
+                    <span class="strikethru-text">{{ plan.billedMonthly }}</span>
+                  {% elseif plan.planType == "Professional" %}
+                    <span class="strikethru-text">{{ plan.billedMonthly }}</span>
+                  {% endif %}
+                  <span>
+                    {{ plan.billedAnnually }}
+                    {% if plan.planType == "Business"  %}
+                      {% if pageHeroSynced is defined and not pageHeroSynced %}
+                      {# <span class="asterix">*</span> #}
+                      {% endif %}
+                    {% endif %}
+                  </span>
+                </div>
+                <div class="c-pricing-hero__monthly desc js-pricingmonthly" style="display: none;">
+                  {% if plan.planType == "Business" and pageHeroSynced is defined and not pageHeroSynced %}
+                  {# <span class="strikethru-text">$119</span> #}
+                  {% endif %}
+                  <span>{{ plan.billedMonthly }}</span>
+                </div>
+                <div class="sub-description">
+                  {% if plan.title == "Plan - Business" %}
+                    <p class="c-pricing-hero__sub mb-0 mt-4">Per user, per month. Billed annually.</p>
+                    <span class="special"></span>
+                  {% elseif plan.title == "Plan - Basic"%}
+                    <p class="c-pricing-hero__sub mb-0 mt-4">Per user, per month. Billed annually.</p> <span style="display: none;" class="c-pricing-hero__sub billed-monthly">Billed&nbsp;monthly.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <p class="c-pricing-hero__sub mt-0 no-bottom-margin">Or $29/user when billed monthly.</p> <span style="display: none;" class="c-pricing-hero__sub billed-monthly">Billed&nbsp;monthly.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <!-- <span class="special desc js-pricingannual">Or $24 per user per month up to 3 users. Billed monthly.</span> -->
+                  {% else %}                
+                    <p class="c-pricing-hero__sub mb-0 mt-4 no-bottom-margin">Per user, per month. Billed annually.</p><span style="display: none;" class="c-pricing-hero__sub billed-monthly">Billed&nbsp;monthly.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <!-- <span class="special desc js-pricingannual">Save $240/user. Billed annually.</span> -->
+                  {% endif %}
+                </div>
+              </div>
+              <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+              <script>
+                function showSyncedHeroForm() {
+                  $('#main-form').css('height','fit-content');
+                  $('#main-form').css('min-height','1px');
+                  $('#main-form').css('margin-top','30px');
+                  $('#main-form').css('overflow','visible');
+                  $('#main-form').css('display','none');
+                  {% if marketoConfigurations.replaceMarketoForms %}
+                    if($("input#email").val() == 'example.example.example@example.com') $("input#email").val("");
+                  {% else %}
+                    var generalForm = MktoForms2.getForm(syncedFormId);
+                    if(generalForm.getValues()['Email'] == 'example.example.example@example.com') generalForm.setValues({ Email: ''});
+                  {% endif %}
+                  $('#initial-control').css('display', 'none');
+                  $('#default-asset-container').fadeOut(500, function (){
+                    $('#main-form').fadeIn(300);
+                  });
+                  window.location.hash = 'synced-hero';
+                  scrollToElements('synced-hero');
+                }
+              </script>
+              <script>
+                function heroPropertyReseter(){
+                  $('#main-form').css('height','fit-content');
+                  $('#main-form').css('min-height','1px');
+                  $('#main-form').css('margin-top','30px');
+                  $('#main-form').css('overflow','visible');
+                  $('#main-form').css('display','none');
+                }
+                 function scrollToElements(hash){
+                  document.getElementById(hash).scrollIntoView({ behavior: "smooth" });
+                }
+                function showSyncedHeroForm() {
+                 heroPropertyReseter();
+                  {% if marketoConfigurations.replaceMarketoForms %}
+                    if($("input#email").val() == 'example.example.example@example.com') $("input#email").val("");
+                  {% else %}
+                    var generalForm = MktoForms2.getForm(syncedFormId);
+                    if(generalForm.getValues()['Email'] == 'example.example.example@example.com') generalForm.setValues({ Email: ''});
+                  {% endif %}
+                 $('#initial-control').css('display', 'none');
+             
+                 
+                 $('#default-asset-container').fadeOut(500, function (){
+                   $('#main-form').fadeIn(300);
+                 });
+ 
+                 window.location.hash = 'synced-hero';
+                 scrollToElements('synced-hero');
+               }
+                LazyLoad.js(['https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'],function(){
+               
+             })
+             </script>
+              <div class="c-pricing-plans__footer">
+                  {% if plan.ctas|length %}
+                  <div class="c-pricing-plans__ctas">
+                    {% for cta in plan.ctas.all() %}
+                      {% if pageHeroSynced is defined and pageHeroSynced %}
+                      <script>
+                         LazyLoad.js(['https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'],function(){
+                        function showSyncedHeroForm() {
+                          heroPropertyReseter();
+                          {% if marketoConfigurations.replaceMarketoForms %}
+                            if($("input#email").val() == 'example.example.example@example.com') $("input#email").val("");
+                          {% else %}
+                            var generalForm = MktoForms2.getForm(syncedFormId);
+                            if(generalForm.getValues()['Email'] == 'example.example.example@example.com') generalForm.setValues({ Email: ''});
+                          {% endif %}
+                          $('#initial-control').css('display', 'none');
+                      
+                          
+                          $('#default-asset-container').fadeOut(500, function (){
+                            $('#main-form').fadeIn(300);
+                          });
+          
+                          window.location.hash = 'synced-hero';
+                          scrollToElements('synced-hero');
+                        }
+                      })
+                      </script>
+                          <a class="t-link underline-hot-pink" onclick="showSyncedHeroForm(this)" >Get Demo</a>
+                      {% else %}
+                        {% set buttonColor = cta.buttonColor.one() %}
+                        {% if cta.modalTrigger %}
+                          <a class="c-button c-button--{{ buttonColor ? buttonColor.slug : 'outline' }}" href="/demos" >{{ cta.button.text }}</a>
+                        {% else %}
+                          {% set buttonColor = cta.buttonColor.one() %}
+                          <a class="c-button c-button--{{ buttonColor ? buttonColor.slug : 'outline' }} {{ plan.featured ? 'featured-button' }} pricing-cta" target="{{ cta.button.target }}"  href="{{ cta.button.url }}" data-plan-type='{{ plan.planType }}'>{{ cta.button.text }}</a>
+                        {% endif %}
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                {% endif %}                
+               
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    <p class="p-xtra-sm">Prices are in USD and don't include taxes and fees where applicable.</p>
+    {% if pageHeroSynced is defined and not pageHeroSynced %}
+      {#<p class="p-xtra-sm pink-special thin">* To get started, start a free trial and one of our team members will be in touch.</p>
+      <p class="p-xtra-sm pink-special thin">Offer also includes 3 months free with PandaDoc and Outfunnel + 1 month free with Aircall. <a target="_blank" href="https://www.copper.com/partner-support-offers">View Details</a>.</p>
+      <p class="p-xtra-sm pink-special thin">Offer only applies to new customers.</p>#}
+{#       <p class="p-xtra-sm pink-special">Existing customers on a Professional tier can upgrade to our Business tier for free for 3 months. <a target="_blank" href="https://www.copper.com/here-to-help-free-upgrade">View Details</a>.</p>
+ #}    {% endif %}
+</section>

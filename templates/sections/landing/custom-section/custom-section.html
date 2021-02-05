@@ -1,0 +1,112 @@
+
+{% set sectionBackgroundColor = matrixBlock.backgroundColor.one() %}
+<section  class="c-single-column {% if sectionBackgroundColor is defined and sectionBackgroundColor |length > 0 %}{{ sectionBackgroundColor.slug }}{% endif %} pb-{{matrixBlock.settings[0]['paddingBottom']}} pt-{{matrixBlock.settings[0]['paddingTop']}}">
+    <div class="container ">
+    <div class="row">
+    {% for row in matrixBlock.layout.all() %}
+
+        {% set sectionSettings = {
+                width : "12",
+                offset : "0",
+                paddingTop : "0",
+                paddingBottom : "0",
+                padddingLeft : "0",
+                paddingRight : "0"
+            }
+        
+        %}
+        {% set mobileSettings = {
+                width : "12",
+                offset : "0",
+                paddingTop : "0",
+                paddingBottom : "0",
+                padddingLeft : "0",
+                paddingRight : "0"
+            } 
+        %}
+        {% for settings in row.sectionSettings %}
+            {% set sectionSettings = sectionSettings|merge({"width":settings.sectionWidth}) %}
+            {% set sectionSettings = sectionSettings|merge({"offset":settings.offset}) %}
+            {% set sectionSettings = sectionSettings|merge({"paddingTop":settings.paddingTop}) %}
+            {% set sectionSettings = sectionSettings|merge({"paddingBottom":settings.paddingBottom}) %}
+            {% set sectionSettings = sectionSettings|merge({"paddingLeft":settings.paddingLeft}) %}
+            {% set sectionSettings = sectionSettings|merge({"paddingRight":settings.paddingRight}) %}
+        {% endfor %}  
+
+        {% for settings in row.mobileSettings %}
+            {% set mobileSettings = mobileSettings|merge({"width":settings.sectionWidth}) %}
+            {% set mobileSettings = mobileSettings|merge({"offset":settings.offset}) %}
+            {% set mobileSettings = mobileSettings|merge({"paddingTop":settings.paddingTop}) %}
+            {% set mobileSettings = mobileSettings|merge({"paddingBottom":settings.paddingBottom}) %}
+            {% set mobileSettings = mobileSettings|merge({"paddingLeft":settings.paddingLeft}) %}
+            {% set mobileSettings = mobileSettings|merge({"paddingRight":settings.paddingRight}) %}
+        {% endfor %}   
+
+    
+        <div class="    col-md-{{ sectionSettings.width |raw|striptags }}
+                        offset-md-{{sectionSettings.offset}}
+                        pt-md-{{sectionSettings.paddingTop}}
+                        pb-md-{{sectionSettings.paddingBottom}}
+                        pl-md-{{sectionSettings.paddingLeft}}
+                        pr-md-{{sectionSettings.paddingRight}}
+                        col-{{mobileSettings.width}}
+                        offset-{{mobileSettings.offset}}
+                        pt-{{mobileSettings.paddingTop}}
+                        pb-{{mobileSettings.paddingBottom}}
+                        pl-{{mobileSettings.paddingLeft}}
+                        pr-{{mobileSettings.paddingRight}}
+                        ">
+        {% for matrixSection in row.buildSection %}
+            {% switch matrixSection.type %}
+                {% case "sectionTitle"%}
+                    <h{{matrixSection.settings[0]["type"]}} style="{% if matrixSection.settings[0]["minHeight"] | length > 0 %}min-height:{{matrixSection.settings[0]["minHeight"]}}{% endif %}" class="text-{{matrixSection.settings[0]['alignment']}} pt-{{matrixSection.settings[0]["paddingTop"]}} pb-{{matrixSection.settings[0]["paddingBottom"]}}">{{matrixSection.sectionTitle}}</h{{matrixSection.settings[0]["type"]}}>
+                {% case "sectionSubtitle" %}
+                    <div class="" style="{% if matrixSection.settings[0]["minHeight"] | length > 0 %}min-height:{{matrixSection.settings[0]["minHeight"]}}{% endif %}">{{matrixSection.subtitle}}</div>
+                {% case "image" %}
+                    <div class="text-{{matrixSection.settings[0]['alignment']}}">
+                        {% if matrixSection.imageLink | length > 0  %}
+                            <a href="{{matrixSection.imageLink}}" taget="_blank">
+                        {% endif %}
+                            {% set imageD = matrixSection.image.one() %}
+                            {% if imageD is not null and imageD.url is not null %}
+                                <img class="my-0" style="max-width:{% if matrixSection.settings[0]['maxWidth'] |length > 0 %}{{matrixSection.settings[0]['maxWidth']}}{% else %} 100% {% endif %}" alt="{{imageD.title}}" src="{{ imageD.url }}" />
+                            {% endif %}
+                        {% if matrixSection.imageLink | length > 0  %}
+                            </a>
+                        {% endif %}
+                    </div>
+                {% case "urlLink" %}
+                    <div class="text-{{matrixSection.settings[0]['alignment']}} pt-{{matrixSection.settings[0]["paddingTop"]}} pb-{{matrixSection.settings[0]["paddingBottom"]}}" style="width:100%;position:{{matrixSection.settings[0]['position']}};bottom:{{matrixSection.settings[0]["bottom"]}};left:0px;">
+                            <a class="c-button sendUTMsToAmplitude mr-0" target="_blank"  href="{{ matrixSection.urlLink.url }}">{{ matrixSection.urlLink.text}}</a>
+                    </div>
+                {% case "ctaLink" %}
+                    <div class="text-{{matrixSection.settings[0]['alignment']}} c-single-column__buttons">
+                        <div class="c-hero__buttons">
+                            {% for cta in matrixSection.ctaLinks %}
+                                {% switch cta.type %}
+                                    {% case 'ctas' %}
+                                        {% set buttonColor = cta.buttonColor.one() %}
+                                        {% if cta.modalTrigger %}
+                                        <a class="c-button c-button--{{ buttonColor ? buttonColor.slug : 'white' }}" href="/demos" >{{ cta.button.text }}</a>
+                                        {% else %}
+                                        <a class="{% if loop.length <= 1 %}mr-0{% endif %} c-button sendUTMsToAmplitude c-button--{{ buttonColor ? buttonColor.slug : 'white' }}" target="{{ cta.button.target }}"  href="{{ cta.button.url }}">{{ cta.button.text }}</a>
+                                        {% endif %}
+                                    {% case 'imageCta' %}
+                                    {% set image = cta.backgroundImage.one() %}
+                                        <a class="c-button-image" target="{{ cta.button.target }}"  href="{{ cta.button.url }}" ><img src="{{image.url}}" alt="{{image.title}}"></a>
+                                    {% case 'link' %}
+                                    <div class="flex-column">
+                                        <a target="{{ cta.button.target }}"  href="{{ cta.button.url }}" class="t-link">{{ cta.button.text }}</a>  
+                                    </div>
+                                {% endswitch %}
+                            {% endfor %}
+                        </div>
+					</div>
+            {% endswitch %}
+        {% endfor %}
+        </div>
+    
+    {% endfor %}
+    </div>
+    </div>
+</section>

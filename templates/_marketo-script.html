@@ -1,0 +1,10 @@
+
+{% set url = craft.app.request.url %}
+
+{% if url == "/"  %}
+    <!-- do nothing -->
+{% else %}
+<script src="//app-sj17.marketo.com/js/forms2/js/forms2.min.js"></script>
+<script src="https://marketo.clearbit.com/assets/v1/marketo/forms.js"
+    data-clearbit-publishable-key="pk_297de2bd498f18ecd1cabfdd7ad4fea9"></script>
+{% endif %}

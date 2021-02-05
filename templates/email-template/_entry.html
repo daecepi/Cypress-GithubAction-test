@@ -1,0 +1,427 @@
+{% extends "_top-nav.html" %}
+
+
+{% block topNav %}
+
+ <!-- Import blogMacros -->
+ {% import '/email-template/email-macros/email-macros' as emailMacros %}
+
+<section class="email-template" style="margin-top: 100px;">
+
+<style>
+    @media only screen {
+        html {
+            min-height: 100%;
+            background: #f3f3f3
+        }
+    }
+    
+    @media only screen and (max-width:640px) {
+        .small-float-center {
+            margin: 0 auto!important;
+            float: none!important;
+            text-align: center!important
+        }
+    }
+    
+    @media only screen and (max-width:640px) {
+        table.body img {
+            width: auto;
+            height: auto
+        }
+        table.body center {
+            min-width: 0!important
+        }
+        table.body .container {
+            width: 95%!important
+        }
+        table.body .columns {
+            height: auto!important;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        table.body .columns .columns {
+            padding-left: 0!important;
+            padding-right: 0!important
+        }
+        table.body .collapse .columns {
+            padding-left: 0!important;
+            padding-right: 0!important
+        }
+        th.small-2 {
+            display: inline-block!important;
+            width: 16.66667%!important
+        }
+        th.small-6 {
+            display: inline-block!important;
+            width: 50%!important
+        }
+        th.small-10 {
+            display: inline-block!important;
+            width: 83.33333%!important
+        }
+        th.small-12 {
+            display: inline-block!important;
+            width: 100%!important
+        }
+        .columns th.small-12 {
+            display: block!important;
+            width: 100%!important
+        }
+        table.menu {
+            width: 100%!important
+        }
+        table.menu td,
+        table.menu th {
+            width: auto!important;
+            display: inline-block!important
+        }
+        table.menu.vertical td,
+        table.menu.vertical th {
+            display: block!important
+        }
+        table.menu[align=center] {
+            width: auto!important
+        }
+    }
+    
+    @media only screen and (max-width:640px) {
+        h1 {
+            font-size: 30px!important;
+            line-height: 40px!important
+        }
+        h2 {
+            font-size: 24px!important;
+            line-height: 32px!important
+        }
+        .top-subtitle {
+            font-size: 24px!important;
+            line-height: 32px!important
+        }
+        .max-width-131 {
+            max-width: 200px!important;
+            margin: 0;
+            width: 100%!important
+        }
+        .footer-menu {
+            padding-left: 0!important
+        }
+        .divider-small_pink {
+            width: 68px
+        }
+        .top-subtitle {
+            line-height: 1.4;
+            margin-bottom: 32px
+        }
+        .line-divider {
+            margin-bottom: 0
+        }
+        .line-divider-empty-col {
+            padding: 0!important
+        }
+        .footer-menu-container {
+            padding-left: 40px!important
+        }
+        .social-icons {
+            max-width: 240px
+        }
+        .spacer-desktop {
+            display: none!important
+        }
+        .logo {
+            max-width:110px!important;
+        }
+        .last-links {
+            padding-left: 40px!important
+        }
+        .top-subtext img{
+            max-width: 100%;
+        }
+        .top-subtext p:first-child {
+            margin:0px 0px 0px 0px !important;
+        }
+        .article-image{
+            padding-bottom:8px!important;
+        }
+        .articles .last{
+            padding-left:40px!important;
+        }
+    }
+    .text-body figure{
+        margin: 0px;
+    }
+    .text-body figure img{
+        width: 100%;
+    }
+    .top-subtext img{
+            max-width: 100%;
+    }
+    .top-subtext p:first-child {
+        margin:0px 0px 0px 0px !important;
+    }
+    .top-subtext p:last-child {
+        margin-bottom:0px !important;
+    }
+    @media (prefers-color-scheme: dark) {
+        .background-nightblue{
+            background: {{ entry.emailBackgroundColor }}
+        }
+    }
+</style>
+
+
+
+<table class="body" style="Margin:0;background:#f3f3f3;border-collapse:collapse;border-spacing:0;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;height:100%;line-height:1.3;margin:0;padding:0;text-align:left;vertical-align:top;width:100%">
+    <tr style="padding:0;text-align:left;vertical-align:top">
+        <td class="center" align="center" valign="top" style="-moz-hyphens:auto;-webkit-hyphens:auto;Margin:0;border-collapse:collapse!important;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;hyphens:auto;line-height:1.3;margin:0;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">
+            <center data-parsed style="min-width:600px;width:100%">
+                <table align="center" class="wrapper background-nightblue float-center" style="Margin:0 auto;background:{{ entry.emailBackgroundColor }};border-collapse:collapse;border-spacing:0;float:none;margin:0 auto;padding:0;text-align:center;vertical-align:top;width:100%">
+                    <tr style="padding:0;text-align:left;vertical-align:top">
+                        <td class="wrapper-inner" style="-moz-hyphens:auto;-webkit-hyphens:auto;Margin:0;border-collapse:collapse!important;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;hyphens:auto;line-height:1.3;margin:0;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">
+
+                            {% for row in entry.emailTemplateField.all() %}
+                                {{emailMacros.buildCard(row)}}
+                                <!-- {{ row.cardBackground }}
+                                {% for block in row.card.all() %}
+                                    {% switch block.type %}
+                                        {% case "logoHeader" %}
+                                            {% set customLog = block.logo.one()%}
+                                           <img alt="{{ customLog.title }}" src="{{customLog.getUrl()}}" /> 
+                                    {% endswitch %}
+                                {% endfor %} -->
+                            {% endfor %}
+                            
+                            <!-- LAST CARD -->
+                            <table class="spacer" style="border-collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:100%">
+                                <tbody>
+                                    <tr style="padding:0;text-align:left;vertical-align:top">
+                                        <td height="24px" style="-moz-hyphens:auto;-webkit-hyphens:auto;Margin:0;border-collapse:collapse!important;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:24px;font-weight:400;hyphens:auto;line-height:24px;margin:0;mso-line-height-rule:exactly;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">&#xA0;</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table align="center" class="container background-white rounded-box" style="Margin:0 auto;background:url(assets/img/whiteBackground.png) #fff!important;background-blend-mode:normal!important;background-repeat:repeat;border-collapse:collapse;border-radius:5px;border-spacing:0;margin:0 auto;padding:0;text-align:inherit;vertical-align:top;width:600px">
+                                <tbody>
+                                    <tr style="padding:0;text-align:left;vertical-align:top">
+                                        <td style="-moz-hyphens:auto;-webkit-hyphens:auto;Margin:0;border-collapse:collapse!important;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;hyphens:auto;line-height:1.3;margin:0;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">
+                                            <table class="spacer" style="border-collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:100%">
+                                                <tbody>
+                                                    <tr style="padding:0;text-align:left;vertical-align:top">
+                                                        <td height="38px" style="-moz-hyphens:auto;-webkit-hyphens:auto;Margin:0;border-collapse:collapse!important;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:38px;font-weight:400;hyphens:auto;line-height:38px;margin:0;mso-line-height-rule:exactly;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">&#xA0;</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <table class="footer-social-menu" style="border-collapse:collapse;border-spacing:0;display:table;padding:0;position:relative;text-align:left;vertical-align:top;width:100%">
+                                                <tbody>
+                                                    <tr style="padding:0;text-align:left;vertical-align:top">
+                                                        <th class="small-12 large-6 columns first" style="Margin:0 auto;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0 auto;padding:0;padding-bottom:16px;padding-left:40px;padding-right:20px;text-align:left;width:50%">
+                                                            <table style="border-collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:100%">
+                                                                <tr style="padding:0;text-align:left;vertical-align:top">
+                                                                    <th style="Margin:0;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;width:50%"><picture>
+          <source type="image/webp" srcset="/imgs/email/Copper_fulllogo_noborder.webp"  class="max-width-131"   alt="Copper full logo no border" style="-ms-interpolation-mode:bicubic;clear:both;display:block;max-width:131px;outline:0;text-decoration:none;width:100%">
+          <source type="image/png" srcset="/imgs/email/Copper_fulllogo_noborder.png"  class="max-width-131"   alt="Copper full logo no border" style="-ms-interpolation-mode:bicubic;clear:both;display:block;max-width:131px;outline:0;text-decoration:none;width:100%">
+          <img   class="max-width-131"   src="/imgs/email/Copper_fulllogo_noborder.png"   alt="Copper full logo no border" style="-ms-interpolation-mode:bicubic;clear:both;display:block;max-width:131px;outline:0;text-decoration:none;width:100%" >
+</picture>
+                                                                        <ul class="social-icons" style="align-items:center;display:flex;justify-content:space-between;list-style:none;margin-top:50px;padding:0">
+                                                                            <li style="margin-left:0;padding-left:0!important;width:calc(100% / 5)">
+                                                                                <a href="https://www.linkedin.com/company/copper-inc/" class="cursor-pointer" style="Margin:0;color:#2199e8;cursor:pointer;font-family:'Helvetica Neue',Helvetica,Arial,Roboto,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:none"><picture>
+          <source type="image/webp" srcset="/imgs/email/icon_Linkedin.webp"    alt="Linkedin icon" style="-ms-interpolation-mode:bicubic;border:none;clear:both;display:block;max-width:20px;outline:0;text-decoration:none;width:100%"></a>
+          <source type="image/png" srcset="/imgs/email/icon_Linkedin.png"    alt="Linkedin icon" style="-ms-interpolation-mode:bicubic;border:none;clear:both;display:block;max-width:20px;outline:0;text-decoration:none;width:100%"></a>
+          <img   src="/imgs/email/icon_Linkedin.png"  alt="Linkedin icon" style="-ms-interpolation-mode:bicubic;border:none;clear:both;display:block;max-width:20px;outline:0;text-decoration:none;width:100%" crossorigin></a>
+</picture>
+                                                                            </li>
+                                                                            <li style="margin-left:0;padding-left:0!important;width:calc(100% / 5)">
+                                                                                <a href="https://twitter.com/CopperInc" class="cursor-pointer" style="Margin:0;color:#2199e8;cursor:pointer;font-family:'Helvetica Neue',Helvetica,Arial,Roboto,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:none"><picture>
+          <source type="image/webp" srcset="/imgs/email/icon_Twitter.webp"    alt="Twitter icon" style="-ms-interpolation-mode:bicubic;border:none;clear:both;display:block;max-width:20px;outline:0;text-decoration:none;width:100%"></a>
+          <source type="image/png" srcset="/imgs/email/icon_Twitter.png"    alt="Twitter icon" style="-ms-interpolation-mode:bicubic;border:none;clear:both;display:block;max-width:20px;outline:0;text-decoration:none;width:100%"></a>
+          <img   src="/imgs/email/icon_Twitter.png"  alt="Twitter icon" style="-ms-interpolation-mode:bicubic;border:none;clear:both;display:block;max-width:20px;outline:0;text-decoration:none;width:100%" crossorigin></a>
+</picture>
+                                                                            </li>
+                                                                            <li style="margin-left:0;padding-left:0!important;width:calc(100% / 5)">
+                                                                                <a href="https://www.facebook.com/CopperInc/" class="cursor-pointer" style="Margin:0;color:#2199e8;cursor:pointer;font-family:'Helvetica Neue',Helvetica,Arial,Roboto,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:none"><picture>
+          <source type="image/webp" srcset="/imgs/email/icon_Facebook.webp"    alt="Facebook icon" style="-ms-interpolation-mode:bicubic;border:none;clear:both;display:block;max-width:20px;outline:0;text-decoration:none;width:100%"></a>
+          <source type="image/png" srcset="/imgs/email/icon_Facebook.png"    alt="Facebook icon" style="-ms-interpolation-mode:bicubic;border:none;clear:both;display:block;max-width:20px;outline:0;text-decoration:none;width:100%"></a>
+          <img   src="/imgs/email/icon_Facebook.png"  alt="Facebook icon" style="-ms-interpolation-mode:bicubic;border:none;clear:both;display:block;max-width:20px;outline:0;text-decoration:none;width:100%" crossorigin></a>
+</picture>
+                                                                            </li>
+                                                                            <li style="margin-left:0;padding-left:0!important;width:calc(100% / 5)">
+                                                                                <a href="https://www.youtube.com/c/CopperInc" class="cursor-pointer" style="Margin:0;color:#2199e8;cursor:pointer;font-family:'Helvetica Neue',Helvetica,Arial,Roboto,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:none"><picture>
+          <source type="image/webp" srcset="/imgs/email/Youtube_Icon.webp"    alt="Youtube icon" style="-ms-interpolation-mode:bicubic;border:none;clear:both;display:block;max-width:20px;outline:0;text-decoration:none;width:100%"></a>
+          <source type="image/png" srcset="/imgs/email/Youtube_Icon.png"    alt="Youtube icon" style="-ms-interpolation-mode:bicubic;border:none;clear:both;display:block;max-width:20px;outline:0;text-decoration:none;width:100%"></a>
+          <img   src="/imgs/email/Youtube_Icon.png"  alt="Youtube icon" style="-ms-interpolation-mode:bicubic;border:none;clear:both;display:block;max-width:20px;outline:0;text-decoration:none;width:100%" crossorigin></a>
+</picture>
+                                                                            </li>
+                                                                            <li style="margin-left:0;padding-left:0!important;width:calc(100% / 5)">
+                                                                                <a href="https://www.instagram.com/copperinc/" class="cursor-pointer" style="Margin:0;color:#2199e8;cursor:pointer;font-family:'Helvetica Neue',Helvetica,Arial,Roboto,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:none"><picture>
+          <source type="image/webp" srcset="/imgs/email/icon_Instagram.webp"    alt="Instagram icon" style="-ms-interpolation-mode:bicubic;border:none;clear:both;display:block;max-width:20px;outline:0;text-decoration:none;width:100%"></a>
+          <source type="image/png" srcset="/imgs/email/icon_Instagram.png"    alt="Instagram icon" style="-ms-interpolation-mode:bicubic;border:none;clear:both;display:block;max-width:20px;outline:0;text-decoration:none;width:100%"></a>
+          <img   src="/imgs/email/icon_Instagram.png"  alt="Instagram icon" style="-ms-interpolation-mode:bicubic;border:none;clear:both;display:block;max-width:20px;outline:0;text-decoration:none;width:100%" crossorigin></a>
+</picture>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </th>
+                                                                </tr>
+                                                            </table>
+                                                        </th>
+                                                        <th class="footer-menu-container small-12 large-6 columns last" style="Margin:0 auto;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0 auto;padding:0;padding-bottom:16px;padding-left:20px;padding-right:40px;text-align:left;width:50%">
+                                                            <table style="border-collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:100%">
+                                                                <tr style="padding:0;text-align:left;vertical-align:top">
+                                                                    <th style="Margin:0;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;width:50%">
+                                                                        <ul class="footer-menu" style="list-style:none;margin:0">
+                                                                            <li style="margin-bottom:16px;margin-left:0!important;padding-left:0"><a href="#" class="cursor-pointer" style="Margin:0;color:#2199e8;cursor:pointer;font-family:'Helvetica Neue',Helvetica,Arial,Roboto,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:none"><h3 class="text-medium text-darkgray no-margin-bottom text-underline" style="Margin:0;Margin-bottom:10px;color:#3C3F40!important;font-family:'Helvetica Neue',Helvetica,Arial,Roboto,sans-serif;font-size:20px;font-weight:500;line-height:1.3;margin:0;margin-bottom:0!important;padding:0;text-align:left;text-decoration:underline;word-wrap:normal">Help Center</h3></a></li>
+                                                                            <li style="margin-bottom:16px;margin-left:0!important;padding-left:0"><a href="#" class="cursor-pointer" style="Margin:0;color:#2199e8;cursor:pointer;font-family:'Helvetica Neue',Helvetica,Arial,Roboto,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:none"><h3 class="text-medium text-darkgray no-margin-bottom text-underline" style="Margin:0;Margin-bottom:10px;color:#3C3F40!important;font-family:'Helvetica Neue',Helvetica,Arial,Roboto,sans-serif;font-size:20px;font-weight:500;line-height:1.3;margin:0;margin-bottom:0!important;padding:0;text-align:left;text-decoration:underline;word-wrap:normal">Community Center</h3></a></li>
+                                                                            <li style="margin-bottom:16px;margin-left:0!important;padding-left:0"><a href="#" class="cursor-pointer" style="Margin:0;color:#2199e8;cursor:pointer;font-family:'Helvetica Neue',Helvetica,Arial,Roboto,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:none"><h3 class="text-medium text-darkgray no-margin-bottom text-underline" style="Margin:0;Margin-bottom:10px;color:#3C3F40!important;font-family:'Helvetica Neue',Helvetica,Arial,Roboto,sans-serif;font-size:20px;font-weight:500;line-height:1.3;margin:0;margin-bottom:0!important;padding:0;text-align:left;text-decoration:underline;word-wrap:normal">Contact Support</h3></a></li>
+                                                                        </ul>
+                                                                    </th>
+                                                                </tr>
+                                                            </table>
+                                                        </th>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <table class="footer-info-menu" style="border-collapse:collapse;border-spacing:0;display:table;padding:0;position:relative;text-align:left;vertical-align:top;width:100%">
+                                                <tbody>
+                                                    <tr style="padding:0;text-align:left;vertical-align:top">
+                                                        <th class="address small-12 large-6 columns first" style="Margin:0 auto;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0 auto;padding:0;padding-bottom:16px;padding-left:40px;padding-right:20px;text-align:left;width:50%">
+                                                            <table style="border-collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:100%">
+                                                                <tr style="padding:0;text-align:left;vertical-align:top">
+                                                                    <th style="Margin:0;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;width:50%">
+                                                                        <p style="Margin:0;Margin-bottom:10px;color:#3C3F40;font-family:'Helvetica Neue',Helvetica,Arial,Roboto,sans-serif;font-size:16px;font-weight:500;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">301 Howard St #600</p>
+                                                                        <p style="Margin:0;Margin-bottom:10px;color:#3C3F40;font-family:'Helvetica Neue',Helvetica,Arial,Roboto,sans-serif;font-size:16px;font-weight:500;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">San Francisco, CA 94105</p>
+                                                                    </th>
+                                                                </tr>
+                                                            </table>
+                                                        </th>
+                                                        <th class="last-links small-12 large-6 columns last" style="Margin:0 auto;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0 auto;padding:0;padding-bottom:16px;padding-left:20px;padding-right:40px;text-align:left;width:50%">
+                                                            <table style="border-collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:100%">
+                                                                <tr style="padding:0;text-align:left;vertical-align:top">
+                                                                    <th style="Margin:0;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;width:50%">
+                                                                        <ul class="footer-menu" style="list-style:none;margin:0">
+                                                                            <li style="font-size:14px;line-height:14px;margin-bottom:16px;margin-left:0!important;padding-left:0"><a class="text-darkgray no-margin-bottom text-underline" href style="Margin:0;color:#3C3F40!important;cursor:pointer;font-family:'Helvetica Neue',Helvetica,Arial,Roboto,sans-serif;font-weight:400;line-height:1.3;margin:0;margin-bottom:0!important;padding:0;text-align:left;text-decoration:underline">Update Preferences</a></li>
+                                                                            <li style="font-size:14px;line-height:14px;margin-bottom:16px;margin-left:0!important;padding-left:0"><a class="text-darkgray no-margin-bottom text-underline" href style="Margin:0;color:#3C3F40!important;cursor:pointer;font-family:'Helvetica Neue',Helvetica,Arial,Roboto,sans-serif;font-weight:400;line-height:1.3;margin:0;margin-bottom:0!important;padding:0;text-align:left;text-decoration:underline">Unsubscribe</a></li>
+                                                                        </ul>
+                                                                    </th>
+                                                                </tr>
+                                                            </table>
+                                                        </th>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <table class="spacer" style="border-collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:100%">
+                                                <tbody>
+                                                    <tr style="padding:0;text-align:left;vertical-align:top">
+                                                        <td height="28px" style="-moz-hyphens:auto;-webkit-hyphens:auto;Margin:0;border-collapse:collapse!important;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:28px;font-weight:400;hyphens:auto;line-height:28px;margin:0;mso-line-height-rule:exactly;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">&#xA0;</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="spacer" style="border-collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:100%">
+                                <tbody>
+                                    <tr style="padding:0;text-align:left;vertical-align:top">
+                                        <td height="64px" style="-moz-hyphens:auto;-webkit-hyphens:auto;Margin:0;border-collapse:collapse!important;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:128px;font-weight:400;hyphens:auto;line-height:64px;margin:0;mso-line-height-rule:exactly;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">&#xA0;</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </center>
+        </td>
+    </tr>
+</table>
+</section>
+
+<section class="c-single-column bottom-padding-mobile">
+    <div class="container">
+        <div class="col-md-8 offset-md-2 c-single-column__container c-align--center">
+            <div class="c-single-column__buttons">
+                <a class="c-button generate-email" style="list-style: none;" href="#">
+                    <li>
+                        Generate email
+                    </li>
+                  </a>
+            </div>
+            <div style="margin-top: 20px;">
+                <textarea name="" id="htmlTextArea" cols="30" rows="10"></textarea>
+            </div>
+            <div class="aws-download">
+                <ul>
+                    
+                </ul>
+            </div>
+        </div>
+        
+    </div>    
+   
+</section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.2.2/jszip.js"></script>
+<script src="https://cdn.bootcss.com/FileSaver.js/2014-11-29/FileSaver.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip-utils/0.1.0/jszip-utils.min.js"></script>
+
+<script>
+     LazyLoad.js([
+        'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'],function(){
+
+    function urlToPromise(url) {
+        return new Promise(function(resolve, reject) {
+            JSZipUtils.getBinaryContent(url, function (err, data) {
+                if(err) {
+                    reject(err);
+                } else {
+                    resolve(data);
+                }
+            });
+        });
+    };
+
+    jQuery(".generate-email").click(function(e){
+        
+            e.preventDefault();
+            jQuery(".top-subtext p:first-child").css({"margin":"0px 0px 0px 0px"});
+            var htmlTemplate = jQuery(".email-template").clone();
+            var emailDom = htmlTemplate[0].innerHTML.replace(new RegExp('/imgs/email/', 'g'),"");
+            emailDom = emailDom.replace(new RegExp('https://copper.lndo.site/email-assets/', 'g'),"");
+            emailDom = emailDom.replace(new RegExp('https://copper.com/email-assets/', 'g'),"");
+            emailDom = emailDom.replace(new RegExp('https://copper-staging.frb.io/email-assets/', 'g'),"");
+            
+
+            jQuery("#htmlTextArea").val(emailDom);
+            var imagesArray = [];
+            jQuery("table.body img").each(function(){
+               //jQuery(this).attr("src"); 
+               if(jQuery(this).attr("src").includes("cloudfront")){
+                return;
+                
+               }else{
+                imagesArray.push(jQuery(this).attr("src"));
+               };
+            });
+            // console.log(imagesArray);
+
+            var zip = new JSZip();
+            var img = zip.folder("images");
+            
+            zip.file("email-template.txt",emailDom);
+
+            imagesArray.forEach(test);
+            function test(item, index) {
+                var imageName = item.split("/");
+                imageName = imageName[imageName.length - 1].trim(" ");
+                //imageName = imageName.split(".");
+                //imageName = imageName[0];
+                img.file(imageName, urlToPromise(item), {binary:true});
+            }
+            //img.file("imageName", "/imgs/email/PinkArrow_v2.png", {url: true});
+            zip.generateAsync({type:"blob"})
+            .then(function(content) {
+                // Force down of the Zip file
+                saveAs(content, "archive.zip");
+            });
+        })
+    })
+</script>
+
+{% endblock %}

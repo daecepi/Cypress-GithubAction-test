@@ -1,0 +1,30 @@
+{% set backgroundColor = matrixBlock.backgroundColor.one() %}
+
+{% set backgroundImage = matrixBlock.backgroundImage.one() %}
+
+<!-- Hero -->
+  <section class="c-hero--split {{ backgroundColor ? backgroundColor.slug : 'hot-pink' }} {{ entry.removeNavigation ? 'h-no-nav' : '' }}">
+    <div class="c-image--back-left">
+      <img height="{{ backgroundImage.height/2 }}" alt="{{ backgroundImage.title }}" width="{{ backgroundImage.width/2 }}" src="{{ backgroundImage.url }}">
+    </div>
+    <div class="container">
+      <div class="row column-default">
+        <div class="col-md-6 c-valign--middle">
+          <div class="c-image--contain">
+            {% if matrixBlock.image|length %}
+              {% set image = matrixBlock.image.one() %}
+              <img class="{{ matrixBlock.imageContain ? 'h-image-contain' : '' }}" src="{{ image.url }}" alt="{{ image.title }}">
+            {% endif %}
+          </div>       
+        </div> 
+        <div class="col-md-5 offset-md-1 c-valign--middle">
+        {% if matrixBlock.eyebrow|length %}<pre class="c-eyebrow c-eyebrow--light">{{ matrixBlock.eyebrow }}</pre>{% endif %}
+          <div class="hero-text">{{ matrixBlock.richText }}</div>
+          {% if matrixBlock.cta|length %}
+            {% set ctas = matrixBlock.cta %}
+            {% include 'components/cta/_index.html' %}
+          {% endif %}     
+        </div>
+      </div>
+    </div>
+  </section>

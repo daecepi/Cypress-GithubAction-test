@@ -1,0 +1,70 @@
+{# General variable evaluation #}
+{% if matrixBlock is defined %}
+  {% set moduleVariable = matrixBlock %}
+{% else %}
+  {% set moduleVariable = entry %}
+{% endif %}
+
+<section class="h-section-padding {% if moduleVariable.addPaddingBottom is not null and moduleVariable.addPaddingBottom %} extra-bottom-margin--small {% endif %}">
+  <div class="container">
+    {% if moduleVariable.removeHeader is not null and not moduleVariable.removeHeader %}
+      <h2 class="text-center">{{ moduleVariable.header is not null and moduleVariable.header|length > 0 ? moduleVariable.header : "Learn from our community of experts" }}</h2>
+    {% endif %}
+    
+    <div class="row extra-top-margin--small">
+      {# Building webinars hierarchy the webinar structure #}
+      {% set selectedWebinars = [] %}
+      {% set selectedWebinars = selectedWebinars | merge(craft.entries({section: 'webinars', type: 'register' })) %}
+      {# {% set featuredWebinars = entry.featuredWebinars.all() %} #}
+      {#{% set selectedWebinars = selectedWebinars | merge(featuredWebinars) %}#}
+      {# getting the featured entries ids #}
+      {#
+      {% set featuredIds = ['not'] %}
+      {% for item in entry.featuredWebinars.all() %}
+        {% set featuredIds = featuredIds|merge([item.id]) %}
+      {% endfor %}
+       #}
+      {# getting the rest of the ids not gotten #}
+      {% set selectedWebinars = selectedWebinars | merge(craft.entries({section: 'webinars', type:'not register' })) %} {# , id: featuredIds #}
+
+      {% for webinar in selectedWebinars|slice(0, 3) %}
+      <div class="col-md-4">
+        <div class="c-card__entry h-webinar">
+          <a class="c-card__clickthrough" href="{{ webinar.url }}"></a>
+          {% set image = webinar.featuredImage.one() %}
+          {% if image %}
+          <img class="c-card__default__image" src="{{ image.url }}" alt="{{ entry.title }}" />
+          {% else %}
+          <picture>
+          <source type="image/webp" srcset="/imgs/industry/industry-agency-blog-01@2x.webp"  class="c-card__default__image"   alt="Industry agency blog" />
+          <source type="image/png" srcset="/imgs/industry/industry-agency-blog-01@2x.jpg"  class="c-card__default__image"   alt="Industry agency blog" />
+          <img   class="c-card__default__image"   src="/imgs/industry/industry-agency-blog-01@2x.jpg"   alt="Industry agency blog" / >
+</picture>
+          {% endif %}
+          <div class="c-card__entry__content">
+            {% if webinar.type == "register" %}
+              <span class="t-eyebrow t-special-eyebrow t-special-eyebrow--lt-purple">Upcoming webinar</span><br />
+            {% else %}
+            <span class="t-eyebrow t-special-eyebrow t-special-eyebrow--lt-purple">{{webinar.releaseDate is not null and webinar.releaseDate >= now|date ? "Upcoming webinar" : 'Video' }}</span><br />
+            {% endif %}
+            <span class="t-eyebrow ">{{ webinar.eyebrow }}</span></span>
+            <h4 class="c-card__entry-title multiple-2-card-trailer">
+              <a class="underline_from_lefsettt" href="{{ webinar.url }}">{{ webinar.title }}</a>
+            </h4>
+            <p class="p-sm multiple-5-card-trailer">{{ webinar.description }}</p>
+          </div>
+          <div class="c-card__meta">
+            {% if webinar.type == "register" %}
+            <a class="t-link" href="{{ webinar.url }}">Sign up</a>
+            {% else %}
+            <a class="t-link" href="{{ webinar.url }}">Watch now</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+
+</section>

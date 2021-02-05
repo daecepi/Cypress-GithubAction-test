@@ -1,0 +1,157 @@
+// Form Blog
+.c-form-blog {
+  position: relative;
+  form {
+    width: 100% !important;
+    padding: 0;
+    visibility: visible;
+  }
+  label {
+    display: none !important;
+  }
+  .mktoFormCol, .mktoFieldWrap {
+    width: 100% !important;
+  }
+  .mktoFormCol {
+    margin-bottom: 0 !important;
+  }
+  .mktoOffset {
+    display: none !important;
+  }
+  ::placeholder {
+    color: #5B4B66;
+  }
+  input[type="email"] {
+    width: 100% !important;
+    /* This removes the width imposed by js */
+    background: transparent;
+    border: 0 !important;
+    border-bottom: 1px solid #B1B2B4 !important;
+    font-family: $regular-font;
+    line-height: 18px;
+    font-size: 16px !important;
+    font-weight: 400;
+    letter-spacing: .5px;
+    caret-color: $color-hot-pink;
+    max-width: 100% !important;
+    outline: 0;
+    height: auto !important;
+    padding-right: 32px;
+    padding-bottom: 10px !important;
+    box-shadow: none !important;
+    margin-bottom: -4px !important;
+    @include media-breakpoint-up(md) {
+      font-size: 13px !important;
+      padding-bottom: 6px  !important;
+      height: 30px !important;
+    }
+    &:focus {
+      border-bottom: 1px solid $color-hot-pink !important;
+    }
+    &::placeholder {
+      color: #B1B2B4;
+    }
+  }
+
+  .special-webinar{
+    input[type="email"]{
+      border-bottom: 1px solid #000000 !important;
+      @include media-breakpoint-up(md){
+        font-size: 31px !important;
+        padding-bottom: 28px !important;
+        padding-top: 19px !important;
+        color: #000000 !important;
+      }
+      &::placeholder{
+        color: #000000;
+        opacity: 0.9;
+      }
+    }
+  }
+  .mktoForm .mktoButtonWrap.mktoSimple .mktoButton {
+    display: none;
+  }
+
+  .c-form-blog__submit {
+    background: none;
+    border: none;
+    position: absolute;
+    right: 0;
+    // top: 5px;
+    bottom: 0px;
+    padding-right: 0px;
+    transition: right 0.1s ease-in-out;
+    @include media-breakpoint-up(lg) {
+      &:hover{
+        right: -13px;
+      }
+      right: -8px;
+      top: 15px;
+    }  
+    .material-icons {
+      background: white;
+      color: #D9D9D9;
+      cursor: pointer;
+      font-size: 25px;
+      @include media-breakpoint-up(lg) {
+        font-size: 20px;
+      }
+    }
+  }
+  .c-blog__form-success {
+    position: absolute;
+    top: 5px;
+    left: 1px;
+    color: $color-graphite;
+    display: none;
+    width: 100%;
+    .c-blog__form-success-container{
+      position: relative;
+    }
+    .material-icons {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+    }
+  }
+  .mktoForm .mktoError {
+    left: 0;
+    position: absolute;
+    bottom: -30px !important;
+    font-size: 14px;
+    .mktoErrorArrow {
+      display: none;
+    }
+    .mktoErrorMsg {
+      display: block;
+      margin-top: 0;
+      background-color: transparent;
+      background-image: none;
+      border: 1px solid transparent;
+      -webkit-border-radius: 6px;
+      border-radius: 6px;
+      box-shadow: none;
+      color: $color-hot-pink;
+      font-size: 1em;
+      line-height: 1.2em;
+      max-width: 400px;
+      padding: 0;
+      text-shadow: none;
+      .mktoErrorDetail {
+        display: inline-block;
+      }
+    }
+  }
+  &.h-form-success {
+    .c-blog__form-success {
+      display: block;
+      z-index: 100;
+      margin-top: 10px;
+    }
+    form, .c-form-blog__submit {
+      visibility: hidden;
+      opacity:0;
+    }
+  }
+}

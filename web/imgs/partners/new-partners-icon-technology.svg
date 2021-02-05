@@ -1,0 +1,13 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="partners-icon-services">
+<g id="Combined Shape" style="mix-blend-mode:multiply">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M10.9565 28L0 64H28L17.0435 28H10.9565Z" fill="#00E6C3"/>
+</g>
+<path id="Combined Shape_2" fill-rule="evenodd" clip-rule="evenodd" d="M28 0H0V28H10.9565L14 18L17.0435 28H28V0Z" fill="#EAE8ED"/>
+<path id="Combined Shape_3" fill-rule="evenodd" clip-rule="evenodd" d="M17.0435 28H10.9565L14 18L17.0435 28Z" fill="#00D1B5"/>
+<rect id="Rectangle Copy" x="36" y="28" width="28" height="36" fill="#EAE8ED"/>
+<g id="Oval" style="mix-blend-mode:multiply">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M50 28C57.732 28 64 21.732 64 14C64 6.26801 57.732 0 50 0C42.268 0 36 6.26801 36 14C36 21.732 42.268 28 50 28Z" fill="#00E6C3"/>
+</g>
+</g>
+</svg>

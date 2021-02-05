@@ -1,0 +1,335 @@
+{# Add slick carousel  #}
+<!-- Add the slick-theme.css if you want default styling -->
+<!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css"/> -->
+<!-- Add the slick-theme.css if you want default styling -->
+<!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css"/> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.0/anime.min.js"></script> -->
+<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script> -->
+
+
+<style>
+.price-table-mobile .c-pricing-table__row--cornflower{
+  position:relative;
+}
+.price-table-mobile .c-pricing-table__tier--cornflower.pricing-table-cat-content {
+    position: absolute;
+    right: 0;
+    width: 50%;
+    text-align: center;
+}
+.price-table-mobile .pricing-table-description{
+  max-width:50%;
+}
+.price-table-mobile .slick-prev{
+left  :0px;
+color:gray;
+z-index:99;
+}
+.price-table-mobile .slick-next{
+right:0px;
+color:gray;
+}
+.price-table-mobile .slick-prev:before{
+  color:gray
+}
+.price-table-mobile .slick-next:before{
+  color:gray
+}
+
+
+.pricing-arrow{
+  position: absolute;
+  top: 24%;
+  bottom: unset;
+  z-index: 2;
+  cursor: pointer;
+  opacity: 1;
+}
+
+.pricing-arrow.pricing-prev-arrow{
+  left: 13px;
+}
+.pricing-arrow.slick-disabled{
+  opacity: 0.2;
+}
+
+.pricing-arrow.pricing-forward-arrow{
+  right: 13px;
+}
+
+.container.no-side-space{
+  margin-right: 0px;
+  margin-left: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+</style>
+
+{% if matrixBlock.linkToNav|length %}
+  {% set linkId = matrixBlock.linkToNav |camel %}
+  {% set sectionId = entry[linkId] |camel %}
+  <a class="anchor" id="{{sectionId}}"></a>
+{% endif %}
+
+{# {% if matrixBlock.includeNavigation %}
+<div class="l-pricing-tables--container d-sm-none d-md-block">
+{% endif %} #}
+<section class="d-none d-sm-none d-md-block c-pricing-table--cornflower {{ matrixBlock.lastInstance ? 'last-instance' : '' }} {{ matrixBlock.includeNavigation ? 'nav-added' : '' }}">
+    {% if matrixBlock.includeNavigation %}
+    <div class="c-pricing-table--cornflower__navigation js-pricing-nav" style="padding-bottom: 10px;">
+      <div class="c-pricing-table__row--cornflower">
+        <div class="container c-pricing-table--cornflower__navigation--container">
+          <div class="c-pricing-table__info--cornflower" style="margin-right: 15px;"><p>Compare Features</p></div>
+          <div class="c-pricing-table__tier--cornflower"><p>Basic</p></div>
+          <div class="c-pricing-table__tier--cornflower js-truncate-string"><p>Professional</p></div>
+          <div class="c-pricing-table__tier--cornflower"><p>Business</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <h4 class="{{ matrixBlock.includeNavigation ? 'include-nav' : 'no-nav' }}"></h4>
+      <div class="c-pricing-table__table--cornflower">
+        <div class="c-pricing-table__row--cornflower">
+          <div class="c-pricing-table__info--cornflower sm">Users</div>
+          <div class="c-pricing-table__tier--cornflower">
+              <p class="p-sm" style="text-align:center;">Maximum of 3 seats</p>
+          </div>
+          <div class="c-pricing-table__tier--cornflower">
+              <p class="p-sm" style="text-align:center;">No seat maximum</p>
+          </div>
+          <div class="c-pricing-table__tier--cornflower">
+              <p class="p-sm" style="text-align:center;">No seat maximum</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <h4 class="{{ matrixBlock.includeNavigation ? 'include-nav' : 'no-nav' }}"></h4>
+      <div class="c-pricing-table__table--cornflower">
+        <div class="c-pricing-table__row--cornflower">
+          <div class="c-pricing-table__info--cornflower sm">Contacts (Leads + People)</div>
+          <div class="c-pricing-table__tier--cornflower">
+              <p class="p-sm" style="text-align:center;">2,500</p>
+          </div>
+          <div class="c-pricing-table__tier--cornflower">
+              <p class="p-sm" style="text-align:center;">15,000</p>
+          </div>
+          <div class="c-pricing-table__tier--cornflower">
+              <p class="p-sm" style="text-align:center;">Unlimited</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+    {% endif %}
+    <div class="container">
+      <h4 class="{{ matrixBlock.includeNavigation ? 'include-nav' : 'no-nav' }}">{{ matrixBlock.tableTitle }}</h4>
+      <div class="c-pricing-table__table--cornflower">
+        {% for feature in matrixBlock.pricingFeatures.all() %}
+        <div class="c-pricing-table__row--cornflower">
+          <div class="c-pricing-table__info--cornflower sm">
+            {% if feature.titleLink|length %}
+              <a href="{{feature.titleLink}}" target="_blank" >
+                {{ feature.title }}
+              </a>
+            {% else %}
+              {{ feature.title }}
+            {% endif %}
+          </div>
+          <div class="c-pricing-table__tier--cornflower">
+            {% if feature.basicTierCheckmark %}
+              <i class="notranslate material-icons done">done</i>
+            {% elseif feature.basicTierText|length %}
+              <p class="p-sm" style="text-align:center;">{{ feature.basicTierText }}</p>
+            {% else %}
+              <i class="notranslate material-icons close">close</i>
+            {% endif %}
+          </div>
+          <div class="c-pricing-table__tier--cornflower">
+            {% if feature.professionalTierCheckmark %}
+              <i class="notranslate material-icons done">done</i>
+            {% elseif feature.professionalTierText|length %}
+              <p class="p-sm" style="text-align:center;">{{ feature.professionalTierText }}</p>
+            {% else %}
+              <i class="notranslate material-icons close">close</i>
+            {% endif %}
+          </div>
+          <div class="c-pricing-table__tier--cornflower">
+              {% if feature.businessTierCheckmark %}
+              <i class="notranslate material-icons done">done</i>
+            {% elseif feature.businessTierText|length %}
+              <p class="p-sm" style="text-align:center;">{{ feature.businessTierText }}</p>
+            {% else %}
+              <i class="notranslate material-icons close">close</i>
+            {% endif %}
+          </div>
+        </div>
+        {% endfor %}
+        {% if matrixBlock.footnote|length %}
+        <div class="c-pricing-table__footnote">
+          {{ matrixBlock.footnote }}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+</section>
+
+{# {% if matrixBlock.lastInstance %}
+</div>
+{% endif %} #}
+
+{# MOBILE #}
+{# {% if matrixBlock.includeNavigation %}
+<div class="l-pricing-tables--container d-sm-block d-md-none">
+{% endif %} #}
+<section class="price-table-mobile d-block d-sm-block d-md-none c-pricing-table--cornflower {{ matrixBlock.lastInstance ? 'last-instance' : '' }} {{ matrixBlock.includeNavigation ? 'nav-added' : '' }}">
+    {% if matrixBlock.includeNavigation == 1 %}
+    <div class="floating-starting-point--pricing"></div>
+    <div class="c-pricing-table--cornflower__navigation js-pricing-nav" style="padding-bottom: 0px;">
+      <div class="c-pricing-table__row--cornflower united-bottom  floating-container--pricing">
+        <div class="container c-pricing-table--cornflower__navigation--container" style="align-items:center">
+          <div class="c-pricing-table__info--cornflower" style="max-width:50%; margin-right: 11px;"><p>Compare Features</p></div>
+          <div style="display:block;max-width:50%;width:50%">
+            <div class="pricing-table-nav-slider">
+              <div class="c-pricing-table__tier--cornflower"><p class="text-center pricing-cat-Basic">Basic</p></div>
+              <div class="c-pricing-table__tier--cornflower js-truncate-string"><p class="text-center pricing-cat-Professional">Professional</p></div>
+              <div class="c-pricing-table__tier--cornflower"><p class="text-center pricing-cat-Business">Business</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container no-side-space" style="max-width: none;">
+      <div class="c-pricing-table__table--cornflower">
+        <div class="c-pricing-table__row--cornflower">
+          <div class="c-pricing-table__info--cornflower pricing-table-description sm">Users</div>
+          <div class="c-pricing-table__tier--cornflower pricing-table-cat-content basic-mobile" style="flex:3">
+              <p class="p-sm" style="text-align:center;">Maximum of 3 seats</p>
+          </div>
+          <div class="c-pricing-table__tier--cornflower pricing-table-cat-content professional-mobile" style="flex:3;transform:scale(0);opacity:0">
+              <p class="p-sm" style="text-align:center;">No seat maximum</p>
+          </div>
+          <div class="c-pricing-table__tier--cornflower pricing-table-cat-content business-mobile " style="flex:3;transform:scale(0);opacity:0">
+              <p class="p-sm" style="text-align:center;">No seat maximum</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container no-side-space" style="max-width: none;">
+      <div class="c-pricing-table__table--cornflower">
+        <div class="c-pricing-table__row--cornflower">
+          <div class="c-pricing-table__info--cornflower pricing-table-description sm">Contacts (Leads + People)</div>
+          <div class="c-pricing-table__tier--cornflower pricing-table-cat-content basic-mobile" style="flex:3">
+              <p class="p-sm" style="text-align:center;">2,500</p>
+          </div>
+          <div class="c-pricing-table__tier--cornflower pricing-table-cat-content professional-mobile" style="flex:3;transform:scale(0);opacity:0">
+              <p class="p-sm" style="text-align:center;">15,000</p>
+          </div>
+          <div class="c-pricing-table__tier--cornflower pricing-table-cat-content business-mobile " style="flex:3;transform:scale(0);opacity:0">
+              <p class="p-sm" style="text-align:center;">Unlimited</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+    {% endif %}
+    <div class="container no-side-space" style="max-width: none;">
+      <h4 class="{{ matrixBlock.includeNavigation ? 'include-nav' : 'no-nav' }}">{{ matrixBlock.tableTitle }}</h4>
+      <div class="c-pricing-table__table--cornflower">
+        {% for feature in matrixBlock.pricingFeatures.all() %}
+        <div class="c-pricing-table__row--cornflower">
+          <div class="c-pricing-table__info--cornflower pricing-table-description sm">
+            {% if feature.titleLink|length %}
+              <a href="{{feature.titleLink}}" target="_blank" >
+                {{ feature.title }}
+              </a>
+            {% else %}
+              {{ feature.title }}
+            {% endif %}
+          </div>
+          <div class="c-pricing-table__tier--cornflower pricing-table-cat-content basic-mobile" style="flex:3">
+            {% if feature.basicTierCheckmark %}
+              <i class="notranslate material-icons done">done</i>
+            {% elseif feature.basicTierText|length %}
+              <p class="p-sm" style="text-align:center;">{{ feature.basicTierText }}</p>
+            {% else %}
+              <i class="notranslate material-icons close">close</i>
+            {% endif %}
+          </div>
+          <div class="c-pricing-table__tier--cornflower pricing-table-cat-content professional-mobile" style="flex:3;transform:scale(0);opacity:0">
+            {% if feature.professionalTierCheckmark %}
+              <i class="notranslate material-icons done">done</i>
+            {% elseif feature.professionalTierText|length %}
+              <p class="p-sm" style="text-align:center;">{{ feature.professionalTierText }}</p>
+            {% else %}
+              <i class="notranslate material-icons close">close</i>
+            {% endif %}
+          </div>
+          <div class="c-pricing-table__tier--cornflower pricing-table-cat-content business-mobile " style="flex:3;transform:scale(0);opacity:0">
+              {% if feature.businessTierCheckmark %}
+              <i class="notranslate material-icons done">done</i>
+            {% elseif feature.businessTierText|length %}
+              <p class="p-sm" style="text-align:center;">{{ feature.businessTierText }}</p>
+            {% else %}
+              <i class="notranslate material-icons close">close</i>
+            {% endif %}
+          </div>
+        </div>
+        {% endfor %}
+        {% if matrixBlock.footnote|length %}
+          <div class="c-pricing-table__footnote">
+            {{ matrixBlock.footnote }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+</section>
+{# {% if matrixBlock.lastInstance %}
+</div>
+{% endif %} #}
+
+<script>
+  LazyLoad.js([
+        'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js','https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js'],function(){
+      LazyLoad.css(['https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css','https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css'])
+    
+    
+    $('.pricing-table-nav-slider').not('.slick-initialized').slick({
+      arrows:true,
+      infinite:false,
+      prevArrow: '<img class="pricing-arrow pricing-prev-arrow" src="/imgs/pricing/ArrowPrev-24px.svg" alt="Prev arrow">',
+      nextArrow: '<img class="pricing-arrow pricing-forward-arrow" src="/imgs/pricing/arrowForward-24px.svg" alt="Forward arrow">'
+    });
+
+    $('.pricing-table-nav-slider').on('swipe', function(event, slick, direction){
+      // console.log(direction);
+      // left
+    });
+    
+
+    $('.pricing-table-nav-slider').on('beforeChange', function(event, slick, currentSlide, nextSlide){
+        $(".price-table-mobile .pricing-table-cat-content").css({"transform":"scale(0)","opacity":"0","transition":"0.25s"})
+    });
+
+    $('.pricing-table-nav-slider').on('afterChange', function(event, slick, currentSlide){
+      if($(".price-table-mobile .slick-active p").hasClass("pricing-cat-Basic")){
+        $(".price-table-mobile .c-pricing-table__row--cornflower .basic-mobile").css("display","block");
+        
+        $(".price-table-mobile .basic-mobile").css({"transform":"scale(1)","opacity":"1","transition":"0.25s"})
+        
+      }
+      if($(".price-table-mobile .slick-active p").hasClass("pricing-cat-Professional")){
+        $(".professional-mobile").css("display","block");
+        $(".price-table-mobile .professional-mobile").css({"transform":"scale(1)","opacity":"1","transition":"0.25s"})
+        
+      }
+      if($(".price-table-mobile .slick-active p").hasClass("pricing-cat-Business")){
+        $(".business-mobile").css("display","block");
+        $(".price-table-mobile .business-mobile").css({"transform":"scale(1)","opacity":"1","transition":"0.25s"})
+        
+      }
+      
+    });  
+  });
+  
+</script>

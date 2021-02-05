@@ -1,0 +1,67 @@
+{% import "/components/replacements/_marketo-replacements.html" as localLeadReplacements %}
+{% if marketoConfigurations.replaceMarketoForms %}
+  {{ localLeadReplacements.htmlReplacement("mktoForm_1557", 'Lead', entry.slug) }}
+{% else %}
+  <form id="mktoForm_1557"></form>
+{% endif %}
+<script>
+  LazyLoad.js(['https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'],function(){
+    {% if marketoConfigurations.replaceMarketoForms %}
+      {{ localLeadReplacements.lightScriptReplacement("mktoForm_1557", staticAssetsVersion, "JH", true, true) }}
+    {% else %}
+        MktoForms2.loadForm("//app-sj17.marketo.com", "763-DVL-293", 1557, function(form) {
+
+          form.onSubmit(function(){
+              // Get the form field values
+              var consentValue =  $('#consentBox').val();
+              var vals = form.vals({"expressConsentGivenc": consentValue});
+              // You may wish to call other function calls here, for example to fire google analytics tracking or the like
+              // callSomeFunction(vals);
+              // We'll just alert them to show the principle
+              // alert("Submitted values: " + JSON.stringify(vals));
+              form.onSuccess(function(x, y) {
+                form.getFormElem().css({
+                  "display": "none"
+                });
+                $(".js-form-success").css({
+                  "display": "block"
+                });
+                $(".js-form-success").addClass('h-demo-success');
+                return false;
+              });              
+          });
+        });
+         MktoForms2.whenReady(function (form) {
+          $('.h-gdpr').css({
+            "display": "block"
+          });
+          $("input").focus(function(){
+            $(this).prevAll("label").addClass("label-focused")
+            $(this).addClass("input-focused");
+          });
+          $("input").focusout(function(){
+            $(this).prevAll("label").removeClass("label-focused")
+            $(this).removeClass("input-focused");
+          });
+          $("select").focus(function(){
+            $(this).prevAll("label").addClass("label-focused")
+            $(this).addClass("input-focused");
+          });
+          $("select").focusout(function(){
+            $(this).prevAll("label").removeClass("label-focused")
+            $(this).removeClass("input-focused");
+          });
+          $("select").change(function(){
+            if($(this).val().length > 1) {
+              $("select").addClass("select-selected");
+            } else {
+              $("select").removeClass("select-selected");
+            } 
+          });
+        });
+      {% endif %}
+      })
+</script>
+<div class="js-form-success">
+ <h3 class="h3">Thanks for registering.</h3>
+</div>

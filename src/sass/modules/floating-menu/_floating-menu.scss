@@ -1,0 +1,93 @@
+//Individual floatings
+#floating-menu-list{
+  overflow-x: scroll;
+  li{
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+}
+
+.floating-menu{
+  position: absolute;
+  background-color: $color-white;
+  opacity: 0.5;
+  right: 0px;
+  top: 0px;
+  width: 19%;
+  z-index: 3;
+  border: 1px solid $color-hot-pink;
+  padding: 5px 2px;
+  border-radius: 2px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: fit-content;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  // Make text unselectable
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+
+  &.floating-active{
+    position: fixed;
+    top: 100px;
+
+    &:hover{
+      top: 100px;
+    }
+
+    @include media-breakpoint-down(md){
+      position: initial;
+    }
+  }
+
+  p{
+    margin: 10px;
+  }
+
+  &:hover{
+    opacity: 1;
+  }
+
+  @include media-breakpoint-down(md){
+    position: initial;
+    opacity: 1;
+    margin: 30px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+
+  #floating-menu-list{
+      margin: 5px;
+      li{
+        line-height: 16px;
+        margin-bottom: 0px;
+        padding-top: 3px;
+        padding-bottom: 3px;
+        a{
+          background-image: unset;
+
+        }
+         .selected{
+          color: $color-hot-pink;
+        }
+         &:hover{
+            color: $color-hot-pink;
+
+            a{
+              margin-bottom: -1px;
+              border-bottom: 2px solid $color-hot-pink;
+            }
+         }
+      }
+  }
+}

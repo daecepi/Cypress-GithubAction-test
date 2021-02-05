@@ -1,0 +1,921 @@
+
+{# Scripts de las animaciones #}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.0/anime.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/in-view@0.6.1/dist/in-view.min.js"></script>
+
+{# All the page #}
+<main id="content" role="main" class="no-top-margin">
+  <!-- Hero -->
+  <!--Full hero section-->
+  <section class="c-hero--split hot-pink product-page no-transition c-default-state">
+    <div class="c-animation-container">
+      <div id="default-image" class="c-image condensed-in-background ">
+        <picture>
+          <source type="image/webp" srcset="//d2ydtwisqcxv72.cloudfront.net/landing/section-image_hero@2xupdated.webp"    alt="Image hero">
+          <source type="image/png" srcset="//d2ydtwisqcxv72.cloudfront.net/landing/section-image_hero@2xupdated.png"    alt="Image hero">
+          <img     src="//d2ydtwisqcxv72.cloudfront.net/landing/section-image_hero@2xupdated.png"   alt="Image hero" >
+</picture>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 c-valign--middle">
+            <pre class="c-eyebrow c-eyebrow--dark">COPPER PROJECTS</pre>
+            <div class="hero-text">
+              <h1>Why Does CRM Have To End With The Deal?</h1>
+              <p>After the deal is closed and the work begins, you shouldn’t have to switch to another tool - incurring the pain of duplicate data entry - to make the transition. Now you don't.</p>
+            </div>
+            <div class="c-hero__buttons">
+              <button class="c-button c-button--hot-pink hero-trial-flow-button">Try
+                Free</button>
+              <button class="c-button c-button--outline hero-marketo-flow-button">Request
+                Demo</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {# marketo flow #}
+  <div class="marketo-flow-trigger">
+    <section class="c-hero--split soft-midnight product-page no-transition">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 c-valign--middle">
+            <pre class="c-eyebrow c-eyebrow--dark">COPPER PROJECTS</pre>
+            <div class="hero-text">
+              <h1>Why Does CRM Have To End With The Deal?</h1>
+              <p>After the deal is closed and the work begins, you shouldn’t have to switch to another tool - incurring
+                the pain of duplicate data entry - to make the transition.</p>
+            </div>
+            <div class="c-hero__buttons">
+              <button class="c-button c-button--hot-pink hero-trial-flow-button">Try
+                Free</button>
+              <button class="c-button c-button--outline hero-marketo-flow-button">Request
+                Demo</button>
+            </div>
+          </div>
+          <div class="col-md-6 c-valign--middle">
+            {# Marketo script #}
+            <script src="//app-sj17.marketo.com/js/forms2/js/forms2.min.js"></script>
+
+            <div id="c-form--default-hero" class="c-form c-form-mkto2164">
+              {% include "components/graphics/_hero-loading.html" %}
+              {# form element #}
+              {% import "/components/replacements/_marketo-replacements.html" as localLeadReplacements %}
+                {% if marketoConfigurations.replaceMarketoForms %}
+                  {{ localLeadReplacements.htmlReplacement('mktoForm_2164', 'Lead', entry.slug) }}
+              {% else %}
+                <form id="mktoForm_2164" data-formId="2164" data-formInstance="one">
+                  {% if pageHeroSynced is defined and pageHeroSynced %}
+                    <h4>Watch Demo<span class="t-hot-pink">.</span></h4>
+                  {% elseif entry.marketoFormCopy is not null and entry.marketoFormCopy|length %}
+                    {{ entry.marketoFormCopy }}
+                  {% endif %}
+                </form>
+              {% endif %}
+              <div id="c-thank-you-message--default-hero" class="invisible-start">
+                {% if entry.marketoThankYouMessage is not null and entry.marketoThankYouMessage|length > 0 %}
+                {{ entry.marketoThankYouMessage }}
+                {% else %}
+                <h3>Thank you<span class="hot-pink t-hot-pink">.</span></h3>
+                <p class="p-sm">Someone from our team will be with you shortly</p>
+                {% endif %}
+                {{entry.successVideoEmbedCode is not null and entry.successVideoEmbedCode|length > 0 ? entry.successVideoEmbedCode|raw : ''}}
+              </div>
+            </div>
+
+
+            {# Script that loads marketo form #}
+            <script>
+              
+              LazyLoad.js(['https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'],function(){
+              // Sucess variation validations
+              var compSize = undefined;
+              
+              var tyMsgSelect = [{"variationLogic":"companySize",'variationLogicComparison': 'lessThan',"variationLogicValue":6,"vSuccessMessage":""}];
+
+              function shDisplayVariationMessage(formValues){
+            
+                // Get the number to evaluate from
+                var messageNotFound = true;
+                var messageDisplayed = true;
+                tyMsgSelect.forEach( function (tyVariation){
+                  var companySize = formValues['companySize'] || formValues.cBcompanymetricsemployees;
+                  var sizes = companySize.replace('+', '').split('-');
+                  var maxValue = Math.max(...sizes);
+                  var minValue = Math.min(...sizes);
+                  if(tyVariation.variationLogic === 'companySize'){
+                    if(messageNotFound && tyVariation.variationLogicValue <= maxValue && tyVariation.variationLogicValue >= minValue){ // When we just want to affect the 
+                      $(`#synced-${tyVariation.variationLogic}${tyVariation.variationLogicValue}`).first().removeClass('invisible-start');
+                      messageNotFound = false;
+                    }else if(messageNotFound && tyVariation.variationLogicComparison === 'lessThan' && tyVariation.variationLogicValue >= maxValue){
+                      $(`#synced-${tyVariation.variationLogic}${tyVariation.variationLogicValue}`).first().removeClass('invisible-start');
+                      messageNotFound = false;
+                    }
+                  }
+                });
+                if(messageNotFound){
+                  $('#synced-default-thank-you').first().removeClass('invisible-start');
+                }
+
+
+                $('#c-form--default-hero').fadeOut(300, 'linear').promise().done(function () {
+                  $('.marketo-flow-trigger').hide(0);
+                  $('#success-flow-variation').css('display', 'block');
+                  $('#success-flow-row').fadeIn(1000, 'linear');
+                });
+
+                
+                document.getElementById('success-flow-variation').scrollIntoView( {behavior: 'smooth'} );
+              }
+              {% if marketoConfigurations.replaceMarketoForms %}
+                {{ localLeadReplacements.lightScriptReplacement("mktoForm_2164", staticAssetsVersion, "GA", true, true) }}
+              {% else %}
+                // Form submission handler
+                MktoForms2.loadForm("https://app-sj17.marketo.com", "763-DVL-293", '2164', function (form) {
+                  //Add an onSuccess handler
+                  form.onSuccess(function (values, followUpUrl) {
+                    //get the form's jQuery element and hide it
+                    // Preparing intercom fields
+                    var heroForm = MktoForms2.getForm("2164");
+                    var formSubmitted = heroForm.getValues();
+                    form.getFormElem().hide();
+
+                    ga('send', 'event', 'Get Demo', 'FormFill', '2164');
+                    shDisplayVariationMessage(formSubmitted);
+
+                    //return false to prevent the submission handler from taking the lead to the follow up url.
+                    return false;
+                  });
+                });
+
+                MktoForms2.whenReady(function (form) {
+                  $(".loading-cover").each(function () {
+                    var loadingElement = $(this);
+                    loadingElement.css('display', 'none');
+                  });
+                });
+              {% endif %}
+            })
+            </script>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  {# Trials flow #}
+  <div class="trial-flow-trigger">
+    <section
+      class="c-hero--split                     landing-hero                                          c-hero--general-signup-form                     split-background--inverted                                         soft-midnight                      no-transition"
+      style="padding-top: 200px; padding-bottom: 100px; min-height: 0;">
+      <div class="container">
+        <div class="row row--no-reverse">
+          <div class="col-md-6 col-margin-inverted c-valign--middle copy-aconditioner soft-midnight">
+            <pre class="c-eyebrow c-eyebrow--dark">COPPER PROJECTS</pre>
+            <div class="hero-text">
+              <h1>Why Does CRM Have To End With The Deal?</h1>
+              <p>After the deal is closed and the work begins, you shouldn’t have to switch to another tool - incurring
+                the pain of duplicate data entry - to make the transition.</p>
+            </div>
+            <div class="c-hero__buttons">
+              <button class="c-button c-button--hot-pink hero-trial-flow-button">Try
+                Free</button>
+              <button class="c-button c-button--outline hero-marketo-flow-button">Request
+                Demo</button>
+            </div>
+          </div>
+          <div id='signup-aconditioner-container' class="col-md-6 c-valign--middle signup-aconditioner ">
+            <div style="color: #000000; margin-top: 60px;">
+              {#<h1 class="more-space">dlasmdlkamldasdln</h1>
+                                                  <p class="form-subtitle">dahdjasdkn</p>#}
+              <div class="form_container">
+                <form class="signup_form" id="signup_form" action="https://app.prosperworks.com/users"
+                  accept-charset="UTF-8" method="post">
+                  <input name="utf8" type="hidden" value="✓">
+                  <input type="hidden" name="authenticity_token"
+                    value="lAAB/AYz9RxQR4RN74ZQgCErmru66/VW8Kzw3EeKrJrJC4AjlOsOIwvmktA9F0k1HVJQkSEber78cUBqUaYwhw==">
+                  <a class="google_light_btn"
+                    href="https://app.prosperworks.com/auth/auto_login?continue_with_google=true&amp;failure_url=https%3A%2F%2Fapp.prosperworks.com%2Fusers%2Fsign_up%3Fauth_error%3DAuthentication%2Bfailed.%2BPlease%2Benter%2Byour%2Bemail%2Bbelow%2Bto%2Bcontinue.&amp;prompt=consent&amp;provider=google_oauth2_extended">
+                    <img class="google_icon" alt="Google Icon"
+                      src="//d3jas8421cca9z.cloudfront.net/assets/google-g-0cf576a5dab9315daac7ffe29d29ed585e0ff9850e59408d0f25f38dc1da037b.svg">
+                    <span class="google_light_btn_label">
+                      Continue with Google
+                    </span>
+                  </a>
+                  <div class="signup_form_subtext">
+                    or use your email to sign up:
+                  </div>
+                  <div class="field">
+                    <div class="form_text_field_container">
+                      <label for="user[full_name]">Full Name</label>
+                      <input class="text_field" size="30" placeholder="Jane Doe" type="text" name="user[full_name]"
+                        id="user_full_name">
+                    </div>
+                  </div>
+                  <div class="field">
+                    <div class="form_text_field_container">
+                      <label for="user[email]">Work Email</label>
+                      <input size="30" class="text_field" placeholder="janedoe@example.com" type="email"
+                        name="user[email]" id="user_email">
+                    </div>
+                  </div>
+                  <input type="hidden" name="ampDeviceID" value="">
+                  <div class="submit-button-row">
+                    <input type="submit" name="commit" value="Try Free" class="submit_button is-pink with-no-border">
+                  </div>
+                </form>
+                <p class="disclaimer">By signing up, I agree to Copper’s <a href="/privacy">privacy policy</a> &amp; <a
+                    href="/terms">terms of service.</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div id="synced-hero">
+    <section id="success-flow-variation" class="c-hero--split landing-hero soft-midnight no-transition" style="display: none;">
+      <div class="container">
+        <div id="success-flow-row" class="row row--no-reverse">
+          <!--Content side-->
+          <div class="col-md-5 c-valign--middle">
+    
+            <div class="hero-text">
+              <div id="synced-default-thank-you" class="invisible-start">
+                <h2>We’ll be in touch shortly. 💬 </h2>
+                <h2>While you wait...</h2>
+                <p>Watch this sneak preview of Copper's Project Management tools from our product marketing expert, Nate.</p>
+              </div>
+              <div id="synced-companySize6" class="invisible-start">
+                <h2>Thanks!</h2>
+                <p>Watch our video demonstration of Copper's Project Management tools from our product marketing expert, Nate.</p>
+              </div>
+            </div>
+          </div>
+          <div id="final-asset-container" class="col-md-6 offset-md-1 c-valign--middle">
+            {% include "landing-gtm-projects/_wistia.html" %}
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    LazyLoad.js(['https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'],function(){
+    $('success-flow-variation').hide(0);
+    $('#success-flow-row').fadeOut(0);
+    $('#sucessVariation').hide(0, 'linear');
+    $('.trial-flow-trigger').hide(0, 'linear');
+    $('.marketo-flow-trigger').hide(0, 'linear');
+    $('#signup-aconditioner-container').fadeOut(0);
+    $('#c-form--default-hero').fadeOut(0);
+    $('.hero-marketo-flow-button').click(configureMarketoNavigation);
+    $('.hero-trial-flow-button').click(configureTryFreeNavigation);
+
+    function configureTryFreeNavigation(event) {
+      event.preventDefault();
+
+      // Hiding flows before showing
+      $('#default-image').fadeOut(300, 'linear').promise().done( function () {
+
+        $('#c-form--default-hero').fadeOut(300, 'linear').promise().done(function () {
+
+          $('.marketo-flow-trigger').hide(0, 'linear').promise().done( function () {
+
+            $('.c-default-state').hide(0, 'linear').promise().done(function () {
+  
+              $('.trial-flow-trigger').show(0, 'linear').promise().done( function () {
+  
+                $('#signup-aconditioner-container').fadeIn(500);
+              });
+            });
+          });
+        });
+      });
+    }
+    function configureMarketoNavigation(event) {
+      event.preventDefault();
+
+      $('#default-image').fadeOut(300, 'linear').promise().done( function () {
+
+        $('#signup-aconditioner-container').fadeOut(300, 'linear').promise().done(function (){
+
+          $('.trial-flow-trigger').hide(0, 'linear').promise().done( function () {
+  
+            $('.c-default-state').hide(0, 'linear').promise().done( function (){
+  
+              $('.marketo-flow-trigger').show(0, 'linear').promise().done( function () {
+  
+                $('#c-form--default-hero').fadeIn(500, 'linear');
+              });
+            });
+          });
+        });
+      });
+    }
+  })
+  </script>
+
+  {# Animations styles and scripts #}
+  <style>
+    @media (min-width: 768px) {
+      #project-first-module .canvas-image-container {
+          position: absolute;
+          width: 100%!important;
+          left: 15px!important;
+          right: -15px!important;
+          height: 20px!important;
+      }
+      .c-jumble:after {
+        width: 65vw;
+        position: absolute;
+      }
+      .project-first-module-animation img {
+        max-width: 112%!important;
+        width: 150%;
+      }
+    }
+    #project-first-module .canvas-image-container {
+          position: relative;
+          width: 100%;
+          left: 0;
+          right: 0;
+          height: auto;
+    }
+    #project-first-module  img,#project-second-module img,#project-third-module img{
+      max-width: 100%;
+    }
+    .kanbanbasehidden{
+      visibility: hidden;
+    }
+    .kanbanAnimation {
+      margin-top: -50px!important;
+    }
+    .firstmoduleAnimation,.secondmoduleAnimation,.thirdmoduleAnimation,.kanbanslide{
+      opacity: 0;
+      position: absolute;
+      top:0px;
+      left: 0px;                      
+    }
+    .smbase,.tmbapp,.fmfapptab1,.fmfapptab2,.fmfapptab3,.fmsapp,.fmsapptab1,.kanbanbase{
+      opacity: 1;
+      position: absolute;
+      top:0px;
+      left: 0px; 
+    }
+    .fmsapptabgray,.smgraytab{
+      opacity: 0.3;
+      position: absolute;
+      top:0px;
+      left: 0px; 
+    }
+    .fmdetalcard{
+      opacity: 0;
+      position: absolute;
+      top:0px;
+      left: 0px;
+    }
+  </style>
+  <script>
+    LazyLoad.js(['https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'],function(){
+      var kanbantimeline = anime.timeline({
+                          loop:false,
+                          easing:'linear',
+                          autoplay:false
+                        });
+          kanbantimeline.add({
+            targets: '#project-kanban-animation .kanbanslide',
+            opacity: 1,
+            translateX:['34%','0'],
+            delay: 120,
+            duration: 300,
+            direction: 'linear',
+            easing: 'linear',
+            loop: false
+          });
+          inView('#project-kanban-animation')
+            .once('enter', function(){
+              kanbantimeline.play();
+            })
+          //   .on('exit', function(){
+          //       //el.style.opacity = 0.5;
+          //       kanbantimeline.seek(0);
+          // });
+      // ANIMATION FIRST MODULE
+      var fmtimeline = anime.timeline({
+                          loop:false,
+                          easing:'linear',
+                          autoplay:false
+                        });
+          fmtimeline.add({
+            targets: '#project-first-module .fmcirclepattern',
+            opacity: 1,
+            delay: 120,
+            duration: 1500,
+            direction: 'linear',
+            easing: 'easeOutElastic(0.5, 1)',
+            loop: false
+          })
+          // .add({
+          //   targets: '#project-first-module .fmfapp',
+          //   opacity: 1,
+          //   translateX:['-100','0'],
+          //   delay: 100,
+          //   duration: 300,
+          //   direction: 'linear',
+          //   easing: 'linear',
+          //   loop: false
+          // },0)
+          // .add({
+          //   targets: '#project-first-module .fmfapptab',
+          //   opacity: 1,
+          //   translateY:['100','0'],
+          //   delay: anime.stagger(100,{start: 0}),
+          //   duration: 100,
+          //   direction: 'linear',
+          //   easing: 'spring(0.8, 80, 10, 0)',
+          //   loop: false
+          // },300)
+          // .add({
+          //   targets: '#project-first-module .fmsapp',
+          //   opacity: 1,
+          //   translateY:['100','0'],
+          //   duration: 300,
+          //   direction: 'linear',
+          //   easing: 'linear',
+          //   loop: false
+          // },0)
+          // .add({
+          //   targets: '#project-first-module .fmsapptab1',
+          //   opacity: ['0','1'],
+          //   translateY:['100','0'],
+          //   duration: 100,
+          //   direction: 'linear',
+          //   easing: 'spring(0.8, 80, 10, 0)',
+          //   loop: false
+          // },300)
+          // .add({
+          //   targets: '#project-first-module .fmsapptabgray',
+          //   opacity: 0.5,
+          //   // translateY:['100','0'],
+          //   duration: 500,
+          //   direction: 'linear',
+          //   easing: 'spring(0.8, 80, 10, 0)',
+          //   loop: false
+          // },100)
+          .add({
+            targets: '#project-first-module .fmsapptabgray',
+            opacity: 1,
+            //translateY:['100','0'],
+            duration: 500,
+            direction: 'linear',
+            easing: 'spring(0.8, 80, 10, 0)',
+            loop: false
+          },220)
+          .add({
+            targets: '#project-first-module .fmdetalcard',
+            opacity: 1,
+            translateX:['-40%','0%'],
+            translateY:['21%','0%'],
+            duration: 1000,
+            direction: 'linear',
+            easing: 'spring(0.8, 80, 100, 0)',
+            loop: false
+          },220)
+      inView('#project-first-module')
+        .once('enter', function(){
+          fmtimeline.play();
+        })
+      //   .on('exit', function(){
+      //       //el.style.opacity = 0.5;
+      //       fmtimeline.seek(0);
+      // });
+      // SECOND MODULE ANIMATION
+      var smtimeline = anime.timeline({
+                          loop:false,
+                          easing:'linear',
+                          autoplay:false
+                        });
+      smtimeline.add({
+        targets: '#project-second-module .smgraytab',
+        opacity: 1,
+        direction: 'linear',
+        duration:500,
+        easing: 'linear',
+        loop: false
+      },0)
+      // .add({
+      //   targets: '#project-second-module .smgraytab',
+      //   opacity: ['0.5','1'],
+      //   direction: 'linear',
+      //   duration:100,
+      //   easing: 'linear',
+      //   loop: false
+      // },100)
+      .add({
+        targets: '#project-second-module .smdetailcard',
+        opacity: 1,
+        translateX: ['-27%','0%'],
+        duration: 1000,
+        direction: 'linear',
+        easing: 'spring(0.8, 80, 10, 0)',
+        loop: false
+      },120);
+      inView('#project-second-module')
+        .once('enter', function(){
+          smtimeline.play();
+        })
+      //   .on('exit', function(){
+      //       //el.style.opacity = 0.5;
+      //       smtimeline.seek(0);
+      // });
+      // THIRDMODULE ANIMATION
+      var tmtimeline = anime.timeline({
+                          loop:false,
+                          easing:'linear',
+                          autoplay:false
+                        });
+          tmtimeline.add({
+            targets: '#project-third-module .tmicons',
+            opacity: 1,
+            translateY: ['100','0'],
+            duration: 500,
+            delay: anime.stagger(120,{start: 0}),
+            direction: 'linear',
+            easing: 'spring(0.8, 80, 10, 0)',
+            loop: false
+          });
+          inView.offset(300);
+      inView('#project-third-module')
+        .once('enter', function(){
+          tmtimeline.play();
+        })
+      //   .on('exit', function(){
+      //       //el.style.opacity = 0.5;
+      //       tmtimeline.seek(0);
+      // });
+    });
+  </script>
+
+  <!--One column video -->
+  <section id="" class="c-single-column h-padding-bottom white">
+    <div id="project-kanban-animation" class="container">
+      <div class="col-md-8 offset-md-2 c-single-column__container no-bottom-padding">
+        <h2>No More Tooling Around</h2>
+        <p>Say hello to Projects in Copper. Achieve seamless handoffs and better collaboration across your business… with fewer tools.</p>
+      </div>
+      <h1><br></h1>
+      <p><br></p>
+      <div style="position:relative;width:fit-content;margin: auto;">
+      <!-- <picture>
+          <source type="image/webp" srcset="//d2ydtwisqcxv72.cloudfront.net/landing/Projects-Kanban-Overviiew.webp"    alt="Projects Kanban Overviiew"> -->
+          <source type="image/png" srcset="//d2ydtwisqcxv72.cloudfront.net/landing/Projects-Kanban-Overviiew.png"    alt="Projects Kanban Overviiew"> -->
+          <img     src="//d2ydtwisqcxv72.cloudfront.net/landing/Projects-Kanban-Overviiew.png"   alt="Projects Kanban Overviiew"> -- >
+</picture>
+        <picture>
+          <source type="image/webp" srcset="imgs/simples/projects-page/kanban/animation-layer_kanban-1@2x.webp"  class="kanbanAnimation kanbanbasehidden"   alt="Animation layer kanban 1">
+          <source type="image/png" srcset="imgs/simples/projects-page/kanban/animation-layer_kanban-1@2x.png"  class="kanbanAnimation kanbanbasehidden"   alt="Animation layer kanban 1">
+          <img   class="kanbanAnimation kanbanbasehidden"   src="imgs/simples/projects-page/kanban/animation-layer_kanban-1@2x.png"   alt="Animation layer kanban 1" >
+</picture>
+        <picture>
+          <source type="image/webp" srcset="imgs/simples/projects-page/kanban/animation-layer_kanban-1@2x.webp"  class="kanbanAnimation kanbanbase"   alt="Animation kanban layer 2">
+          <source type="image/png" srcset="imgs/simples/projects-page/kanban/animation-layer_kanban-1@2x.png"  class="kanbanAnimation kanbanbase"   alt="Animation kanban layer 2">
+          <img   class="kanbanAnimation kanbanbase"   src="imgs/simples/projects-page/kanban/animation-layer_kanban-1@2x.png"   alt="Animation kanban layer 2" >
+</picture>
+        <picture>
+          <source type="image/webp" srcset="imgs/simples/projects-page/kanban/animation-layer_kanban-2@2x.webp"  class="kanbanAnimation kanbanslide"   alt="Animation kanban layer 3">
+          <source type="image/png" srcset="imgs/simples/projects-page/kanban/animation-layer_kanban-2@2x.png"  class="kanbanAnimation kanbanslide"   alt="Animation kanban layer 3">
+          <img   class="kanbanAnimation kanbanslide"   src="imgs/simples/projects-page/kanban/animation-layer_kanban-2@2x.png"   alt="Animation kanban layer 3" >
+</picture>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial with animations -->
+  <section id="project-first-module" class="c-jumble c-jumble-background--hot-pink top-margin-mobile">
+    <div class="container">
+      <div class="c-jumble__container col-md-10 no-padding">
+        <div class="c-jumble__content c-valign--middle extra-padding">
+            <div class="row">
+              <div class="col-md-6 order-md-2">
+                <div class="canvas-image-container ">
+                  <!-- <div class="c-image base-image animation-element slide-right">
+                    <picture>
+          <source type="image/webp" srcset="//d2ydtwisqcxv72.cloudfront.net/In-Progress.webp"    alt="In progress image">
+          <source type="image/png" srcset="//d2ydtwisqcxv72.cloudfront.net/In-Progress.png"    alt="In progress image">
+          <img     src="//d2ydtwisqcxv72.cloudfront.net/In-Progress.png"   alt="In progress image" >
+</picture>
+                  </div>
+                  <div class="c-image base-image animation-element slide-right">
+                    <picture>
+          <source type="image/webp" srcset="//d2ydtwisqcxv72.cloudfront.net/Completed.webp"    alt="Completed image">
+          <source type="image/png" srcset="//d2ydtwisqcxv72.cloudfront.net/Completed.png"    alt="Completed image">
+          <img     src="//d2ydtwisqcxv72.cloudfront.net/Completed.png"   alt="Completed image" >
+</picture>
+                  </div>
+                  <div class="c-image animation-element slide-right">
+                    <picture>
+          <source type="image/webp" srcset="//d2ydtwisqcxv72.cloudfront.net/Card.webp"    alt="Card image">
+          <source type="image/png" srcset="//d2ydtwisqcxv72.cloudfront.net/Card.png"    alt="Card image">
+          <img     src="//d2ydtwisqcxv72.cloudfront.net/Card.png"   alt="Card image" >
+</picture>
+                  </div> -->
+                  <div class="project-first-module-animation">
+                      <!-- <picture>
+          <source type="image/webp" srcset="imgs/simples/projects-page/first-module/fmblank.webp"  class="firstmoduleAnimationBase"   alt="Fmblank image">
+          <source type="image/png" srcset="imgs/simples/projects-page/first-module/fmblank.png"  class="firstmoduleAnimationBase"   alt="Fmblank image">
+          <img   class="firstmoduleAnimationBase"   src="imgs/simples/projects-page/first-module/fmblank.png"   alt="Fmblank image" >
+</picture>
+                      <picture>
+          <source type="image/webp" srcset="imgs/simples/projects-page/first-module/circlepattern.webp"  class="firstmoduleAnimation fmcirclepattern"   alt="Circle patter image">
+          <source type="image/png" srcset="imgs/simples/projects-page/first-module/circlepattern.png"  class="firstmoduleAnimation fmcirclepattern"   alt="Circle patter image">
+          <img   class="firstmoduleAnimation fmcirclepattern"   src="imgs/simples/projects-page/first-module/circlepattern.png"   alt="Circle patter image" >
+</picture>
+                      <picture>
+          <source type="image/webp" srcset="imgs/simples/projects-page/first-module/firstapp.webp"  class="fmfapp"   alt="First app image">
+          <source type="image/png" srcset="imgs/simples/projects-page/first-module/firstapp.png"  class="fmfapp"   alt="First app image">
+          <img   class="fmfapp"   src="imgs/simples/projects-page/first-module/firstapp.png"   alt="First app image" >
+</picture>
+                      <picture>
+          <source type="image/webp" srcset="imgs/simples/projects-page/first-module/firstapp1tab.webp"  class="fmfapptab fmfapptab1"   alt="First app1tab image">
+          <source type="image/png" srcset="imgs/simples/projects-page/first-module/firstapp1tab.png"  class="fmfapptab fmfapptab1"   alt="First app1tab image">
+          <img   class="fmfapptab fmfapptab1"   src="imgs/simples/projects-page/first-module/firstapp1tab.png"   alt="First app1tab image" >
+</picture>
+                      <picture>
+          <source type="image/webp" srcset="imgs/simples/projects-page/first-module/firstapp2tab.webp"  class="fmfapptab fmfapptab2"   alt="First app2tab image">
+          <source type="image/png" srcset="imgs/simples/projects-page/first-module/firstapp2tab.png"  class="fmfapptab fmfapptab2"   alt="First app2tab image">
+          <img   class="fmfapptab fmfapptab2"   src="imgs/simples/projects-page/first-module/firstapp2tab.png"   alt="First app2tab image" >
+</picture>
+                      <picture>
+          <source type="image/webp" srcset="imgs/simples/projects-page/first-module/firstapp3tab.webp"  class="fmfapptab fmfapptab3"   alt="First app3tab image">
+          <source type="image/png" srcset="imgs/simples/projects-page/first-module/firstapp3tab.png"  class="fmfapptab fmfapptab3"   alt="First app3tab image">
+          <img   class="fmfapptab fmfapptab3"   src="imgs/simples/projects-page/first-module/firstapp3tab.png"   alt="First app3tab image" >
+</picture>
+                      <picture>
+          <source type="image/webp" srcset="imgs/simples/projects-page/first-module/seconsapp.webp"  class="fmsapp"   alt="Second app image">
+          <source type="image/png" srcset="imgs/simples/projects-page/first-module/seconsapp.png"  class="fmsapp"   alt="Second app image">
+          <img   class="fmsapp"   src="imgs/simples/projects-page/first-module/seconsapp.png"   alt="Second app image" >
+</picture>
+                      <picture>
+          <source type="image/webp" srcset="imgs/simples/projects-page/first-module/seconsapp1tab.webp"  class="fmsapptab fmsapptab1"   alt="second app 2">
+          <source type="image/png" srcset="imgs/simples/projects-page/first-module/seconsapp1tab.png"  class="fmsapptab fmsapptab1"   alt="second app 2">
+          <img   class="fmsapptab fmsapptab1"   src="imgs/simples/projects-page/first-module/seconsapp1tab.png"   alt="second app 2" >
+</picture>
+                      <picture>
+          <source type="image/webp" srcset="imgs/simples/projects-page/first-module/seconsappgraytab.webp"  class="fmsapptab fmsapptabgray"   alt="Second app gray tab">
+          <source type="image/png" srcset="imgs/simples/projects-page/first-module/seconsappgraytab.png"  class="fmsapptab fmsapptabgray"   alt="Second app gray tab">
+          <img   class="fmsapptab fmsapptabgray"   src="imgs/simples/projects-page/first-module/seconsappgraytab.png"   alt="Second app gray tab" >
+</picture>
+                      <picture>
+          <source type="image/webp" srcset="imgs/simples/projects-page/first-module/detailcard.webp"  class="firstmoduleAnimation fmdetalcard"   alt="Detail card"> -->
+          <source type="image/png" srcset="imgs/simples/projects-page/first-module/detailcard.png"  class="firstmoduleAnimation fmdetalcard"   alt="Detail card"> -->
+          <img   class="firstmoduleAnimation fmdetalcard"   src="imgs/simples/projects-page/first-module/detailcard.png"   alt="Detail card"> -- >
+</picture>
+                      <picture>
+          <source type="image/webp" srcset="imgs/simples/projects-page/first-module/animation-layer_workflows1@2x.webp"  class="fmfapp"   alt="Workflow animation layer 1">
+          <source type="image/png" srcset="imgs/simples/projects-page/first-module/animation-layer_workflows1@2x.png"  class="fmfapp"   alt="Workflow animation layer 1">
+          <img   class="fmfapp"   src="imgs/simples/projects-page/first-module/animation-layer_workflows1@2x.png"   alt="Workflow animation layer 1" >
+</picture>
+                      <picture>
+          <source type="image/webp" srcset="imgs/simples/projects-page/first-module/animation-layer_workflows2@2x.webp"  class="fmsapptab fmsapptabgray"   alt="Workflow animation layer 2">
+          <source type="image/png" srcset="imgs/simples/projects-page/first-module/animation-layer_workflows2@2x.png"  class="fmsapptab fmsapptabgray"   alt="Workflow animation layer 2">
+          <img   class="fmsapptab fmsapptabgray"   src="imgs/simples/projects-page/first-module/animation-layer_workflows2@2x.png"   alt="Workflow animation layer 2" >
+</picture>
+                      <picture>
+          <source type="image/webp" srcset="imgs/simples/projects-page/first-module/animation-layer_workflows3@2x.webp"  class="firstmoduleAnimation fmdetalcard"   alt="Workflow animation layer 3">
+          <source type="image/png" srcset="imgs/simples/projects-page/first-module/animation-layer_workflows3@2x.png"  class="firstmoduleAnimation fmdetalcard"   alt="Workflow animation layer 3">
+          <img   class="firstmoduleAnimation fmdetalcard"   src="imgs/simples/projects-page/first-module/animation-layer_workflows3@2x.png"   alt="Workflow animation layer 3" >
+</picture>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 order-md-1">	
+                <pre class="c-eyebrow c-eyebrow--light">FULLY CUSTOMIZABLE</pre>
+                <h2>Your Workflows, Your Way</h2>
+                <p>Flexible, Kanban-style project boards - fully customizable and deeply integrated with G Suite - tie back directly to your deal pipeline.</p>
+                <a class="t-link h-white sendUTMsToAmplitude" href="{{ craft.app.config.general.signUpUrl }}?_ga=2.203906000.1318646422.1594028674-1197161615.1589920381&_gac=1.248633752.1593720638.null">Try Free Today</a>
+              </div>
+            </div>  
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  {# Two cols #}
+  <section id="" class="c-cols c-cols-landing extra-top-margin--medium">
+    <!-- Form Code -->
+    <!-- Image Code -->
+    <div class="container c-animation-container">
+      <h2 class="extra-bottom-margin--x-small" style="text-align: center;"></h2>
+      <div class="row column-reverse">
+        <!--<div class="col-md-6 d-flex align-items-center order-1 animation-element slide-right">-->
+        <div class="col-md-6 d-flex align-items-center order-1 ">
+          <div id="project-second-module" class="" style="position: relative;">
+            <!-- <img class="h-remove-shadow" src="//d2ydtwisqcxv72.cloudfront.net/landing/Section-Image-Revenue-1.png"
+              alt="Image revenue"> -->                
+              <picture>
+          <source type="image/webp" srcset="imgs/simples/projects-page/second-module/animation-layer_revenue1@2x.webp"  class="smblankbase" style="visibility: hidden;"   alt="Revenue animation layer 1">
+          <source type="image/png" srcset="imgs/simples/projects-page/second-module/animation-layer_revenue1@2x.png"  class="smblankbase" style="visibility: hidden;"   alt="Revenue animation layer 1">
+          <img   class="smblankbase" style="visibility: hidden;"   src="imgs/simples/projects-page/second-module/animation-layer_revenue1@2x.png"   alt="Revenue animation layer 1" >
+</picture>
+              <picture>
+          <source type="image/webp" srcset="imgs/simples/projects-page/second-module/animation-layer_revenue1@2x.webp"  class="smbase"   alt="Revenue animation layer 2">
+          <source type="image/png" srcset="imgs/simples/projects-page/second-module/animation-layer_revenue1@2x.png"  class="smbase"   alt="Revenue animation layer 2">
+          <img   class="smbase"   src="imgs/simples/projects-page/second-module/animation-layer_revenue1@2x.png"   alt="Revenue animation layer 2" >
+</picture>
+              <picture>
+          <source type="image/webp" srcset="imgs/simples/projects-page/second-module/animation-layer_revenue2@2x.webp"  class="secondmoduleAnimation smgraytab"   alt="Revenue animation layer 3">
+          <source type="image/png" srcset="imgs/simples/projects-page/second-module/animation-layer_revenue2@2x.png"  class="secondmoduleAnimation smgraytab"   alt="Revenue animation layer 3">
+          <img   class="secondmoduleAnimation smgraytab"   src="imgs/simples/projects-page/second-module/animation-layer_revenue2@2x.png"   alt="Revenue animation layer 3" >
+</picture>
+              <picture>
+          <source type="image/webp" srcset="imgs/simples/projects-page/second-module/animation-layer_revenue3@2x.webp"  class="secondmoduleAnimation smdetailcard"   alt="Revenue animation layer 4">
+          <source type="image/png" srcset="imgs/simples/projects-page/second-module/animation-layer_revenue3@2x.png"  class="secondmoduleAnimation smdetailcard"   alt="Revenue animation layer 4">
+          <img   class="secondmoduleAnimation smdetailcard"   src="imgs/simples/projects-page/second-module/animation-layer_revenue3@2x.png"   alt="Revenue animation layer 4" >
+</picture>
+          </div>
+        </div>
+        <!--<div class="col-md-5 offset-md-1 c-valign--middle order-2 animation-element slide-left pb-5 pb-md-0">-->
+        <div class="col-md-5 offset-md-1 c-valign--middle order-2 pb-5 pb-md-0">
+          <div class="col_copy">
+            <pre class="c-eyebrow c-eyebrow--dark">REAL INSIGHTS</pre>
+            <h1>Revenue Visibility</h1>
+            <p>The work you do for your customers is directly tied to your business' revenue and overall health metrics.
+            </p>
+            <div class="c-hero__buttons">
+              <div class="flex-column">
+                <a target="" href="{{ craft.app.config.general.signUpUrl }}?_ga=2.203906000.1318646422.1594028674-1197161615.1589920381&_gac=1.248633752.1593720638.null" class="t-link sendUTMsToAmplitude">Try Free Today</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {# Two cols #}
+  <section id="" class="c-cols c-cols-landing extra-bottom-margin--medium" style="overflow: visible;">
+    <!-- Form Code -->
+    <!-- Image Code -->
+    <div class="container c-animation-container">
+      <h2 class="extra-bottom-margin--x-small" style="text-align: center;"></h2>
+      <div class="row">
+        <!--<div class="col-md-6 d-flex align-items-center offset-md-1 order-2 animation-element slide-right">-->
+        <div class="col-md-6 d-flex align-items-center offset-md-1 order-2 ">
+          <div id="project-third-module" class="">
+            <!-- <picture>
+          <source type="image/webp" srcset="//d2ydtwisqcxv72.cloudfront.net/landing/Section-Image-Gsuite.webp"  class="h-remove-shadow"   alt="Image gsuite"> -->
+          <source type="image/png" srcset="//d2ydtwisqcxv72.cloudfront.net/landing/Section-Image-Gsuite.png"  class="h-remove-shadow"   alt="Image gsuite"> -->
+          <img   class="h-remove-shadow"   src="//d2ydtwisqcxv72.cloudfront.net/landing/Section-Image-Gsuite.png"   alt="Image gsuite"> -- >
+</picture>
+            <picture>
+          <source type="image/webp" srcset="imgs/simples/projects-page/third-module/animation-layer_gsuite1@2x.webp"  class="tmbase" style="visibility: hidden;"   alt="G suite animation layer 1">
+          <source type="image/png" srcset="imgs/simples/projects-page/third-module/animation-layer_gsuite1@2x.png"  class="tmbase" style="visibility: hidden;"   alt="G suite animation layer 1">
+          <img   class="tmbase" style="visibility: hidden;"   src="imgs/simples/projects-page/third-module/animation-layer_gsuite1@2x.png"   alt="G suite animation layer 1" >
+</picture>
+            <picture>
+          <source type="image/webp" srcset="imgs/simples/projects-page/third-module/animation-layer_gsuite1@2x.webp"  class="tmbapp"   alt="G suite animation layer 2">
+          <source type="image/png" srcset="imgs/simples/projects-page/third-module/animation-layer_gsuite1@2x.png"  class="tmbapp"   alt="G suite animation layer 2">
+          <img   class="tmbapp"   src="imgs/simples/projects-page/third-module/animation-layer_gsuite1@2x.png"   alt="G suite animation layer 2" >
+</picture>
+            <picture>
+          <source type="image/webp" srcset="imgs/simples/projects-page/third-module/animation-layer_gsuite2@2x.webp"  class="thirdmoduleAnimation tmicons tmgmail"   alt="G suite animation layer 3">
+          <source type="image/png" srcset="imgs/simples/projects-page/third-module/animation-layer_gsuite2@2x.png"  class="thirdmoduleAnimation tmicons tmgmail"   alt="G suite animation layer 3">
+          <img   class="thirdmoduleAnimation tmicons tmgmail"   src="imgs/simples/projects-page/third-module/animation-layer_gsuite2@2x.png"   alt="G suite animation layer 3" >
+</picture>
+            <picture>
+          <source type="image/webp" srcset="imgs/simples/projects-page/third-module/animation-layer_gsuite3@2x.webp"  class="thirdmoduleAnimation tmicons tmsheets"   alt="G suite animation layer 4">
+          <source type="image/png" srcset="imgs/simples/projects-page/third-module/animation-layer_gsuite3@2x.png"  class="thirdmoduleAnimation tmicons tmsheets"   alt="G suite animation layer 4">
+          <img   class="thirdmoduleAnimation tmicons tmsheets"   src="imgs/simples/projects-page/third-module/animation-layer_gsuite3@2x.png"   alt="G suite animation layer 4" >
+</picture>
+            <picture>
+          <source type="image/webp" srcset="imgs/simples/projects-page/third-module/animation-layer_gsuite4@2x.webp"  class="thirdmoduleAnimation tmicons tmdocs"   alt="G suite animation layer 5">
+          <source type="image/png" srcset="imgs/simples/projects-page/third-module/animation-layer_gsuite4@2x.png"  class="thirdmoduleAnimation tmicons tmdocs"   alt="G suite animation layer 5">
+          <img   class="thirdmoduleAnimation tmicons tmdocs"   src="imgs/simples/projects-page/third-module/animation-layer_gsuite4@2x.png"   alt="G suite animation layer 5" >
+</picture>
+            <picture>
+          <source type="image/webp" srcset="imgs/simples/projects-page/third-module/animation-layer_gsuite5@2x.webp"  class="thirdmoduleAnimation tmicons tmslides"   alt="G suite animation layer 6">
+          <source type="image/png" srcset="imgs/simples/projects-page/third-module/animation-layer_gsuite5@2x.png"  class="thirdmoduleAnimation tmicons tmslides"   alt="G suite animation layer 6">
+          <img   class="thirdmoduleAnimation tmicons tmslides"   src="imgs/simples/projects-page/third-module/animation-layer_gsuite5@2x.png"   alt="G suite animation layer 6" >
+</picture>
+          </div>
+        </div>
+        <!--<div class="col-md-5 c-valign--middle order-1 animation-element slide-left">-->
+        <div class="col-md-5 c-valign--middle order-1 ">
+          <pre class="c-eyebrow c-eyebrow--dark">FAMILIARITY</pre>
+          <h1>G Suite At The Core</h1>
+          <p>Attach files, see tasks from within Gmail, and use @mentions to collaborate even better in ways that are
+            completely aligned with your business processes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Study -->
+  <section
+    class="c-case-study c-case-study--align-left home-quote extra-top-margin--medium extra-bottom-margin--medium ">
+    <div class="container colorblock--eggplant">
+
+      <div class="c-case-study__container col-md-11 no-padding background--eggplant ">
+
+        <div class="c-case-study__content c-valign--middle">
+
+          <div class="row row-eq-height" style="align-items: center;">
+            <div class="col-md-6" style="align-items: flex-start;">
+              <div class="c-image enforce-normal-height square--down--left">
+                <pre class="c-eyebrow c-eyebrow--light">SUCCESS STORIES</pre>
+                <a href="https://www.worldfamousinc.com/" target="_blank" >
+                  <img src="//d2ydtwisqcxv72.cloudfront.net/landing/section-image_testimonial-avatar@2x.png" alt="James Keblas" style="
+                  width: 359px !important;
+                  height: 393px;">
+                </a>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="c-panel__blockquote c-valign--middle enforced-font-color">
+                <blockquote>Used Asana before for Task Management. All in on Copper being the one tool for projects and
+                  CRM.</blockquote>
+                <cite>JAMES KEBLAS<span class="c-panel__blockquote--position">Head of Business Development, <a href="https://www.worldfamousinc.com/" class="no-style-link" target="_blank">World
+                  Famous</a></span></cite>
+                <div class="c-panel__blockquote--logo">
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Case Study -->
+  {#<section class="c-case-study c-case-study--align-left home-quote" style="margin-bottom: 150px;">
+      <div class="container colorblock--eggplant">
+    
+        <div class="c-case-study__container col-md-12 no-padding">
+    
+          <div class="c-case-study__content c-valign--middle no-top-padding no-bottom-padding" style="padding-bottom: 0px;">
+    
+            <div class="row row-eq-height">
+    
+              <div class="col-md-4">
+                <pre class="c-eyebrow c-eyebrow--light">TESTIMONIAL</pre>
+                <div class="c-panel__blockquote c-valign--middle">
+                  <h1 style="color: white;font-size: 52px; line-height: 64px;">What Our <br>Clients <br>Say</h1>
+                </div>
+              </div>
+              <div class="col-md-8" style="height: 0px;">
+                {% include "components/slider/_testimonial-slider.html" %}
+              </div>
+            </div>
+    
+          </div>
+        </div>
+    
+      </div>
+    </section>#}
+
+  <section id="" class="c-quote-callout text-md-center backgrounded-callout c-valign--middle"
+    style="background-image: url('//d2ydtwisqcxv72.cloudfront.net/landing/section-image_cta@2x.png');">
+    <div class="container">
+      <div class="row">
+        <div class="c-quote-callout__copy col-lg-10 offset-lg-1">
+          <h2>Close the Deal and Deliver the Work</h2>
+          <p></p>
+          <h1></h1>
+          <p>Your ability to nurture key business relationships just got much better, now that your favorite CRM includes Project Management.</p>
+          <p></p>
+          <div class="c-hero__buttons">
+            <a class="c-button sendUTMsToAmplitude c-button--hot-pink" target=""
+              href="{{ craft.app.config.general.signUpUrl }}">Try Free Today</a>
+          </div>
+        </div>
+        <div class="img-companier">
+          <picture>
+          <source type="image/webp" srcset="//d2ydtwisqcxv72.cloudfront.net/section-image_cta-left@2x.webp"    alt="Logo">
+          <source type="image/png" srcset="//d2ydtwisqcxv72.cloudfront.net/section-image_cta-left@2x.png"    alt="Logo">
+          <img     src="//d2ydtwisqcxv72.cloudfront.net/section-image_cta-left@2x.png"   alt="Logo" >
+</picture>
+          <picture>
+          <source type="image/webp" srcset="//d2ydtwisqcxv72.cloudfront.net/section-image_cta-right@2x.webp"    alt="Logo">
+          <source type="image/png" srcset="//d2ydtwisqcxv72.cloudfront.net/section-image_cta-right@2x.png"    alt="Logo">
+          <img     src="//d2ydtwisqcxv72.cloudfront.net/section-image_cta-right@2x.png"   alt="Logo" >
+</picture>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% if entry.turnOnScrollspyPopup is defined %}
+  {% if entry.turnOnScrollspyPopup %}
+  {% include "sections/landing/right-sidebar-button.html" %}
+  {% endif %}
+  {% endif %}

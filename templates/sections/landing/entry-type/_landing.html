@@ -1,0 +1,29 @@
+{% extends "_top-nav.html" %}
+
+{% block topNav %}
+
+
+{% for matrixBlock in entry.landingBlocks.all() %}
+  {% set loopIndex = loop.index %}
+    {% switch matrixBlock.type %}
+    {% case "hero" %}
+      {% include 'sections/landing/hero.html' %}
+      {% case "pricingPlans" %}
+        {% include 'sections/pricing/hero.html' %}
+      {% case "table" %}
+        {% include 'sections/landing/table/comparison-table.html' %}
+      {% case "cta" %}
+        {% include 'sections/pricing/cta.html' %}
+      {% case "oneColumn" %}
+        {% include 'sections/landing/one-column/one-column.html' %}        
+      {% case "twoColumn" %}
+        {% include 'sections/landing/two-column/two-column.html' %}
+      {% case "threeColumn" %}
+        {% include 'sections/landing/three-column/three-column.html' %}
+      {% case "testimonial" %}
+        {% include 'sections/landing/testimonial.html' %}
+      {% case "details" %}
+        {% include 'sections/landing/details.html' %}        
+    {% endswitch %}
+  {% endfor %}
+{% endblock %}

@@ -1,0 +1,141 @@
+.c-button {
+  /*margin-right: 20px;*/
+  background-color: $color-hot-pink;
+  box-shadow: 0 6px 20px 0 rgba(0,0,0,0.20);
+  border-radius: 100px;
+  font-family: $medium-font;
+  font-size: 14px;
+  color: $color-white;
+  text-align: center;
+  padding: 0 30px;
+  display: inline-flex;
+  border: 1px solid $color-hot-pink;
+  padding: 12px 30px;
+  line-height: 14px;
+  text-decoration: none;
+	transition: all ease-in-out 0.2s;
+	margin-right: 18px;
+	margin-bottom: 8px;
+	margin-left: 0;
+	cursor: pointer;
+	
+	&.background--mint{
+		background: $color-mint;
+		border-color: $color-mint;
+
+		&:hover{
+			color: $color-mint;
+		}
+	}
+
+	@include media-breakpoint-up(md) {
+		margin-bottom: 0;
+	}
+	// @include media-breakpoint-up(md) {
+	// 	margin: 0;
+	// }
+  &:hover {
+    background-color: $color-white;
+    border: 1px solid $color-white;
+    color: $color-hot-pink;
+    text-decoration: none;
+    box-shadow: 0 6px 20px 0 rgba(0,0,0,0.20);
+    
+    .background--eggplant &,
+    .background--midnight &,
+    .background--graphite & {
+	    background: $color-white;
+	    border-color: $color-white;
+	    color: $color-hot-pink;
+    }
+	}
+  
+  @at-root {
+		
+		#{&}--outline {
+			background: transparent;
+			color: $color-hot-pink;
+			box-shadow: none;
+		}
+		#{&}--outline--white {
+			background: transparent;
+			color: $color-white;
+			border-color: $color-white;
+			box-shadow: none;
+			&:hover {
+		    background: tint($color-hot-pink, 10%);
+		    border-color: tint($color-hot-pink, 10%);
+		    color: $color-white;
+	    }
+		}
+		#{&}--white-outline {
+			background: transparent;
+			border-color: $color-white;
+			box-shadow: none;
+			&:hover {
+		    background: tint($color-hot-pink, 10%);
+		    border-color: tint($color-hot-pink, 10%);
+		    color: $color-white;
+	    }
+		}
+		#{&}--white {
+			background: $color-white;
+		  	color: $color-hot-pink;
+		  	border-color: $color-white;
+		  	&:hover {
+				color: $color-white;
+		    	background-color: $color-hot-pink;
+		    	border: 1px solid $color-hot-pink;
+		    	text-decoration: none;
+		 	}
+
+		}
+		#{&}--white-outline-black-text {
+			background: $color-white;
+			color: black;
+			border-color: black;
+			&:hover{
+				color: $color-white;
+				background-color: black;
+				text-decoration: none;
+			}
+
+		}
+		#{&}--circle {
+			width: 56px;
+		  height: 56px;
+		  padding: 0;
+		  display: inline-block;
+		  i{
+		    line-height: 56px;
+		  }
+		}
+		#{&}--circle--large {
+			position: absolute;
+			top: calc(50% - 50px);
+			left: calc(50% - 50px);
+			z-index: 9;
+			display: block;
+			width: 100px;
+			height: 100px;	
+		  i{
+				font-size: 54px;
+				line-height: 100px;
+		  }				
+		}
+	}
+}
+
+.c-button--disabled{
+	opacity: 0.5;
+	pointer-events: none;
+  cursor: default;
+}
+
+// Overwrite bootstrap reboot class for links that dont have hrefs
+.c-button--color-fix{
+	color: $color-white !important;
+	&:hover{
+		color: $color-hot-pink !important;
+	}
+}

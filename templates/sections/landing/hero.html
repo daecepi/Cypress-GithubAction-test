@@ -1,0 +1,393 @@
+{% set heroValues = clone(matrixBlock) %}
+{% set marexQueryParam = craft.request.getQuery('marex') %}
+
+
+
+{# Waiting for friday meeting definition #}
+{# customizing the hero value if the query param is valid #}
+{% if (marexQueryParam != "" and heroValues.heroCustomizations is not null and heroValues.heroCustomizations|length > 0 ) %}
+  {% for customization in heroValues.heroCustomizations.all() %}
+    {% if customization.personalizationName == marexQueryParam %}
+      {% set specificCustom =  customization.heroPersonalization.first() %}
+      {# Setting the hero styling #}
+      {% if specificCustom.heroStyle == 'fullImageHero' %}
+        {% set heroValues = heroValues|merge({ fullImageHero: true , halfFullImage: null }) %}
+      {% elseif specificCustom.heroStyle == 'halfFullImageHero' %}
+        {% set heroValues = heroValues|merge({ fullImageHero: null, halfFullImage: true }) %}
+      {% else %}
+        {% set heroValues = heroValues|merge({ fullImageHero: null, halfFullImage: null }) %}
+      {% endif %}
+      
+      {# Adding hero configurations if they exist #}
+      {% if specificCustom.heroConfigurations is not null %}
+        {% set heroValues = heroValues|merge( specificCustom.heroConfigurations ) %}
+      {% endif %}
+
+      {# Adding the video switch #}
+      {% if specificCustom.assetToUse == 'video' %}
+        {% set heroValues = heroValues|merge({ displayVideo: true, heroVideoUrl: specificCustom.heroVideoUrl }) %}
+      {% elseif specificCustom.assetToUse == 'image' %}
+        {% set heroValues = heroValues|merge({ image: specificCustom.image, imageContain: specificCustom.imageContain }) %}
+      {% endif %}
+
+      {# Evaluating the field controls #}
+      {% set prioritizeFormLocal = specificCustom.prioritizeForms[0] %}
+      {% if prioritizeFormLocal.formtype == "Signup" %}
+        {% set heroValues = heroValues|merge({displaySignupForm: true, displayMarketoForm: null, signupSide: prioritizeFormLocal.side}) %}
+
+        {# Adding signup configuration specific fields #}
+        {% set heroValues = heroValues|merge( specificCustom.signupConfigurations ) %}
+
+      {% elseif prioritizeFormLocal.formtype == "Marketo" %}
+        {% set heroValues = heroValues|merge({displaySignupForm: null, displayMarketoForm: true, signupSide: prioritizeFormLocal.side}) %}
+        
+        {# Adding marketo configuration specific fields #}
+        {% set heroValues = heroValues|merge( specificCustom.marketoConfiguration ) %}
+
+      {% endif %}
+
+      {# Copy and Bullet configurations marketo configuration specific fields #}
+      {% set heroValues = heroValues|merge( specificCustom ) %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+{% set backgroundColor = heroValues.backgroundColor.one() %}
+{% if heroValues.linkToNav|length %}
+  {% set linkId = heroValues.linkToNav |camel %}
+  {% set sectionId = entry[linkId] |camel %}
+  <a class="anchor" id="{{sectionId}}"></a>
+{% endif %}
+<!-- Hero -->
+<!--Full hero section-->
+{% if heroValues.fullImageHero|length %}
+  {% set image = heroValues.image.one() %}
+  <section class="c-hero c-hero--full {{ heroValues.imageOverlay is not null ? 'h-image-overlay' : '' }}" style="background-image:url('{{ image is not null and image.url is not null ? image.url : "" }}');">
+    <div class="container">
+      <div class="row">
+        <div class="c-hero__container col-md-10 offset-md-1 c-valign--middle text-md-center">
+          {% include 'sections/landing/dynamic-hero-elements/hero-copy.html' %}
+        </div>
+      </div>
+    </div>
+  </section>
+  {% include 'sections/landing/hero-sticky-nav.html' %}
+
+{% elseif heroValues.condensedImageHero %}
+
+  <style type="text/css" scoped>
+    @media (min-width: 1480px){
+      .c-image.condensed-in-background.special-image{
+          top: 150px !important;
+          right: 90px;
+      }
+
+      .c-image.condensed-in-background.special-image img{
+        height: auto;
+        max-width: 100%;
+        
+      }
+    }
+  </style>
+
+  <section class="c-hero--split {{ backgroundColor ? backgroundColor.slug : 'hot-pink' }} product-page no-transition c-default-state">
+    <div class="c-animation-container">
+      <div id="default-image" class="c-image condensed-in-background special-image" style="bottom: 0px;">
+        {% set image = heroValues.image.one() %}
+        <img src="{{image.url}}" alt="{{image.title}}">
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 c-valign--middle">
+            {% include 'sections/landing/dynamic-hero-elements/hero-copy.html' %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% include 'sections/landing/hero-sticky-nav.html' %}
+
+{% elseif heroValues.halfFullImage|length %}
+  {% set image = heroValues.image.one() %}
+      <section class="c-hero--split {{ backgroundColor ? backgroundColor.slug : 'hot-pink' }} product-page">
+        <div class="c-image">
+          <img src="{{image.url}}" alt="{{image.title}}">
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 c-valign--middle">
+              {% include 'sections/landing/dynamic-hero-elements/hero-copy.html' %}
+            </div>
+          </div>
+        </div>
+      </section>
+      {% include 'sections/landing/hero-sticky-nav.html' %}
+
+{% else %}
+<!--Signup form-->
+  {# {% if ( heroValues.displaySignupForm == "1" ) and (craft.request.getQuery('widget') == 'signup') %} #}
+  {% if heroValues.displaySignupForm == "1" %}
+    {% if heroValues.signupSide.value == "left" %}
+      <section class="c-hero--split
+                      landing-hero
+                      {{ entry.removeNavigation ? 'h-no-nav' : '' }}
+                      c-hero--general-signup-form
+                      {% if heroValues.signupFormType == 'enclosed' %} enclosed-form {% endif %} 
+                      {{ backgroundColor ? backgroundColor.slug : 'hot-pink' }}"
+                      style="
+                      {{ notFirstHero is defined and notFirstHero is not null and notFirstHero == 1 ? 'padding-top: 100px; padding-bottom: 100px; min-height: 0;' : '' }}">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 c-valign--middle signup-aconditioner {% if heroValues.signupFormType == 'enclosed' %} enclosed-container {% endif %}">
+                  <div style="color: #000000; margin-top: 60px;">
+                    {% if heroValues.heroSignupTitle is not null and heroValues.heroSignupTitle|length %}
+                      <h1 class="more-space">{{ heroValues.heroSignupTitle }}</h1>
+                    {% endif %}
+                    {% if heroValues.heroSignupDescription is not null and heroValues.heroSignupDescription|length %}
+                      <p class="form-subtitle">{{ heroValues.heroSignupDescription }}</p>
+                    {% endif %}
+                    <div class="form_container">
+                      <form class="signup_form" id="signup_form" action="https://app.prosperworks.com/users" accept-charset="UTF-8" method="post">
+                        <input name="utf8" type="hidden" value="✓">
+                        <input type="hidden" name="authenticity_token" value="lAAB/AYz9RxQR4RN74ZQgCErmru66/VW8Kzw3EeKrJrJC4AjlOsOIwvmktA9F0k1HVJQkSEber78cUBqUaYwhw==">
+                        <a class="google_light_btn" href="https://app.prosperworks.com/auth/auto_login?continue_with_google=true&amp;failure_url=https%3A%2F%2Fapp.prosperworks.com%2Fusers%2Fsign_up%3Fauth_error%3DAuthentication%2Bfailed.%2BPlease%2Benter%2Byour%2Bemail%2Bbelow%2Bto%2Bcontinue.&amp;prompt=consent&amp;provider=google_oauth2_extended">
+                            <img class="google_icon" src="//d3jas8421cca9z.cloudfront.net/assets/google-g-0cf576a5dab9315daac7ffe29d29ed585e0ff9850e59408d0f25f38dc1da037b.svg" alt="Google g">
+                            <span class="google_light_btn_label">
+                                Continue with Google
+                            </span>
+                        </a>
+                        <div class="signup_form_subtext">
+                            or use your email to sign up:
+                        </div>
+                        <div class="field">
+                            <div class="form_text_field_container">
+                                <label for="user[full_name]">Full Name</label>
+                                <input class="text_field" size="30" placeholder="Jane Doe" type="text" name="user[full_name]" id="user_full_name">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="form_text_field_container">
+                                <label for="user[email]">Work Email</label>
+                                <input size="30" class="text_field" placeholder="janedoe@example.com" type="email" name="user[email]" id="user_email">
+                            </div>
+                        </div>
+                        <input type="hidden" name="ampDeviceID" value="" >
+                        <div class="submit-button-row">
+                          <input type="submit" name="commit" value="Try Free" class="submit_button is-pink with-no-border">
+                        </div>
+                      </form>
+                      <p class="disclaimer">By signing up, I agree to Copper’s <a href="/privacy">privacy policy</a> & <a href="/terms">terms of service.</a></p>
+                    </div>
+
+                  </div>
+            </div>
+            {% if ( heroValues.displayVideo == "1" ) and (heroValues.heroVideoUrl is not null) %}
+                <div class="col-md-6 c-valign--middle">
+                  <div class="c-video ">
+                    <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
+                      <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+                        <iframe src="{{ heroValues.heroVideoUrl }}" title="Wistia video player" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen width="100%" height="100%">
+                        </iframe>
+                      </div>
+                    </div>
+                    <script src="https://fast.wistia.net/assets/external/E-v1.js" async></script>
+                  </div>
+                </div>
+            {% elseif heroValues.image|length %}
+              <div class="col-md-6 c-valign--middle c-image invert-sm-spacing c-valign--middle" style="position: relative; left: 0px;">
+              {% set image = heroValues.image.one() %}
+                <img style="object-fit: initial; height: auto;" class="{{ heroValues.imageContain ? 'h-image-contain' : '' }}" src="{{ image.url }}" alt="{{ image.title }}">
+              
+              </div>
+            {% else %}
+              <div class="col-md-6"></div>
+            {% endif %}
+          </div>
+        </div>
+      </section>
+    {% include 'sections/landing/hero-sticky-nav.html' %}
+
+    {% elseif heroValues.signupSide == "right" %}
+    <section class="c-hero--split
+                    landing-hero
+                    {{ entry.removeNavigation ? 'h-no-nav' : '' }}
+                    c-hero--general-signup-form
+                    split-background--inverted
+                    {% if heroValues.signupFormType == 'enclosed' %} enclosed-form {% endif %}
+                    {{ backgroundColor ? backgroundColor.slug : 'hot-pink' }}
+                    "
+                    style="{{ notFirstHero is defined and notFirstHero is not null and notFirstHero == 1 ? 'padding-top: 100px; padding-bottom: 100px; min-height: 0;' : '' }}">
+      <div class="container">
+      <div class="row row--no-reverse">
+        <div class="col-md-6 col-margin-inverted c-valign--middle copy-aconditioner {{ backgroundColor ? backgroundColor.slug : 'hot-pink' }}">
+          {% include 'sections/landing/dynamic-hero-elements/hero-copy.html' %}
+        </div>
+        <div class="col-md-6 c-valign--middle signup-aconditioner {% if heroValues.signupFormType == 'enclosed' %} enclosed-container {% endif %}" >
+              <div style="color: #000000; margin-top: 60px;">
+                {% if heroValues.heroSignupTitle is not null and heroValues.heroSignupTitle|length %}
+                  <h1 class="more-space">{{ heroValues.heroSignupTitle }}</h1>
+                {% endif %}
+                {% if heroValues.heroSignupDescription is not null and heroValues.heroSignupDescription|length %}
+                  <p class="form-subtitle">{{ heroValues.heroSignupDescription }}</p>
+                {% endif %}
+                <div class="form_container">
+                  <form class="signup_form" id="signup_form" action="https://app.prosperworks.com/users" accept-charset="UTF-8" method="post">
+                    <input name="utf8" type="hidden" value="✓">
+                    <input type="hidden" name="authenticity_token" value="lAAB/AYz9RxQR4RN74ZQgCErmru66/VW8Kzw3EeKrJrJC4AjlOsOIwvmktA9F0k1HVJQkSEber78cUBqUaYwhw==">
+                    <a class="google_light_btn" href="https://app.prosperworks.com/auth/auto_login?continue_with_google=true&amp;failure_url=https%3A%2F%2Fapp.prosperworks.com%2Fusers%2Fsign_up%3Fauth_error%3DAuthentication%2Bfailed.%2BPlease%2Benter%2Byour%2Bemail%2Bbelow%2Bto%2Bcontinue.&amp;prompt=consent&amp;provider=google_oauth2_extended">
+                        <img class="google_icon" alt="{{image is defined ? image.title : 'Google Icon'}}" src="//d3jas8421cca9z.cloudfront.net/assets/google-g-0cf576a5dab9315daac7ffe29d29ed585e0ff9850e59408d0f25f38dc1da037b.svg" alt="Google g">
+                        <span class="google_light_btn_label">
+                            Continue with Google
+                        </span>
+                    </a>
+                    <div class="signup_form_subtext">
+                        or use your email to sign up:
+                    </div>
+                    <div class="field">
+                        <div class="form_text_field_container">
+                            <label for="user[full_name]">Full Name</label>
+                            <input class="text_field" size="30" placeholder="Jane Doe" type="text" name="user[full_name]" id="user_full_name">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="form_text_field_container">
+                            <label for="user[email]">Work Email</label>
+                            <input size="30" class="text_field" placeholder="janedoe@example.com" type="email" name="user[email]" id="user_email">
+                        </div>
+                    </div>
+                    <input type="hidden" name="ampDeviceID" value="" >
+                    <div class="submit-button-row">
+                      <input type="submit" name="commit" value="Try Free" class="submit_button is-pink with-no-border">
+                    </div>
+                  </form>
+                  <p class="disclaimer">By signing up, I agree to Copper’s <a href="/privacy">privacy policy</a> & <a href="/terms">terms of service.</a></p>
+                </div>
+              </div>
+        </div>
+        </div>
+      </div>
+    </section>
+  {% include 'sections/landing/hero-sticky-nav.html' %}
+
+    {% endif %}
+
+  <!--Marketo forms section-->
+  {% elseif heroValues.displayMarketoForm == "1" %}
+
+    {% if heroValues.marketoSide.value == "left" %}
+    <section class="c-hero--split
+                    landing-hero 
+                    {{ notFirstHero is defined and notFirstHero is not null and notFirstHero == 1 ? 'not-first' : '' }}
+                    {{ backgroundColor ? backgroundColor.slug : 'hot-pink' }}
+                    {{ entry.removeNavigation ? 'h-no-nav' : '' }} "
+                    style="{{ notFirstHero is defined and notFirstHero is not null and notFirstHero == 1 ? 'padding-top: 100px; padding-bottom: 100px; min-height: 0;' : '' }}">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 c-valign--middle">
+            {% include 'sections/landing/dynamic-hero-elements/hero-marketo-form.html' %}
+          </div>
+          {% if ( heroValues.displayVideo == "1" ) and (heroValues.heroVideoUrl is not null) %}
+              <div class="col-md-6 c-valign--middle">
+                <div class="c-video ">
+                  <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
+                    <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+                      <iframe src="{{ heroValues.heroVideoUrl }}" title="Wistia video player" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen width="100%" height="100%">
+                      </iframe>
+                    </div>
+                  </div>
+                  <script src="https://fast.wistia.net/assets/external/E-v1.js" async></script>
+                </div>
+              </div>
+          {% elseif heroValues.image|length %}
+            <div class="col-md-6 c-valign--middle c-image invert-sm-spacing c-valign--middle" style="position: relative; left: 0px;">
+            {% set image = heroValues.image.one() %}
+              <img style="object-fit: initial; height: auto;" class="{{ heroValues.imageContain ? 'h-image-contain' : '' }}" src="{{ image.url }}" alt="{{ image.title }}">
+            
+            </div>
+          {% else %}
+            <div class="col-md-6"></div>
+          {% endif %}
+        </div>
+      </div>
+    </section>
+  {% include 'sections/landing/hero-sticky-nav.html' %}
+
+    {% elseif heroValues.marketoSide == "right" %}
+      <section class="c-hero--split landing-hero {{ backgroundColor ? backgroundColor.slug : 'hot-pink' }} {{ entry.removeNavigation ? 'h-no-nav' : '' }} "
+                style="{{ notFirstHero is defined and notFirstHero is not null and notFirstHero == 1 ? 'padding-top: 100px; padding-bottom: 100px; min-height: 0;' : '' }}" >
+        <div class="container">
+          <div class="row  row--no-reverse">
+            <div class="col-md-6 c-valign--middle">
+              {% include 'sections/landing/dynamic-hero-elements/hero-copy.html' %}
+            </div>
+            <div class="col-md-6 c-valign--middle">
+              {% include 'sections/landing/dynamic-hero-elements/hero-marketo-form.html' %}
+            </div>
+          </div>
+        </div>
+      </section>
+    {% include 'sections/landing/hero-sticky-nav.html' %}
+
+    {% endif %}
+
+  {% else %}
+      <section class="c-hero--split landing-hero {{ backgroundColor ? backgroundColor.slug : 'hot-pink' }} {{ entry.removeNavigation ? 'h-no-nav' : '' }}"
+              style="{{ notFirstHero is defined and notFirstHero is not null and notFirstHero == 1 ? 'padding-top: 100px; padding-bottom: 100px; min-height: 0;' : '' }}">
+        <div class="container">
+          <div class="row row--no-reverse">
+            <!--Content side-->
+            <div class="col-md-6 c-valign--middle">
+              {% include 'sections/landing/dynamic-hero-elements/hero-copy.html' %}
+            </div>
+              {% if ( heroValues.displayVideo == "1" ) and (heroValues.heroVideoUrl is not null) %}
+                  <div class="col-md-6 c-valign--middle">
+                    <div class="hero-text video-header">{{ heroValues.assetText }}</div>
+                    <div class="c-video ">
+                      <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
+                        <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+                          <iframe src="{{ heroValues.heroVideoUrl }}" title="Wistia video player" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen width="100%" height="100%">
+                          </iframe>
+                        </div>
+                      </div>
+                      <script src="https://fast.wistia.net/assets/external/E-v1.js" async></script>
+                    </div>
+                  </div>
+              {% elseif heroValues.image|length %}
+                <div class="col-md-6 c-valign--middle c-image invert-sm-spacing c-valign--middle" style="position: relative; left: 0px; height: fit-content; max-height: none;">
+                {% if heroValues.assetText is defined and heroValues.assetText|length %}
+                  <div class="hero-text image-header">{{ heroValues.assetText }}</div>  
+                {% endif %}
+                {% set image = heroValues.image.one() %}
+                  <img style="object-fit: initial; height: auto;width: 100%;" class="{{ heroValues.imageContain ? 'h-image-contain' : '' }}" src="{{ image.url }}" alt="{{ image.title }}">
+                </div>
+              {% else %}
+                <div class="col-md-6"></div>
+              {% endif %}
+          </div>
+        </div>
+      </section>
+    {% include 'sections/landing/hero-sticky-nav.html' %}
+  {% endif %}
+{% endif %}
+
+{% if heroValues.bulletPointsMode == 'displayAsCardsBelowHero' and heroValues.specialBulletLogos.all()|length == heroValues.specialBulletsText|length %}
+  <section class="c-three-column">
+    <div class="container">
+      <div class="row">
+        {% for bulletLogo in heroValues.specialBulletLogos.all() %}
+          <div class="col-md-4">
+            {% set bulletContent = {
+              image: bulletLogo,
+              urlText: null,
+              eyebrow: heroValues.specialBulletsText[loop.index - 1].eyebrow,
+              header: heroValues.specialBulletsText[loop.index - 1].header,
+              paragraph: heroValues.specialBulletsText[loop.index - 1].paragraph
+            } %}
+            {% import 'sections/landing/three-column/_bullet-card.html' as component %}
+            {{ component.createBulletCard(bulletContent) }}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+{% endif %}

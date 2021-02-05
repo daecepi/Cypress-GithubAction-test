@@ -1,0 +1,30 @@
+{% extends "_top-nav.html" %}
+
+{% block topNav %}
+  {% switch entry.type %}
+    {% case 'productivity' %}
+      {% include 'product/_productivity.html' %}
+    {% case 'implementation' %}
+      {% include 'product/_implementation.html' %}
+    {% case 'collaboration' %}
+      {% include 'product/_collaboration.html' %}
+    {% case 'integrations' %}
+      {% include 'product/_integrations.html' %}
+    {% case 'insights' %}
+      {% include 'product/_insights.html' %}
+    {% case 'gSuite' %}
+      {% include 'product/_gsuite.html' %} 
+    {% case 'security' %}
+      {% include 'product/_security.html' %}  
+    {% case "productPagesMaster" %}
+      {% include "product/_productPagesMaster.html" %}        
+    {% case "trackLeads" %}
+      {% include "product/_trackLeads.html" %}                  
+    {% case "manageContacts" %}
+      {% include "product/_manageContacts.html" %}                  
+    {% case "automateSales" %}
+      {% include "product/_automateSales.html" %}                  
+    {% case "salesReporting" %}
+      {% include "product/_salesReporting.html" %}                  
+  {% endswitch %}
+{% endblock %} 

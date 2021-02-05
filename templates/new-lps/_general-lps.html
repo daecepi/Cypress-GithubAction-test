@@ -1,0 +1,60 @@
+{# Get the requested entry slug from the URL #}
+<!-- Hero -->
+<div class="free-trial-lps">
+  {#
+    <section class="c-hero--split background--purple">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 c-valign--middle">
+          <h1 class="t-white">{{ entry.header }}</h1>
+          {{ entry.heroText }}
+          <div class="c-hero__buttons">
+            {% if entry.slug == 'demo-request-pers' %}
+              <a class="c-button c-button--large" href="/demos">Request Demo</a>
+              {% else %}
+              <a class="c-button c-button--large sendUTMsToAmplitude" href="{{ craft.app.config.general.signUpUrl }}">Try Free</a>
+            {% endif %}
+          </div>
+        </div>
+        <div class="col-md-6 c-valign--middle hide-sm-down">
+          {% set heroImage = entry.heroImage.one() %}
+          <img class="img-fluid" src="{{ heroImage.url }}" alt="Logo image">          
+        </div>
+      </div>
+    </div>
+  </section>
+  #}
+
+
+  {% for matrixBlock in entry.generallanding.all() %}
+    {% set loopIndex = loop.index %}
+      {% switch matrixBlock.type %}
+        {% case "hero" %}
+          {% include 'sections/landing/hero.html' %}
+        {% case "g2CrowdModule" %}
+          {% include 'components/slider/_slider.html' %}
+        {% case "pricingPlans" %}
+          {% include 'sections/pricing/hero.html' %}
+        {% case "table" %}
+          {% include 'sections/landing/table/comparison-table.html' %}
+        {% case "cta" %}
+          {% include 'new-lps/generalLpsComponents/_general-lps-CTAs.html' %}
+        {% case "oneColumn" %}
+          {% include 'new-lps/generalLpsComponents/_general-lps-one-column.html' %}        
+        {% case "twoColumn" %}
+          {% include 'sections/landing/two-column/two-column.html' %}
+        {% case "threeColumn" %}
+          {% include 'sections/landing/three-column/three-column.html' %}
+        {% case "testimonial" %}
+          {% include 'new-lps/generalLpsComponents/_general-lps-testimonials.html' %}
+        {% case "details" %}
+          {% include 'sections/landing/details.html' %}
+        {% case 'embeddedVideo' %}
+          {% include 'section/landing/embedded-video.html' %}
+        {% case 'logoSection' %}
+          {% import 'components/_components.html' as component %}
+          {{ component.logoSection(matrixBlock) }}
+      {% endswitch %}
+    {% endfor %} 
+
+</div>

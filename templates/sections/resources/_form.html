@@ -1,0 +1,167 @@
+<section class="c-resource-content c-resource-content--overlap" id="c-ebook-gate">
+  <div class="c-resource-content__container container ">
+    
+    <div class="c-ebook-gate">
+        <div class="c-e-book-builder__header col-md-12 ">
+          {% if entry.specialStyle is defined and entry.specialStyle == "inspirationSeries" %}
+            <span class="t-eyebrow t-special-eyebrow t-special-eyebrow--lt-purple t-eyebrow-lg">Copper Inspiration Series</span><br />
+          {% else %}
+            {% if entry.type == "webinars" and entry.embeddedVideo is not null and entry.embeddedVideo|length > 0 %}
+              <span class="t-eyebrow t-special-eyebrow t-special-eyebrow--lt-purple">Video</span><br />
+            {% elseif entry.type == "webinars" or entry.type == "register" %}
+              <span class="t-eyebrow t-special-eyebrow t-special-eyebrow--lt-purple">Upcoming webinar{{entry.releaseDate is not null ? ": #{entry.releaseDate|datetime('short')}" : '' }}</span><br />
+            {% endif %}
+            <span class="t-eyebrow hot-pink"><strong>{{entry.eyebrow}}</strong></span>
+          {% endif %}
+          <div class="{{ entry.specialStyle is defined and entry.specialStyle == "inspirationSeries" ? "col-md-10 offset-md-1" : "col-md-8 offset-md-2" }}">
+            <h1>{{ entry.title }}</h1>
+          </div>
+        </div>
+      <div class="col-md-12">
+        <section class="c-e-book-gate__form h-padding-bottom">
+          <div class="row">
+            <div class="col-md-5 ">
+              {% if entry.formHeader|length %}
+                <h3>{{ entry.formHeader }}</h3>
+              {% endif %}             
+              <div class="p p-sm t-pink-bullet-points">
+                {{ entry.formCopy }}
+                {% if entry.type == "eBook" or entry.type == "download" %}
+                  <p><strong>Made by: </strong> {{ finalDefaultAuthorInfo.name }}</p>
+                  <script type="application/ld+json">
+                    {
+                      "@context": "http://schema.org",
+                      "@type": "DataFeed",
+                      "dataFeedElement": [
+                        {
+                          "@context": "http://schema.org",
+                          "@type": "Book",
+                          "@id": "{{ craft.request.getUrl() }}",
+                          "url": "{{ craft.request.getUrl() }}",
+                          "name": "{{ entry.title }}",
+                          "author": {
+                            "@type": "Person",
+                            "name": "{{ finalDefaultAuthorInfo.name }}"
+                          }
+                      }
+                      ],
+                      "dateModified": "{{entry.postDate|atom }}"
+                    }
+                  </script>
+                {% endif %}
+              </div>
+            </div>
+            <div class="col-md-6 offset-md-1">
+              <div class="c-form">
+                <div id="landing-form-snip" class="sl_swap">
+                  {% import "/components/replacements/_marketo-replacements.html" as localLeadReplacements %}
+                  {% if marketoConfigurations.replaceMarketoForms %}
+                    {% set formId = "mktoForm_#{entry.formId ? entry.formId : 2157}" %}
+                    {{ localLeadReplacements.htmlReplacement(formId, 'Resources request', entry.slug) }}
+                  {% else %}
+                    <form id="mktoForm_{{entry.formId}}">
+                      <div class="h-gdpr d-flex">
+                        
+                        {% if entry.id == '11741' %}
+                        <i>By submitting this form, you agree to our terms. See Copper’s <a href="/privacy">privacy policy</a> to learn about how we use your information. See DocuSign’s <a href="https://www.docusign.com/company/terms-and-conditions/web">Terms & Conditions</a> and <a href="https://www.docusign.com/company/privacy-policy">Privacy Policy</a> here.</i>    
+                        {% else %}
+                        <div class="h-gdpr__container">
+                          <input type="checkbox" name="consent" id="consentBox" value="false"/>
+                        </div>
+                        <i>I consent to receiving emails about Copper products and  special offers. By submitting this form you agree to our terms. See our <a href="/privacy">privacy policy</a> to learn about how we use your information.</i>
+
+                        {% endif %}
+                      </div> 
+                    </form>
+                  {% endif %}
+                  <div class="js-form-success js-form-success--content-download">
+                    {% if entry.type == "register" %}
+                      <span class="t-eyebrow t-special-eyebrow t-special-eyebrow--lt-purple">{{ entry.specialStyle == "inspirationSeries" ? "Inspiration series" : "Upcoming webinar" }}</span><br />
+                    {% endif %}
+                    <h3>{{entry.paragraph}}</h3>
+                    <p>Want to try Copper for yourself? Start a 14-day free trial!</p>
+                    <a class="c-button" href="{{ craft.app.config.general.signUpUrl }}">Try Copper Free</a>
+                    <picture>
+          <source type="image/webp" srcset="/imgs/demos/working.webp"  class="" alt="Working image"  >
+          <source type="image/png" srcset="/imgs/demos/working.jpg"  class="" alt="Working image"  >
+          <img   class="" alt="Working image"   src="/imgs/demos/working.jpg"   >
+</picture>
+                  </div>
+                  <script>
+                     LazyLoad.js(['https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js','/js/vendor/js-cookie.js','/js/functions.min.{{ staticAssetsVersion }}.js'],function(){
+                      {% if marketoConfigurations.replaceMarketoForms %}
+                        {% set formId = "mktoForm_#{entry.formId ? entry.formId : 2157}" %}
+                        {{ localLeadReplacements.lightScriptReplacement(formId, staticAssetsVersion, "HeroMarketoForm", entry.type, true) }}
+                      {% else %}
+                        MktoForms2.loadForm("//app-sj17.marketo.com", "763-DVL-293", {{entry.formId}}, function(form){
+                          form.onSuccess(function() {
+                            var submittedVals = form.vals();
+                            if (submittedVals!== ""){
+                              // Use the entry id so its unique to that entry not just the form
+                              Cookies.set('form_gate_{{entry.id}}', true, { domain:  sndleveldomain }, 14);
+                              {% switch entry.type %}
+                                {% case 'eBook' %}
+                                  // Reload so ebook chapter tracker can load properly
+                                  location.reload();
+                                {% case 'webinars' %}
+                                  // Reload so ebook chapter tracker can load properly
+                                  location.reload();                              
+                                {% case 'download' %}
+                                  form.getFormElem().css({
+                                    "display": "none"
+                                  });
+                                  $(".js-form-success").css({
+                                    "display": "block"
+                                  });
+                                  ga('send',{
+                                    hitType: 'event',
+                                    eventCategory: 'PDF Downloads',
+                                    eventAction: 'Click URL',
+                                    eventLabel: '{{ entry.url }}'
+                                  });
+                                  window.open('{{entry.clickthrough.url}}', '_blank');
+                                {% case 'register' %}
+                                  form.getFormElem().css({
+                                    "display": "none"
+                                  });
+                                  $(".js-form-success").css({
+                                    "display": "block"
+                                  });                           
+                              {% endswitch %}
+                            }
+                            function runCapterra() {
+                              var capterra_vkey = 'bdf9d93f2565930e2fb6cb6b3c348d8c',
+                                capterra_vid = '2100282',
+                                capterra_prefix = (('https:' == document.location.protocol) ? 'https://ct.capterra.com' : 'http://ct.capterra.com'); 
+                                var ct = document.createElement('script');
+                                ct.type = 'text/javascript';
+                                ct.async = true;
+                                ct.src = capterra_prefix + '/capterra_tracker.js?vid=' + capterra_vid + '&vkey=' + capterra_vkey; var s = document.getElementsByTagName('script')[0];
+                                s.parentNode.insertBefore(ct, s); 
+                            };
+                            runCapterra();
+                            return false;
+                          });  
+                        });
+                      {% endif %}
+                  })
+                    
+                  </script>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% if entry.belowTheFormCopy is defined and entry.belowTheFormCopy is not null and entry.belowTheFormCopy|length %}
+            <div class="row">
+              <div class="col-md-12">
+                <div class="p p-sm t-bullet-pink-points">
+                  {{ entry.belowTheFormCopy }}
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        </section>
+      </div>
+    </div>
+  </div>
+</section>

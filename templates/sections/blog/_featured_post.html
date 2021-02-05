@@ -1,0 +1,45 @@
+<div class="container">
+
+  <div class="c-card__entry--featured">
+    <h4>Featured Post</h4>
+    <div class="c-card__entry__card">
+      <a class="c-card__clickthrough" href="{{ entry.url }}"></a>
+      {% set img_transform = {
+        mode: 'crop',
+        width: 1534,
+        height: 818,
+        position: 'center-center'
+      } %}
+
+      {% set image = entry.featuredImage.one() %}
+      {% if image|length %}
+      <img class="c-card__entry__image" src="{{ image.getUrl(img_transform) }}" alt="{{ image.title }}">
+      {% endif %}
+      <div class="c-card__entry__content">
+       
+        <h3 class="c-blog__title">{{ entry.title }}</h3>
+      </div>
+    </div>
+  </div>
+  <div class="c-blog__list">
+    <div class="c-blog__search">
+      <h4>Categories</h4>
+      <div class="c-blog__categories">
+        <ul>
+          {% nav category in craft.categories.group('blogCategories').all() %}
+          <li>
+            <a href="{{ category.url }}">{{ category.title }}</a> 
+            {# {% ifchildren %}
+            <ul>
+              {% children %}
+            </ul>
+            {% endifchildren %} #}
+          </li>
+          {% endnav %}
+        </ul>
+      </div>
+    </div>
+
+
+  </div>
+</div>

@@ -1,0 +1,57 @@
+{% extends "_top-nav.html" %}
+
+
+{% block topNav %}
+
+    <!-- Import blogMacros -->
+    {% import '/customer-stories/macros/_macros' as blogMacros %}
+
+    <!-- Include featured image template -->
+    {% include 'sections/resources/_featured-image.html' %}
+
+    <section class="c-resource-content c-resource-content--overlap">
+        <div class="c-resource-content__container c-resource-content__container--new-posts container">
+            <div class="row">
+                <div class="c-resource-content__container__col col-sm-12">
+                    <div class="c-blog-builder--content__title">
+                        {{ blogMacros.header(entry.title, entry.type, entry.subText) }}
+                    </div>
+
+                    <!-- <div class="t-vertical-line-below position-relative"></div> -->
+                    
+                    {% for matrixBlock in entry.contentBuilder.all() %}
+                        {% switch matrixBlock.type %}
+                            {% case "tldr" %}
+                                {% set tldr = matrixBlock.tldr %}
+                                {{ blogMacros.tldr(tldr) }}
+                                <!-- {% include 'sections/resources/_tldr.html' %} -->
+                            {% case "copyEditor" %}
+                                {{ blogMacros.copyEditor(matrixBlock.copyEditorSectionId, matrixBlock.calloutSentence, matrixBlock.copy) }}
+                                <!-- {% include 'sections/resources/_copy-editor.html' %} -->
+                            {% case "media" %}
+                                {{ blogMacros.media( matrixBlock.addMedia, matrixBlock.mediaDescription ) }}
+                                <!-- {% include 'sections/resources/_media.html'%} -->
+                            {% case "callout" %}
+                                {{ blogMacros.callOut(matrixBlock.copy) }}
+                                <!-- {% include 'sections/resources/_callout.html' %} -->
+                            {% case "card" %}
+                                {{ blogMacros.card( matrixBlock.eyebrow, matrixBlock.header, matrixBlock.copy ) }}
+                                <!-- {% include 'sections/resources/_card.html' %} -->
+                            {% case "quote" %}
+                                {{ blogMacros.quote( matrixBlock.quote, matrixBlock.author ) }}
+                                <!-- {% include 'sections/resources/_quote.html' %} -->
+                            {% case 'adA' %}
+                                {{ blogMacros.adA( matrixBlock.eyebrow, matrixBlock.header, matrixBlock.paragraph, matrixBlock.cta, matrixBlock.ad ) }}
+                                <!-- {% include 'sections/resources/_adA.html' %} -->
+                            {% case "adB" %}
+                                {{ blogMacros.adB( matrixBlock.eyebrow, matrixBlock.header, matrixBlock.pinkPeriodAfterHeader, matrixBlock.paragraph, matrixBlock.ctas ) }}
+                                <!-- {% include 'sections/resources/_adB.html' %} -->
+                            {% case "wistiaVideo" %}
+                                {{ blogMacros.wistiaVideo( matrixBlock.wistiaVideoCode ) }}
+                        {% endswitch %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

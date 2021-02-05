@@ -1,0 +1,254 @@
+{% include 'sections/resources/_featured-image.html' %}
+
+
+
+{% set mainCategory = entry.blogCategories.last() %}
+<section class="c-resource-content c-resource-content--overlap--blog">
+  <div class="c-resource-right-rail c-resource-right-rail--social">
+    {% include 'sections/resources/_social-share.html' %} 
+  </div>
+  <!-- add only appearing on sales categorie  -->
+  {% if entry.header|length and entry.blogCategories.one() == "Sales"  %}
+    {% set backgroundColor = entry.backgroundColor.one() %}
+    <div class="c-resource-right-rail c-resource-right-rail--ad" style="right: -50%;">
+      <div class="c-resource-right-rail__ad">
+        {% set image = entry.adImage.one() %} 
+        {% if image %}
+          <img alt="{{image.title}}" src="{{ image.url }}" >
+        {% else %}
+          <picture>
+            <source type="image/webp" srcset="/imgs/blog/siena-small.webp" alt="Siena small image">
+            <source type="image/png" srcset="/imgs/blog/siena-small.jpg" alt="Siena small image">
+            <img alt="Siena small image" src="/imgs/blog/siena-small.jpg">
+          </picture>
+        {% endif %}
+        <div class="c-resource-right-rail__ad__text {{ backgroundColor ? backgroundColor.slug }}">
+          <h1>{{entry.blogCategories}}</h1>
+          <h4>{{entry.header}}</h4>
+          <p>{{entry.paragraph}}</p>
+          {% if entry.ctas|length %}
+            {% set ctas = entry.ctas %}
+            {% include 'components/cta/_index.html' %}
+          {% endif %}    
+        </div>  
+      </div>
+    </div>
+  {% elseif entry.blogCategories.one() == "Sales" %}
+  <!-- add only appearing on sales categorie  -->
+    
+      {% set defaultAd = craft.entries.section('blogIndex').one() %}
+      {% set backgroundColor = defaultAd.backgroundColor.one() %}
+      <div class="c-resource-right-rail c-resource-right-rail--ad" style="right: -50%;">
+        <div class="c-resource-right-rail__ad">
+        {% set image = defaultAd.adImage.one() %} 
+          {% if image %}
+            <img alt="{{ image.title }}" src="{{ image.url }}" >
+          {% else %}
+            <picture>
+          <source type="image/webp" srcset="/imgs/blog/siena-small.webp"  alt="Siena small image"  >
+          <source type="image/png" srcset="/imgs/blog/siena-small.jpg"  alt="Siena small image"  >
+          <img   alt="Siena small image"   src="/imgs/blog/siena-small.jpg"   >
+</picture>
+          {% endif %}
+          <div class="c-resource-right-rail__ad__text {{ backgroundColor ? backgroundColor.slug }}">
+            <h4>{{defaultAd.header}}</h4>
+            <p>{{defaultAd.paragraph}}</p>
+            {% if defaultAd.ctas|length %}
+              {% set ctas = defaultAd.ctas %}
+              {% include 'components/cta/_index.html' %}
+            {% endif %}    
+          </div>  
+        </div>
+      </div>
+    
+  {% else %}
+    <!-- Hardcoded add  -->
+      <!-- <div class="c-resource-right-rail c-resource-right-rail--ad" style="right: -50%;">
+        <div class="c-resource-right-rail__ad">
+        
+            <img alt="Siena small image" src="/imgs/blog/blog-popout-header-image@2x.png">
+          
+          <div class="c-resource-right-rail__ad__text">
+            <h4>Fireside Chat</h4>
+            <p>Join us for a chat with Rhoden Monrose, Founder & CEO of CariClub.</p>
+            <div class="c-hero__buttons">
+              <a class="c-button c-button--hot-pink" target="_blank" href="/webinars/rhoden-monrose-cariclub-copper-inspiration-series?utm_source=copper&utm_medium=blog&utm_campaign=inspo_series_rhodenmonrose">Learn More</a>
+            </div>   
+          </div>  
+        </div>
+      </div> -->
+
+  {% endif %}
+
+  <script>
+    // Wait for page to fully load
+    LazyLoad.js([
+        'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'],function(){
+    $(window).bind("load", function() {
+      
+      function fix_ad() {
+        var window_top = $(window).scrollTop();
+        if (window_top > $('#rail-start').offset().top - 500 && window_top < $('#rail-end').offset().top - 700) {
+          $(".c-resource-right-rail--ad").css({'right': '0'});
+        } else{
+          $(".c-resource-right-rail--ad").css({'right': '-50%'});
+        }
+
+        if (window_top < $('#rail-end').offset().top - 700) {
+          $(".c-resource-right-rail--social").css({'right': '0'});
+        } else{
+          $(".c-resource-right-rail--social").css({'right': '-50%'});
+        }
+      }
+
+      fix_ad();
+
+      $(window).scroll(fix_ad);
+        
+    });
+  })
+  </script>
+  <div class="c-resource-content__container c-resource-content__container--new-posts container">
+
+    <div class="row">
+      <div class="c-resource-content__container__col col-sm-12">
+        <div class="c-blog-builder--content__title">  
+          {# Show category & reading time #}
+          {% if (mainCategory | length) and (entry.readingTime | length)  %}
+            <pre class="c-eyebrow">{{ mainCategory.title }} : {{entry.readingTime}} read</pre>
+          {% endif %}
+          {# Only show category if no readng time given #}
+          {% if mainCategory | length  and not(entry.readingTime | length) %}
+            <pre class="c-eyebrow">{{ mainCategory.title }}</pre>
+          {% endif %}
+          <h1 class="">{{ entry.title }}</h1>
+        </div>
+        <div class="c-blog-builder--content__meta">
+
+          {% set authorToUse = entry.author ? entry.author : finalDefaultAuthorInfo %}
+          <div class="c-author">
+            {% if authorToUse.photo|length %}
+              {% set image = authorToUse.photo %}
+              <div class="circle-img c-author__img" style="background-image: url(' {{image.url}} ')"></div>
+            {% else %}
+              <div class="circle-img c-author__img background-{{(authorToUse.id%2) +1}}">
+                <span v-if="!authorToUse.photo" class="c-author__img--alt">{{ authorToUse.name|first }}</span>
+              </div>
+            {% endif %}
+            <div class="c-author__meta">
+              <p class="p-sm  no-margin"><strong>{{ authorToUse.name }}</strong></p>
+              {% if authorToUse.authorTitle %}
+                <p class="p-sm  no-margin">{{ authorToUse.authorTitle }}</p>
+              {% else %}
+                <p class="p-sm  no-margin">Contributor</p>
+              {% endif %}
+            </div>
+          </div>
+          <p class="p-sm date">{{ entry.postDate | date("F j, Y") }}</p>
+        </div>
+        <div id="rail-start"></div>
+  
+        {% for matrixBlock in entry.blogBuilder.all() %}
+          {% switch matrixBlock.type %}
+  
+            {% case "tldr" %}
+              {% set tldr = matrixBlock.tldr %}
+              {% include 'sections/resources/_tldr.html' %}
+            {% case "copyEditor" %}
+              {% include 'sections/resources/_copy-editor.html' %}
+            {% case "media" %}
+              {% include 'sections/resources/_media.html'%}
+            {% case "callout" %}
+              {% include 'sections/resources/_callout.html' %}
+            {% case "card" %}
+              {% include 'sections/resources/_card.html' %}
+            {% case "quote" %}
+              {% include 'sections/resources/_quote.html' %}
+            {% case 'adA' %}
+              {% include 'sections/resources/_adA.html' %}
+            {% case "adB" %}
+                {% include 'sections/resources/_adB.html' %}
+          {% endswitch %}
+        {% endfor %}
+        </div>
+    </div>
+    
+
+  </div>
+</section>
+
+
+{% include "sections/blog/final-plea.html" %}
+
+ <div id="rail-end"></div>
+{% set relatedEntries = craft.entries({ section: 'blog', relatedTo: mainCategory, limit: 3, id: 'not ' ~ entry.id }) %} 
+{% if relatedEntries|length %}
+  <div class="c-blog-builder__related">
+    <h3 class="c-copper-chronicles__title">Related articles</h3>
+    <div class="row">
+    {% for entryTeaser in relatedEntries %} 
+      <div class="col-xl-4 col-lg-6 col-md-12 c-card-col">
+        {# uncomment if statement if cards with no image are needed #}
+        {# {% if entryTeaser.featuredImage | length and entryTeaser.title | length < 55 %} #}
+        {% if entryTeaser.featuredImage | length  %}
+          {% include "sections/blog/_entry_teaser_img.html" %} 
+        {% else %}
+          {% include "sections/blog/_entry_teaser.html" %} 
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{entry.url}}/#content"
+    },
+    "headline": "{% if entry.seoTitle %} {{entry.seoTitle|slice(0, 110)}} {% else %} {{ entry.title }} {% endif %}",
+    "url": "{{entry.url}}",
+    "description": "{% if entry.seoDescription %} {{entry.seoDescription}} {% else %} {{ entry.title }} {% endif %}",
+    "image": {
+      "@type": "ImageObject",
+      "url": "{{entry.featuredImage.one().url}}",
+      "width": 1440,
+      "height": 752
+    },
+    "author": {
+    "@type": "Person",
+    "name": "{{authorToUse.name}}",
+    "jobTitle": "{{authorToUse.jobTitle}}"
+    },  
+    "publisher": {
+      "@type": "Organization",
+      "name": "Copper",
+      "logo": {
+        "@type":"ImageObject",
+        "url": "https://copper.com",
+        "contentUrl": "/imgs/copper-logo-pink-il.svg"
+      }
+    },
+    "datePublished": "{{entry.postDate|atom}}",
+    "dateModified": "{{entry.dateUpdated|atom}}"
+  }
+  </script>
+  
+
+  {# Schema related page #}
+  {#<script type="application/ld+json">
+
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "dateModified": '{{ entry.dateUpdated.iso8601 }}',
+      "datePublished": "{{ entry.postDate.iso8601 }}",
+      "headline": "",
+      "image": [
+        ""
+      ]
+    }
+  </script>#}

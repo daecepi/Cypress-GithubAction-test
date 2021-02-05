@@ -1,0 +1,12 @@
+{% extends "_top-nav.html" %}
+
+{% block topNav %}
+  {% switch entry.type %}   
+    {% case 'enterprise' %}
+      {% include 'segmentation/_enterprise.html' %}      
+    {% case 'midMarket' %}
+      {% include 'segmentation/_mid-market.html' %}    
+    {% case 'smallBusiness' %}
+      {% include 'segmentation/_small-business.html' %}                                              
+  {% endswitch %}
+{% endblock %}

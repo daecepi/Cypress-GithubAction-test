@@ -1,0 +1,202 @@
+{% extends "_top-nav.html" %}
+
+
+{% block topNav %}
+<!-- Hero -->
+<section class="c-hero--split background--graphite">
+  <div class="c-image">
+    <picture>
+          <source type="image/webp" srcset="/imgs/webinar-hero-1.webp"    alt="Webinar hero image">
+          <source type="image/png" srcset="/imgs/webinar-hero-1.jpg"    alt="Webinar hero image">
+          <img     src="/imgs/webinar-hero-1.jpg"   alt="Webinar hero image" >
+</picture>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 c-valign--middle">
+        <pre class="c-eyebrow c-eyebrow--light">{{entry.eyebrow}}</pre>
+        <h1 class="t-white">{{entry.header}}</h1>
+        {% if entry.paragraph|length > 0 %}<p>{{entry.paragraph}}</p>{% endif %}
+        {{ entry.richText }}
+        {% if entry.ctas|length %}
+          {% set ctas = entry.ctas %}
+          {% include 'components/cta/_index.html' %}
+        {% endif %}    
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="h-section-padding">
+  <div class="container">
+    <h2 class="text-center">Featured Webinars</h2>
+    <div class="row extra-top-margin--small">
+      {% for webinar in entry.featuredWebinars.all() %}
+      <div class="col-md-4">
+        <div class="c-card__entry h-webinar">
+          <a class="c-card__clickthrough" href="{{ webinar.url }}"></a>
+          {% set image = webinar.featuredImage.one() %}
+          {% if image %}
+          <img class="c-card__default__image" src="{{ image.url }}" alt="{{ entry.title }}" />
+          {% else %}
+          <picture>
+          <source type="image/webp" srcset="/imgs/industry/industry-agency-blog-01@2x.webp"  class="c-card__default__image"   alt="Industry agency blog image" />
+          <source type="image/png" srcset="/imgs/industry/industry-agency-blog-01@2x.jpg"  class="c-card__default__image"   alt="Industry agency blog image" />
+          <img   class="c-card__default__image"   src="/imgs/industry/industry-agency-blog-01@2x.jpg"   alt="Industry agency blog image" / >
+</picture>
+          {% endif %}
+          <div class="c-card__entry__content">
+            <span class="t-eyebrow ">{{ webinar.eyebrow }}</span>
+            <h4 class="c-card__entry-title multiple-2-card-trailer">
+              <a class="underline_from_lefsettt" href="{{ webinar.url }}">{{ webinar.title }}</a>
+            </h4>
+            <p class="p-sm multiple-5-card-trailer">{{ webinar.description }}</p>
+          </div>
+          <div class="c-card__meta">
+            {% if webinar.type == "register" %}
+              <a class="c-button" href="{{ webinar.url }}">Register</a>
+            {% else %}
+              <a class="c-button" href="{{ webinar.url }}">Watch Now</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+
+</section>
+
+
+{% set upcomingWebinars = craft.entries.section('webinars').type('register') %}
+{% if upcomingWebinars is not null and upcomingWebinars|length > 0 %}
+  <section class="h-section-padding no-top-padding">
+    <div class="container">
+      <h2 class="text-center extra-bottom-margin--small">Upcoming Webinars</h2>
+      {% for webinar in upcomingWebinars %}
+      <div class="c-webinar-list ">
+        <p class="c-webinar-list__title">{{ webinar.title }}</p>
+        <div class="c-webinar-list__authors">
+        </div>
+        <p class="c-webinar-list__duration p-sm">{{ webinar.duration }}</p>
+        <div>
+          <a href="{{ webinar.url }}" class="c-button">Register Now</a>
+        </div>
+
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+{% endif %}
+
+<section class="h-section-padding no-top-padding">
+  <div class="container">
+    <h2 class="text-center extra-bottom-margin--small">On-Demand Webinars</h2>
+    {% for webinar in craft.entries.section('webinars').type('webinars').embeddedVideo('not \'\'') %}
+    <div class="c-webinar-list ">
+      <p class="c-webinar-list__title">{{ webinar.title }}</p>
+      <div class="c-webinar-list__authors">
+        {% if webinar.featuredAuthors.all()|length > 0  %}
+          {% for author in webinar.featuredAuthors.all() %}
+          {% if author.photo is null %}
+          <div class="circle-img c-author__img h-small background-{{(author.id%2) +1}}">
+            <span class="c-author__img--alt">{{ author.firstName|first }}</span>
+          </div>
+          {% else %}
+          <div class="circle-img c-author__img h-small" style="background-image:url('{{ author.photo.url }}')"></div>
+          {% endif %}
+          
+            {#{% if Loop.index < 2 %}#}
+            <script type="application/ld+json">
+              {
+                "@context": "https://schema.org",
+                "@type": "Course",
+                "name": "{{ webinar.title }}",
+                {% if webinar.description|length > 0 %}
+                  "description": "{{ webinar.description|length > 60 ? webinar.description|striptags|slice(0, 57) ~ '...' : webinar.description|striptags }}",
+                {% elseif webinar.formCopy|length > 0%}
+                  "description": "{{ webinar.formCopy|length > 60 ? webinar.formCopy|striptags|slice(0, 57) ~ '...' : webinar.formCopy|striptags }}",
+                {% else %}
+                  "description": {{ "'Webinar knowledge to make you be successful'" }},
+                {% endif %}
+                "provider": {
+                  "@type": "Organization",
+                  "name": "Copper",
+                  "sameAs": "http://www.copper.com"
+                }
+              }
+            </script>
+            {#{% endif %}#}
+          {% endfor %}
+
+        {% else %} {# default author block #}
+
+
+        {% if finalDefaultAuthorInfo.photo.url is null %}
+        <div class="circle-img c-author__img h-small background-{{(finalDefaultAuthorInfo.id%2) +1}}">
+          <span class="c-author__img--alt">{{ finalDefaultAuthorInfo.firstName|first }}</span>
+        </div>
+        {% else %}
+        <div class="circle-img c-author__img h-small" style="background-image:url('{{ finalDefaultAuthorInfo.photo.url }}')"></div>
+        {% endif %}
+        
+          {#{% if Loop.index < 2 %}#}
+          <script type="application/ld+json">
+            {
+              "@context": "https://schema.org",
+              "@type": "Course",
+              "name": "{{ webinar.title }}",
+              {% if webinar.description|length > 0 %}
+                "description": "{{ webinar.description|length > 60 ? webinar.description|striptags|slice(0, 57) ~ '...' : webinar.description|striptags }}",
+              {% elseif webinar.formCopy|length > 0%}
+                "description": "{{ webinar.formCopy|length > 60 ? webinar.formCopy|striptags|slice(0, 57) ~ '...' : webinar.formCopy|striptags }}",
+              {% else %}
+                "description": {{ "'Webinar knowledge to make you be successful'" }},
+              {% endif %}
+              "provider": {
+                "@type": "Organization",
+                "name": "Copper",
+                "sameAs": "http://www.copper.com"
+              }
+            }
+          </script>
+            
+        {% endif %}
+      </div>
+      <p class="c-webinar-list__duration p-sm">{{ webinar.duration }}</p>
+      <div>
+        <a href="{{ webinar.url }}" class="c-button">Watch Now</a>
+      </div>
+
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+
+<!-- Hero -->
+<section class="c-hero--split background--leavebehind">
+  <div class="c-image">
+    <picture>
+          <source type="image/webp" srcset="/imgs/UI_ipad_final-plea-update-new.webp"    alt="Ipad UI image">
+          <source type="image/png" srcset="/imgs/UI_ipad_final-plea-update-new.jpg"    alt="Ipad UI image">
+          <img     src="/imgs/UI_ipad_final-plea-update-new.jpg"   alt="Ipad UI image" >
+</picture>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 c-valign--middle">
+        <pre class="c-eyebrow c-eyebrow--light">Goodbye Data Entry</pre>
+        <h2 class="t-white">Hello Copper.</br>Try it free!</h2>
+        <p style="max-width: 420px;">No credit card required. Start your 14-day free trial today.</p>
+        <div class="c-hero__buttons">
+          <a class="c-button" href="#" data-toggle="modal" data-target="#formModal">Request Demo</a>
+          <a class="c-button c-button--outline sendUTMsToAmplitude" href="{{ craft.app.config.general.signUpUrl }}">Try Free</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,21 @@
+
+<section class="c-press-articles">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h2>{{ matrixBlock.header }}</h2>
+      </div>
+      <div class="col-md-7 offset-md-1">
+
+        {% for accordion in matrixBlock.accordion.all() %}
+        <div class="extra-bottom-margin--x-small">
+          <h3>{{ accordion.header }}</h3>
+          {{ accordion.richText }}
+        </div>
+        {% endfor %}
+
+      </div>
+    </div>
+
+  </div>
+</section>

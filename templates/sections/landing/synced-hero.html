@@ -1,0 +1,465 @@
+{# Single variations call#}
+{% set successVariationInfo = [] %}
+
+{% for tyMessage in matrixBlock.successMessageSpecializations.all() %}
+  {% set successVariationInfo = successVariationInfo|merge([{variationLogic: tyMessage.variationLogic.value, variationLogicComparison: tyMessage.variationLogicComparison, variationLogicValue: tyMessage.variationLogicValue, vSuccessMessage: tyMessage.vSuccessMessage}]) %}
+{% endfor %}
+
+<div id="synced-hero">
+{% set backgroundColor = matrixBlock.backgroundColor.one() %}
+{% switch matrixBlock.heroType %}
+
+  {% case "fullImageHero" %}
+  
+
+  {% case "halfFullImageHero" %}
+
+  <section id="defaultVariation" class="c-hero--split landing-hero {{ backgroundColor ? backgroundColor.slug : 'hot-pink' }} no-transition synced-variation">
+    {# base asset #}
+    {% if matrixBlock.defaultImage|length %}
+      <div id="default-asset-container" class="c-image">
+        {% set defaultImage = matrixBlock.defaultImage.one() %}
+        <img src="{{defaultImage.url}}" alt="{{defaultImage.title}}">
+      </div>
+    {% endif %}
+    <div class="container">
+      <div class="row row--no-reverse">
+        <!--Content side-->
+        <div class="col-md-5 c-valign--middle synced-hero-copy" >
+          <div class="hero-text">
+            {% set eyebrowSettings = matrixBlock.eyebrowSettings|first %}
+            {% if matrixBlock.defaultEyebrow|length %}<pre class="c-eyebrow c-eyebrow--{{ eyebrowSettings.eyebrowColor is not null and eyebrowSettings.eyebrowColor.one() is not null ? eyebrowSettings.eyebrowColor.one().slug : 'light' }} extra-top-margin--small">{{ matrixBlock.defaultEyebrow }}</pre>{% endif %}
+            {% if matrixBlock.defaultCopy|length %}
+              {{ matrixBlock.defaultCopy }}
+            {% else %}
+              <h2>The real estate CRM that’s move-in ready.</h2>
+              <p>Copper is the CRM of choice for real estate agents and brokers.</p>
+            {% endif %}
+          </div>
+          <div id="initial-control" class="c-hero__buttons c-finder">
+            <form id="finder-form">
+              <input id='emailFinder' class="finder-input" onkeyup="formUpdater(this.value)" type="email" placeholder="Add your email" required>
+              <button id="email-finder-submit" class="c-button c-button--white" type="submit">Get a Demo</button>
+            </form>
+          </div>
+        </div>
+
+        {# hidden evaluation form #}
+        <div id="main-form"
+              class="col-md-6 offset-md-1 c-valign--middle c-image invert-sm-spacing c-valign--middle "
+              style="position: relative; left: 0px; height: fit-content; max-height: none;">
+          {# Marketo script #}
+          <script src="//app-sj17.marketo.com/js/forms2/js/forms2.min.js"></script>
+                      
+          <div class="c-form ">
+            {% import "/components/replacements/_marketo-replacements.html" as localLeadReplacements %}
+            {% if marketoConfigurations.replaceMarketoForms %}
+            {% set formId = "mktoForm_#{matrixBlock.formId ? matrixBlock.formId : 2157}" %}
+              {{ localLeadReplacements.htmlReplacement(formId, 'Lead', entry.slug) }}
+            {% else %}
+              {% include "components/graphics/_hero-loading.html" %}
+              {# form element #}
+              <form id="mktoForm_{{ matrixBlock.formId ? matrixBlock.formId : 2157 }}" data-formId="{{ matrixBlock.formId ? matrixBlock.formId : 2157 }}" data-formInstance="one" >            
+                {% if matrixBlock.marketoFormCopy|length %}
+                  {{ matrixBlock.marketoFormCopy }}
+                {% else %}
+                  <h4>Watch Demo<span class="t-hot-pink">.</span></h4>
+                {% endif %}
+              </form>
+            {% endif %}
+            
+            <div id="c-thank-you-message" class="invisible-start">
+              {% if matrixBlock.marketoThankYouMessage is not null and matrixBlock.marketoThankYouMessage|length > 0 %}
+                {{ matrixBlock.marketoThankYouMessage }}
+              {% else %}
+                <h3>Thank <span class="hot-pink t-hot-pink">you</span>.</h3>
+                <p class="p-sm">Someone from our team will be with you shortly</p>  
+              {% endif %}
+            </div>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% default %}
+  <section id="defaultVariation" class="c-hero--split landing-hero {{ backgroundColor ? backgroundColor.slug : 'hot-pink' }} no-transition synced-variation">
+    <div class="container">
+      <div class="row row--no-reverse">
+        <!--Content side-->
+        <div class="col-md-5 c-valign--middle synced-hero-copy" >
+          <div class="hero-text">
+            {% set eyebrowSettings = matrixBlock.eyebrowSettings|first %}
+            {% if matrixBlock.defaultEyebrow|length %}<pre class="c-eyebrow c-eyebrow--{{ eyebrowSettings.eyebrowColor is not null and eyebrowSettings.eyebrowColor.one() is not null ? eyebrowSettings.eyebrowColor.one().slug : 'light' }} extra-top-margin--small">{{ matrixBlock.defaultEyebrow }}</pre>{% endif %}
+            {% if matrixBlock.defaultCopy|length %}
+              {{ matrixBlock.defaultCopy }}
+            {% else %}
+              <h2>The real estate CRM that’s move-in ready.</h2>
+              <p>Copper is the CRM of choice for real estate agents and brokers.</p>
+            {% endif %}
+          </div>
+          <div id="initial-control" class="c-hero__buttons c-finder">
+            <form id="finder-form">
+              <input id='emailFinder' class="finder-input" onkeyup="formUpdater(this.value)" type="email" placeholder="Add your email" required>
+              <button id="email-finder-submit" class="c-button c-button--white" type="submit">Get a Demo</button>
+            </form>
+          </div>
+        </div>
+        {# base asset #}
+        {% if matrixBlock.displayVideo == "1" %}
+            <div id="default-asset-container" class="col-md-6 offset-md-1 c-valign--middle">
+              <div class="c-video ">
+                {% if matrixBlock.defaultVideoEmbedCode|length %}
+                  {{ matrixBlock.defaultVideoEmbedCode | raw }}
+                {% else %}
+                  <div class="wistia_responsive_padding" style="padding:0 0 0 0;position:relative;">
+                    <script src="https://fast.wistia.com/embed/medias/pmc7iaf2o2.jsonp" async></script><script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+                    <div class="wistia_responsive_padding" style="padding:0 0 0 0;position:relative;">
+                      <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+                        <div class="wistia_embed wistia_async_pmc7iaf2o2 videoFoam=true" style="height:100%;position:relative;width:100%">
+                          <div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;">
+                            <img src="https://fast.wistia.com/embed/medias/pmc7iaf2o2/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="Wistia thumbnail" aria-hidden="true" onload="this.parentNode.style.opacity=1;" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+        {% elseif matrixBlock.defaultImage|length %}
+          <div id="default-asset-container" class="col-md-6 offset-md-1 c-valign--middle c-image invert-sm-spacing c-valign--middle" style="position: relative; left: 0px;">
+          {% set image = matrixBlock.defaultImage.one() %}
+            <img style="object-fit: initial; height: auto;" class="{{ matrixBlock.imageContain ? 'h-image-contain' : '' }}" src="{{ image.url }}" alt="{{ image.title }}">
+          
+          </div>
+        {% else %}
+          <div id="default-asset-container" class="col-md-6 offset-md-1"></div>
+        {% endif %}
+        {# hidden evaluation form #}
+        <div id="main-form"
+              class="col-md-6 offset-md-1 c-valign--middle c-image invert-sm-spacing c-valign--middle "
+              style="position: relative; left: 0px; height: fit-content; max-height: none;">
+          {# Marketo script #}
+          <script src="//app-sj17.marketo.com/js/forms2/js/forms2.min.js"></script>
+                      
+          <div class="c-form ">
+            {% if marketoConfigurations.replaceMarketoForms %}
+            {% set formId = "mktoForm_#{matrixBlock.formId ? matrixBlock.formId : 2157}" %}
+              {{ localLeadReplacements.htmlReplacement(formId, 'Lead', entry.slug) }}
+            {% else %}
+              {% include "components/graphics/_hero-loading.html" %}
+              {# form element #}
+              <form id="mktoForm_{{ matrixBlock.formId ? matrixBlock.formId : 2157 }}" data-formId="{{ matrixBlock.formId ? matrixBlock.formId : 2157 }}" data-formInstance="one" >            
+                {% if matrixBlock.marketoFormCopy|length %}
+                  {{ matrixBlock.marketoFormCopy }}
+                {% else %}
+                  <h4>Watch Demo<span class="t-hot-pink">.</span></h4>
+                {% endif %}
+              </form>
+            {% endif %}
+            
+            <div id="c-thank-you-message" class="invisible-start">
+              {% if matrixBlock.marketoThankYouMessage is not null and matrixBlock.marketoThankYouMessage|length > 0 %}
+                {{ matrixBlock.marketoThankYouMessage }}
+              {% else %}
+                <h3>Thank <span class="hot-pink t-hot-pink">you</span>.</h3>
+                <p class="p-sm">Someone from our team will be with you shortly</p>  
+              {% endif %}
+            </div>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endswitch %}
+
+<section id="successVariation" class="c-hero--split landing-hero {{ backgroundColor ? backgroundColor.slug : 'hot-pink' }} no-transition">
+  <div class="container">
+    <div class="row row--no-reverse">
+      <!--Content side-->
+      <div class="col-md-5 c-valign--middle">
+
+        <div class="hero-text">
+          <div id="synced-default-thank-you" class="invisible-start">
+            {% if matrixBlock.successMessage|length %}
+                {{ matrixBlock.successMessage }}
+            {% else %}
+              <h2>Thanks! <br />Watch and see real estate in action. </h2>
+              <p>TBD copy here</p>
+            {% endif %}
+          </div>
+          {# all alternative messages for this module #}
+          {% for tyMessage in successVariationInfo %}
+            <div id="synced-{{tyMessage.variationLogic ~ tyMessage.variationLogicValue}}" class="invisible-start">
+              {{ tyMessage.vSuccessMessage }}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      {# base asset #}
+      {% if matrixBlock.displayVideoOnSuccess == "1" %}
+          <div id="final-asset-container" class="col-md-6 offset-md-1 c-valign--middle">
+            <div class="c-video ">
+              {% if matrixBlock.successVideoEmbedCode|length %}
+                {{ matrixBlock.successVideoEmbedCode | raw }}
+              {% else %}
+                <div class="wistia_responsive_padding" style="padding:0 0 0 0;position:relative;">
+                  <script src="https://fast.wistia.com/embed/medias/pmc7iaf2o2.jsonp" async></script><script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+                  <div class="wistia_responsive_padding" style="padding:0 0 0 0;position:relative;">
+                    <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+                      <div class="wistia_embed wistia_async_pmc7iaf2o2 videoFoam=true" style="height:100%;position:relative;width:100%">
+                        <div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;">
+                          <img src="https://fast.wistia.com/embed/medias/pmc7iaf2o2/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="Wistia thumbnail" aria-hidden="true" onload="this.parentNode.style.opacity=1;" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {% endif %}
+            </div>
+          </div>
+      {% elseif matrixBlock.image|length %}
+        <div id="final-asset-container" class="col-md-6 offset-md-1 c-valign--middle c-image invert-sm-spacing c-valign--middle" style="position: relative; left: 0px;">
+        {% set image = matrixBlock.image.one() %}
+          <img style="object-fit: initial; height: auto;" class="{{ matrixBlock.imageContain ? 'h-image-contain' : '' }}" src="{{ image.url }}" alt="{{ image.title }}">
+        
+        </div>
+      {% else %}
+        <div id="final-asset-container" class="col-md-6 offset-md-1"></div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+</div>
+{# Curent synced form #}
+{% set newSuccessVariationInfo = [] %}
+
+{% for tyMessage in successVariationInfo %}
+  {% set newSuccessVariationInfo = newSuccessVariationInfo|merge([{variationLogic: tyMessage.variationLogic, variationLogicComparison: tyMessage.variationLogicComparison, variationLogicValue: tyMessage.variationLogicValue, vSuccessMessage: ''}]) %}
+{% endfor %}
+{# Script that loads marketo form #}
+<script>
+  var syncedFormId = "{{ matrixBlock.formId ? matrixBlock.formId : '2157' }}";
+   LazyLoad.js(['https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'],function(){
+  // Base appeareance
+  $('#main-form').css('height','0px');
+  $('#main-form').css('min-height','0px');
+  $('#main-form').css('margin-top','0px');
+  $('#main-form').css('overflow','hidden');
+  $('#main-form').css('display','flex');
+
+  var compSize = undefined;
+  
+  var tyMsgSelect = JSON.parse('{{ newSuccessVariationInfo|json_encode|replace("&#39;","\'")|replace("\u003C","")|replace("\u003Ch2","")|replace("\u003E","")|raw }}');
+
+  function shDisplayVariationMessage(formValues){
+    $('#defaultVariation').css('display', 'none');
+
+    // Get the number to evaluate from
+    var messageNotFound = true;
+    var messageDisplayed = true;
+    tyMsgSelect.forEach( function (tyVariation){
+      var companySize = formValues['companySize'] || formValues.cBcompanymetricsemployees;
+      var sizes = companySize.replace('+', '').split('-');
+      var maxValue = Math.max(...sizes);
+      var minValue = Math.min(...sizes);
+      if(tyVariation.variationLogic === 'companySize'){
+        if(messageNotFound && tyVariation.variationLogicValue <= maxValue && tyVariation.variationLogicValue >= minValue){ // When we just want to affect the 
+          $(`#synced-${tyVariation.variationLogic}${tyVariation.variationLogicValue}`).first().removeClass('invisible-start');
+          messageNotFound = false;
+        }else if(messageNotFound && tyVariation.variationLogicComparison.value === 'lessThan' && tyVariation.variationLogicValue >= maxValue){
+          $(`#synced-${tyVariation.variationLogic}${tyVariation.variationLogicValue}`).first().removeClass('invisible-start');
+          messageNotFound = false;
+        }
+      }
+    });
+    if(messageNotFound){
+      $('#synced-default-thank-you').first().removeClass('invisible-start');
+    }
+    $('#successVariation').css('display', 'block');
+    document.getElementById('successVariation').scrollIntoView( {behavior: 'smooth'} );
+  }
+
+  function intercomCallUpdate(email, name){
+
+    window.intercomSettings.email = email;
+    window.intercomSettings.name = name;
+
+   $.ajax({
+        type: "POST",
+        url: "/proxy/intercom-calendly.php",
+        data: JSON.stringify(window.intercomSettings),
+        contentType: "text/json; charset=utf-8",
+        dataType: "text",
+        success: function (hash) {
+            
+            window.intercomSettings['user_hash'] = hash;
+            //intercomSettings.last_visited_url = "crm-for-real-estate-agents-and-brokers";
+            //intercomSettings.last_request_at = parseInt((new Date()).getTime()/1000);
+
+            //Logic for the upate event
+            Intercom('update', intercomSettings);
+        }
+    });
+
+  }
+  {% if marketoConfigurations.replaceMarketoForms %}
+    {% set formId = "mktoForm_#{matrixBlock.formId ? matrixBlock.formId : 2157}" %}
+    {{ localLeadReplacements.lightScriptReplacement(formId, staticAssetsVersion, "SyncedHero", true, true) }}
+  {% else %}
+    MktoForms2.loadForm("https://app-sj17.marketo.com", "763-DVL-293", "{{ matrixBlock.formId ? matrixBlock.formId : '2157' }}" , function (form){
+      //Add an onSuccess handler
+      form.onSuccess(function(values, followUpUrl){
+
+        // Preparing intercom fields
+        var heroForm = MktoForms2.getForm("{{ matrixBlock.formId ? matrixBlock.formId : '2157' }}");
+        var formSubmitted = heroForm.getValues();
+        
+        compSize = formSubmitted['companySize'];
+
+        var name = `${formSubmitted['FirstName']} ${formSubmitted['LastName']}`;
+        //window.location.hash = '#thank-you';
+        
+        intercomCallUpdate(formSubmitted.Email, name);
+        ga('send', 'event', 'Get Demo', 'FormFill', '{{ matrixBlock.formId ? matrixBlock.formId : 2164 }}');
+        //return false to prevent the submission handler from taking the lead to the follow up url.
+
+        shDisplayVariationMessage(formSubmitted);
+        return false;
+      });
+    });
+
+    var syncedFormId = "{{ matrixBlock.formId ? matrixBlock.formId : '2157' }}";
+
+
+    MktoForms2.whenReady(function (form){
+      $( ".loading-cover" ).each( function () {
+        var star = $(this);
+        star.css('display', 'none');
+      });
+
+      //Test initial manual boot
+      // Intercom('boot');
+
+      $("#email-finder-submit").attr("disabled", false);
+    });
+  {% endif %}
+})
+
+</script>
+
+<script>
+  function formUpdater(emailValue){
+    $('#Email').each(function () {
+      var star = $(this);
+      star.val(emailValue).change();
+      document.getElementById('Email').dispatchEvent(new Event('input', { bubbles: true }));
+    });
+  }
+  function evalExistance(cent){
+    {% if marketoConfigurations.replaceMarketoForms %}
+      var data = {FirstName: $('input#fromEmail').val(), LastName: $('input#LastName').val(), Phone: $('input#Phone').val(), Email: $('input#email').val(), Company: $('input#Company').val(), CompanySize: $('select#companySize').val() };
+    {% else %}
+      var heroForm = MktoForms2.getForm("{{ matrixBlock.formId ? matrixBlock.formId : '2157' }}");
+      var data = heroForm.getValues();
+    {% endif %}
+    var dataValidate = heroForm.validate();
+    // console.log(dataValidate);
+    // console.log(JSON.stringify(data));
+    if(data['FirstName'] !== undefined){
+      
+      $('#initial-control').css('display', 'none');
+
+      //Check for the validation result of the form
+      if({% if marketoConfigurations.replaceMarketoForms %} true {% else %} heroForm.validate() {% endif %}){
+        document.querySelector('.mktoButtonWrap > .mktoButton').dispatchEvent(new Event('click', { bubbles: true }));
+        Intercom('boot');
+        heroForm.submit();
+      }else{
+        heroPropertyReseter();
+        $('#default-asset-container').fadeOut(500, function (){
+          $('#main-form').fadeIn(300);
+        });
+      }
+    }else if(data['Email'] !== undefined && !cent){
+      // Run common procedure to update email
+      var email = document.getElementById('emailFinder').value;
+      formUpdater(email);
+      evalExistance(true);
+    }
+    
+  }
+  function scrollToElements(hash){
+    document.getElementById(hash).scrollIntoView({ behavior: "smooth" });
+  }
+   LazyLoad.js(['https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'],function(){
+  $("#email-finder-submit").attr("disabled", true);
+  $('#successVariation').css('display', 'none');
+
+  function heroPropertyReseter(){
+    $('#main-form').css('height','fit-content');
+    $('#main-form').css('min-height','1px');
+    $('#main-form').css('margin-top','30px');
+    $('#main-form').css('overflow','visible');
+    $('#main-form').css('display','none');
+  }
+
+  //Form handling
+  $('#finder-form').submit(function (e) {
+    e.preventDefault();
+    evalExistance(false);
+  });
+
+  function formUpdater(emailValue){
+    $('#Email').each(function () {
+      var star = $(this);
+      star.val(emailValue).change();
+      document.getElementById('Email').dispatchEvent(new Event('input', { bubbles: true }));
+    });
+  }
+
+  function evalExistance(cent){
+    {% if marketoConfigurations.replaceMarketoForms %}
+      var data = {FirstName: $('input#fromEmail').val(), LastName: $('input#LastName').val(), Phone: $('input#Phone').val(), Email: $('input#email').val(), Company: $('input#Company').val(), CompanySize: $('select#companySize').val() };
+      var dataValidate = true;
+    {% else %}
+      var heroForm = MktoForms2.getForm("{{ matrixBlock.formId ? matrixBlock.formId : '2157' }}");
+      var data = heroForm.getValues();
+      var dataValidate = heroForm.validate();
+    {% endif %}
+    // console.log(dataValidate);
+    // console.log(JSON.stringify(data));
+    if(data['FirstName'] !== undefined){
+      
+      $('#initial-control').css('display', 'none');
+
+      //Check for the validation result of the form
+      if({% if marketoConfigurations.replaceMarketoForms %} true {% else %} heroForm.validate() {% endif %}){
+        document.querySelector('.mktoButtonWrap > .mktoButton').dispatchEvent(new Event('click', { bubbles: true }));
+        Intercom('boot');
+        heroForm.submit();
+      }else{
+        heroPropertyReseter();
+        $('#default-asset-container').fadeOut(500, function (){
+          $('#main-form').fadeIn(300);
+        });
+      }
+    }else if(data['Email'] !== undefined && !cent){
+      // Run common procedure to update email
+      var email = document.getElementById('emailFinder').value;
+      formUpdater(email);
+      evalExistance(true);
+    }
+    
+  }
+
+  //General scrolling
+  function scrollToElements(hash){
+    document.getElementById(hash).scrollIntoView({ behavior: "smooth" });
+  }
+})
+</script>

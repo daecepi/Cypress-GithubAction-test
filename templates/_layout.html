@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+{# Set cache busting variable for styles #}
+{% set staticAssetsVersion = craft.config.environmentVariables.staticAssetsVersion %}
+{# {% set amplitudeAppID = craft.config.environmentVariables.amplitudeAppID %} #}
+{# {% set amplitudeProjectID = craft.config.environmentVariables.amplitudeProjectID %} #}
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+
+    <link rel="preconnect" href="https://munchkin.marketo.net">
+    <link rel="preconnect" href="https://www.googleadservices.com">
+    <link rel="preconnect" href="https://www.google.com.co">
+    <link rel="preconnect" href="https://www.google.com">
+    <link rel="preconnect" href="https://www.google-analytics.com">
+
+
+    {# <link rel="preconnect" href="https://tr.outbrain.com"> #}
+    <!-- Minimize Flicker Optimze Tag -->
+    {% if googleOptimize.googleOptimizeEntries.all() %}
+			{% set optimizePages = [] %}
+			{% for page in googleOptimize.googleOptimizeEntries.all() %}
+				{% set optimizePages = optimizePages|merge([page.slug]) %}
+			{% endfor %}
+			{% if entry.slug|raw in optimizePages or 'huro=orig' in craft.request.getQueryString or craft.app.request.url == '/' %}
+				<style>@media (min-width: 768px) { .async-hide { opacity: 0 !important} } </style>
+        <script>(function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
+          h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
+          (a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
+          })(window,document.documentElement,'async-hide','dataLayer',4000,
+          {'GTM-WKXHCQN':true});</script>
+			{% endif %}
+		{% endif %}
+    <!-- Google Analytics Tag for copper.com -->
+    <script id="GA-tag" class="sl_swap">
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-47255589-1', 'auto',{'allowLinker': true});
+      ga('require', 'linker');
+      ga('linker:autoLink', ['prosperworks.com','copper.com']);
+      ga('require', 'GTM-WKXHCQN'); // NOTE: this GMT line is only for copper.com, not the web app!
+      ga('send', 'pageview');
+    </script>
+    <!-- Search Console Meta Tag -->
+    {# <meta name="google-site-verification" content="sL6mJ6_9DKgkQ0SCjIr8bGXWrHK_Jm50v6q9WXk3ezg" /> #}
+    <meta name="google-site-verification" content="4ofGzg8wkRPD-kmPUfOZltcXv-3wVYWXdYBFjsOu41Q" />
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MN98DR');</script>
+    <!-- End Google Tag Manager -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta name="referrer" content="origin-when-cross-origin" />
+
+    <!-- Twitter & Graph Meta Tags -->
+    <meta name="twitter:site" content="@copperInc">
+    <meta property="og:site_name" content="Copper" />
+    <meta property="og:url" content="{{ craft.app.request.absoluteUrl() }}" />
+    {% if entry.title|length %}
+      <meta name="twitter:title" content="{{ entry.title}}">
+      <meta property="og:title" content="{{ entry.title}}" />
+    {% endif %}
+    {% if entry.seoDescription|length %}
+      <meta name="twitter:description" content="{{ entry.seoDescription }}">
+      <meta property="og:description" content="{{ entry.seoDescription }}" />
+    {% endif %}
+    {% if craft.app.request.segments|first is same as('blog') %}
+      <meta property="og:locale" content="en_US" />
+      <meta property="og:type" content="article" />
+      <meta property="article:publisher" content="https://www.facebook.com/CopperInc/" />
+      <meta name="twitter:card" content="summary_large_image">
+      {% if entry.blogCategories %}
+        {% set mainCategory = entry.blogCategories.last() %}
+        <meta property="article:section" content="{{ mainCategory.title }}" />
+      {% endif %}
+      
+      <meta property="article:published_time" content="{{ entry.postDate|date("F jS \\a\\t g:ia") }}" />
+
+
+      {% if entry.twittercreator|length %}
+        <meta name="twitter:creator" content="{{ entry.twittercreator }}">
+      {% endif %}
+      {% if entry.featuredImage and entry.featuredImage.one() %}
+        {% set twitterImg = entry.featuredImage.one() %} 
+        <meta name="twitter:image" content="https:{{ twitterImg.url }}">
+      {% endif %}
+    {% else %}
+      <meta content="summary" property="twitter:card">
+      {% if entry.twitterimage and entry.twitterimage.one() %}
+        {% set twitterImg = entry.twitterimage.one() %} 
+        {% if entry.slug == 'project-management-crm' %}
+          <meta name="twitter:image" content="https:{{ twitterImg.url }}">
+          <meta name="image" property="og:image" content="https:{{ twitterImg.url }}">
+          <meta property="og:image:secure_url" content="https:{{ twitterImg.url }}" />
+        {% endif %}
+        <meta name="twitter:image" content="https:{{ twitterImg.url }}">
+      {% else %}
+      {#  Default image definition #}
+        <meta property="og:image" content="imgs/seo-images/generic-social-card_linkedin.jpg " />
+        <meta property="og:image:width" content="72" />
+        <meta property="og:image:height" content="72" />
+        
+        <meta property="twitter:image" content="imgs/seo-images/generic-social-card_twitter.jpg " />
+      {% endif %}
+    {% endif %}
+
+    <!-- SEO Meta Tags -->
+    {% if entry.seoTitle|length %}
+      <title>{{ entry.seoTitle }}</title>
+    {% else %}
+      <title>{% if title is defined and title != 'Copper Blog' %}{{ title }}{% else %}{{ entry.title }}{% endif %} | Copper</title>
+    {% endif %}
+    {% if entry.seoDescription|length %}
+      <meta name="description" content="{{ entry.seoDescription }}">
+    {% endif %}
+    {% if entry.featuredImage and entry.featuredImage.one() %}
+      {% set seoImage = entry.featuredImage.one() %} 
+      <meta property="og:image" content="https:{{ seoImage.url }}" />
+      <meta property="og:image:secure_url" content="https:{{ seoImage.url }}" />
+    {% elseif entry.seoImage is defined and entry.seoImage and entry.seoImage.one() %}
+      {% set seoImage = entry.seoImage.one() %} 
+      <meta property="og:image" content="https:{{ seoImage.url }}" />
+      <meta property="og:image:secure_url" content="https:{{ seoImage.url }}" />
+    {% elseif entry.twitterimage and entry.twitterimage.one() %}
+      {% set twitterImg = entry.twitterimage.one() %} 
+      <meta property="og:image" content="https:{{ twitterImg.url }}" />
+      <meta property="og:image:secure_url" content="https:{{ twitterImg.url }}" />
+    {% else %}
+    {#  Default image definition #}
+      <meta property="og:image" content="imgs/seo-images/generic-social-card_linkedin.jpg " />
+      <meta property="og:image:width" content="72" />
+      <meta property="og:image:height" content="72" />
+      
+      <meta property="twitter:image" content="imgs/seo-images/generic-social-card_twitter.jpg " />
+    {% endif %}
+
+    {% if "copper.frb.io" in craft.app.request.getHostInfo()  %}
+      <meta content=noindex,nofollow name=robots>
+    {% endif %}
+    {% if not entry.index %}
+      <meta content=noindex,nofollow name=robots>
+    {% endif %}
+    {% if entry.canonical|length %}
+      <link rel="canonical" href="{{ entry.canonical }}" />
+    {% else %}
+      <link rel="canonical" href="{{ craft.app.request.absoluteUrl() }}" />
+    {% endif %}
+    <!-- End SEO Meta Tags -->    
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
+    {% set url = craft.app.request.url %}
+    {% if url == "/" or url == "/pricing" or url == "/demos" or url == "/demo" %}
+      <!-- do nothing -->
+    {% else %}
+    {# <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" />   #}
+    {% endif %}
+
+    {# <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" as="script" /> #}
+    
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" /> -->
+    {# pre-load fonts #}
+    <link rel="preload" href="/fonts/Graphik-Medium-Web.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/Graphik-Regular-Web.woff2" as="font" type="font/woff2" crossorigin>
+    {#{% if craft.config.devMode %}
+    <link rel="stylesheet" href="/css/styles.css" />
+    {% else %}#}
+    {#<link rel="stylesheet" href="/css/styles.{{ staticAssetsVersion }}.css" />#}
+      {#{% set cacheVal = app.request.cookies.get('critical-css') %}
+      {% if not cacheVal or cacheVal != staticAssetsVersion or craft.config.devMode %}
+          {{ craft.userSession.saveCookie('critical-css', staticAssetsVersion, now | date_modify("+7 days").timestamp ) }}#}
+          {#{% block _inline_css %}#}
+          {% if url == "/" %}
+            {#<style type="text/css" rel="stylesheet">
+              {{ source('./index_critical.min.css', ignore_missing = true) }}
+            </style>}#
+          {#{% endblock %}#}
+          {#<noscript><link rel="stylesheet" href="/css/styles.{{staticAssetsVersion}}.css"></noscript>#}
+          <link rel="stylesheet" href="/css/styles.css">
+          <!--<script>var cb = function() {
+            var l = document.createElement('link'); l.rel = 'stylesheet';
+            l.href = 'css/_index_critical.min.css';
+            var h = document.getElementsByTagName('head')[0]; h.parentNode.insertBefore(l, h);
+            };
+            var raf = requestAnimationFrame || mozRequestAnimationFrame ||
+            webkitRequestAnimationFrame || msRequestAnimationFrame;
+            if (raf) raf(cb);
+            else window.addEventListener('load', cb);
+          </script>-->
+        {% elseif url == "/pricing" %}
+          <style>
+            {{ source('./pricing/index_critical.min.css', ignore_missing = true) }}
+          </style>
+          {#{% endblock %}#}
+          <noscript><link rel="stylesheet" href="/css/styles.{{staticAssetsVersion}}.css"></noscript>
+        {% elseif url == "/demos" or url == "/demo" %}
+        <style>
+          {{ source('./demo/index_critical.min.css', ignore_missing = true) }}
+        </style>
+        {#{% endblock %}#}
+        <noscript><link rel="stylesheet" href="/css/styles.{{staticAssetsVersion}}.css"></noscript>
+        {% else %}
+          <link rel="stylesheet" href="/css/styles.{{staticAssetsVersion}}.css">
+        {% endif %}
+          {#<script>
+              {{ source('_inlinejs/loadCSS.min.js') }}
+              {{ source('_inlinejs/cssrelpreload.min.js') }}
+          </script>#}
+      {#{% else %}
+          <link rel="stylesheet" href="/css/style.{{staticAssetsVersion}}.css">
+      {% endif %}#}
+    {#{% endif %}#}
+    <!-- Add amp link rel for blog entries -->
+    {% if '/blog/authors' in craft.app.request.absoluteUrl %}
+      <!-- No amp page -->
+    {% elseif '/resources/' in craft.app.request.absoluteUrl %}
+      <link rel="amphtml" href="{{ craft.app.request.absoluteUrl}}/amp">
+    {% endif %}
+    {% include '_marketo-script.html' %}
+    <!-- <script src="//app-sj17.marketo.com/js/forms2/js/forms2.min.js"></script>
+    <script src="https://marketo.clearbit.com/assets/v1/marketo/forms.js" data-clearbit-publishable-key="pk_297de2bd498f18ecd1cabfdd7ad4fea9"></script> -->
+
+    {# <link rel="preload" href="/js/vendor.{{ staticAssetsVersion }}.js" as="script" />
+    <link rel="preload" href="/js/functions.min.{{ staticAssetsVersion }}.js" as="script" /> #}
+    <!-- Temp remove SMARTLING 
+    <link rel="preload" href="/js/tracker.min.js" as="script" />
+    -->
+    
+  {# <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> #}
+  {# {% if url == "/" %}
+    <!-- do nothing -->
+  {% else %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+  {% endif %} #}
+  {# <script type="text/javascript" src="/js/vendor.{{ staticAssetsVersion }}.js"></script>
+          <script type="text/javascript" src="/js/functions.min.{{ staticAssetsVersion }}.js"></script> #}
+  <!-- < src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></> -->
+  <script src='/js/lazyload.min.js'></script>
+
+  {% if not (url == "/library") %}
+  <script>
+    LazyLoad.js([
+      'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js',
+      '/js/vendor/js-cookie.js',
+      '/js/functions.min.{{ staticAssetsVersion }}.js',
+      '/js/app.min.{{ staticAssetsVersion }}.js',
+    ],function(){
+    })
+  </script>
+{% endif %}
+   
+
+{# Default author reading implementation #}
+
+{% set finalDefaultAuthorInfo = null %}
+{% for defaultAuthor in defaultAuthors.defaultUsersGlobal %}
+  {% if defaultAuthor.globalSpecific == "webinars" and (entry.type == "webinarIndex" or entry.type == "webinars") %}
+      {% if defaultAuthor.userToDisplay.all()|length %}
+        {% set finalDefaultAuthorInfo = defaultAuthor.userToDisplay.one() %}
+        {% set finalDefaultAuthorInfo = finalDefaultAuthorInfo|merge({"photo": {"url": finalDefaultAuthorInfo.photo.url}}) %}
+        {% if not (defaultAuthor.differentBio == "") %}
+          {% set finalDefaultAuthorInfo = finalDefaultAuthorInfo|merge({'bio': defaultAuthor.differentBio}) %}
+        {% endif %}
+        {% if not (defaultAuthor.differentJobTitle == "") %}
+          {% set finalDefaultAuthorInfo = finalDefaultAuthorInfo|merge({'jobTitle': defaultAuthor.differentJobTitle}) %}
+        {% endif %}
+
+      {% endif %}
+  {% elseif defaultAuthor.globalSpecific == "blog" and entry.type == "blogBuilder" %}
+    {% if defaultAuthor.userToDisplay.all()|length %}
+      {% set finalDefaultAuthorInfo = defaultAuthor.userToDisplay.one() %}
+      {% set finalDefaultAuthorInfo = finalDefaultAuthorInfo|merge({"photo": {"url": finalDefaultAuthorInfo.photo.url}}) %}
+      {% if not (defaultAuthor.differentBio == "") %}
+        {% set finalDefaultAuthorInfo = finalDefaultAuthorInfo|merge({'bio': defaultAuthor.differentBio}) %}
+      {% endif %}
+      {% if not (defaultAuthor.differentJobTitle == "") %}
+        {% set finalDefaultAuthorInfo = finalDefaultAuthorInfo|merge({'jobTitle': defaultAuthor.differentJobTitle}) %}
+      {% endif %}
+
+    {% endif %}
+  {% elseif defaultAuthor.globalSpecific == "ebooks" and (entry.type == "eBook"  or entry.type == "download") %}
+    {% if defaultAuthor.userToDisplay.all()|length %}
+      {% set finalDefaultAuthorInfo = defaultAuthor.userToDisplay.one() %}
+      {% set finalDefaultAuthorInfo = finalDefaultAuthorInfo|merge({"photo": {"url": finalDefaultAuthorInfo.photo.url}}) %}
+      {% if not (defaultAuthor.differentBio == "") %}
+        {% set finalDefaultAuthorInfo = finalDefaultAuthorInfo|merge({'bio': defaultAuthor.differentBio}) %}
+      {% endif %}
+      {% if not (defaultAuthor.differentJobTitle == "") %}
+        {% set finalDefaultAuthorInfo = finalDefaultAuthorInfo|merge({'jobTitle': defaultAuthor.differentJobTitle}) %}
+      {% endif %}
+
+    {% endif %}
+  {% elseif defaultAuthor.globalSpecific == "landing" and entry.type == "landing" %}
+    {% if defaultAuthor.userToDisplay.all()|length %}
+      {% set finalDefaultAuthorInfo = defaultAuthor.userToDisplay.one() %}
+      {% set finalDefaultAuthorInfo = finalDefaultAuthorInfo|merge({"photo": {"url": finalDefaultAuthorInfo.photo.url}}) %}
+      {% if not (defaultAuthor.differentBio == "") %}
+        {% set finalDefaultAuthorInfo = finalDefaultAuthorInfo|merge({'bio': defaultAuthor.differentBio}) %}
+      {% endif %}
+      {% if not (defaultAuthor.differentJobTitle == "") %}
+        {% set finalDefaultAuthorInfo = finalDefaultAuthorInfo|merge({'jobTitle': defaultAuthor.differentJobTitle}) %}
+      {% endif %}
+
+    {% endif %}
+  {% endif %}
+{% endfor %}
+
+	
+  {% block content %}
+    <p>If you see me, you haven’t set your <code>{% verbatim %}{% block content %}…{% endblock %}{% endverbatim %}</code> yet.</p>
+    <p>See Twig’s <a href="http://twig.sensiolabs.org/doc/templates.html#template-inheritance">Template Inheritance</a> documentation for an explanation.</p>
+  {% endblock %}
+ 
+  {% if url == '/library' %}
+    <script>
+       LazyLoad.js([
+      'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js',
+      '/js/vue.min.js',
+      '/js/vue/resources.js'
+      ],function(){
+        
+      })
+    </script>
+  {% else %}
+    <script>
+          LazyLoad.css(['https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css']);
+          LazyLoad.js(['https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js'])
+    </script>
+  {% endif %}
+  {# <script type="text/javascript" src="/js/app.min.{{ staticAssetsVersion }}.js"></script> #}
+  {% import "logic-lifter/_schema-lib.html" as schemaLib %} 
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Copper",
+      "alternateName": "Copper CRM",
+      "foundingDate": "2013",
+      "url": "https://www.copper.com",
+      "logo": "https://d2ydtwisqcxv72.cloudfront.net/landing/copper-logo.png",
+      "Address":{
+        "@type":"PostalAddress",
+        "streetAddress":"301 Howard St. 600",
+        "addressLocality":"San Francisco",
+        "addressRegion":"CA",
+        "postalCode":"94105",
+        "addressCountry":"USA"
+    },
+    {{ schemaLib.returnCopperAggregateRating() }},
+      "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+415-231-6360",
+      "email": "info@copper.com",
+      "contactType": "customer service"
+      },
+      "sameAs": [
+      "https://www.facebook.com/CopperInc/",
+      "https://twitter.com/CopperInc",
+      "https://www.instagram.com/copperinc",
+      "https://www.youtube.com/c/CopperInc",
+      "https://www.linkedin.com/company/copper-inc/"
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Copper",
+        "applicationCategory": "BusinessApplication",
+        {{ schemaLib.returnCopperOffers() }},
+        {{ schemaLib.returnCopperAggregateRating() }}
+      }
+    </script>
+
+    {# tracking functionality #}
+    <script>
+    LazyLoad.js([
+        'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js',
+        '/js/vendor/js-cookie.js',
+        '/js/functions.min.{{ staticAssetsVersion }}.js'
+    ],function(){
+        var localSndDomain = '.copper.com';
+        {% if entry.defaultSourceUtm is not null and entry.defaultSourceUtm|length > 0 %}
+          var defaultUtmSource = "{{ entry.defaultSourceUtm }}";
+          if(Cookies.get('utm_source', { domain:  localSndDomain }) == "null" || Cookies.get('utm_source', { domain:  localSndDomain }) == null || Cookies.get('utm_source', { domain:  localSndDomain }) == ""){
+            Cookies.set('initial_utm_source', defaultUtmSource, { domain:  localSndDomain });
+          }
+          Cookies.set('utm_source', defaultUtmSource, { domain:  localSndDomain });
+        {% endif %}
+        {% if entry.defaultMediumUtm is not null and entry.defaultMediumUtm|length > 0 %}
+          var defaultUtmMedium = "{{ entry.defaultMediumUtm }}";
+          if(Cookies.get('utm_medium', { domain:  localSndDomain }) == "null" || Cookies.get('utm_medium', { domain:  localSndDomain }) == null || Cookies.get('utm_medium', { domain:  localSndDomain }) == ""){
+            Cookies.set('initial_utm_medium', defaultUtmMedium, { domain:  localSndDomain });
+          }
+          Cookies.set('utm_medium', defaultUtmMedium, { domain:  localSndDomain });
+        {% endif %}
+        {% if entry.defaultCampaignUtm is not null and entry.defaultCampaignUtm|length > 0 %}
+          var defaultCampaignUtm = "{{ entry.defaultCampaignUtm }}";
+          if(Cookies.get('utm_campaign', { domain:  localSndDomain }) == "null" || Cookies.get('utm_campaign', { domain:  localSndDomain }) == null || Cookies.get('utm_campaign', { domain:  localSndDomain }) == ""){
+            Cookies.set('initial_utm_campaign', defaultCampaignUtm, { domain:  localSndDomain });
+          }
+          Cookies.set('utm_campaign', defaultCampaignUtm, { domain:  localSndDomain });
+        {% endif %}
+    })
+      
+    </script>
+    {# <script type="text/javascript" src="/js/vendor.{{ staticAssetsVersion }}.js"></script>
+    <script type="text/javascript" src="/js/functions.min.{{ staticAssetsVersion }}.js"></script> #}
+    
+    <!-- amplitude tracking script --> 
+    {# <!--<script type="text/javascript">
+     (function(e,t){var n=e.amplitude||{_q:[],_iq:{}};var r=t.createElement("script")
+     ;r.type="text/javascript"
+     ;r.integrity="sha384-vYYnQ3LPdp/RkQjoKBTGSq0X5F73gXU3G2QopHaIfna0Ct1JRWzwrmEz115NzOta"
+     ;r.crossOrigin="anonymous";r.async=true
+     ;r.src="https://cdn.amplitude.com/libs/amplitude-5.8.0-min.gz.js"
+     ;r.onload=function(){if(!e.amplitude.runQueuedFunctions){
+     // console.log("[Amplitude] Error: could not load SDK")}}
+     ;var i=t.getElementsByTagName("script")[0];i.parentNode.insertBefore(r,i)
+     ;function s(e,t){e.prototype[t]=function(){
+     this._q.push([t].concat(Array.prototype.slice.call(arguments,0)));return this}}
+     var o=function(){this._q=[];return this}
+     ;var a=["add","append","clearAll","prepend","set","setOnce","unset"]
+     ;for(var u=0;u<a.length;u++){s(o,a[u])}n.Identify=o;var c=function(){this._q=[]
+     ;return this}
+     ;var l=["setProductId","setQuantity","setPrice","setRevenueType","setEventProperties"]
+     ;for(var p=0;p<l.length;p++){s(c,l[p])}n.Revenue=c
+     ;var d=["init","logEvent","logRevenue","setUserId","setUserProperties","setOptOut","setVersionName","setDomain","setDeviceId","enableTracking","setGlobalUserProperties","identify","clearUserProperties","setGroup","logRevenueV2","regenerateDeviceId","groupIdentify","onInit","logEventWithTimestamp","logEventWithGroups","setSessionId","resetSessionId"]
+     ;function v(e){function t(t){e[t]=function(){
+     e._q.push([t].concat(Array.prototype.slice.call(arguments,0)))}}
+     for(var n=0;n<d.length;n++){t(d[n])}}v(n);n.getInstance=function(e){
+     e=(!e||e.length===0?"$default_instance":e).toLowerCase()
+     ;if(!n._iq.hasOwnProperty(e)){n._iq[e]={_q:[]};v(n._iq[e])}return n._iq[e]}
+     ;e.amplitude=n})(window,document);
+
+     amplitude.getInstance().init("{{ amplitudeAppID }}", null, {
+       unsetParamsReferrerOnNewSession: true,
+       includeReferrer: true,
+       includeUtm: true,
+       includeGclid: true,
+       batchEvents: false,
+       platform: 'marketing_site'
+     },
+     function() { amplitude.getInstance().logEvent('page_view', {'url':document.location.pathname,'canonical_title':document.title,'referral_page':document.referrer.split('?')[0]});
+       });
+     </script> --> #}
+     {% if url == "/" %}
+     {#<link rel="stylesheet" href="/css/styles.{{staticAssetsVersion}}.css">#}
+     {#<link rel="stylesheet" href="/css/styles.{{staticAssetsVersion}}.css">#}
+     {#<style>
+       {{ source("./index_combined.min.css") }}
+     </style>#}
+     {# <link rel="stylesheet" href="/css/styles.{{staticAssetsVersion}}.css"> #}
+     {% elseif url == "/pricing" %}
+     <link rel="stylesheet" href="/css/styles.min.{{staticAssetsVersion}}.css">
+      {#<style>
+        {{ source("./pricing/index_combined.min.css") }}
+      </style>#}
+      {% elseif url == "/demos" or url == "/demo" %}
+       <style>
+         {{ source("./demo/index_combined.min.css") }}
+       </style>
+     {% else %}
+      <link rel="stylesheet" href="/css/styles.{{staticAssetsVersion}}.css">
+     {% endif %}
+     
+</html>

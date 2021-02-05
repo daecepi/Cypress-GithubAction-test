@@ -1,0 +1,11 @@
+
+  .c-search-page-content{
+    background: #eeeff0;
+    padding-top: 5px;
+    width: 100%;
+    min-height: 80vh;
+
+    @include media-breakpoint-up(md){
+      padding-top: 125px;
+    }
+  }

@@ -1,0 +1,583 @@
+@import "blog";
+
+#signup_form {
+  position: relative;
+}
+
+.h-smartling-form {
+  flex: 1;
+}
+
+#formModal {
+  .c-form__text {
+    p {
+      display: none;
+      margin-top: 6px;
+      @include media-breakpoint-up(md) {
+        display: block;
+      }
+    }
+  }
+}
+
+section.white {
+  .c-form {
+    box-shadow: none;
+  }
+}
+
+// Privacy Text
+.mktoForm .mktoHtmlText {
+  width: 100% !important;
+  margin: 0;
+  i {
+    padding: 0;
+    display: none;
+  }
+  a {
+    padding: 0;
+  }
+}
+
+//Free Trial Form
+.c-form.free-trial {
+  padding: 35px;
+  @include media-breakpoint-up(md) {
+    padding: 54px;
+  }
+  input[type=text], .c-form input[type=url], .c-form input[type=email], .c-form input[type=tel], .c-form input[type=number], .c-form input[type=date], textarea.mktoField {
+    margin-bottom: 12px;
+  }
+  .c-form__logo {
+    margin-bottom: 10px;
+  }
+}
+
+.c-finder{
+  .finder-input{
+    font-family: 'Montserrat', sans-serif;;
+    font-size: 14px;
+    line-height: 14px;
+    border-radius: 50px;
+    width: 50%;
+    border: 1px solid $color-white;
+    background: transparent;
+    color: $color-white;
+    padding: 11px 40px 11px 23px;
+    outline: none;
+
+    &:focus{
+      padding: 10px 40px 10px 23px;
+      border: 2px solid $color-white;
+      box-shadow: 0px 0px 2px 1px inset ;
+    }
+
+    &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+      color: $color-white;
+      opacity: 1; /* Firefox */
+    }
+    
+    &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+      color: $color-white;
+    }
+    
+    &::-ms-input-placeholder { /* Microsoft Edge */
+      color: $color-white;
+    }
+    @include media-breakpoint-down(md){
+      width: 100%;
+    }
+  }
+  .c-button{
+    position: relative;
+    left: -40px;
+    border: 2px solid $color-white;
+
+    @include media-breakpoint-down(md){
+      margin-bottom: 0px;
+      margin-top: 5px;
+      left: 0px;
+    }
+  }
+
+  @include media-breakpoint-down(md){
+    margin-bottom: 20px;
+    margin-right: 0px;
+  }
+}
+
+/* Marketo Overwrites */
+.c-form {
+  max-width: 1000px;
+  margin: 0 auto;
+  box-shadow: $global-shadow;
+  padding: 20px 0;
+  width: 100%;
+  background-color: $color-white;
+  border-radius: 2px;
+  position: relative;
+  text-align: center;
+  .mktoForm{
+    display: flex;
+    flex-direction: column;
+  }
+  .mktoFieldDescriptor.mktoFormCol {
+    margin-bottom: 7px !important;
+  }
+  .mktoButtonRow, .mktoFormRow{
+    order: 1;
+  }
+  .h-gdpr {
+    order:100;
+    display: none;
+    z-index: 50;
+    padding-top: 10px;
+    @include media-breakpoint-up(md) {
+      padding-right: 45px;
+    }
+    a {
+      display: inline-block;
+      line-height: 0;
+    }
+    .h-gdpr__container {
+      position: relative;
+      top: 3px;
+    }
+    i {
+      padding-top: 0;
+      padding-left: 7px;
+      font-style: normal;
+    }
+  }
+  .public_nav_logo {
+    opacity: 0.25;
+  }
+  h4 {
+    color: $color-graphite;
+  }
+  p {
+    color: #4a4a4a;
+    line-height: 1.5em;
+  }
+  h3 {
+    color: $color-graphite;
+    position: relative;
+  }
+  .mktoForm {
+    width: 100% !important;
+    padding: 35px;
+    /* Regular Input */
+    input[type=text],
+    input[type=url],
+    input[type=email],
+    input[type=tel],
+    input[type=number],
+    input[type=date],
+    textarea.mktoField {
+      width: 100% !important;
+      /* This removes the width imposed by js */
+      background: transparent;
+      border: 1px solid #D5D8DA;
+      color: #3C3F40;
+      border-radius: 4px;    
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: .5px;
+      margin-bottom: 0;
+      max-width: 100%;
+      outline: 0;
+      height: 48px !important;
+      padding-left: 13px !important;
+      padding-top: 4px;
+      -webkit-appearance: none;
+      &:focus {
+        outline: 0;
+        border: 1px solid $color-graphite;
+      }
+      &::placeholder {
+        color: #9D9D9D;
+      }      
+    }
+
+    textarea{
+      &.mktoField{
+        height: 96px !important;
+        padding-top: 10px;
+      }
+    }
+
+    //Radio button
+    input[type=radio] {
+      position: relative;
+      -webkit-appearance: none;
+      width: 6px;
+      height: 16px;
+      transition: border-color 90ms ease-in-out;
+      &:before{
+        background: none;
+        background-image: url('../imgs/RadioButton_Unchecked_Gray.svg');
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 16px;
+        width: 16px;
+        background-size: 16px;
+      }
+      cursor: pointer;
+      &:checked {
+        &:before {
+          content: '';
+          background: none;
+          background-image: url('../imgs/RadioButton_Checked_Pink.svg');
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 16px;
+          width: 16px;
+          background-size: 16px;
+        }
+      }
+    }
+
+    // Checkbox 
+    input[type=checkbox] {
+      position: relative;
+      -webkit-appearance: none;
+      width: 16px;
+      height: 16px;
+      border: 1px solid #d9d9d9;
+      transition: border-color 90ms ease-in-out;
+      border-radius: 2px;
+      cursor: pointer;
+      &:checked {
+        border-color: $color-mint;
+        &:before {
+          content: '';
+          background-image: url('../imgs/checkmark-mint.png');
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 16px;
+          width: 16px;
+          background-size: 16px;
+          border-radius: 2px;
+        }
+      }
+
+      &.checkbox-pink{
+        position: relative;
+        -webkit-appearance: none;
+        width: 16px;
+        height: 16px;
+        border: 0px;
+        transition: border-color 90ms ease-in-out;
+        cursor: pointer;
+        &:before {
+          content: '';
+          background-image: url('../imgs/Box_Checked_Gray.svg');
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 16px;
+          width: 16px;
+          background-size: 16px;
+          border-radius: 2px;
+        }
+        &:checked {
+          &:before {
+            content: '';
+            background-image: url('../imgs/Box_Checked_Pink.svg');
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 16px;
+            width: 16px;
+            background-size: 16px;
+            border-radius: 2px;
+          }
+        }
+      }
+    }
+
+
+    select {
+      width: 100% !important;
+      background: transparent;
+      border: 1px solid #D9D9D9;
+      color: #9d9d9d;
+      border-radius: 3px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px;
+      font-weight: 400;
+      letter-spacing: .5px;
+      margin-bottom: 0;
+      max-width: 100%;
+      outline: 0;
+      height: 45px;
+      padding-left: 12px !important;
+      padding-top: 5px;
+      -moz-appearance: none;
+      -webkit-appearance: none;
+      background: transparent url(https://www.copper.com/imgs/dropdown-arrow.svg) center right 12px no-repeat;
+      &:focus {
+        outline: 0;
+        border: 1px solid $color-graphite;
+      }
+      &.select-selected {
+        color: #3C3F40;
+      }       
+    }
+    .mktoOffset {
+      display: none;
+    }
+    .mktoFieldWrap, .mktoFormCol {
+      width: 100%;
+      // max-width: 380px;
+      margin-bottom: 12px;
+    }
+    //Error Messaging
+    .mktoError {
+      left: 6px;
+      position: absolute;
+      bottom: -6px !important;
+      .mktoErrorArrowWrap {
+        display: none;      
+      }
+      .mktoErrorMsg {
+        display: block;
+        margin-top: 0;
+        background-color: transparent;
+        background-image: none;
+        border: 1px solid transparent;
+        border-radius: 6px;
+        box-shadow: none;
+        color: #B50814;
+        font-size: 13px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: normal;
+        max-width: 400px;
+        padding: 0;
+        text-shadow: none;
+        position: relative;
+        top: 1px;
+        left: 6px;
+        .mktoErrorDetail {
+          display: inline-block;
+        }
+      }
+    }
+    // Hidden Text Field
+    .test {
+      display: none;
+    }    
+  }
+  // Labels
+  .mktoLabel {
+    width: auto !important;
+    background-color: #fff;
+    position: relative;
+    top: 8px;
+    left: 8px;
+    padding: 0 5px;
+    font-size: 13px;
+    color: $color-graphite;
+    letter-spacing: 0;
+    text-align: center;
+    font-weight: normal !important;
+    font-family: 'Montserrat', sans-serif;
+    .mktoAsterix {
+      display: none !important;
+    }
+    &.label-focused {
+      color: $color-graphite;
+    }
+  }
+  //Buttons
+  .mktoButtonWrap {
+    width: 100%;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-top: 18px;
+    // padding-bottom: 28px;
+    display: block;
+    position: relative;
+  }
+  // .mktoButtonRow {
+  //   top: -14px;
+  //   height: 60px;
+  // }
+  .c-form__header {
+    color: $color-dark-gray;
+    text-align: center;
+    margin-bottom: 40px;
+    h1 {
+      text-align: center;
+    }
+    h4 {
+      font-size: 20px;
+      line-height: 1.5em;
+    }
+  }
+  .c-form__header__logo {
+    width: 50%;
+    display: block;
+    margin: 20px auto;
+  }
+  /* Submit Button */
+  .mktoForm .mktoButtonWrap.mktoSimple .mktoButton, .submit_form {
+    background: $color-hot-pink;
+    box-shadow: 0 6px 20px 0 rgba(0,0,0,0.20);
+    border-radius: 100px;
+    font-family: $medium-font;
+    font-size: 13px;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 0 22px;
+    display: inline;
+    border: 1px solid $color-hot-pink;
+    padding: 10px 30px; 
+    @include media-breakpoint-up(md) {
+      width: auto !important;
+    }
+    &:active {
+      opacity: 0.85;
+      box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.24);
+      background-color: $color-indigo;
+      background-image: none;
+    }
+    &:hover{
+      background-color: #FFF;
+      border: 1px solid #FFF;
+      color: $color-hot-pink;;
+      text-decoration: none;
+      -webkit-box-shadow: 0 6px 20px 0 rgba(0,0,0,0.2);
+      box-shadow: 0 6px 20px 0 rgba(0,0,0,0.2);
+    }
+    &:focus{
+      border: none;
+    }
+  }
+  .get_started {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    @include media-breakpoint-up(md) {
+      display: block;
+    }
+    .c-button {
+      margin-right: 0;
+      margin-top: 14px;
+      @include media-breakpoint-up(md) {
+        margin-top: 0;
+      }
+    }
+  }
+  /* Label */
+  .mktoForm .mktoRequiredField label[for=agreetoReferralAgreement], .mktoForm .mktoRequiredField label[for=referralMention]  {
+    display: block !important;
+    font-family: 'Roboto', arial, sans-serif;
+    font-size: 14px;
+    color: $color-graphite;
+  }
+  .js-form-success {
+    display: none;
+    padding: 40px;
+    position: relative;
+    background-color: white;
+    min-height: 235px;
+    min-width: 235px;
+    h3 {
+      top: 0;
+    }
+  }
+  .js-form-success--content-download {
+    display: none;
+    padding: 40px;
+    text-align: left;    
+    background-color: white;
+    min-height: 235px;
+    min-width: 235px;
+    h2 {
+      margin: 0;
+    }
+    p{
+      margin: 10px 0 30px;
+    }
+    img{
+      display: block;
+      margin-top: 40px;    
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  // Small Form Styles
+  &.h-small-form {
+    max-width: 380px;
+    padding: 40px;
+    margin: 0 auto;
+    @include media-breakpoint-up(lg) {
+      margin: 0 0 0 auto;
+    }
+    .mktoForm .mktoFormCol {
+      margin-bottom: 15px !important;
+    }
+  }
+  &.webinar {
+    .mktoForm .mktoRequiredField label.mktoLabel {
+      display: block !important;
+      width: 100% !important;
+    }
+    .mktoForm .mktoButtonWrap {
+      width: 250px;
+    }
+  }
+  // ********
+  // Demo Form
+  // ********
+  &.demo-form--image {
+    padding: 0;
+    .c-form__text {
+      text-align: left;
+      flex: 1;
+      padding: 46px 32px 24px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      background-color: $color-putty;
+      @include media-breakpoint-up(md) {
+        justify-content: flex-start;
+        padding: 48px 0 0;
+        margin: 0 auto;
+        background-color: #F1D2B6;
+        height: 728px;
+        p, h2{
+          padding: 0 48px;
+        }
+        .c-form__text__img{
+          background-image: url('../imgs/modal-bg-image.jpg');
+          background-size: cover;
+          height: 100%;
+        }
+      }
+    }
+    .form_inside {
+      display: flex;
+      flex-direction: column;
+      @include media-breakpoint-up(md) {
+        flex-direction: row;
+      }
+    }      
+  }
+}

@@ -1,0 +1,64 @@
+{% macro createSimpleTowColOrientedTop(copy, image) %}
+<section class="c-cols">
+  <div class="container">
+    <div class="row">
+      <div class="col-md order-2">
+        <div class="c-image c-image--center no-embelleshment">
+          {#<picture>
+        <source type="image/webp" srcset="/imgs/segmentation/segmentation-smb-customers.webp" alt="Segmentation smb customers image">
+        <source type="image/png" srcset="/imgs/segmentation/segmentation-smb-customers.png" alt="Segmentation smb customers image">
+        <img src="/imgs/segmentation/segmentation-smb-customers.png" alt="Segmentation smb customers image">
+</picture>#}
+          {% set contentImage = image.one() %}
+          {% if contentImage %}
+            <img src="{{contentImage.url}}" alt="{{contentImage.title}}">
+          {% endif %}
+        </div>
+      </div>
+      <div class="col-md order-1">
+        {{copy}}
+        {#<h2>Small businesses<br>love Copper.</h2>
+        <p>Small businesses love Copper. Meet the first simple and intuitive crm that allows you to work right from your Gmail.</p>#}
+      </div>
+    </div>
+  </div>
+</section>
+{% endmacro %}
+
+{% macro createSimpleTowColColorConfined(backgroundColor, eyebrow, copy, image, ctaText, ctaLink) %}
+<section class="c-jumble confined-contaner no-top-margin">
+	<div class="container">
+
+		<div class="c-jumble__container col-md-10 offset-md-2 no-padding">
+			<div class="c-jumble__content c-valign--middle">
+					
+					<div class="row column-reverse">
+						<div class="col-md-5 order-md-2">
+							<div class="c-image">
+                {% set contentImage = image.one() %}
+                {% if contentImage %}
+                  <img src="{{contentImage.url}}" alt="{{contentImage.title}}">
+                {% endif %}
+							</div>
+						</div>
+						<div class="col-md-7 order-md-1">	
+							<pre class="c-eyebrow c-eyebrow--light">{{eyebrow}}</pre>
+              {{copy}}
+              {% if ctaText|length and ctaLink|length %}
+                <a class="t-link h-white" href="{{ctaLink}}">{{ctaText}}</a>
+              {% endif %}
+              {# 
+                {% if ctasList|length %}
+                  {% set ctas = ctasList %}
+                  {% include 'components/cta/_index.html' %}
+                {% endif %}
+                #}
+            </div>
+					</div>
+									
+			</div>
+		</div>
+
+	</div>
+</section>
+{% endmacro %}

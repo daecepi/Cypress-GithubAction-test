@@ -1,0 +1,86 @@
+{% set mainCategory = entryTeaser.blogCategories.last() %}
+{% set entryTeaserAuthorToUse = entryTeaser.author ? entryTeaser.author : finalUserInfo %}
+  <div class="c-blog-card"> 
+    <a class="c-card__clickthrough" href="{{ entryTeaser.url }}"></a>
+    <div class="c-blog-card__content c-blog-card__content--text">
+      <span class="t-eyebrow ">
+        {{ mainCategory }} 
+        {% if entryTeaser.readingTime | length %}
+        <span>: {{ entryTeaser.readingTime }} read</span>
+        {% endif %}
+      </span>
+      <h3 class="c-blog-card__content__title c-blog-card__content__title--text">
+        {{entryTeaser.title}}
+      </h3>
+      <p class="c-blog-card__content__subtitle p-sm no-margin">{{ entryTeaser.seoDescription }}</p>
+      <div class="c-blog-card__content__author">
+        <div class="c-author">
+          {% if entryTeaserAuthorToUse.photo|length %}
+            {% set image = entryTeaserAuthorToUse.photo %}
+            <div class="circle-img c-author__img c-author__img--x-small" style="background-image: url(' {{image.url}} ')"></div>
+          {% else %}
+            <div class="circle-img c-author__img c-author__img--x-small background-{{random(1)+1}}">
+              <span v-if="!entryTeaserAuthorToUse.photo" class="c-author__img--alt">{{ entryTeaserAuthorToUse.name|first }}</span>
+            </div>
+          {% endif %}
+          <div class="c-author__meta c-author__meta--small">            
+            <p class="p-xtra-sm  no-margin"><strong>{{ entryTeaserAuthorToUse.name }}</strong></p>
+            {% if entryTeaserAuthorToUse.authorTitle %}
+              <p class="p-xtra-sm  no-margin">{{ entryTeaserAuthorToUse.authorTitle }}</p>
+            {% else %}
+              <p class="p-xtra-sm  no-margin">Contributor</p>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>  
+
+  
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "{{ entryTeaser.title|length > 60 ? entryTeaser.title|striptags|slice(0, 57) ~ '...' : entryTeaser.title|striptags }}",
+    {% if entryTeaser.seoDescription|length > 0 %}
+      "description": "{{ entryTeaser.seoDescription|length > 60 ? entryTeaser.seoDescription|striptags|slice(0, 57) ~ '...' : entryTeaser.seoDescription|striptags }}",
+    {% else %}
+      "description": "{{entryTeaser.title}}" ,
+    {% endif %}
+    "provider": {
+      "@type": "Organization",
+      "name": "Copper",
+      "sameAs": "http://www.copper.com"
+    }
+  }
+</script>
+{% import "logic-lifter/_schema-lib.html" as schemaLib %}
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "{{entryTeaser.url}}"
+    },
+    "headline": "{{entryTeaser.title|slice(0, 110)}}",
+    "image": [
+      {{ schemaLib.resizedImagesForSchemas(entryTeaser.featuredImage.one()) }}
+    ],
+    "datePublished": "{{entryTeaser.postDate.iso8601 }}",
+    "dateModified": "{{ entryTeaser.dateUpdated.iso8601 }}",
+    "author": {
+      "@type": "Person",
+      "name": "{{entryTeaserAuthorToUse.name}}"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Copper CRM",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "/imgs/copper-logo-pink-il.svg"
+      }
+    },
+    "description": "{% if entryTeaser.seoDescription %}{{entryTeaser.seoDescription}}{% else %} {{entryTeaser.title}} {% endif %}"
+  }
+  </script>

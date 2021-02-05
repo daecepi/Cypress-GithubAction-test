@@ -1,0 +1,62 @@
+.c-tooltip {
+  display:block;
+  position:relative;
+  text-align:left;
+  cursor: pointer;
+  .strike-through-title {
+    opacity: 0;
+    width: 100%;
+    height: 5px;
+    background: #B8FF01;
+    transform: translateY(-150%);
+    z-index: -1;    
+  }  
+}
+
+.c-tooltip span {
+  max-width:300px;
+  top:-10px;
+  left:0;
+  transform:translate(-35px, -100%);
+  padding:10px 20px;
+  color:#FFFFFF;
+  background-color:#3C3F40;
+  font-size:14px;
+  line-height: 22px;
+  position:absolute;
+  z-index:99999999;
+  font-family: $regular-font;
+  box-sizing:border-box;
+  visibility:hidden; 
+  opacity:0; 
+  transition:opacity 0.8s;
+}
+
+.c-tooltip:hover {
+  .strike-through-title{
+    opacity: 1;
+  }
+  span {
+    visibility:visible; 
+    opacity:1;
+  }
+}
+
+.c-tooltip span i {
+  position:absolute;
+  top:100%;
+  left:25px;
+  width:24px;
+  height:12px;
+  overflow:hidden;
+}
+
+.c-tooltip span i::after {
+  content:'';
+  position:absolute;
+  width:12px;
+  height:12px;
+  left:50%;
+  transform:translate(-50%,-50%) rotate(45deg);
+  background-color:#3C3F40;
+}

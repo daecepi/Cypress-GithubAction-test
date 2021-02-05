@@ -1,0 +1,53 @@
+{% set backgroundColor = matrixBlock.backgroundColor.one() %}
+
+{% if matrixBlock.linkToNav|length %}
+  {% set linkId = matrixBlock.linkToNav |camel %}
+  {% set sectionId = entry[linkId] |camel  %}
+  <a class="anchor" id="{{sectionId}}"></a>
+{% endif %}
+<!-- Three Column -->
+<section id="{% if matrixBlock.stickyNavName != '' %}{{matrixBlock.stickyNavName |lower }}{% endif %}" class="c-three-column  background--{{ matrixBlock.backgroundColor is not null and matrixBlock.backgroundColor.one() is not null ? matrixBlock.backgroundColor.one().slug|replace({" ":"-"})|lower|default('off-white') : 'off-white' }} {{ matrixBlock.addBottomPadding ? 'h-padding-bottom' : '' }}">
+  <div class="container">
+    {% if matrixBlock.eyebrow|length %}<span class="t-eyebrow section-eyebrow">{{ matrixBlock.eyebrow }}</span>{% endif %}
+    {% if matrixBlock.header|length %}
+    <div class="section-header">
+        <h2>{{ matrixBlock.header }}</h2>
+        {% if matrixBlock.subHeader|length %}<p>{{ matrixBlock.subHeader }}</p>{% endif %}
+    </div>
+    {% endif %}
+
+    <div class="row">
+      {% if matrixBlock.entries and matrixBlock.entries is defined and matrixBlock.entries is not null %}
+        {% for entry in matrixBlock.entries.all() %}
+          <div class="col-md-4 {{entry.type == 'newComparisonCard' ? 'extra-bottom-margin--x-small' : ''}}">
+            {% switch entry.type %}
+              {% case "numbers" %}
+                {% include 'sections/landing/three-column/_numbers.html' %}
+              {% case "list" %}
+                {% include 'sections/landing/three-column/_list.html' %}
+              {% case "icon" %}
+                {% include 'sections/landing/three-column/_icon.html' %}
+              {% case "suggestedContent" %}
+                {% include 'sections/landing/three-column/_suggested-content.html' %}
+              {% case "comparisonCard" %}
+                {% include 'sections/landing/three-column/_card.html' %} 
+              {% case "newComparisonCard" %}
+                {% include 'sections/landing/three-column/_new-comparison-card.html' %} 
+              {% case "plainCard" %}
+                {% include 'sections/landing/three-column/_plain-card.html' %}
+              {% case "bulletCards" %}
+                {% import 'sections/landing/three-column/_bullet-card.html' as component %}
+                {{ component.createBulletCard(entry) }}
+              {% case "logoCards" %}
+                {% include 'sections/landing/three-column/_logo-card.html' %}
+              {% case "webinarLikeCards" %}
+                  {% import 'sections/landing/three-column/_webinar-like-card.html' as component %}
+                  {{ component.createWebinarLikeCard(entry) }}
+            {% endswitch %}
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</div>
+</section>

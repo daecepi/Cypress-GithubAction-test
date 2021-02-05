@@ -1,0 +1,50 @@
+/* Alignment helpers */
+.c-align--left {
+	text-align: left;
+	align-items: flex-start;
+	* {
+		text-align: left;
+	}
+}
+.c-align--center {
+	text-align: center;
+	align-items: center;
+	margin-left: auto;
+	margin-right: auto;
+	* {
+		text-align: center;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+.c-align--right {
+	text-align: right;
+	align-items: flex-end;
+	* {
+		text-align: right;
+	}
+}
+
+.c-align--top{
+	display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* vertical alignment */
+.c-valign--middle {
+	display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.c-flex--end{
+	display: flex;
+	align-items: flex-start;
+	flex-direction: column;
+
+	@include media-breakpoint-up(md) {
+		align-items: flex-end;
+		flex-direction: row;
+	}
+}

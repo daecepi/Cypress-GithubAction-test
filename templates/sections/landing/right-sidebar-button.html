@@ -1,0 +1,37 @@
+<div class="scroll-spy-button-wrap">
+	<div class="info-box">
+		{% set image = entry.scrollspyPopupImage.one() %}
+		{% set entryLink = entry.scrollspyPopupLink.one() %}
+		<img class="c-blog-card__image" src="{{ image.url }}" alt="{{ image.title }}">
+		<p>{{entry.scrollspyPopupCopy}}</p>
+		<a href="{{entryLink.url}}" class="c-button">{{entry.scrollspyPopupCta}}</a>
+	</div>
+	<div class="button-image-wrap"></div>
+</div>
+{# {% if entry.showExitIntent %}
+ #}<div id="scroll-spy-exit-intent" class="exit-intent-wrap">
+		<div class="dark-transparency"></div>
+		<div class="exit-intent-inner">
+			<div class="exit-intent-module">
+				<div id="modal-close-link" class="close-me"><img src="/imgs/icons/Close-popup-icon.svg" alt="Close popup image"></div>
+				{# <img src="{{ image.url }}" alt="{{ image.title }}"> #}
+				<div class="img-wrapped">
+					<picture>
+          <source type="image/webp" srcset="/imgs/placeholder/191018_Ebook_Campaign_UninteruptWorkflow-Cover 1.webp"  alt="{{ image.title }}"  >
+          <source type="image/png" srcset="/imgs/placeholder/191018_Ebook_Campaign_UninteruptWorkflow-Cover 1.png"  alt="{{ image.title }}"  >
+          <img   alt="{{ image.title }}"   src="/imgs/placeholder/191018_Ebook_Campaign_UninteruptWorkflow-Cover 1.png"   >
+</picture>
+				</div>
+				<div class="exit-intent-info">
+					<pre class="c-eyebrow c-eyebrow--dark">Want to learn more?</pre>
+					<h2 class="t-resource-period--hot-pink">Get the Ultimate Guide to Creating a Lead Management Process</h2>
+					<p class="subtitle">Learn how to turn more leads into paying customers.</p>
+					<div class="button-row">
+						<a href="{{entryLink.url}}" class="c-button-new">Get the Guide</a>
+						<a id="noThanks" class="c-button-new c-button-new--white">No Thanks</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{# {% endif %} #}

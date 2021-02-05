@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="13" height="10" viewBox="0 0 13 10">
+  <title>Arrow</title>
+  <g fill="#FF3465" fill-rule="evenodd">
+    <path d="M.58 4h10v2h-10z"></path>
+    <path d="M8.36.879l4.242 4.242-1.414 1.415-4.243-4.243z"></path>
+    <path d="M6.945 7.95l4.242-4.244 1.414 1.415L8.36 9.363z"></path>
+  </g>
+</svg>

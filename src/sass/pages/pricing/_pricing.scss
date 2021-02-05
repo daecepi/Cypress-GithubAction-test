@@ -1,0 +1,84 @@
+.pricing{
+  .c-pricing-table__info--cornflower{
+    a{
+      text-decoration: underline;
+      color: #3C3F70;
+      border-bottom: #3C3F70;
+    }
+  }
+
+  @include media-breakpoint-down(sm){
+
+  .c-pricing-table--cornflower{
+    h4{
+      font-size: 20px;
+      line-height: 40px;
+    }
+  }
+
+    .c-pricing-hero--cornflower{
+      padding-bottom: 0px;
+    }
+    .c-pricing-hero__billing{
+        .p-sm{
+            margin-top: 0px;
+            margin-bottom: 25px;
+        }
+    }
+    .c-pricing-hero__plans__content{
+        @include media-breakpoint-down(sm){
+            min-height: 282px!important;
+        }
+    }
+  }
+  
+  @include media-breakpoint-up(lg){
+  .c-pricing-table--cornflower{
+    h4{
+      left: 0px;
+    }
+  }
+    .c-pricing-plans__footer{
+        bottom: unset !important;
+    }
+  }
+
+  .c-press-articles{
+    @include media-breakpoint-down(sm){
+      padding-bottom: 10px;
+    }
+    margin-top: 60px;
+    margin-bottom: 120px;
+    @include media-breakpoint-down(sm){
+      margin-top: 30px;
+      margin-bottom: 60px;
+    }
+    .container{
+      .row{
+        .col-md-4{
+          h2{
+            margin-bottom: 24px;
+            font-size: 40px;
+            line-height: 48px;
+          }
+        }
+      }
+    }
+    h3{ 
+      font-size: 28px;
+      line-height: 36px;
+    }
+  }
+  @include media-breakpoint-down(sm){
+    .floating-container--pricing{
+      &.floating-active{
+        position: fixed;
+        top: 50px;
+        width: 100%;
+        background: white;
+        opacity: 1;
+        z-index: 5;
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+<section class="c-case-study c-case-study--align-left home-quote mobile-margin-adder">
+  <div class="container colorblock--soft-eggplant">
+
+    <div class="c-case-study__container col-md-11 no-padding">
+
+      <div class="c-case-study__content c-valign--middle">
+
+        <div class="row row-eq-height">
+
+          <div class="col-md-6">
+            <pre class="c-eyebrow c-eyebrow--light">{{ matrixBlock.eyebrow }}</pre>
+            <div class="c-panel__blockquote c-valign--middle">
+              <h2>{{ matrixBlock.testimonialsHeader }}</h2>
+              <p class="">{{ matrixBlock.quote }}</p>
+              <cite>{{ matrixBlock.author }}<span class="c-panel__blockquote--position">{{ matrixBlock.jobTitle }}</span></cite>
+              <div class="c-panel__blockquote--logo">
+                {% set logoD = matrixBlock.logo.one() %}
+                <img src="{{ logoD.url }}" alt="{{ logoD.title }}">
+              </div>
+            </div>
+
+          </div>
+
+          <div class="col-md-6 c-align--center relativise">
+            <div class="c-image c-image--shadow move-middle-bottom">
+              {% set testimonialsImage = matrixBlock.testimonialsImage.one() %}
+              <img alt="{{ testimonialsImage.title }}" src="{{ testimonialsImage.url }}">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>

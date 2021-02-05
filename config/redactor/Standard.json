@@ -1,0 +1,17 @@
+{
+  "buttons": ["html", "formatting", "bold", "italic", "unorderedlist", "orderedlist", "link", "image", "video"],
+  "plugins": ["fullscreen", "video","alignment"],
+  "linkNewTab": true,
+  "imagePosition": true,
+  "toolbarFixed": true,
+  "formattingAdd": {
+    "hot-pink-text-maker": {
+        "title": "Make text hot pink",
+        "api": "module.inline.format",
+        "args": {
+            "tag": "span",
+            "class": "make-color-hot-pink"
+        }
+    }
+  }
+}

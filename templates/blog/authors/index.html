@@ -1,0 +1,31 @@
+{% set entry = craft.entries.section('blogIndex').one() %}
+
+{% extends "_side-nav.html" %}
+
+{% set page = craft.app.request.getParam('pg') %}
+
+{% block sideNav %}
+<div class="c-blog-content__main container"> 
+  <div class="row">
+    <div class="col-lg-5 col-md-8 c-copper-chronicles__categories">
+      <h2 class="t-resource-period--hot-pink">Authors</h2>
+      <div class="t-remove-copy-margin"><p>{{entry.authorsDescription}}</p></div>        
+    </div>
+  </div>
+
+
+
+  {# Give vue page type #}
+  <div id="vue-blog-page-type" style="display:none;">author</div>
+  <div id="vue-blog-page-num" style="display:none;">{{page}}</div>
+
+  {% verbatim %}
+
+    <script src="/js/vue.min.js"></script>
+    <script src="/js/vue/main.js" type="module"> </script>
+    <div id="app"></div>
+
+  {% endverbatim %}
+
+</div>
+{% endblock %}

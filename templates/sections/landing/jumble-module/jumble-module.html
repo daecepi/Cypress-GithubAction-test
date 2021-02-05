@@ -1,0 +1,38 @@
+
+		<!-- Case Study -->
+		<section class="c-case-study c-case-study--align-left home-quote extra-top-margin--medium extra-bottom-margin--medium ">
+			<div class="container colorblock--hot-pink">
+		
+				<div class="c-case-study__container col-md-11 no-padding">
+		
+					<div class="c-case-study__content c-valign--middle">
+		
+						<div class="row row-eq-height">
+		
+							<div class="col-md-6">
+								<pre class="c-eyebrow c-eyebrow--light">{{ matrixBlock.eyebrow|length > 0 ? matrixBlock.eyebrow : '' }}</pre>
+                  <div class="c-panel__blockquote c-valign--middle">
+                    {{ matrixBlock.copy|length ? matrixBlock.copy: '' }}
+                    {# CTAs section #}
+                    {% if matrixBlock.ctas|length %}
+                      {% set ctas = matrixBlock.ctas %}
+                      {% include 'components/cta/_index.html' %}
+                    {% endif %}
+                  </div>
+							</div>
+		
+							<div class="col-md-6 c-align--center">
+								<div class="c-image c-image--shadow">
+                  {% if matrixBlock.image|length %}
+                    {% set image = matrixBlock.image.one() %}
+                    <img src="{{ image.url }}" alt="{{ image.title }}">
+                  {% endif %}
+								</div>
+							</div>
+						</div>
+		
+					</div>
+				</div>
+		
+			</div>
+		</section>

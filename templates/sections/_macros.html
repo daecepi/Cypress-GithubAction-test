@@ -1,0 +1,55 @@
+
+{% macro navAd( item ) %}
+    {% switch item %}
+        {% case "Product" %}
+            {% set 
+                item = {
+                "imageUrl"  : "/imgs/Copper_Business-Services_Soldier_180713-scaled.png",
+                "Headline"  : "Get the most out of your CRM",
+                "text"      : "Learn about everything you didn't know your CRM could do.",
+                "ctaUrl"    : "/demos",
+                "state"     : "0" 
+                } 
+            %}
+        {% case "Resources" %}
+            {% set 
+                item = {
+                "imageUrl"  : "/imgs/Copper_Business-Services_Soldier_180713.jpg",
+                "Headline"  : "Get the most out of your CRM",
+                "text"      : "Learn about everything you didn't know your CRM could do.",
+                "ctaUrl"    : "/demos",
+                "state"     : "0" 
+                } 
+            %}
+        {% case "Company" %}
+            {% set 
+                item = {
+                "imageUrl"  : "/imgs/Copper_Business-Services_Soldier_180713.jpg",
+                "Headline"  : "Get the most out of your CRM",
+                "text"      : "Learn about everything you didn't know your CRM could do",
+                "ctaUrl"    : "/demos",
+                "state"     : "0" 
+                } 
+            %}
+    {% endswitch %}
+
+    {% if item.state == 1 %}
+
+    <ul class="nav-ad-container">
+        <li class="col-4 nav-ad--image" style="background:url('{{ item.imageUrl }}')">
+        </li>
+        <li class="col-8 nav-ad--content">
+            <div class="col-8 nav-ad--message">
+                <h5 class="nav-ad--headline" >{{ item.Headline }}</h5>
+                <p class="nav-ad--text">{{ item.text }}</p>
+            </div>
+            <div class="col-4 nav-ad-button">
+                    <a class="c-button c-button--white-outline" href="{{ item.ctaUrl }}">Watch Now</a>
+            </div>
+            
+        </li>
+    </ul>
+
+    {% endif %}
+
+{% endmacro %}

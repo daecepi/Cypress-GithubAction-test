@@ -1,0 +1,40 @@
+.nav-ad-container{
+    margin: 0px;
+    position: absolute;
+    display: flex;
+    top: 100%;
+    left: 0px;
+    height: 110px;
+    width: 100%!important;
+    overflow: hidden;
+    .nav-ad--image{
+        background-size: 120%!important;
+        background-position: 10% 43%!important;
+    }
+    .nav-ad--content{
+        background:$color-eggplant;
+        display: flex;
+        align-items: center;
+        .nav-ad--message{
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            padding-left: 50px;
+            .nav-ad--headline {
+                margin: 0px;
+                text-transform: initial;
+                color: white;
+                font-family: "Graphik-Medium";
+            }
+            .nav-ad--text {
+                margin: 0px;
+                font-size: 14px;
+                color: white;
+            }
+        }
+        .nav-ad-button{
+            padding-right: 30px;
+            text-align: right;
+        }
+    }
+}

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="13px" height="10px" viewBox="0 0 13 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>right-arrow</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="right-arrow" transform="translate(0.000000, -1.000000)" fill="#FFFFFF" fill-rule="nonzero">
+            <rect id="Rectangle-11" x="0.580645" y="5" width="10" height="2"></rect>
+            <g id="Group" transform="translate(8.116179, 6.242641) rotate(135.000000) translate(-8.116179, -6.242641) translate(4.116179, 2.242641)">
+                <g id="Group-2" transform="translate(0.207107, 0.085786)">
+                    <rect id="Rectangle-11-Copy-2" transform="translate(1.535534, 3.828427) rotate(-90.000000) translate(-1.535534, -3.828427) " x="-1.46446588" y="2.82842709" width="6" height="2"></rect>
+                    <rect id="Rectangle-11-Copy-3" transform="translate(3.535534, 1.828427) rotate(-180.000000) translate(-3.535534, -1.828427) " x="0.535534094" y="0.828426875" width="6" height="2"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

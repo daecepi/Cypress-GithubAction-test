@@ -1,0 +1,41 @@
+{% macro createVideoAsGifElement(identifier, vidSrc, vidExtension, classes, styles, posterLink) %}
+  <script>
+    LazyLoad.js([
+        'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js',],function(){
+          function scrollFunctionality (){
+              $('.video-as-gif.onViewport').each(function(index){
+                var elementTop = $(this).offset().top;
+                var elementBottom = elementTop + $(this).outerHeight();
+                var viewportTop = $(window).scrollTop();
+                var viewportBottom = viewportTop + $(window).height();
+
+              var elemenId = $(this).attr('id');
+              if (elementBottom > viewportTop && elementTop < viewportBottom && lastGifVidExecuted[elemenId] !== 1) {
+                lastGifVidExecuted[elemenId] = 1;
+                $(this)[0].play();
+              } else if(lastGifVidExecuted[elemenId] !== 1) {
+                $(this)[0].pause();
+              }
+              });
+          }
+          
+          $(window).scroll(function() {
+            scrollFunctionality();
+          });
+          $(document).ready(function(){
+            scrollFunctionality();
+          });
+    });
+  </script>
+  <video id="{{ identifier }}" class="video-as-gif {{ classes }}" style="{{ styles }}" muted playsinline poster="{{posterLink}}"> {# loop autoplay #}
+    <source src="{{ vidSrc }}.webm" type="video/webm">
+    <source src="{{ vidSrc }}.{{vidExtension == "quicktime" ? "mov" : vidExtension }}" type="video/{{vidExtension}}">
+    <p>Su navegador no soporta video HTML5</p>
+  </video>
+{% endmacro %}
+
+{% macro createCheckButton(buttonText) %}
+  <button class="c-button--outline">
+    {{buttonText}}
+  </button>
+{% endmacro %}

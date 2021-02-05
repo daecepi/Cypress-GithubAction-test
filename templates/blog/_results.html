@@ -1,0 +1,46 @@
+{% set entry = craft.entries.section('blogIndex').one() %}
+
+{% set query = craft.app.request.getParam('q') %}
+{% set page = craft.app.request.getParam('pg') %}
+{% set subcategory = craft.app.request.getParam('sc') %}
+
+{% extends "_side-nav.html" %}
+
+{% block sideNav %}
+<div class="c-blog-content__main container"> 
+  {# <div class="row"> #}
+    {% set entries = craft.entries.section('blog').search(query) %}
+    {% if entries|length %}
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Search results for <span class="t-resource-quotes--hot-pink">{{query}}</span></h2>
+        </div>
+      </div>
+      {# Give vue page type and category ID #}
+      <div id="vue-blog-page-type" style="display:none;">search</div>
+      <div id="vue-blog-query" style="display:none;">{{query}}</div>
+      <div id="vue-blog-page-num" style="display:none;">{{page}}</div>
+      <div id="vue-blog-subcategory-query" style="display:none;">{{subcategory}}</div>
+
+      {% verbatim %}
+
+        <script src="/js/vue.min.js"></script>
+        <script src="/js/vue/main.js" type="module"> </script>
+        <div id="app"></div>
+
+      {% endverbatim %}
+    {% else %}
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="t-resource-period--hot-pink">We're sorry</h2>
+          <p>We couldn't find any matching results for <span class="t-resource-quotes--hot-pink">{{query}}</span></p>
+        </div>
+      </div>
+    {% endif %}
+  {# </div> #}
+
+  
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,227 @@
+{# Section's interactivity flags #}
+{% set pageHeroSynced = 0 %}
+
+{% for entriesInfo in entry.landingBlocks.all() %}
+  {% if entriesInfo.type == 'syncedHero' %}
+    {% set pageHeroSynced = 1 %}
+  {% endif %}
+{% endfor %}
+
+
+{# Normal nav flow #}
+{% if utilities %}
+  {% set utilitiesItems = utilities %}
+{% else %}
+  {% set utilitiesItems = false %}
+{% endif %}
+
+{% set 
+    lpsNav = {
+        autohide : true,
+        menu : {},
+        utilities : {
+            tryFree : {
+                name: "Try Free",
+                sendUTMsToAmplitude : true,
+                url: craft.app.config.general.signUpUrl ,
+                color: "white",
+                classes : ["c-button"],
+                desktopClasses: ["c-button"]
+            },
+            login : {
+                name: "Login",
+                sendUTMsToAmplitude : false,
+                url: "https://app.prosperworks.com/users/sign_in",
+                color: "#FF3465",
+                classes : ["c-button","c-button--outline"],
+                desktopClasses: ["c-nav__login"]
+            },
+            requestDemo : {
+                name: "Request Demo",
+                sendUTMsToAmplitude : false,
+                url: "/demos",
+                color: "#FF3465",
+                classes : ["c-button","c-button--outline"],
+                desktopClasses: ["c-nav__login"]
+            },
+            freeTrial : {
+                name: "Free Trial",
+                sendUTMsToAmplitude : false,
+                url: craft.app.config.general.signUpUrl,
+                color: "#FF3465",
+                classes : ["c-button","c-button--outline"],
+                desktopClasses: ["c-button"]
+            }
+        },
+        navLinks : [entry.navLink1,entry.navLink2,entry.navLink3,entry.navLink4,entry.navLink5]
+        
+    }
+%}
+
+<nav class="c-nav--mobile {% if lpsNav.autohide == true %}autohide-nav{% endif %}">
+  <a class="c-nav__logo" href="/">
+    {% include "sections/nav/globals/_default-logo.html" %}
+  </a>
+  <div class="c-back js-sub-back">
+      <?xml version="1.0" encoding="UTF-8"?>
+      <svg width="16px" height="8px" viewBox="0 0 16 8" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <defs></defs>
+          <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+              <g id="baseline-arrow_right_alt-24px" transform="translate(-4.000000, -8.000000)">
+                  <polygon id="Shape" points="0 0 24 0 24 24 0 24"></polygon>
+                  <polygon id="Shape" fill="#FFFFFF" fill-rule="nonzero" transform="translate(12.000000, 12.000000) scale(-1, 1) translate(-12.000000, -12.000000) " points="16.01 11 4 11 4 13 16.01 13 16.01 16 20 12 16.01 8"></polygon>
+              </g>
+          </g>
+      </svg>
+  </div>
+  {% if lpsNav.navLinks |join("")|trim != "" %}
+  <div class="c-nav--mobile__burger">
+    <div id="nav-icon2">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  {% endif %}
+
+  {% if utilitiesItems != false %}
+    <ul class="c-nav__utility nav-button-mobile" style="list-style: none; margin-top: 10px; width: 100%; display: flex; justify-content: flex-end;">
+    {% for items in utilitiesItems %}
+      <a class="c-button sendUTMsToAmplitude" href="{{ lpsNav.utilities[items].url }}">
+        <li>
+          {{ lpsNav.utilities[items].name }}
+        </li>
+      </a>
+    {% endfor %}
+    </ul>
+  {% else %}
+    <ul class="c-nav__utility nav-button-mobile" style="list-style: none; margin-top: 10px; width: 100%; display: flex; justify-content: flex-end;">
+      {% if pageHeroSynced %}
+          <span class="c-button sendUTMsToAmplitude" onclick="showSyncedHeroForm(this)"/>
+            <li>
+                Get Demo
+            </li>
+          </span>
+      {% elseif not entry.removeFreeTrial %}
+      <a class="c-button sendUTMsToAmplitude" href="{{ craft.app.config.general.signUpUrl }}">
+        <li>
+          {% if entry.type == 'landing' and entry.differentTryFreeCtaCopy is defined and entry.differentTryFreeCtaCopy|length %}
+            {{entry.differentTryFreeCtaCopy}}
+          {% else %}
+            {#{{ entry.slug == "try-free-crm-capterra"  ? "Free Trial" : 'Try Free'}}#}
+            Try Free
+          {% endif %}
+        </li>
+      </a>
+      {% endif %}
+    </ul>
+  {% endif %}
+</nav>
+<div class="c-nav--mobile__overlay">
+
+    <div class="c-nav--mobile__links">
+      <ul>
+        {% if lpsNav.navLinks |join("")|trim != "" %}
+            {% for items in lpsNav.navLinks %}
+                <li class="close-mobile-nav">
+                    <a href="#{{items |camel}}">
+                    {{items}}
+                    </a>
+                </li>
+            {% endfor %}
+        {% endif %}
+      </ul> 
+    </div>
+</div>
+
+{# Desktop Nav #}
+<nav class="c-nav {% if lpsNav.autohide == true %}autohide-nav{% endif %}">
+  <div class="c-nav__container">
+    <div class="container">
+      <div class="c-nav__logo">
+        <a href="/" style="height: 27px;">
+          {% include "sections/nav/globals/_default-logo.html" %}      
+        </a>
+
+      </div>
+      <ul class="c-nav__links">
+        {% if lpsNav.navLinks |join("")|trim != "" %}
+            {% for items in lpsNav.navLinks %}
+                <a href="#{{items |camel}}">
+                    <li>
+                        {{items}}
+                    </li>
+                </a>
+            {% endfor %}
+        {% endif %}
+      </ul>
+      {% if utilitiesItems != false %}
+      <ul class="c-nav__utility">
+        {% for items in utilitiesItems %}
+        <a class="c-button sendUTMsToAmplitude" href="{{lpsNav.utilities[items].url}}">
+          <li>
+          </li>
+        </a>
+        {% endfor %}
+      </ul>  
+      {% else %}
+        <ul class="c-nav__utility">
+          {% if pageHeroSynced == 1 %}
+          <span class="c-button sendUTMsToAmplitude" onclick="showSyncedHeroForm(this)" >
+            <li>
+                Get Demo
+            </li>
+          </span>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script>
+              function heroPropertyReseter(){
+                $('#main-form').css('height','fit-content');
+                $('#main-form').css('min-height','1px');
+                $('#main-form').css('margin-top','30px');
+                $('#main-form').css('overflow','visible');
+                $('#main-form').css('display','none');
+              }
+              function scrollToElements(hash){
+                document.getElementById(hash).scrollIntoView({ behavior: "smooth" });
+              }
+            function showSyncedHeroForm() {
+              heroPropertyReseter();
+              {% if marketoConfigurations.replaceMarketoForms %}
+                if($("input#email").val() == 'example.example.example@example.com') $("input#email").val("");
+              {% else %}
+                var generalForm = MktoForms2.getForm(syncedFormId);
+                if(generalForm.getValues()['Email'] == 'example.example.example@example.com') generalForm.setValues({ Email: ''});
+              {% endif %}
+              $('#initial-control').css('display', 'none');
+          
+              
+              $('#default-asset-container').fadeOut(500, function (){
+                $('#main-form').fadeIn(300);
+              });
+
+              window.location.hash = 'synced-hero';
+              
+              scrollToElements('synced-hero');
+            }
+            </script>
+          {% elseif not entry.removeFreeTrial %}
+              <a class="c-button sendUTMsToAmplitude" href="{{lpsNav.utilities.tryFree.url}}">
+              <li>
+                {% if entry.differentTryFreeCtaCopy is defined and entry.differentTryFreeCtaCopy|length %}
+                  {{entry.differentTryFreeCtaCopy}}
+                {% else %}
+                  {#{{ entry.slug == "try-free-crm-capterra"  ? "Free Trial" : lpsNav.utilities.tryFree.name}}#}
+                  {{lpsNav.utilities.tryFree.name}}
+                {% endif %}
+              </li>
+              </a>
+          {% endif %}
+        </ul>   
+      {% endif %}
+      
+    </div>
+  </div>
+</nav>

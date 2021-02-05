@@ -1,0 +1,176 @@
+@keyframes fadeMeIn {
+	from { opacity: 0; transform: scale(0);} 
+	50% { opacity: .6; transform: scale(.8);}
+	75% { opacity: 1; transform: scale(1.2);}
+	to { opacity: 1; transform: scale(1);}
+}
+@keyframes scaleUpDiv {
+  from { transform: scale(0); }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes scaleDownDiv {
+  to { transform: scale(0); }
+  from {transform: scale(1);}
+}
+.scroll-spy-button-wrap {
+	position: fixed;
+	bottom: 30px;
+	right: 30px;
+	max-width: 188px;
+	z-index: 2;
+	.info-box {
+		background: #FFFFFF;
+		box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.12);
+		border-radius: 6px;	
+		margin-bottom: 20px;
+		padding-bottom: 10px;
+		overflow: hidden;	
+		transform: scale(0);
+		animation: scaleDownDiv .3s forwards;
+		p {
+			font-size: 14px;
+			line-height: 18px;
+			padding: 0px 14px 0px 23px;
+		}
+		.c-button {
+			margin: 20px auto ;
+			padding: 8px 20px;
+			display: block;
+			width: 143px;
+			font-size: 12px;
+			line-height: 14px;
+		}
+	}
+	&.open-scrollspy {
+		.info-box {
+			animation: scaleUpDiv .3s forwards;
+		}
+	}
+	.button-image-wrap {
+		float: right;
+		width: 50px;
+		height: 50px;
+		background-image: url('/imgs/icons/Download.svg');
+		background-size: initial;
+		position: relative;
+		transform: scale(0);
+		opacity: 0;
+		animation: fadeMeIn .6s 6s forwards;
+		/*animation: name duration timing-function delay iteration-count direction fill-mode play-state; */
+		/*animation-delay: 5s;*/
+		&:before {
+			content: url('/imgs/icons/Download-icon.svg');
+			display: inline-block;
+		    position: absolute;
+		    top: 12px;
+		    left: 15px;
+		}
+		&.close-icon {
+			&:before {
+				content: url('/imgs/icons/close-icon.svg');
+				top: 11px;
+    			left: 16px;
+			}
+		}
+	}
+}
+
+.exit-intent-wrap {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 300;
+	display: none;
+    align-items: center;
+    justify-content: center;
+	.dark-transparency {
+		background-color: rgba(0,0,0,0.7);
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+	}
+	.exit-intent-inner {
+		max-width: 706px;
+		margin: 0 auto;
+		position: relative;
+		background-color: white;
+		img {
+			width: 100%;
+		}
+		.exit-intent-module {
+			position: relative;
+			max-width: 700px;
+			.close-me {
+				line-height: 0;
+				position: absolute;
+				right: 22px;
+				top: 25px;
+				&:hover{
+					cursor: pointer;
+				}
+			}
+			.img-wrapped {
+
+			}
+			.exit-intent-info {
+				padding: 40px 60px;
+				h2 {
+					font-size: 48px;
+					line-height: 58px;
+				}
+				.subtitle {
+					font-size: 20px;
+					line-height: 30px;
+				}
+				.button-row {
+					margin-top: 32px;
+					.c-button-new {
+						width: 184px;
+						display: inline-block;
+						margin-right:31px; 
+						padding-top: 14px;
+						padding-bottom: 11px;
+						text-align: center !important;
+						background: #FF3465;
+						border: 1px solid #FF3465;
+						box-sizing: border-box;
+						box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2);
+						border-radius: 21px;
+						font-size: 14px;
+						line-height: 17px;
+						text-align: center;
+						color: #FFFFFF;
+						font-family: $medium-font;
+						font-style: normal;
+						font-weight: 500;
+						&--white {
+							background: #FFFFFF;
+							border: 1px solid #FF3465;
+							box-sizing: border-box;
+							border-radius: 21.5px;
+							color: #FF3465;
+							box-shadow: none;
+
+						}
+						&:hover {
+							text-decoration: none;
+						}
+					}
+				}
+			}
+		}
+	}
+	&.exit-intent-open {
+		display: -webkit-box;
+	    display: -moz-box;
+	    display: -ms-flexbox;
+	    display: -webkit-flex;
+	    display: flex;		
+	}
+}

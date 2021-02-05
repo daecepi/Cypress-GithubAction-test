@@ -1,0 +1,258 @@
+{% macro createNormalVideoSlider(properties) %}
+  <style>
+    #wistia_grid_88_wrapper{
+      width: 100% !important;
+      padding: 0px !important;
+      margin: 0px !important;
+    }
+    #wistia_chrome_81{
+      width: 100% !important;
+      padding: 0px !important;
+      margin: 0px !important;
+    }
+    .wistia_embed_initialized{
+      width: 100% !important;
+    }
+    .wistia_grid_62_wrapper{
+      width: 100% !important;
+    }
+    .wistia_grid_62_main{
+      width: 100% !important;
+    }
+
+    #wistia_grid_62_main, #wistia_grid_62_wrapper, #wistia_chrome_56, #wistia_chrome_107{
+      width: 100% !important;
+    }
+
+    .video-slider-blue-circle{
+      /*
+      position: absolute;
+      background: #F4F9FA;
+      width: 50%;
+      height: 1500px;
+      border-radius: 1000px;
+      right: 50%;
+      bottom: 58px;
+      left: 85%;
+      */
+      position: relative;
+      background: #F4F9FA;
+      width: 700px;
+      height: 700px;
+      border-radius: 1000px;
+      right: 50%;
+      bottom: 0px;
+    }
+  </style>
+  <section class="h-section-padding three-column-slider">
+    <div class="section-cover maintain-spacing midnight"></div>
+    <div style="position: absolute; left: 50%;">
+      <div class="video-slider-blue-circle mobile-disappear"></div>
+    </div>
+    <div class="container tools-category cover-container">
+      <h2 class="text-center" style="color: white;">{{properties.title}}</h2>
+      <div class="container">
+        <div class="row extra-top-margin--small">
+          <div class="col-md-4 c-card--tool ">
+            <div class="c-card__entry h-webinar webinar-like-styling " style="
+            border: none;
+            margin-bottom: 0px;
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+            ">
+                  <!-- {#{% include "/components/three-column-slider/_home-temp-embed.html" %}#} -->
+                  <style>
+                    .imageThumb{
+                      position: relative;
+                      cursor: pointer;
+                    }
+                    .playbutton{
+                      position: absolute;
+                      top:50%;
+                      left: 50%;
+                      transform: translateX(-50%) translateY(-50%);
+                      /* cursor: none; */
+                      pointer-events: none;
+                    }
+                    .imageThumb .imageContainer svg{
+                      width: 100%;
+                    }
+                    .pulseCircle {
+                        width: 100%;
+                        height: 100%;
+                        background: #d8d8d8;
+                        position: absolute;
+                        top: 0px;
+                        left: 0px;
+                        border-radius: 100px;
+                        z-index: -1;
+                        transition: 1s;
+                    }
+                    .imageThumb:hover .pulseCircle {
+                        transform: scale(1.2);
+                        transition: 1s;
+                    }
+                  </style>
+                  
+
+                  <div class='imageThumb'>
+                    <script src="https://fast.wistia.com/embed/medias/tihe7k9xsl.jsonp" async></script>
+                    <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+                    <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
+                      <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+                        <span class="wistia_embed wistia_async_tihe7k9xsl popover=true popoverAnimateThumbnail=true playButton=false videoFoam=true" style="display:inline-block;height:100%;position:relative;width:100%">&nbsp;</span>
+                      </div>
+                    </div>
+                    <div class='playbutton'>
+                      <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M0.833344 30C0.833344 13.9 13.9 0.833374 30 0.833374C46.1 0.833374 59.1667 13.9 59.1667 30C59.1667 46.1 46.1 59.1667 30 59.1667C13.9 59.1667 0.833344 46.1 0.833344 30ZM41.6667 30L24.1667 16.875V43.125L41.6667 30Z" fill="white"/>
+                      </svg>
+                      <div class='pulseCircle'></div>               
+                    </div>
+                    
+                  </div>
+                  <div class="c-card__entry__content" style="
+                    display: flex;
+                    flex-grow: 1;
+                    flex-direction: column;
+                    height: 100%;
+                    justify-content: space-between;
+                  ">
+                <span class="t-eyebrow "></span>
+                {#<h4 class="c-card__entry-title multiple-2-card-trailer"></h4>#}
+                <p class="p-sm multiple-5-card-trailer">“We love Copper as it’s beautifully designed, fully customizable for exactly what we needed and it works the way we need it to work.”</p>
+                <cite>Lexie Barnhorn<span class="c-panel__blockquote--position">Influencer Marketing Manager</span></cite>
+                <div class="c-top-logo">
+                  <picture>
+                    <source type="image/webp" srcset="https://copper.objects.frb.io/imgs/homepage/video-slider/Logo_Curology.webp" alt="Gartner news logo">
+                    <source type="image/png" srcset="https://copper.objects.frb.io/imgs/homepage/video-slider/Logo_Curology.png" alt="Gartner news logo">
+                    <img style="width: calc(100% / 2);" src="https://copper.objects.frb.io/imgs/homepage/video-slider/Logo_Curology.png" alt="Gartner news logo">
+                  </picture>
+                </div>
+              </div>
+              <div class="c-card__meta">
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 c-card--tool"> 
+            <div class="c-card__entry h-webinar webinar-like-styling " style="
+            border: none;
+            margin-bottom: 0px;
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+            ">
+              <!-- {#{% include "/components/three-column-slider/_home-temp-embed.html" %}#} -->
+              <div class='imageThumb'>
+                <script src="https://fast.wistia.com/embed/medias/p24wanuzo7.jsonp" async></script>
+                <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+                <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
+                  <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+                    <span class="wistia_embed wistia_async_p24wanuzo7 popover=true popoverAnimateThumbnail=true playButton=false videoFoam=true" style="display:inline-block;height:100%;position:relative;width:100%">&nbsp;</span>
+                  </div>
+                </div>
+                <div class='playbutton'>
+                  <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M0.833344 30C0.833344 13.9 13.9 0.833374 30 0.833374C46.1 0.833374 59.1667 13.9 59.1667 30C59.1667 46.1 46.1 59.1667 30 59.1667C13.9 59.1667 0.833344 46.1 0.833344 30ZM41.6667 30L24.1667 16.875V43.125L41.6667 30Z" fill="white"/>
+                  </svg>
+                  <div class='pulseCircle'></div>               
+                </div>
+              </div>
+                  <div class="c-card__entry__content" style="
+                    display: flex;
+                    flex-grow: 1;
+                    flex-direction: column;
+                    height: 100%;
+                    justify-content: space-between;
+                  ">
+                <span class="t-eyebrow "></span>
+                {#<h4 class="c-card__entry-title multiple-2-card-trailer"></h4>#}
+                <p class="p-sm multiple-5-card-trailer">“I love that Copper is simple, easy to use, and intuitive. Our business is all about relationships and it helps us build better relationships with our clients.”</p>
+                <cite>CRESCENT DIAMOND<span class="c-panel__blockquote--position">Executive Producer, Corduroy Media</span></cite>
+                <div class="c-top-logo">
+                  <picture>
+                    <source type="image/webp" srcset="https://copper.objects.frb.io/imgs/homepage/video-slider/Logo_Corduroy.webp" alt="Corduroy logo">
+                    <source type="image/png" srcset="https://copper.objects.frb.io/imgs/homepage/video-slider/Logo_Corduroy.png" alt="Corduroy logo">
+                    <img style="width: calc(100% / 2);"  src="https://copper.objects.frb.io/imgs/homepage/video-slider/Logo_Corduroy.png" alt="Corduroy logo">
+                  </picture>
+                </div>
+              </div>
+              <div class="c-card__meta">
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 c-card--tool">
+            <div class="c-card__entry h-webinar webinar-like-styling " style="
+            border: none;
+            margin-bottom: 0px;
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+            ">
+                  <!-- {#{% include "/components/three-column-slider/_home-temp-embed.html" %}#} -->
+                  <div class='imageThumb'>
+                    <script src="https://fast.wistia.com/embed/medias/2yhihnpbkc.jsonp" async></script>
+                    <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+                    <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
+                      <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+                        <span class="wistia_embed wistia_async_2yhihnpbkc popover=true popoverAnimateThumbnail=true playButton=false videoFoam=true" style="display:inline-block;height:100%;position:relative;width:100%">&nbsp;</span>
+                      </div>
+                    </div>
+                    <div class='playbutton'>
+                      <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M0.833344 30C0.833344 13.9 13.9 0.833374 30 0.833374C46.1 0.833374 59.1667 13.9 59.1667 30C59.1667 46.1 46.1 59.1667 30 59.1667C13.9 59.1667 0.833344 46.1 0.833344 30ZM41.6667 30L24.1667 16.875V43.125L41.6667 30Z" fill="white"/>
+                      </svg>
+                      <div class='pulseCircle'></div>               
+                    </div>
+                  </div>
+                  <div class="c-card__entry__content" style="
+                    display: flex;
+                    flex-grow: 1;
+                    flex-direction: column;
+                    height: 100%;
+                    justify-content: space-between;
+                  ">
+                <span class="t-eyebrow "></span>
+                {#<h4 class="c-card__entry-title multiple-2-card-trailer"></h4>#}
+                <p class="p-sm multiple-5-card-trailer">"Building relationships has never been more important. I can’t imaging running Storm without having Copper to help us compete and win opportunities in the Valley."</p>
+                <cite>Ryan Floyd<span class="c-panel__blockquote--position">Managing Director, Storm Ventures</span></cite>
+                <div class="c-top-logo">
+                  <picture>
+                    <source type="image/webp" srcset="https://copper.objects.frb.io/imgs/homepage/video-slider/storm-ventures-logo-bw.webp" alt="Storm Venture logo">
+                    <source type="image/png" srcset="https://copper.objects.frb.io/imgs/homepage/video-slider/storm-ventures-logo-bw.png" alt="Storm Venture logo">
+                    <img style="width: calc(100% / 1.2);" src="https://copper.objects.frb.io/imgs/homepage/video-slider/storm-ventures-logo-bw.png" alt="Storm Venture logo">
+                  </picture>
+                </div>
+              </div>
+              <div class="c-card__meta">
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <style>
+          .draggable{
+            width: 100% !important;
+          }
+          .draggable.slick-track{
+            width: 100% !important;
+          }
+          .draggable.slick-track.control-box{
+            width: 100% !important;
+          }
+        </style>
+        <div class="row">
+          <div class="control-box" style="width: 100% !important; ">
+            <div class="dots-box">
+            </div>
+            <div class="buttons-box">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endmacro %}

@@ -1,0 +1,56 @@
+// For blog posts using older pattern
+.c-blog__entry--post {
+  strong {
+    font-weight: normal;
+    font-family: 'Graphik-Medium';    
+  }
+  h2 {
+    font-size: 24px;
+    color: $color-graphite;
+    letter-spacing: -0.43px;
+    line-height: 32px;
+    margin-top: 52px;
+  }
+  h3 {
+    font-size: 20px;
+    color: $color-graphite;
+    line-height: 24px;
+    position: relative;
+    top: 14px;
+    margin-top: 38px;
+  }
+  h3 + figure {
+    margin-top: 10px;
+  }
+  h4 {
+    margin-top: 28px;
+  }
+  p {
+    font-size: 16px;
+    line-height: 26px;
+    margin: 24px 0;
+  }
+  h2 + p {
+    margin-top: 0;
+  }
+  ul {
+    padding-left: 8px;
+  }
+  li {
+    font-size: 16px;
+    line-height: 24px;
+    position: relative;
+    padding-left: 20px;
+    letter-spacing: -0.15px;
+    list-style: none;
+    margin: 8px 0;
+  }
+  li:before {
+    font-family: "Material Icons";
+    content: "\E315";
+    font-size: 18px;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+}

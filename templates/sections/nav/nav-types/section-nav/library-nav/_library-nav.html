@@ -1,0 +1,36 @@
+
+{% set 
+
+    libraryNav = {
+        autohide: false,
+        menu : {},
+        utilities : {
+            tryFree : {
+                name: "Try Free",
+                sendUTMsToAmplitude : true,
+                url: craft.app.config.general.signUpUrl ,
+                color: "white",
+                classes : ["c-button"],
+                desktopClasses: ["c-button"]
+            },
+            requestDemo : {
+                name: "Request Demo",
+                sendUTMsToAmplitude : false,
+                url: "/demos",
+                color: "#FF3465",
+                classes : ["request-demo-link"],
+                desktopClasses: ["c-nav__login"]
+            }
+        },
+        navLinks : []
+    }
+
+%}
+
+<div class="library-nav-wrapper">
+	<div class="container">
+		<a class="" href="/"><img class="img-fluid" src="/imgs/copper-logo-pink-il.svg" alt="Copper pink logo"></a><a href="" class=""><h1 class="library-home-link">Library</h1></a>
+		<div class="cta-wrap float-right d-none d-sm-none d-md-block"><a class="{{ libraryNav.utilities.requestDemo.classes |join(" ") }} {% if libraryNav.utilities.requestDemo.sendUTMsToAmplitude == true %}sendUTMsToAmplitude{% endif %}" href="{{libraryNav.utilities.requestDemo.url}}">{{libraryNav.utilities.requestDemo.name}}</a><a class="{{libraryNav.utilities.tryFree.classes |join(" ") }} {% if libraryNav.utilities.tryFree.sendUTMsToAmplitude == true %}sendUTMsToAmplitude{% endif %}" href="{{libraryNav.utilities.tryFree.url}}">{{libraryNav.utilities.tryFree.name}}</a></div>
+		<div class="float-right"><span class="search-open"></span></div>
+	</div>
+</div>

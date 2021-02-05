@@ -1,0 +1,16 @@
+{% set content = entry.relatedContent.one() %}
+
+<div class="c-card__entry extended-card">
+    {% if content.url|length %}
+      <a class="c-card__clickthrough" href="{{ content.url }}"></a>
+    {% endif %}
+    <div class="c-card__default__image"></div>
+    <div class="c-card__entry__content">
+      <h4 class="c-card__entry-title"><a class="underline_from_lefsettt" href="{{ content.url }}">{{ content.title }}</a></h4>
+    </div>
+      <div class="c-card__meta">
+        <a class="t-link" href="{{ content.url }}">Read More</a>
+      </div>
+  </div>
+  
+  

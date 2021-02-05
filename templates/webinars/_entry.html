@@ -1,0 +1,15 @@
+{% extends "_top-nav.html" %}
+
+{% block topNav %}
+ 
+    {% switch entry.type %}
+      {% case 'register' %}
+        {% include 'webinars/_register.html' %}
+      {% case 'webinars' %}
+        {% include 'webinars/_on-demand.html' %}
+      {% case 'webinarSpecial' %}
+        {% include 'webinars/_webinar-special.html' %}
+            
+    {% endswitch %}
+  
+{% endblock %}

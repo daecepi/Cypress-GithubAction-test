@@ -1,0 +1,263 @@
+{% extends "_top-nav.html" %}
+
+{% block topNav %}
+
+<!-- Hero -->
+<section class="c-hero--split background--eggplant h-overhang">
+	<div class="c-image">
+    <picture>
+          <source type="image/webp" srcset="https://copper.objects.frb.io/imgs/customers/customers-hero.webp"  class="h-image-contain"   alt="Customer hero image">
+          <source type="image/png" srcset="https://copper.objects.frb.io/imgs/customers/customers-hero.png"  class="h-image-contain"   alt="Customer hero image">
+          <img   class="h-image-contain"   src="https://copper.objects.frb.io/imgs/customers/customers-hero.png"   alt="Customer hero image" >
+</picture>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 c-valign--middle">
+        <h1 class="t-white">So happy with Copper.</h1>
+        <p>12,000 companies big and small grow relationships with Copper.</p>
+        <div class="c-hero__buttons">
+          <a class="c-button sendUTMsToAmplitude" href="{{ craft.app.config.general.signUpUrl }}">Try Free</a>
+          <a class="c-button c-button--outline" href="/demos">Request Demo</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Product Focus -->
+<section class="c-product-focus">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 c-align--center">
+        <h3 class="col-md-8">Global enterprise companies use Copper to move business relationships forward.</h3> 
+        <div class="c-product-focus__media">
+          <picture>
+          <source type="image/webp" srcset="/imgs/customers/customers-primary.webp"    alt="Customer image" class="h-remove-shadow">
+          <source type="image/png" srcset="/imgs/customers/customers-primary.png"    alt="Customer image" class="h-remove-shadow">
+          <img     src="/imgs/customers/customers-primary.png"   alt="Customer image" class="h-remove-shadow" >
+</picture>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Case Study -->
+{# <section class="c-case-study c-case-study--align-left extra-bottom-margin">
+	<div class="container colorblock--eggplant">
+
+		<div class="c-case-study__container col-md-11 no-padding">
+			
+			<div class="c-case-study__content c-valign--middle">
+					
+					<div class="row row-eq-height align-items-center">
+						<div class="col-md-6">		
+							<div class="c-image c-image--shadow circle--hot-pink circle--center--left">
+								<pre class="c-eyebrow c-eyebrow--light">Success Story</pre>
+								<picture>
+          <source type="image/webp" srcset="/imgs/customers/olivier-chanoux.webp"  alt="Oliver Chanoux photo"  >
+          <source type="image/png" srcset="/imgs/customers/olivier-chanoux.png"  alt="Oliver Chanoux photo"  >
+          <img   alt="Oliver Chanoux photo"   src="/imgs/customers/olivier-chanoux.png"   >
+</picture>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="c-panel__blockquote c-valign--middle">
+								<blockquote>Copper powered our fast growth <strong>effortlessly</strong> as we scaled 20 users to over 2,000,000 in just one year.</blockquote>
+								<cite>Olivier Chanoux <span class="c-panel__blockquote--position">CMO/Co-Founder at LumApps</span></cite>
+								<div class="c-panel__blockquote--logo">
+									<picture>
+          <source type="image/webp" srcset="/imgs/customers/lumapps_logo.webp"  alt="Lumapps logo"  >
+          <source type="image/png" srcset="/imgs/customers/lumapps_logo.png"  alt="Lumapps logo"  >
+          <img   alt="Lumapps logo"   src="/imgs/customers/lumapps_logo.png"   >
+</picture>
+								</div>
+							</div>
+							<!--
+							<div class="col-md-12 c-align--right c-case-study__link">
+								<a class="t-link" href="#">See Case Study</a>
+							</div>
+							-->
+						</div>
+					</div>
+									
+			</div>
+		</div>
+
+	</div>
+</section> #}
+
+<!-- Deal Close Callout -->
+<section class="c-single-column background--putty gsuite-cloud extra-top-margin">
+  <div class="container">
+    <div class="col-md-10 offset-md-1 c-single-column__container">
+      <h2>Thousands of G Suite</br>users choose Copper.</h2>
+			{# TODO GOOGLE #}
+      <p>Recommended for G Suite <strong>4.8 / 5 Stars</strong> on G Suite Marketplace</p>
+      <div class="c-single-column__buttons">
+        <a class="c-button" href="https://gsuite.google.com/marketplace/app/copper_formerly_prosperworks_crm/461423560386">See For Yourself</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="c-blog__entries extra-top-margin--small sl_hide">
+	<div class="container">
+		<div class="row">
+		  <div class="col-md-12 c-section__title c-align--center">
+			  <h2 class="t-center col-md-10">crm: not just for sales teams.</h2>
+				<p class="t-center col-md-8">Copper brings all your relationship makers together and allows teams to manage every relationship type &ndash; leads, accounts, partners, creatives, agents, investors, brokers, and more.</p>
+				<a href="/blog-categories/copper?sc=201" class="t-link">Read all our customer stories</a>
+		  </div>
+	  </div>
+		<div class="row">
+			<div class="col-md-4">
+		    <div class="c-card__entry extended-card">
+		      <a class="c-card__clickthrough" href="/blog/rhr-case-study"></a>
+		      <div class="c-card__default__image" style="background-image: url('/imgs/customers/rhr-block.png');"></div>
+		      <div class="c-card__entry__content">
+	          <div class="entry_categories">
+	            <span class="t-eyebrow">Consulting</span>
+	          </div>
+		        <h4 class="c-card__entry-title">
+		          <a class="underline_from_lefsettt" href="/blog/rhr-case-study">See how they made selling into a team sport.</a>
+		        </h4>
+		
+		      </div>
+		      <div class="c-card__meta">
+		        <a class="t-link" href="/blog/rhr-case-study">Read More</a>
+		      </div>
+		    </div>
+		
+		  </div>
+		  <div class="col-md-4">
+		    <div class="c-card__entry extended-card">
+		      <a class="c-card__clickthrough" href="/blog/reali-case-study"></a>
+		      <div class="c-card__default__image" style="background-image: url('/imgs/customers/reali-block.png');"></div>
+		      <div class="c-card__entry__content">
+	          <div class="entry_categories">
+	            <span class="t-eyebrow">Real Estate</span>
+	          </div>
+		        <h4 class="c-card__entry-title">
+		          <a class="underline_from_lefsettt" href="/blog/reali-case-study">See how they saved 15 hours per user per week.</a>
+		        </h4>
+		
+		      </div>
+		      <div class="c-card__meta">
+		        <a class="t-link" href="/blog/reali-case-study">Read More</a>
+		      </div>
+		    </div>
+		
+		  </div>
+		  <div class="col-md-4">
+		    <div class="c-card__entry extended-card">
+		      <a class="c-card__clickthrough" href="/blog/lumapps-case-study"></a>
+		      <div class="c-card__default__image" style="background-image: url('/imgs/customers/lumapps-block.png');"></div>
+		      <div class="c-card__entry__content">
+	          <div class="entry_categories">
+	            <span class="t-eyebrow">Technology</span>
+	          </div>
+		        <h4 class="c-card__entry-title">
+		          <a class="underline_from_lefsettt" href="/blog/lumapps-case-study">See how they managed 2000% lead growth.</a>
+		        </h4>
+		
+		      </div>
+		      <div class="c-card__meta">
+		        <a class="t-link" href="/blog/lumapps-case-study">Read More</a>
+		      </div>
+		    </div>
+		
+		  </div>
+		</div>
+	</div>
+</section>
+
+<!-- Numbers -->
+<section class="c-numbers c-numbers--background-image no-bottom-padding">
+	<div class="c-numbers-background">
+		<picture>
+          <source type="image/webp" srcset="/imgs/customers/customers-numbers.webp"  alt="Customer numbers image"  >
+          <source type="image/png" srcset="/imgs/customers/customers-numbers.jpg"  alt="Customer numbers image"  >
+          <img   alt="Customer numbers image"   src="/imgs/customers/customers-numbers.jpg"   >
+</picture>
+	</div>
+  <div class="container">
+	  <div class="row">
+		  <div class="col-md-12 c-numbers__title c-align--center">
+			  <h2 class="t-center col-md-10">Relationship makers</br>love Copper.</h2>
+		  </div>
+	  </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="c-number__entry hot-pink">
+          <span class="t-eyebrow">Less Time</span>
+          <span class="t-numbers"><span>15</span></span>
+          <p>Selling hours back per week</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="c-number__entry hot-pink">
+          <span class="t-eyebrow">More Accuracy</span>
+          <span class="t-numbers"><span>30%</span></span>
+          <p>Improvement in sales reporting</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="c-number__entry hot-pink">
+          <span class="t-eyebrow">Reduce Time</span>
+          <span class="t-numbers"><span>35%</span></span>
+          <div class="c-number__description">
+            <p>Shorter sales cycle</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Customers block -->
+<section class="c-cols unicorns">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 offset-md-1 order-2">
+				<div class="c-image c-image--center">
+					<picture>
+          <source type="image/webp" srcset="/imgs/customers/unicorns.webp"    alt="Unicorns company image">
+          <source type="image/png" srcset="/imgs/customers/unicorns.png"    alt="Unicorns company image">
+          <img     src="/imgs/customers/unicorns.png"   alt="Unicorns company image" >
+</picture>
+				</div>
+			</div>
+			<div class="col-md-5 order-1">
+				<h2>Startups and unicorns love Copper.</h2>
+				<p>The most innovative small and midsize businesses use Copper to grow and scale globally.</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Leave Behind -->
+<section class="c-hero--split background--leavebehind">
+  <div class="c-image">
+    <picture>
+          <source type="image/webp" srcset="/imgs/leave-behind.webp"    alt="Leave behind concept image">
+          <source type="image/png" srcset="/imgs/leave-behind.jpg"    alt="Leave behind concept image">
+          <img     src="/imgs/leave-behind.jpg"   alt="Leave behind concept image" >
+</picture>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 c-valign--middle">
+        <h2 class="t-white">Join the 12,000 customers that love Copper.</h2>
+        <p style="max-width: 420px;">Try Copper today!</p>
+        <div class="c-hero__buttons">
+            <a class="c-button"  href="/demos">Request Demo</a>
+            <a class="c-button c-button--outline sendUTMsToAmplitude" href="{{ craft.app.config.general.signUpUrl }}">Try Free</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

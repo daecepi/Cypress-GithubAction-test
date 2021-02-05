@@ -1,0 +1,153 @@
+.c-card-col{
+  display: flex;
+}
+
+.c-blog-card{
+  position: relative;
+  width: 100%;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: $global-shadow;
+  flex-grow: 1;
+  @include media-breakpoint-up(md) {
+    box-shadow: none;
+    min-height: 460px;
+  }
+  &:hover{
+    box-shadow: $global-shadow;
+  }
+  &.h-add-shadow {
+    box-shadow: $global-shadow;
+  } 
+}
+
+.c-blog-card--large{
+  min-height: 600px;
+  box-shadow: none;
+  @include media-breakpoint-down(xs) {
+    min-height: 460px;
+    width: calc(100% + 30px);
+    margin-left: -15px;
+  }
+  .c-author__meta {
+    padding-left: 20px;
+  }
+}
+
+.c-blog-card__image-container{
+  position: relative;
+}
+
+.c-blog-card__image-button{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.c-blog-card__image{
+  width: 100%;
+}
+
+.c-blog-card__content{
+  padding: 20px 15px 30px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+
+  .t-eyebrow{
+    font-weight: 500;
+  }
+}
+
+.c-blog-card__content--large{
+  padding: 30px;
+
+  @include media-breakpoint-down(md) {
+    padding: 20px 15px 41px;
+  }
+}
+
+.c-blog-card__content--text{
+  padding: 26px 15px 30px;
+}
+
+.c-blog-card__content--featured{
+  padding-right: 30px;
+  @include media-breakpoint-up(md) {
+    flex: 7 0 0;
+  }
+}
+
+.c-blog-card__content__title{
+  word-wrap: break-word;
+  margin: 10px 0;
+  @include media-breakpoint-up(md) {
+    overflow: hidden;
+  }
+}
+
+.c-blog-card__content__title--text{
+  margin-bottom: 19px;
+}
+
+.c-blog-card__content__title--large{
+  margin: 10px 0;
+}
+
+.c-blog-card__content__subtitle{
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow: hidden;
+}
+
+
+.c-blog-card__content__author{
+  display: flex;
+  align-items: flex-end;
+  flex-grow: 1;
+  padding-top: 31px;
+}
+
+.c-blog-featured-card{
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin-bottom: 29px;
+  cursor: pointer;
+  color: $color-graphite;
+  @include media-breakpoint-down(sm) {
+    padding-top: 19px;
+    position: relative;
+
+    &:before{
+      background-color: $color-light-text;
+      content: " ";
+      height: 1px;
+      top: 0px;
+      position: absolute;
+      width: 100%;
+      z-index: 0;
+    }
+  }
+  &:hover{
+    text-decoration: none;
+    .c-blog-featured-card__title{
+      color: $color-hot-pink;
+    }
+  }
+}
+
+.c-blog-featured-card__title{
+  height: 56px;
+  overflow: hidden;
+}
+
+.c-blog-featured-card__image{
+  position: relative;
+  height: 100%;
+  flex: 5 0 0;
+}

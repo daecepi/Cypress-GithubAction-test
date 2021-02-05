@@ -1,0 +1,281 @@
+@import "blog-card";
+
+// Cards
+//
+// This card can have an image, an eyeborw, a title, and a link. They are usually placed in rows of 3
+//
+// Markup:
+// <div class="col-md-4">
+//   <div class="c-card__entry">
+//     <a class="c-card__clickthrough" href=""></a>     
+//     <div class="c-card__default__image" style="background-image: url('https://www.copper.com/imgs/blog-logo.jpg');"></div>
+//     <div class="c-card__entry__content">
+//       <div class="entry_categories">
+//         <span class="t-eyebrow">Relationship Era</span>
+//       </div>
+//       <h4 class="c-card__entry-title">
+//         <a class="underline_from_lefsettt" href="">New Research: The State of Customer Management in the Relationship Era</a>
+//       </h4>
+//     </div>
+//     <div class="c-card__meta">
+//       <a class="t-link" href="">Read More</a>
+//     </div>
+//   </div>
+// </div>
+// 
+// Styleguide Components.Card 
+
+.c-cards-aconditioner{
+  height: fit-content;
+}
+
+.c-card {
+  @at-root {
+    #{&}__clickthrough {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: block;
+      height: 100%;
+      width: 100%;
+      z-index: 8;
+    }
+    #{&}__entry {
+      box-shadow: $global-shadow;
+      height: 425px;
+      position: relative;
+      width: 100%;
+      border: 1px solid $color-putty;
+      float: left;
+      margin-bottom: 40px;
+      transition: box-shadow 0.2s ease-in-out;
+      @media only screen and (max-width: 767px) {
+        width: 100%;
+      }
+      &.extended-card{
+        min-height: 425px;
+        height: fit-content;
+
+        @include media-breakpoint-up(md){
+          min-height: fit-content;
+          height: 100%;
+        }
+      }
+      &.no-card-background{
+        background: none;
+        border: none;
+        box-shadow: none;
+      }
+      &.logo-card-styling{
+        min-height: fit-content;
+        height: calc( 100% - 27px);
+        padding-top: 10px;
+        color: #585c5e;
+
+        @include media-breakpoint-down(md){
+          min-height: fit-content;
+        }
+
+        .c-card-image{
+          height: 60px;
+          width: 60px;
+          img{
+            height: 100%;
+            width: 100%;
+          }
+        }
+        .c-card__entry__content{
+          padding: 10px 7px 10px 7px;
+          h4{
+            font-family: $regular-font;
+            font-size: 24px;
+            margin-bottom: 0px;
+            a{
+              color: #585c5e;
+            }
+          }
+        }
+        .c-hero__buttons{
+          margin-top: 15px;
+        }
+      }
+      &.h-webinar {
+        height: auto;
+        @include media-breakpoint-up(md) {
+          height: 100%;
+        }
+        .c-card__entry-title {
+          margin-top: 8px;
+        }
+      }
+      &.webinar-like-styling{
+        min-height: 425px;
+        height: fit-content;
+        background: $color-white;
+
+        @include media-breakpoint-up(md){
+          min-height: calc( 100% - 15px );
+          height: fit-content;
+        }
+
+
+        &.condensed{
+            min-height: fit-content;
+
+          @at-root{
+            #{&}--mobile{
+              @include media-breakpoint-down(sm){
+                min-height: fit-content;
+
+                .c-card__entry__content{
+                  padding-bottom: 32px;
+                }
+              }
+            }
+          }
+        }
+      }
+      &.c-card__entry--no-border{
+        box-shadow: none;
+      }
+      &.c-card__entry--image {
+        height: auto;
+      }
+      .c-card__image--center {
+        width: 100%;
+        padding: 45px;
+      }
+      &.c-card__entry--demo{
+        cursor: pointer;
+        .c-card__entry__content{
+          padding: 30px;
+          height: 308px;
+        }
+      }
+      .c-card__entry__image {
+        border-radius: 2px 2px 0 0;
+      }
+      .c-card__entry__content {
+        padding: 24px 24px 62px;
+        border-radius: 0 0 2px 2px;
+        @include media-breakpoint-up(md) {
+          padding: 24px;
+        }
+        a {
+          text-decoration: none;
+          color: $color-graphite;
+        }
+      }
+      &:hover {
+        box-shadow: $global-shadow-hover;
+      }
+      .c-card__source {
+          /* PR NEWSWIRE: */
+        font-family: 'Roboto Mono', monospace;
+        text-transform: uppercase;
+        font-size: 14px;
+        color: #3C3F40;
+        letter-spacing: 0;
+        margin-bottom: 12px;
+      }
+
+      &.extended-card-entry{
+        height: fit-content;
+        min-height: 450px;
+
+        .c-card__bullet-spacer{
+          height: calc(100% - 55px);
+          width: calc(100% - 70px);
+          margin: 25px 35px 30px 35px;
+          overflow: hidden;
+  
+          .c-card__default__image{
+            width: auto;
+            height: auto;
+            object-fit: 0;
+            max-height: 174px;
+            @include media-breakpoint-down(md){
+              width: 100%;
+            }
+            @include media-breakpoint-down(sm){
+              max-height: none;
+            }
+          }
+  
+          .c-card__entry__content{
+            padding: 0px;
+            margin-top: 18px;
+          }
+        }
+
+        @include media-breakpoint-down(sm){
+          height: fit-content;
+          min-height: 0;
+        }
+      }
+    }
+    #{&}__entry--featured {
+      margin-bottom: 24px;
+      width: 767px;
+      float: left;
+      @media only screen and (max-width: 845px) {
+        max-width: 346px;
+        margin: 0 20px;
+      }
+      @media only screen and (max-width: 450px) {
+        max-width: 100%;
+        margin: 0;
+      }
+      .c-card__entry__card {
+        box-shadow: $global-shadow;
+        transition: box-shadow 0.2s ease-in-out;
+        cursor: pointer;
+        position: relative;
+        &:hover {
+          box-shadow: $global-shadow-hover;
+        }
+      }
+      .c-card__entry__content {
+        padding: 24px 24px 68px;
+        background-color: $color-white;
+        border-radius: 0 0 2px 2px;
+        // position: relative;
+        .c-blog__meta {
+          padding: 0;
+        }
+      }
+      .c-card__entry__image {
+        border-radius: 2px 2px 0 0;
+        height: 409px;
+        @media only screen and (max-width: 845px) {
+          height: 210px;
+        }
+      }
+    }
+    #{&}__default__image {
+      border-radius: 2px 2px 0 0;
+      background-color: $color-hot-pink;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      height: 176px;
+      width: 100%;
+      object-fit: cover;
+
+      &.no-background-color{
+        background-color: transparent;
+      }
+    }
+    #{&}__meta {
+      padding: 0 24px;
+      position: absolute;
+      bottom: 18px;
+    }
+  }
+}
+
+.c-card-plain{
+  padding-bottom: 20px;
+}

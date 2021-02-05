@@ -1,0 +1,102 @@
+{# Desktop Nav #}
+<div class="c-side-nav__burger">
+  <a class="c-side-nav__logo" href="/resources" >
+    <img alt="Side nav logo" src="/imgs/blog/side-nav-logo.svg">
+    <a href="/" class="round-logo-cover" style="
+    position: absolute;
+    left: 10px;
+    height:100%;"></a>
+  </a>  
+  <a class="c-button blog-nav-style sendUTMsToAmplitude blogCTA" target="_blank" href="/signup" style="position: absolute;right: 50px;top: 15px;">Try Copper free</a>
+  <div class="c-nav--mobile__burger">
+    <div id="nav-icon2">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>  
+</div>
+<nav class="c-side-nav">
+  <div class="container">
+    <a class="c-side-nav__logo" href="/resources" >
+      <img alt="Side nav logo" src="/imgs/blog/side-nav-logo.svg">
+      <a href="/" class="round-logo-cover" style="
+      position: absolute;
+      left: 38px;
+      top: 24px;"></a>
+    </a>
+
+    {# search bar #}
+    <div class="c-side-nav__search__container yext-searchbar-container blog-style">
+      <div class="search-bar-menu-delimiter show-delimiter" style="position:relative; 
+      visibility: visible;
+      z-index: 100000;">
+        <div class="search-bar-container"></div>
+        <span class="search-free-open" style="
+        top: 16px;
+        right: 10px;
+        position: absolute;
+        z-index: 7;"></span>
+      </div>
+      {#<form action="{{ url('blog/results') }}">
+        <input id="js-blog-search-input" class="c-side-nav__mobile__search" placeholder="Search Copper Chronicles" type="search" name="q">
+        <i class="material-icons">
+          search
+        </i>
+      </form>#}
+    </div>
+    <div class="c-side-nav__categories">
+        <ul class="c-side-nav__categories__container">
+            <li><a class="c-side-nav__link" href="/blog-featured">Featured</a></li>
+        </ul>                     
+      </div>    
+    <div class="c-side-nav__categories">
+      <ul class="c-side-nav__categories__container" style="padding-top: 0;">
+        {% nav category in craft.categories.group('blogCategories').level(1).all() %}
+          <li><a class="c-side-nav__link" href="{{ category.url }}">{{ category.title }}</a></li>
+        {% endnav %}
+      </ul>                     
+    </div>
+
+    <div class="c-side-nav__categories">
+      <ul class="c-side-nav__categories__container" style="padding-top: 0;">
+        {% nav formats in craft.categories.group('blogFormats').level(1).all() %}
+          <li><a class="c-side-nav__link" href="{{ formats.url }}">{{ formats.title }}</a></li>
+        {% endnav %}
+      </ul>                     
+    </div>
+
+    <!-- <div class="c-side-nav__categories">
+      <div class="c-side-nav__categories__title">Explore More</div>
+      <ul class="c-side-nav__categories__container">
+      {% if promotedBlogPosts.featuredBlogPost|length %}
+        {% for entry in promotedBlogPosts.featuredBlogPost.all() %}
+          {% if entry.consolidatedTitle|length %}
+            <li><a class="c-side-nav__link" href="{{ entry.url }}">{{ entry.consolidatedTitle }}</a></li>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+      </ul>                     
+    </div> -->
+
+    <div class="c-blog-nav__form">
+      <p>Get the latest business tips delivered to your inbox</p>
+      {% include "blog/newsletter-form.html" %}
+    </div>
+
+    <div class="c-side-nav__utility">
+      <div class="c-side-nav__social">
+        <a href="https://www.youtube.com/c/CopperInc" target="_blank">{% include '/icons/social-yt.svg' %}</a>
+        <a href="https://www.instagram.com/copperinc/" target="_blank">{% include '/icons/social-ig.svg' %}</a>
+        <a href="https://www.facebook.com/CopperInc/" target="_blank">{% include '/icons/social-fb.svg' %}</a>
+        <a href="https://twitter.com/copperinc" target="_blank">{% include '/icons/social-tw.svg' %}</a>
+        <a href="https://www.linkedin.com/company/copper-inc/" target="_blank">{% include '/icons/social-li.svg' %}</a>
+    </div>
+    <a class="t-link__gray" href="/">copper.com</a>
+    </div>
+
+  </div>
+</nav>

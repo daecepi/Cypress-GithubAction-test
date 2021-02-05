@@ -1,0 +1,12 @@
+{% extends "_top-nav.html" %}
+
+{% block topNav %}
+ 
+    {% switch entry.type %}
+      {% case 'press' %}
+        {% include 'company/_press.html' %}
+    {% case 'contact' %}
+        {% include 'company/_contact.html' %}      
+    {% endswitch %}
+
+{% endblock %}

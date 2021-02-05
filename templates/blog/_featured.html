@@ -1,0 +1,59 @@
+{% set page = craft.app.request.getParam('pg') %}
+{% set subcategoryId = craft.app.request.getParam('sc') %}
+
+{% extends "_side-nav.html" %}
+
+{% block sideNav %}
+<div class="c-blog-content__main container"> 
+  <div class="row">
+    <div class="col-md-5">
+      <h2 class="t-resource-period--hot-pink">Featured</h2>
+
+      <div class="t-remove-copy-margin">{{entry.categoryDescription}}</div>
+    </div>
+  </div>
+
+  {# Give vue page type #}
+  <div id="vue-blog-page-type" style="display:none;">featured</div>
+  <div id="vue-blog-query" style="display:none;"></div>
+  <div id="vue-blog-page-num" style="display:none;">{{page}}</div>
+  <div id="vue-blog-subcategory-query" style="display:none;">{{subcategoryId}}</div>
+  {% set adLink = "" %}
+  {% set adImage = "" %}
+  {% if entry.clickthrough %}
+    {% set adLink = entry.clickthrough.url %}
+  {% endif %}
+  {% if entry.featuredImage.one() %}
+    {% set adImage = entry.featuredImage.one().url %}
+  {% endif %}
+
+  <div id="vue-blog-ad-link" style="display:none;">{{adLink}}</div>
+  <div id="vue-blog-ad-image" style="display:none;">{{adImage}}</div>
+
+  {% set subAdLink = "" %}
+  {% set subAdImage = "" %}
+
+  {# If subcategoryId set get subcategories ad info #}
+  {% if subcategoryId %}
+     {% set subcategory = craft.categories.id(subcategoryId).one() %}
+    {% if subcategory.clickthrough %}
+      {% set subAdLink = subcategory.clickthrough.url %}
+    {% endif %}
+    {% if subcategory.featuredImage.one() %}
+      {% set subAdImage = subcategory.featuredImage.one().url %}
+    {% endif %}
+  {% endif %}
+
+  <div id="vue-blog-ad-link--sub" style="display:none;">{{subAdLink}}</div>
+  <div id="vue-blog-ad-image--sub" style="display:none;">{{subAdImage}}</div>
+
+  {% verbatim %}
+
+    <script src="/js/vue.min.js"></script>
+    <script src="/js/vue/main.js" type="module"> </script>
+    <div id="app"></div>
+
+  {% endverbatim %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,8 @@
+{% set color = entry.color.one() %}
+<div class="c-numbers">
+  <div class="c-number__entry {{ color ? color.slug : '' }}">
+      <span class="t-eyebrow">{{ entry.eyebrow }}</span>
+      <span class="t-numbers">{{ entry.number }}</span>
+      <p>{{ entry.subText }}</p>
+    </div>
+</div>

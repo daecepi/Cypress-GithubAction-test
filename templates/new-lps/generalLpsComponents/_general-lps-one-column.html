@@ -1,0 +1,30 @@
+{% if matrixBlock.linkToNav|length %}
+    {% set linkId = matrixBlock.linkToNav |camel %}
+    {% set sectionId = entry[linkId] |camel %}
+    <a class="anchor" id="{{sectionId}}"></a>
+{% endif %}
+<!-- Three Column -->
+<section class="c-single-column {{ matrixBlock.addBottomPadding ? 'h-padding-bottom' : '' }}">
+  <div class="container">
+    <!--<div class="col-md-8 offset-md-2 c-single-column__container">
+        <h2>{{ matrixBlock.header }}</h2>
+        <p>{{ matrixBlock.subText }}</p>        
+    </div>-->
+    <div class="col-md-12">
+      {% if matrixBlock.subText is defined and matrixBlock.subText|length > 0 %}<p class="text-center">{{ matrixBlock.subText }}</p>{% endif %}
+      <div class="smb-logo-icons">
+          <ul class="logo-section--one-column">
+            {% if matrixBlock.imagelist is not null and matrixBlock.imagelist|length > 0 %}
+              {% for logoImage in matrixBlock.imagelist.limit(5) %}
+                  <li class="logo-section--images">
+                      <img src="{{ logoImage.url }}" alt="Logo">
+                  </li>
+              {% endfor %}
+            {% endif %}
+          </ul>
+      </div>
+      {% set sImage = matrixBlock.centeredImage.one() %}
+      <img style="max-width:720px" src="{{ sImage.url }}" alt="{{ sImage.title }}">
+    </div>   
+  </div>
+</section>

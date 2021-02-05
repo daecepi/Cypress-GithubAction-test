@@ -1,0 +1,37 @@
+.c-pill {
+  list-style: none;
+  padding: 0px;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  li {
+    cursor: pointer;
+    text-transform: lowercase;
+    background: #f7f7f7;
+    border-radius: 100px;
+    font-size: 12px;
+    color: $color-graphite;
+    display: inline-block;
+    padding: 3px 20px;
+    margin: 0px 10px 10px 0;
+    line-height: 26px;
+    &:hover {
+      color: $color-white;
+      background-color: $color-graphite;
+    }
+    a {
+      color: rgba(0,0,0,.87);
+    }
+
+    &.active{
+      background-color: $color-hot-pink;
+      color: #ffffff;
+    }
+  }
+}
+
+.c-pill--left-margin{
+  @include media-breakpoint-up(md) {
+    margin-left: 20px;
+  }
+}

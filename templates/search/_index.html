@@ -1,0 +1,19 @@
+{% extends "_top-nav.html" %}
+
+{% block topNav %}
+<div class="c-search-page-content">
+  <div id="answers-container"></div>
+  {% include "/components/graphics/_hero-loading.html" %}
+  <script src="https://answers-embed.copper.com.pagescdn.com/iframe.js"></script>
+  <script>
+    LazyLoad.js(['https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'],function(){
+      $(document).ready(function (){
+        var loadingInterval = setInterval(function(){
+              $('.loading-cover').css('display', 'none');
+            clearInterval(loadingInterval);
+        },200);
+      });
+    });
+  </script>
+</div>
+{% endblock %}

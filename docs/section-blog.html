@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BAM Style guide</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="generator" content="kss-node">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,300">
+    <link rel="stylesheet" href="kss-assets/vendor/prism.css">
+    <link rel="stylesheet" href="kss-assets/css/kss.css">
+    <link rel="stylesheet" href="bam-assets/css/styles.css">
+
+  </head>
+
+  <body class="kss-body">
+
+    <!-- header. -->
+    <header class="kss-header">
+      <section class="kss-header__inner">
+        <a class="kss-header__hamburger-trigger">
+          <div class="kss-header__hamburger"></div>
+        </a>
+        <h1 class="kss-header__title kss-title">BAM Style guide</h1>
+      </section>
+    </header>
+    <!-- /header. -->
+
+
+    <!-- navigation. -->
+    <section class="kss-navigation">
+      <h1 class="kss-navigation__title kss-title">BAM Style guide</h1>
+      <ul class="kss-nav">
+        <li class="kss-nav__item">
+          <a href="index.html">
+            <span class="kss-nav__ref">0</span>
+            <span class="kss-nav__name">Introduction</span>
+          </a>
+        </li>
+          <li class="kss-nav__item">
+            <a class="kss-state-active" href="section-blog.html">
+              <span class="kss-nav__ref">1</span>
+              <span class="kss-nav__name">Blog</span>
+            </a>
+                <ul class="kss-nav__subnav">
+                    <li class="kss-nav__item ">
+                      <a href="section-blog.html#kssref-blog-entry">
+                        <span class="kss-nav__ref">1.1</span>
+                        <span class="kss-nav__name">Blog.Entry</span>
+                      </a>
+                    </li>
+                    <li class="kss-nav__item kss-nav__item--grandchild">
+                      <a href="section-blog.html#kssref-blog-entry-typography">
+                        <span class="kss-nav__ref">1.1.1</span>
+                        <span class="kss-nav__name">Blog post entries typography</span>
+                      </a>
+                    </li>
+                    <li class="kss-nav__item ">
+                      <a href="section-blog.html#kssref-blog-general">
+                        <span class="kss-nav__ref">1.2</span>
+                        <span class="kss-nav__name">Blog.General</span>
+                      </a>
+                    </li>
+                    <li class="kss-nav__item kss-nav__item--grandchild">
+                      <a href="section-blog.html#kssref-blog-general-title">
+                        <span class="kss-nav__ref">1.2.1</span>
+                        <span class="kss-nav__name">Blog Title</span>
+                      </a>
+                    </li>
+                </ul>
+          </li>
+          <li class="kss-nav__item">
+            <a class="" href="section-components.html">
+              <span class="kss-nav__ref">2</span>
+              <span class="kss-nav__name">Components</span>
+            </a>
+          </li>
+          <li class="kss-nav__item">
+            <a class="" href="section-layout.html">
+              <span class="kss-nav__ref">3</span>
+              <span class="kss-nav__name">Layout</span>
+            </a>
+          </li>
+          <li class="kss-nav__item">
+            <a class="" href="section-typography.html">
+              <span class="kss-nav__ref">4</span>
+              <span class="kss-nav__name">Typography</span>
+            </a>
+          </li>
+      </ul>
+    </section>
+    <!-- /navigation. -->
+
+
+    <!-- documentation. -->
+    <section class="kss-documentation">
+
+        <!--
+          display each section, in order.
+          the "root" element comes first in this loop, and can be detected using
+          the "#if @first" block as seen below.
+        -->
+            <header class="kss-section kss-section--depth-1" id="kssref-blog">
+
+            <article class="kss-section__content">
+
+              <a class="kss-section__permalink" href="#kssref-blog">
+                <h1 class="kss-section__item kss-section__item--depth-1">
+                  <span class="kss-section__ref">1</span>
+                  <span class="kss-section__name">Blog</span>
+                </h1>
+              </a>
+
+
+            </article>
+
+
+            </header>
+            <section class="kss-section kss-section--depth-2" id="kssref-blog-entry">
+
+            <article class="kss-section__content">
+
+              <a class="kss-section__permalink" href="#kssref-blog-entry">
+                <h2 class="kss-section__item kss-section__item--depth-2">
+                  <span class="kss-section__ref">1.1</span>
+                  <span class="kss-section__name">Blog.Entry</span>
+                </h2>
+              </a>
+
+
+            </article>
+
+
+            </section>
+            <section class="kss-section kss-section--depth-3" id="kssref-blog-entry-typography">
+
+            <article class="kss-section__content">
+                <p class="kss-section__source">Source: <span>modules/blog/_typography.scss</span>, line <span>1</span></p>
+
+              <a class="kss-section__permalink" href="#kssref-blog-entry-typography">
+                <h3 class="kss-section__item kss-section__item--depth-3">
+                  <span class="kss-section__ref">1.1.1</span>
+                  <span class="kss-section__name">Blog post entries typography</span>
+                </h3>
+              </a>
+
+                <div class="kss-section__description"><p>These are the classes we</p>
+</div>
+
+            </article>
+
+              <article class="kss-section__modifiers">
+                <h1 class="kss-modifiers__heading">Example</h1>
+
+
+                <div class="kss-modifiers__example"><section class="c-blog">
+  <div class="c-blog__entry--post">
+    <h2>Some sub title</h2>
+    <strong>Be bold....</strong>
+    <p>Blahh blahh blaahhhhhh paragraph blah blahh blahh blaahhhhh paragraph paragraph blahh..... </p>
+    <ul>
+     <li><strong>List items to emphasis key points</strong></li>
+    </ul>
+  </div>
+</section></div>
+
+              </article>
+
+                <article class="kss-section__markup">
+                  <pre><code class="language-markup">&lt;section class&#x3D;&quot;c-blog&quot;&gt;
+  &lt;div class&#x3D;&quot;c-blog__entry--post&quot;&gt;
+    &lt;h2&gt;Some sub title&lt;/h2&gt;
+    &lt;strong&gt;Be bold....&lt;/strong&gt;
+    &lt;p&gt;Blahh blahh blaahhhhhh paragraph blah blahh blahh blaahhhhh paragraph paragraph blahh..... &lt;/p&gt;
+    &lt;ul&gt;
+     &lt;li&gt;&lt;strong&gt;List items to emphasis key points&lt;/strong&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+                </article>
+
+            </section>
+            <section class="kss-section kss-section--depth-2" id="kssref-blog-general">
+
+            <article class="kss-section__content">
+
+              <a class="kss-section__permalink" href="#kssref-blog-general">
+                <h2 class="kss-section__item kss-section__item--depth-2">
+                  <span class="kss-section__ref">1.2</span>
+                  <span class="kss-section__name">Blog.General</span>
+                </h2>
+              </a>
+
+
+            </article>
+
+
+            </section>
+            <section class="kss-section kss-section--depth-3" id="kssref-blog-general-title">
+
+            <article class="kss-section__content">
+                <p class="kss-section__source">Source: <span>modules/blog/_blog.scss</span>, line <span>10</span></p>
+
+              <a class="kss-section__permalink" href="#kssref-blog-general-title">
+                <h3 class="kss-section__item kss-section__item--depth-3">
+                  <span class="kss-section__ref">1.2.1</span>
+                  <span class="kss-section__name">Blog Title</span>
+                </h3>
+              </a>
+
+                <div class="kss-section__description"><p>In most places the blog entry title appears with an eyebrow above it showing the blog category</p>
+</div>
+
+            </article>
+
+              <article class="kss-section__modifiers">
+                <h1 class="kss-modifiers__heading">Example</h1>
+
+
+                <div class="kss-modifiers__example"><div class="container">
+    <div class="entry_categories">
+      <span class="t-eyebrow">Category</span>
+    </div>
+  <h1 class="c-blog__title">Title</h1>
+</div></div>
+
+              </article>
+
+                <article class="kss-section__markup">
+                  <pre><code class="language-markup">&lt;div class&#x3D;&quot;container&quot;&gt;
+    &lt;div class&#x3D;&quot;entry_categories&quot;&gt;
+      &lt;span class&#x3D;&quot;t-eyebrow&quot;&gt;Category&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;h1 class&#x3D;&quot;c-blog__title&quot;&gt;Title&lt;/h1&gt;
+&lt;/div&gt;</code></pre>
+                </article>
+
+            </section>
+    </section>
+    <!-- /documentation. -->
+
+
+
+  <!-- scripts. -->
+  <script src="kss-assets/vendor/jquery.js"></script>
+  <script src="kss-assets/vendor/prism.js"></script>
+  <script src="kss-assets/js/kss.js"></script>
+  <script src="bam-assets/app.min.js"></script>
+
+  <!-- /scripts. -->
+
+  </body>
+</html>

@@ -1,0 +1,22 @@
+<div class="c-resource-media">
+  <div class="">
+    {{ matrixBlock.addMedia 
+      |retconAttr('img',{'amp':'true','width':false,'height':false})
+      |retconAttr('video',{'width':'1000','height':'1000'})
+      |replace({
+        'https://www.youtube.com/':'www.youtube.com/',
+        'https://fast.wistia.net/':'fast.wistia.net/',
+        '<img':'<amp-img layout="responsive" class="redactorAmpImage" width="1000" height="500"',
+        'amp="true">':'></amp-img>',
+        'target="true"':'target="_blank"',
+        '<iframe':'<amp-iframe width="200" height="100" sandbox="allow-scripts allow-same-origin" layout="responsive" frameborder="0"',
+        '</iframe>':'</amp-iframe>',
+        })
+      |retconAttr('amp-iframe',{'name':false,'oallowfullscreen':false,'allowtransparency':false,'msallowfullscreen':false,'mozallowfullscreen':false,'webkitallowfullscreen':false})
+      |amplify|retconAttr('amp-video',{'layout':'responsive'})|raw
+      }}
+    </div>
+   {% if matrixBlock.mediaDescription %}
+    <pre class="description">{{ matrixBlock.mediaDescription }}</pre>
+  {% endif %}
+</div>

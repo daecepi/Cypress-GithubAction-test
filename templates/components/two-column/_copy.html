@@ -1,0 +1,13 @@
+<div>
+  {% if matrixBlock.eyebrow|length %}
+    <pre class="c-eyebrow c-eyebrow--{{ matrixBlock.eyebrowColor is not null and matrixBlock.eyebrowColor.one() is not null ? matrixBlock.eyebrowColor.one().slug : 'dark' }}">{{ matrixBlock.eyebrow }}</pre>
+  {% endif %}
+  {% if matrixBlock.header|length %}
+    <h2>{{ matrixBlock.header }}</h2>
+  {% endif %}             
+  {{ matrixBlock.copy }}
+  {% if matrixBlock.cta|length %}
+    {% set ctas = matrixBlock.cta %}
+    {% include 'components/cta/_index.html' %}
+  {% endif %}     
+</div>

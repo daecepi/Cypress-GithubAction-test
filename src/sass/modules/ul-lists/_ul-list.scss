@@ -1,0 +1,65 @@
+ul.ul-list__container{
+  font-family: 'Graphik-Regular';
+  font-style: normal;
+  font-weight: normal;
+  list-style: none;
+  text-decoration: none;
+  margin-bottom: 0px;
+
+  li::before{
+    content: "*";
+    position: absolute;
+    left: -23px;
+    top: 10px;
+  }
+
+  li{
+    position: relative;
+    font-size: 20px;
+    line-height: 30px;
+    margin-left: 23px;
+  }
+
+  /*
+    Section where you add more types of bullets
+  */
+  &.ul-list--mint-checks{
+    li::before{
+      content: '';
+      background-image: url('/imgs/lists/lists-mint-check.svg');
+    }
+  }
+
+  &.ul-list--white-checks{
+    li::before{
+      content: '';
+      background-image: url('/imgs/lists/lists-white-check.svg');
+    }
+  }
+  &.ul-list--hot-pink-checks{
+    li::before{
+      content: '';
+      background-image: url('/imgs/lists/lists-hot-pink-check.svg');
+    }
+  }
+
+  li{
+    &.ul-list--li-paragraph-design{
+      margin-top: 27px;
+      margin-bottom: 27px;
+      &::before{
+        top: 5px;
+      }
+      
+      .ul-list__bullet-header{
+        font-weight: bold;
+        font-size: 20px;
+        line-height: 30px;
+        margin-bottom: 0px;
+      }
+      p{
+        margin-top: 0px;
+      }
+    }
+  }
+}

@@ -1,0 +1,68 @@
+{% set backgroundColor = matrixBlock.backgroundColor.one() %}
+
+
+<section class="c-cols c-cols-landing {{ backgroundColor ? backgroundColor.slug : '' }} {{ matrixBlock.addBottomPadding ? 'h-padding-bottom' : '' }}">
+
+  <!-- Image Code -->
+    <div class="container">
+      {% switch matrixBlock.imageOrientation %} 
+      {% case "left" %}
+      <div class="row column-reverse">
+        <div class="col-md-6 d-flex align-items-center order-1">
+          <div class="c-image c-image--center c-image--shadow {{ matrixBlock.removeShadow ? 'h-remove-shadow' : '' }}">
+            {% if matrixBlock.image|length %}
+              {% set image = matrixBlock.image.one() %}
+              <img class="{{ matrixBlock.removeShadow ? 'h-remove-shadow' : '' }}" src="{{ image.url }}" alt="{{ image.title }}">
+            {% endif %}
+          </div>
+        </div>
+        <div class="col-md-5 offset-md-1 c-valign--middle order-2">
+          {% include 'components/two-column/_copy.html' %}
+        </div>
+      </div>
+      {% case "right" %}
+      <div class="row">
+        <div class="col-md-6 d-flex align-items-center offset-md-1 order-2">
+          <div class="c-image c-image--center c-image--shadow {{ matrixBlock.removeShadow ? 'h-remove-shadow' : '' }}">
+            {% if matrixBlock.image|length %}
+              {% set image = matrixBlock.image.one() %}
+              <img class="{{ matrixBlock.removeShadow ? 'h-remove-shadow' : '' }}" src="{{ image.url }}" alt="{{ image.title }}">
+            {% endif %}
+          </div>
+        </div>
+        <div class="col-md-5 c-valign--middle order-1">
+          {% include 'components/two-column/_copy.html' %}   
+        </div>
+      </div>
+      {% case "dropRight" %}
+      <div class="row">
+        <div class="col-md-7 d-flex align-items-center order-2">
+          <div class="c-image c-image--drop-right c-image--shadow {{ matrixBlock.removeShadow ? 'h-remove-shadow' : '' }}">
+            {% if matrixBlock.image|length %}
+              {% set image = matrixBlock.image.one() %}
+              <img class="drop-right__img {{ matrixBlock.removeShadow ? 'h-remove-shadow' : '' }}" src="{{ image.url }}" alt="{{ image.title }}">
+            {% endif %}
+          </div>
+        </div>
+        <div class="col-md-5 c-valign--middle order-1">
+          {% include 'components/two-column/_copy.html' %}   
+        </div>
+      </div>
+      {% case "dropLeft" %}
+      <div class="row column-reverse">
+        <div class="col-md-7 d-flex align-items-center order-1">
+          <div class="c-image c-image--drop-left c-image--shadow {{ matrixBlock.removeShadow ? 'h-remove-shadow' : '' }}">
+            {% if matrixBlock.image|length %}
+              {% set image = matrixBlock.image.one() %}
+              <img class="drop-right__img {{ matrixBlock.removeShadow ? 'h-remove-shadow' : '' }}" src="{{ image.url }}" alt="{{ image.title }}">
+            {% endif %}
+          </div>
+        </div>
+        <div class="col-md-5 c-valign--middle order-2">
+          {% include 'components/two-column/_copy.html' %}    
+        </div>
+      </div>
+      {% endswitch %} 
+    </div>
+  
+</section>

@@ -1,0 +1,514 @@
+// Hero
+
+.right.about {
+  img {
+    width: 100%;
+    min-height: 700px;
+    position: absolute;
+    bottom: 0;
+    &.two-tone-circle {
+      max-width: 400px;
+      transform: translate(-50%, 5%);
+    }
+  }
+}
+
+// Hero.END
+
+// Our story
+.c-our-story {
+  .c-panel--small.c-panel--top--mint.c-valign--middle.rectangle--hot-pink.rectangle--bottom--left.about-page {
+    right: 0;
+    width: 100%;
+    position: relative;
+
+    @include media-breakpoint-up(lg){
+      left: 80px;
+    }
+  
+    @include media-breakpoint-up(md) {
+      left: -125px;
+      width: 420px;
+      position: relative;
+      top: 0px;
+
+    }
+
+    &:before{
+      height: 140px;
+      width: 140px;
+      bottom: 144px;
+      left: -38px;
+      display: block;
+      z-index: -1;
+    }
+
+
+    .c-eyebrow{
+      @include media-breakpoint-down(sm){
+        min-height: 21px;
+      }
+    }
+
+    .slick-slider{
+      height: 100% !important;
+      overflow: hidden !important;
+    }
+
+    @include media-breakpoint-down(sm){
+      &:before{
+        height: 140px;
+        width: 140px;
+        bottom: 240px;
+        left: -39px;
+        display: block;
+        z-index: -1;
+        transform: scale(0.7,0.7);
+      }
+    }
+
+
+    &:after {
+      width: 100%;
+      left: 0;
+      height: 6px;
+    }
+
+    .container{
+      &.circle--top--right{
+        background: red;
+        &:before{
+          top: 25%;
+          right: -76px;
+        }
+      }
+    }
+  }
+
+  .c-our-story-carousel--content {
+    overflow-y: hidden;
+    max-height: 70%;
+
+    ul.slick-dots {
+      display: none !important;
+    }
+  }
+}
+// Our story.END
+
+// Changing things for good.
+
+.change-for-good--img.diamond--top--right.diamond--volt:before {
+  z-index: 0;
+  display: block;
+  @include media-breakpoint-up(md) {
+    display: block;
+    transform: translate(-50%, 60px) rotate(45deg);
+  }
+  @include media-breakpoint-up(lg) {
+    transform: translate(-130%, -20px) rotate(45deg);
+  }
+}
+
+.c-change-for-good {
+  background-color: transparent;
+  color: #FFF;
+  position: relative;
+  padding: 80px 0;
+  overflow: visible;
+  margin-bottom: 180px;
+  &:after {
+    content: '';
+    position: absolute;
+    background-color: $color-eggplant;
+    top: 0px;
+    right: 0px;
+    width: 100%;
+    height: 100%;
+    display: block;
+    z-index: -1;
+    @include media-breakpoint-up(md) {
+      width: 75%;
+    }
+  }
+  .left-image {
+    max-width: 100%;
+    right: 5%;
+    @include media-breakpoint-up(md) {
+      position: absolute;
+    }
+  }
+  .circle-right--mint {
+    position: absolute;
+    right: -10%;
+    height: 25%;
+    top: 30%;
+    z-index: -1;
+    @include media-breakpoint-up(md) {
+      z-index: 1;
+      height: 25%;
+      right: -15%;
+    }
+    @include media-breakpoint-up(lg) {
+      z-index: 1;
+      height: 50%;
+      right: -10%;
+    }
+  }
+}
+
+// Changing things for good.END
+
+// Road we've taken
+.c-about--our-road {
+  margin: 20px 0;
+  overflow: unset;
+  background-color: transparent;
+  h2 {
+    text-align: center;
+  }
+  .c-about--our-road__content {
+    background-color: #F5F6F6;
+    padding: 50px 0;
+    @include media-breakpoint-up(md) {
+      padding: 50px 25px;
+    }
+  }
+  .c-about--our-road--end {
+    text-align: left; // padding-top: 80px;
+    @include media-breakpoint-up(md) {
+      text-align: center;
+      padding-top: 40px;
+    }
+  }
+}
+
+.c-about--our-road__content--left {
+  .story--point {
+    position: relative;
+    p {
+      @include media-breakpoint-up(md) {
+        transform: translateY(15px);
+      }
+    }
+    p.date {
+      padding-top: 40px;
+    }
+    p.sm {
+      @include media-breakpoint-up(md) {
+        height: 100px;
+      }
+    }
+    img {
+      position: absolute;
+      right: 0;
+      top: 0;
+      transform: translateX(2%);
+      display: none;
+      @include media-breakpoint-up(md) {
+        display: block;
+      }
+    }
+  }
+}
+
+.c-about--our-road__content--right {
+  .story--point {
+    position: relative;
+    &.first {
+      @include media-breakpoint-up(md) {
+        margin-top: 75px;
+      }
+    }
+    p {
+      @include media-breakpoint-up(md) {
+        transform: translateY(65px);
+      }
+    }
+    p.date {
+      padding-top: 40px;
+    }
+    p.sm {
+      @include media-breakpoint-up(md) {
+        height: 100px;
+      }
+    }
+    img {
+      position: absolute;
+      right: 0;
+      transform: rotate(180deg);
+      display: none;
+      @include media-breakpoint-up(md) {
+        left: 0;
+        top: 0;
+        transform: translate(-2.5%, 35%);
+        display: block;
+      }
+    }
+  }
+}
+// Road we've taken.END
+
+// Leadership
+.c-about--leadership {
+  margin: 100px auto;
+  .row {
+    text-align: center;
+  }
+  .leader--profile {
+    text-align: center;
+    padding: 30px;
+    p{
+      margin: 0px;
+      &:nth-child(2){
+        margin-top:16px;
+      }
+    }
+    .old-img {
+      width: 150px;
+      border-radius: 50%;
+      display: inline-block;
+      transition: box-shadow 0.15s ease-in-out;
+      &:hover {
+        cursor: pointer;
+        box-shadow: $global-shadow-hover;
+      }
+    }
+    img{
+      &:hover {
+        cursor: pointer;
+        box-shadow: 0px 4px 20px rgba(60,63,64,0.25);
+      }
+    }
+  }
+}
+// Leadership.END
+
+
+// Investers
+.c-cols--investers.diamond--mint.diamond--bottom--left:before {
+  z-index: 0;
+  //transform: translate(11%, 48%) rotate(45deg);
+  transform: scale(0.4);
+  background: url(../imgs/about/customers/image_our-customers-dot-triangle@2X.png);
+  bottom: -108px;
+  left: -182px;
+  width: 606px;
+  height: 365px;
+
+  @include media-breakpoint-down(sm){
+    //transform: scale(0.3,0.35) translate(53%, -42%) rotate(45deg);
+    bottom: -17px;
+    left: -3px;
+  }
+}
+
+#investors-section{
+
+    .c-image{
+      margin-top: 0px;
+      @include media-breakpoint-down(sm){
+        width: 100%;
+        margin-top: 10px;
+        max-width: unset;
+      }
+  }
+
+  .diamond--mint:before{
+  }
+
+  &.diamond--top--left{
+    &:before{
+      //transform: scale(0.2,0.2) translate(187%, 6%) rotate(45deg);
+      background-image: url(../imgs/about/investors/image_board-dot-pattern-triangle@2x.png);
+      background-size: auto 100px;
+      transform: none;
+      height: 100px;
+      width: 200px;
+      left: 0px;
+      transform: scale(0.5,0.5);
+      top: -10px;
+    }
+    @include media-breakpoint-up(lg){
+      &:before{
+        //transform: translate(225px, -66%) rotate(45deg);
+        left: 210px;
+        top: 0px;
+        transform: none;
+      }
+    }
+  }
+  .container{
+    &.circle--bottom--right{
+      &:before{
+        transform: scale(1, 1) translate(-74%, 52%) rotate(20deg);
+      }
+      @include media-breakpoint-up(lg){
+        &:before{
+          transform: scale(2, 2) translate(-212px, 19%) rotate(20deg);
+        }
+      }
+    }
+  }
+}
+
+.c-cols--investers{
+  .container{
+    &.circle--top--right{
+      &:before{
+        top: 16%;
+        right: -100px;
+
+        @include media-breakpoint-down(sm){
+          transform: scale(0.6) translate(-26px, -100px);
+        }
+      }
+    }
+  }
+}
+
+// Investers.END
+
+// Careers
+.c-about--careers {
+  background-color: $color-putty;
+  padding: $global-section-padding;
+  .hire-jobs {
+    padding-top: 24px;
+    @include media-breakpoint-up(md) {
+      padding-top: 0;
+    }
+  } // z-index: -2;
+  iframe {
+    z-index: 1;
+    position: relative;
+  }
+}
+#lever-jobs-container {
+
+  .lever-department {
+    background-color: inherit;
+    margin-bottom: 0px !important;
+    .lever-job-title {
+      text-decoration: none;
+
+    }
+  }
+}
+
+.hire-jobs.diamond--top--right.diamond--volt:before {
+  transform: translateY(-20px) rotate(45deg);
+  z-index: 0;
+  display: block;
+  @include media-breakpoint-up(md) {
+    display: block;
+  }
+}
+
+// Careers.END
+
+//Highlights
+.about{
+.c-hero--split{
+  @include media-breakpoint-down(sm){
+    padding-top: 0px;
+  }
+}
+
+#we-believe-jumble{
+
+  @include media-breakpoint-up(md){
+    &::after{
+      width: 65vw;
+    }
+  }
+
+  @include media-breakpoint-down(sm){
+    #jumble-content{
+      order: 0;
+    }
+
+    #jumble-slider{
+      order: 1;
+    }
+  }
+}
+
+#investors-section{
+  .c-cols{
+    .c-image{
+      padding-top: 60px;
+      max-width: unset;
+    }
+  }
+}
+.tools-category{
+  z-index: 3;
+  position: relative;
+  .c-card--full-height{
+    height: fit-content;
+    min-height: 100%;
+    padding: 40px;
+    padding-bottom: 0px;
+    
+    .c-top-logo{
+      width: 55%;
+      height: 40px;
+      text-align: center;
+      justify-items: center;
+      display: flex;
+      align-items: center;
+      align-content: center;
+      img{
+        width: auto;
+        height: auto;
+        max-height: 100%;
+        max-width: 100%;
+      }
+    }
+
+    .c-card__meta{
+      position: static;
+
+      .t-link{
+        border-bottom: 4px solid #B8FF01;
+        margin-bottom: -4px;
+      }
+    }
+  }
+  .c-card--tool{
+    &.last-card{
+      display: block;
+  
+      @include media-breakpoint-down(sm){
+        display: none;
+      }
+  
+      &.active{
+        @include media-breakpoint-down(sm){
+          display: block;
+        }
+      }
+    }
+  }
+  .dotted-circle-svg{
+    @include media-breakpoint-down(sm){
+      top: 67px;
+    }
+  }
+  }
+
+  #temp-logo-module--images{
+    min-width: 120px;
+    padding-left: 24px;
+    padding-right: 24px;
+    &.two-cols-mobile{
+      @include media-breakpoint-down(sm){
+          width: calc(100% / 2 - 25px);
+          min-width: unset;
+          padding-left: 3px;
+          padding-right: 3px;
+      }
+    }
+  }
+}

@@ -1,0 +1,34 @@
+<div class="c-card__entry extended-card-entry">
+  <div class="c-card__bullet-spacer">
+    {% if entry.urlText is not null and entry.urlText|length > 0 %}
+      <a class="c-card__clickthrough" href="{{ entry.urlText }}"></a>
+    {% endif %}
+    <div style="text-align: center;">
+      {% if entry.image is not null %}
+        {% set image = entry.image.one() %}
+        <img class="c-card__default__image no-background-color" src="{{ image.url }}" alt="{{image.title}}" title="Base bullet image">
+      {% else %}
+      <picture>
+        <source type="image/webp" srcset="/imgs/webinars/Default-webinar-rectangle.webp"  class="c-card__default__image" alt="Webinar Index">
+        <source type="image/png" srcset="/imgs/webinars/Default-webinar-rectangle.png" class="c-card__default__image" alt="Webinar Index">
+        <img   class="c-card__default__image" src="/imgs/webinars/Default-webinar-rectangle.png"   alt="Webinar Index" >
+</picture>
+      {% endif %}
+    </div>
+    <div class="c-card__entry__content">
+      <span class="t-eyebrow">{{ entry.eyebrow }}</span>
+      <h4 class="c-card__entry-title single-line-trailer">
+        {% if entry.urlText is not null and entry.urlText|length > 0 %}
+        <a
+          class="underline_from_lefsettt"
+           href="{{entry.urlText}}">
+          {{ entry.header }}
+        </a>
+        {% else %}
+          {{ entry.header }}
+        {% endif %}
+      </h4>
+      <p class="p-sm multiple-4-card-trailer no-bottom-margin">{{ entry.paragraph }}</p>
+    </div>
+  </div>
+</div>

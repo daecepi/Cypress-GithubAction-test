@@ -1,0 +1,94 @@
+<footer class="c-blog__footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-5">
+        <div class="c-blog__footer__callout">Copper is the crm that works for you, so you can spend more time on relationships instead of data entry.</div>
+
+
+      </div>
+      <div class="col-lg-6 offset-lg-1">
+        <div class="c-blog__footer__nav">
+          <div class="row">
+            <div class="c-blog__footer__container js-footer-expand col-lg-4">
+              <div class="c-blog__footer__title">Topics</div>
+              <ul>
+                {% nav category in craft.categories.group('blogCategories').level(1).all() %}
+                <li><a class="c-side-nav__link" href="{{ category.url }}">{{ category.title }}</a></li>
+                {% endnav %}
+              </ul>
+              <i class="material-icons c-blog__footer__arrow">
+                arrow_downward
+              </i>
+            </div>
+            <div class="c-blog__footer__container js-footer-expand col-lg-4">
+              <div class="c-blog__footer__title">Explore</div>
+              <ul>
+                {% if promotedBlogPosts.featuredBlogPost|length %}
+                  {% for entry in promotedBlogPosts.featuredBlogPost.all() %}
+                    {% if entry.consolidatedTitle|length %}
+                      <li><a class="c-side-nav__link" href="{{ entry.url }}">{{ entry.consolidatedTitle }}</a></li>
+                    {% endif %}
+                  {% endfor %}
+                {% endif %}
+              </ul>
+              <i class="material-icons c-blog__footer__arrow">
+                arrow_downward
+              </i>
+            </div>
+            <div class="c-blog__footer__container js-footer-expand col-lg-4">
+              <div class="c-blog__footer__title">Company</div>
+              <ul>
+                <li><a class="c-side-nav__link" href="/about">About</a></li>
+                <li><a class="c-side-nav__link" href="/about#careers">Careers</a></li>
+                <li><a class="c-side-nav__link" href="/press">Press</a></li>
+                <li><a class="c-side-nav__link" href="/partners">Partners</a></li>
+                <li><a class="c-side-nav__link" href="/contact">Contact</a></li>
+              </ul>
+              <i class="material-icons c-blog__footer__arrow">
+                arrow_downward
+              </i>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+    <div class="c-blog__footer__legal row">
+      <div class="col-lg-5">
+        <div class="c-blog__social">
+          <div class="row">
+            <div class="col-xl-6">
+              <a href="#"><img class="c-blog__footer-logo" alt="Footer logo" src="/imgs/blog/footer-logo.svg"></a>
+            </div>
+            <div class="col-xl-6">
+              <div class="c-blog__social__links">
+                <a href="https://www.youtube.com/c/CopperInc" target="_blank">{% include '/icons/social-yt.svg' %}</a>
+                <a href="https://www.instagram.com/copperinc/" target="_blank">{% include '/icons/social-ig.svg' %}</a>
+                <a href="https://www.facebook.com/CopperInc/" target="_blank">{% include '/icons/social-fb.svg' %}</a>
+                <a href="https://twitter.com/copperinc" target="_blank">{% include '/icons/social-tw.svg' %}</a>
+                <a href="https://www.linkedin.com/company/copper-inc/" target="_blank">{% include
+                  '/icons/social-li.svg' %}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 offset-lg-1">
+        <div class="c-blog__footer__nav row">
+          <div class="col-lg-4">
+            <li><a class="c-side-nav__link" href="/privacy">Privacy Policy</a></li>
+          </div>
+          <div class="col-lg-4">
+            <li><a class="c-side-nav__link" href="/terms">Terms & Conditions</a></li>
+          </div>
+          <div class="col-lg-4">
+            <li><a class="c-side-nav__link" href="/">® {{ "now"|date("Y") }} Copper CRM, Inc.</a></li>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</footer>

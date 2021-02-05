@@ -1,0 +1,72 @@
+{% set entry = craft.entries.section('blogIndex').one() %}
+
+{# First, grab the username from the URI #}
+{% set username = craft.app.request.segments|last %}
+
+{# Then, grab the user based on the username #}
+{% set user = craft.users.username(username).one() %}
+
+{# Check for page number in url #}
+{% set page = craft.app.request.getParam('pg') %}
+
+{% extends "_side-nav.html" %}
+
+{% block sideNav %}
+<div class="c-blog-content__main container"> 
+  {# Make sure we actually found a user #}
+  {# if user %}
+    {% set blogPosts = craft.entries.section('blog').authorId(user.id).find() %}
+
+    Found: {{ blogPosts|length }} blog posts.
+  {% endif #}
+
+  {# Give vue page type and category ID #}
+  <div id="vue-blog-page-type" style="display:none;">authordetail</div>
+  <div id="vue-blog-author-id" style="display:none;">{{user.id}}</div>
+  <div id="vue-blog-page-num" style="display:none;">{{page}}</div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="c-author__detail">
+        {% if user.photo is null %}
+        <div class="circle-img c-author__img c-author__img--large background-{{(user.id%2) +1}}">
+          <span class="c-author__img--alt c-author__img--alt--large">{{ user.firstName|first }}</span>
+        </div>    
+        {% else %} 
+          <div class="circle-img c-author__img c-author__img--large" style="background-image:url('{{ user.photo.url }}')"></div>
+        {% endif %}     
+        <div class="c-author__meta c-author__meta--detail">
+          <h3>{{ user.name }}</h3>
+          <p class="c-author__meta__title">{{ user.authorTitle }}</p>
+          <div class="c-author__social">
+            {% if user.twitter|length %}
+              <a href="{{ user.twitter }}"><picture>
+          <source type="image/webp" srcset="/imgs/blog/social-tw-gray.webp"    alt="Social tw gray image"></a>
+          <source type="image/png" srcset="/imgs/blog/social-tw-gray.png"    alt="Social tw gray image"></a>
+          <img   src="/imgs/blog/social-tw-gray.png"  alt="Social tw gray image" crossorigin></a>
+</picture>
+              {% if user.linkedin|length %}
+              {% endif %}
+              <a href="{{ user.linkedin }}"><picture>
+          <source type="image/webp" srcset="/imgs/blog/social-li-gray.webp"    alt="Social li gray image"></a>
+          <source type="image/png" srcset="/imgs/blog/social-li-gray.png"    alt="Social li gray image"></a>
+          <img   src="/imgs/blog/social-li-gray.png"  alt="Social li gray image" crossorigin></a>
+</picture>
+            {% endif %}
+          </div>        
+          <p class="p-sm">{{ user.bio }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% verbatim %}
+
+    <script src="/js/vue.min.js"></script>
+    <script src="/js/vue/main.js" type="module"> </script>
+    <div id="app"></div>
+
+  {% endverbatim %}
+
+ 
+</div>
+{% endblock %}

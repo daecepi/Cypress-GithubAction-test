@@ -1,0 +1,52 @@
+{% switch thumbnail.type %}
+    {% case "demoAdvert" %}
+
+
+      <div class="col-md-6 c-card-col">
+        <div class="c-copper-chronicles__ad">
+          <a class="c-card__clickthrough" onClick="showLiveDemo()" href="#"></a>
+            <picture>
+          <source type="image/webp" srcset="/imgs/live-demo-cta.webp"  class="c-copper-chronicles__ad__img c-copper-chronicles__ad__img--demos"   alt="Copper chrnicles live demo image">
+          <source type="image/png" srcset="/imgs/live-demo-cta.jpeg"  class="c-copper-chronicles__ad__img c-copper-chronicles__ad__img--demos"   alt="Copper chrnicles live demo image">
+          <img   class="c-copper-chronicles__ad__img c-copper-chronicles__ad__img--demos"   src="/imgs/live-demo-cta.jpeg"   alt="Copper chrnicles live demo image" >
+</picture>
+          
+        </div> 
+      </div>
+    {% case "demoThumbnail" %}
+    <div class="col-md-6 c-card-col sl_swap" id="{{thumbnail.header}}">
+      <div class="c-blog-card c-blog-card--large"> 
+        <div id="videoClick-{{ thumbnail.videoId }}">
+          <span class="c-card__clickthrough wistia_embed wistia_async_{{thumbnail.videoId}} popover=true popoverContent=link"></span>
+        </div>
+        <div class="c-blog-card__image-container">
+          <a class="c-blog-card__image-button c-button c-button--white c-button--circle" href="#">
+            <i class="material-icons notranslate">play_arrow</i>
+          </a>
+          <img class="c-blog-card__image" src="/imgs/demos/{{thumbnail.imageName}}.jpg" alt="{{thumbnail.header}}">      
+        </div>
+        <div class="c-blog-card__content c-blog-card__content--large">
+          <span class="t-eyebrow ">{{ thumbnail.header }} video</span>
+          <h3 class="c-blog-card__content__title c-blog-card__content__title--large">
+          {{thumbnail.header}}
+         </h3>
+          <p class="c-blog-card__content__subtitle c-blog-card__content__subtitle--large p-sm no-margin d-none d-sm-block">{{ thumbnail.paragraph }}</p>
+          <div class="c-blog-card__content__author">
+            <a class="t-link t-link__no-underline" >Watch now</a>
+          </div>
+        </div>
+      </div>  
+    </div>
+
+    <script>
+       
+        function showLiveDemo() {
+          LazyLoad.js(['https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'],function(){
+            $("#choose-webinar-section1").addClass('d-none');
+            $("#choose-webinar-section2").removeClass('d-none');
+            $("#choose-webinar-confrimation-medium").removeClass('d-none');
+          })
+        }
+     
+    </script>
+{% endswitch %}

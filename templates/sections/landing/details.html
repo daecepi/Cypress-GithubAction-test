@@ -1,0 +1,48 @@
+{% set pages = craft.entries.section('featureDetail') %}
+
+<section id="{% if matrixBlock.stickyNavName != '' %}{{matrixBlock.stickyNavName |lower }}{% endif %}" class="c-product-detail h-section-padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <nav class="c-product-nav">
+          <div class="c-product-nav__title">
+            <p>More Features</p>
+          </div>
+          <ul class="js-accordion c-product-nav__container">
+            {% nav page in pages.all() %}
+            <li>
+              {% if page.level == 1 %}
+              <a class="c-product-nav__parent js-accordion-toggle" onclick="event.stopPropagation();">{{ page.title }}
+                <div class="c-product-nav__toggle"><i class="material-icons notranslate">keyboard_arrow_down</i></div>
+              </a>
+              {% else %}
+              {{ page.getLink() }}
+              {% endif %}
+              {% ifchildren %}
+              <ul class="c-product-nav__children">
+                {% children %}
+              </ul>
+              {% endifchildren %}
+            </li>
+            {% endnav %}
+          </ul>
+        </nav>
+        <div class="c-product-nav__details">
+          <p class="p-xtra-sm">Want to see all the features?<br>
+            <a href="/features">
+              See the complete list
+            </a>
+          </p>
+
+          <p class="p-xtra-sm">No credit card required.<br>Start your 14-day free trial today.</p>
+          <a class="c-button" href="https://app.prosperworks.com/users/sign_up">
+            Free Trial
+          </a>
+        </div>
+      </div>
+      <article class="col-md-8 offset-md-1">
+        {{ matrixBlock.richText }}
+      </article>
+    </div>
+  </div>
+</section>

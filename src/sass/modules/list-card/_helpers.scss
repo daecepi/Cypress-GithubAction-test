@@ -1,0 +1,7 @@
+.c-list-card__card {
+  &.c-list-card__card--auto {
+    @include media-breakpoint-up(md) {
+      height: auto;
+    }    
+  }
+}

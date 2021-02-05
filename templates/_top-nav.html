@@ -1,0 +1,236 @@
+{% extends "_layout" %}
+
+
+{% block content %}
+
+    <!-- hreflang attributes -->
+    <link rel="alternate" class="sl_norewrite" href="https://www.copper.com{{ craft.app.request.url() }}" hreflang="en-us"/>
+    <link rel="alternate" href="https://uk.copper.com{{ craft.app.request.url() }}" hreflang="en-gb"/>
+    <link rel="alternate" href="https://es.copper.com{{ craft.app.request.url() }}" hreflang="es"/>
+    <link rel="alternate" href="https://fr.copper.com{{ craft.app.request.url() }}" hreflang="fr"/>
+    <link rel="alternate" href="https://de.copper.com{{ craft.app.request.url() }}" hreflang="de"/>
+
+    <noscript>
+        <!-- Remove homepage animations if JS is disabled -->
+        <style>
+          .c-eggplant-overlay__block-color, .c-eggplant-overlay__nav{
+            display: none;
+          }
+          .c-hero--split:after{
+            left: 0;
+          }
+
+          .col-md.c-valign--middle > .c-eyebrow.c-eyebrow--light,
+          .col-md.c-valign--middle > h1,
+          .col-md.c-valign--middle > p,
+          .col-md.c-valign--middle > .c-hero__buttons,
+          .col-md.c-valign--middle > .c-hero__buttons >  .c-button--white {
+            transition:none;
+          }
+
+
+          .col-md.c-valign--middle > .c-eyebrow.c-eyebrow--light,
+          .col-md.c-valign--middle > h1,
+          .col-md.c-valign--middle > p,
+          .col-md.c-valign--middle > .c-hero__buttons{
+            transform: translateY(0);
+            color: #FFF;
+          }
+
+          .col-md.c-valign--middle > .c-hero__buttons > .c-button--white{
+            background: #FFF;
+            border-color: #FFF;
+            box-shadow: 0 6px 20px 0 rgba(0,0,0,0.2);
+          }
+        </style>
+    </noscript>
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "WebPage",
+        "url": "{{entry.url}}",
+        "inLanguage": "en-US",
+        "name": "{% if entry.seoTitle %} {{entry.seoTitle}} {% else %} needs deo title {% endif %}",
+        "description": "{{entry.seoDescription}}",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Copper",
+            "url": "https://www.copper.com"
+        },
+        "isPartOf": {
+            "@type": "WebSite",
+                "@id":"https://www.copper.com/#website",
+            "url": "https://www.copper.com",
+            "name": "Copper"
+            }
+      }
+      </script>
+      
+  </head>
+  {# The display:none gives us time to decide if we want to show the homepage animation or not #}
+  <body class="ltr {{ craft.app.request.segments|last ?: 'home' }}" >
+    {% set expiry = now|date_modify('+30 days') %}
+    {% header "Cache-Control: max-age=" ~ (expiry.timestamp - now.timestamp) %}
+    {% header "Pragma: cache" %}
+    {% header "Expires: " ~ expiry|date('D, d M Y H:i:s', 'GMT') ~ " GMT" %}
+
+    {% if entry.disableKeycdnCache is defined %}
+      {% if entry.disableKeycdnCache == 1 %}
+        <!-- Disabling keycdn to cache this template-->
+        {% header "Cache-Control: private, no-cache" %}
+      {% endif %}
+    {% endif %}
+    
+
+    <div id="cookie-message" style="display:none;">
+      <div class="container">
+        <div class="row justify-content-center">
+          <p class="col-lg-9 col-md-9 sm">We use cookies to ensure that we provide you with the best experience on our website. If you continue without changing your settings, you are agreeing to receive all cookies on the Copper website. You can change your cookie settings at any time.</p>
+          <p class="col-lg-3 col-md-3 buttons">
+            <a class="c-button c-button--white js-kill-cookie" href="#">Got It</a>
+            <a class="c-button c-button--white-outline c-button--no-margin-bottom" href="/cookies">Learn More</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <script>
+      //  // Cookie Message For EU Cookie Law
+(function() {
+
+  /**
+   * Set cookie
+   *
+   * @param string name
+   * @param string value
+   * @param int days
+   * @param string path
+   * @see http://www.quirksmode.org/js/cookies.html
+   */
+  function createCookie(name,value,days,path) {
+      if (days) {
+          var date = new Date();
+          date.setTime(date.getTime()+(days*24*60*60*1000));
+          var expires = "; expires="+date.toGMTString();
+      }
+      else var expires = "";
+      document.cookie = name+"="+value+expires+"; path="+path;
+  }
+
+  /**
+   * Read cookie
+   * @param string name
+   * @returns {*}
+   * @see http://www.quirksmode.org/js/cookies.html
+   */
+  function readCookie(name) {
+      var nameEQ = name + "=";
+      var ca = document.cookie.split(';');
+      for(var i=0;i < ca.length;i++) {
+          var c = ca[i];
+          while (c.charAt(0)==' ') c = c.substring(1,c.length);
+          if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+      }
+      return null;
+  }
+
+  var cookieMessage = document.getElementById('cookie-message');
+  if (cookieMessage == null) {
+      return;
+  }
+  var cookie = readCookie('seen-cookie-message');
+  if (cookie != null && cookie == 'yes') {
+      cookieMessage.style.display = 'none';
+  } else {
+      cookieMessage.style.display = 'block';
+  }
+  
+  // Set/update cookie
+  var cookieExpiry = cookieMessage.getAttribute('data-cookie-expiry');
+  if (cookieExpiry == null) {
+      cookieExpiry = 30;
+  }
+  var cookiePath = cookieMessage.getAttribute('data-cookie-path');
+  if (cookiePath == null) {
+      cookiePath = "/";
+  }
+  createCookie('seen-cookie-message','yes',cookieExpiry,cookiePath);
+
+})();
+
+// Close EU Cookie Law
+LazyLoad.js(['https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'],function(){
+  $('.js-kill-cookie').click(function(e) {
+    e.preventDefault();
+    $('#cookie-message').css('display','none');
+  });
+})
+    </script>
+
+
+    {% import "sections/nav/nav-chooser-macro" as navSel %}
+    {# 
+    Nav Selector 
+      1st param - entry section
+      2nd param - entry type
+      3rd param - entry slug 
+    #}
+
+    {{ navSel.navSelector(entry,entry.section.handle,entry.type,entry.slug,{}) }}
+
+    {# {% if entry.section.handle == 'lps' %}
+      {% if entry.slug == 'demo-request-pers' %}
+        {% include "sections/lps/nav-demo.html" %}
+      {% else %}
+        {% include "sections/lps/nav.html" %}
+      {% endif %}
+    {% elseif entry.section.handle == 'resourcesIndex' %}
+      {% include "sections/nav-library.html" %}
+    {% elseif entry.landingPageNavigation %}
+      {% include 'sections/landing/nav.html' %}
+    {% elseif entry.section.handle == "webinars" and entry.type == "webinarSpecial" %}
+      {% include 'sections/webinars/webinar-special/_nav.html' %}
+    {% else %}
+      {% include 'sections/nav.html' %}
+    {% endif %} #}
+    {# <main id="content" class="no-banner" role="main"> #}
+    {% set url = craft.app.request.url %}
+    <main id="content" role="main" {% if webBanner.webBannerStatus is defined and webBanner.webBannerStatus == 1 and url == '/' %}style='top:50px'{% endif %}>
+      {% block topNav %}
+        <p>If you see me, you haven’t set your <code>{% verbatim %}{% block topNav %}…{% endblock %}{% endverbatim %}</code> yet.</p>
+        <p>See Twig’s <a href="http://twig.sensiolabs.org/doc/templates.html#template-inheritance">Template Inheritance</a> documentation for an explanation.</p>
+      {% endblock %}
+    </main>
+
+    {# Remove footer replaces standard footer with the landing page customer footer #}
+    {% if entry.slug == 'about' %}
+    {% include 'sections/footer/_footer-about.html' %}
+    {% elseif not entry.removeFooter %}
+      {# {% include 'sections/footer.html' %} #}
+      {% include 'sections/_default-footer.html' %}
+      {% if entry.section.handle == 'webinars' %}
+        {% include 'sections/footer_simple.html' %}
+      {% endif %}
+    {% else %}
+      {% if entry.section.handle == "lps" %}
+        {% include 'sections/footer_lps.html' %}
+      {% else %}
+        {% if entry.section.handle == 'theWayWorkWorks' %}
+          {% include 'sections/footer_way_works.html' %}
+        {% else %}
+          {% include 'sections/footer_simple.html' %}
+        {% endif %}
+      {% endif %}
+    {% endif %}
+
+    {% set url = craft.app.request.url %}
+    
+    {% if url == "/" %}
+      <!-- do nothing -->
+    {% else %}
+      {% include '_request-demo.html' %}
+      {% include '_contact-us.html' %}
+    {% endif %}
+    
+  </body>
+
+{% endblock %}

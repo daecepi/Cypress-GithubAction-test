@@ -1,0 +1,12 @@
+<div class="c-card__entry extended-card c-card__entry--image background--{{ entry.backgroundColor is not null and entry.backgroundColor.one() is not null ? entry.backgroundColor.one().slug|replace({" ":"-"})|lower|default('off-white') : 'off-white' }}" style="height: calc(100% - 20px) ;display: flex;">
+    {% if entry.clickthrough is not null and entry.clickthrough.url|length %}
+      <a class="c-card__clickthrough" href="{{ entry.clickthrough.url }}"></a>
+    {% endif %}
+    <div style="margin-top: auto; margin-bottom: auto; height: fit-content">
+      {% set image = entry.image.one() %}
+      <img class="c-card__image--center" src="{{ image.url }}" alt="{{ image.title }}">
+      <p class="p-sm" style="text-align: center; padding: 0px 25px 35px 25px;">{{ entry.paragraph }}</p>
+    </div>
+</div>
+  
+  

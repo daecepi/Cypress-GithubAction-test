@@ -1,0 +1,134 @@
+{
+  "name": "copper",
+  "version": "1.0.0",
+  "description": "<p align=\"center\"><a href=\"https://craftcms.com/\" target=\"_blank\"><img width=\"312\" height=\"90\" src=\"https://craftcms.com/craftcms.svg\" alt=\"Craft CMS\"></a></p>",
+  "main": "gulpfile.js",
+  "scripts": {
+    "kss": "kss --config kss-config.json",
+    "clean-folder": "rimraf web/js/vue",
+    "clean-index": "rimraf web/js/vue/index.html",
+    "cypress-open": "cypress open",
+    "cypress-run": "cypress run --browser chrome firefox",
+    "build": "npm run clean-folder && webpack --mode production && npm run clean-index",
+    "dev": "npm run clean-folder && webpack --mode development && npm run clean-index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ProsperWorksDesign/copper.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ProsperWorksDesign/copper/issues"
+  },
+  "paths": {
+    "src": {
+      "base": "./templates/",
+      "css": "./src/css/",
+      "fontello": "./src/fontello/",
+      "fonts": "./src/fonts/",
+      "json": "./src/json/",
+      "js": "./src/js/",
+      "img": "./src/img/",
+      "scss": "./src/scss/"
+    },
+    "build": {
+      "base": "./templates/",
+      "css": "./web/css/",
+      "fontello": "./web/fonts/fontello/",
+      "fonts": "./web/fonts/",
+      "js": "./web/js/",
+      "html": "./web/html/",
+      "img": "./web/imgs/"
+    },
+    "scss": [],
+    "templates": "./templates/"
+  },
+  "urls": {
+    "live": "https://copper.com",
+    "local": "https://copper.lndo.site",
+    "critical": "https://copper.lndo.site"
+  },
+  "vars": {
+    "siteCssName": "style.css",
+    "scssName": "style.scss",
+    "cssName": "style.css"
+  },
+  "globs": {
+    "critical": [
+      {
+        "url": "/",
+        "template": "index"
+      }
+    ]
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.9.6",
+    "apollo-boost": "^0.4.7",
+    "autoprefixer": "^7.1.1",
+    "axios": "^0.18.1",
+    "bootstrap": "^4.5.0",
+    "bourbon": "^4.3.4",
+    "bourbon-neat": "^2.0.0",
+    "eyeglass": "^1.6.0",
+    "graphql": "^15.0.0",
+    "gulp-minify": "^3.1.0",
+    "imagemin-webp": "^6.0.0",
+    "isotope-layout": "^3.0.4",
+    "natives": "^1.1.6",
+    "neat": "^1.2.2",
+    "npx": "^10.2.2",
+    "postcss": "^6.0.23",
+    "pump": "^1.0.2",
+    "run-sequence": "^1.2.2",
+    "scrollreveal": "^3.4.0",
+    "vue-apollo": "^3.0.3",
+    "vue-router": "^3.1.6"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "@babel/plugin-transform-runtime": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "babel-loader": "^8.1.0",
+    "babel-polyfill": "^6.26.0",
+    "browser-sync": "^2.26.7",
+    "chalk": "^4.1.0",
+    "critical": "^2.0.4",
+    "css-loader": "^1.0.1",
+    "cypress": "^6.3.0",
+    "fancy-log": "^1.3.3",
+    "gulp": ">=4",
+    "gulp-build": "^0.5.3",
+    "gulp-changed": "^3.2.0",
+    "gulp-concat-util": "^0.5.5",
+    "gulp-cssnano": "^2.1.3",
+    "gulp-if": "^2.0.2",
+    "gulp-imagemin": "^3.3.0",
+    "gulp-load-plugins": "^2.0.4",
+    "gulp-plumber": "^1.2.1",
+    "gulp-postcss": "^6.0.2",
+    "gulp-rename": "^2.0.0",
+    "gulp-replace": "^1.0.0",
+    "gulp-run-command": "0.0.9",
+    "gulp-sass": "^3.1.0",
+    "gulp-shell": "^0.6.5",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-svgmin": "^1.2.4",
+    "gulp-svgstore": "^6.1.0",
+    "gulp-uglify": "^3.0.2",
+    "gulp-watch": "^4.3.11",
+    "gulp-webp": "^4.0.1",
+    "html-webpack-plugin": "^3.2.0",
+    "kss": "^3.0.1",
+    "michelangelo": "^0.8.0",
+    "puppeteer": "^5.3.1",
+    "rimraf": "^2.7.1",
+    "vue-loader": "^15.9.2",
+    "vue-style-loader": "^4.1.2",
+    "vue-template-compiler": "^2.6.11",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "homepage": "https://github.com/ProsperWorksDesign/copper#readme"
+}

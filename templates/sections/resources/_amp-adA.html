@@ -1,0 +1,19 @@
+<div class="c-resources-media--cta d-flex">
+    <div class="c-resources-media__copy">
+        {% if matrixBlock.eyebrow|length %}
+            <pre class="c-eyebrow c-eyebrow--dark">{{ matrixBlock.eyebrow }}</pre>
+        {% endif %}        
+        <h2 style='margin-bottom:0.5rem'>{{ matrixBlock.header }}</h2>
+        <p style='margin-bottom:20px'>{{ matrixBlock.paragraph |amplify|raw}}</p>
+        {% if matrixBlock.cta|length %}
+            {% set ctas = matrixBlock.cta %}
+            {% include 'components/cta/_index.html' %}
+        {% endif %}            
+    </div>
+    <!-- {% if matrixBlock.ad|length %}
+        {% set image = matrixBlock.ad.one() %}
+        <div class="c-resources-media__ad">
+            <amp-img width='1920' height="1281" alt="{{entry.title}}" layout="responsive" src="{{ image.url }}" media="(min-width: 416px)"></amp-img>
+        </div>
+    {% endif %} -->
+</div>

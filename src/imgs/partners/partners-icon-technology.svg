@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="65px" viewBox="0 0 64 65" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>partners-icon-technology</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="design" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="01_partner-page" transform="translate(-208.000000, -967.000000)">
+            <g id="partners-icon-technology" transform="translate(208.000000, 967.000000)">
+                <polygon id="Fill-1" fill="#00E6C3" points="46 18 46 24 52 24 52 12 40 12 40 18"></polygon>
+                <polygon id="Fill-2" fill="#00E6C3" points="18 46 18 40 12 40 12 52 24 52 24 46"></polygon>
+                <polygon id="Fill-3" fill="#EAE8ED" points="40 40 24 40 24 46 46 46 46 24 40 24"></polygon>
+                <polygon id="Fill-4" fill="#EAE8ED" points="52.0002 24.0004 52.0002 52.0004 24.0002 52.0004 24.0002 64.0004 64.0002 64.0004 64.0002 24.0004"></polygon>
+                <polygon id="Fill-5" fill="#00D1B5" points="52 24 46 24 46 46 24 46 24 52 52 52"></polygon>
+                <polygon id="Fill-6" fill="#EAE8ED" points="24 24 40 24 40 18 18 18 18 40 24 40"></polygon>
+                <polygon id="Fill-7" fill="#EAE8ED" points="0 0.0001 0 40.0001 12 40.0001 12 12.0001 40 12.0001 40 0.0001"></polygon>
+                <polygon id="Fill-8" fill="#00D1B5" points="18 18 40 18 40 12 12 12 12 40 18 40"></polygon>
+                <polygon id="Fill-9" fill="#D6D3DC" points="24 40 40 40 40 24 24 24"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

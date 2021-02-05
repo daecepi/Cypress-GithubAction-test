@@ -1,0 +1,85 @@
+// Global Spacing (TO CHANGE AFTER BLOG COMPLETION)
+$global-section: 1800px;
+$global-container: 1250px;
+$global-section-padding: 65px 0 65px;
+$global-desktop-padding: 120px 0 120px;
+$global-mobile-padding: 60px 0 60px;
+$global-new-nav-padding: 160px 0 160px;
+$global-text-padding: 74px;
+$global-header-margin: 36px;
+$global-container-padding: 0 25px;
+// Colors
+$color-gray-white: #eae9ee;
+$color-new-volt: #006B5B;
+$color-deep-purple: #2F203F;
+$color-hot-pink: #FF3465;
+$color-orange-g2crowd: #F0492D;
+$color-soft-gray: #B0B7BA;
+$color-extra-soft-gray: #DDD;
+$color-volt: #B8FF01;
+$color-graphite: #3C3F40;
+$color-eggplant: #321E41;
+$color-soft-eggplant: #503068;
+$color-midnight: #14236E;
+$color-soft-midnight: #1E3192;
+$color-mint: #00E6C3;
+$color-teal: #20D5BA;
+$color-teal-dark: #006B5B;
+$color-aqua-mint: #20D5BA;
+$color-strong-green: #018A75;
+$color-burgundy: #661428;
+$color-light-mint: #CCF9F2;
+$color-silver: #E5E7E9;
+$color-putty: #F5F6F6;
+$color-cemento: #F5F5F5;
+$color-white: #FFF;
+$color-black: #000;
+$color-sky: #D8E0E7;
+$color-light-text: #8A8C8B;
+$color-purple: #311D40;
+$color-final-plea: #56468f;
+$color-purple-rain: #6F448E;
+$color-barney-purple: #A16BC9;
+$color-evergreen: #004C3F;
+$color-indigo: #2B41B2;
+$color-light-pink: #D92C55;
+// -- OLD colours --
+$color-dark-white: #ececec;
+$color-dark-gray: #4a4a4a;
+$color-light-gray: #aaa;
+$color-green-500: #4CAF50;
+$color-blue-500: #2196F3;
+$color-amber-600: #FFB300;
+$color-cyan-600: #00acc1;
+$color-teal-500: #009688;
+$color-indigo: #3F51B5;
+$color-dark-slate: #263238;
+$color-mid-slate: #37474F;
+$color-tan: #F8F7F4;
+$color-blue-gray-900: #263238;
+$color-cornflower: #5659fc;
+
+// Z Index Values
+$z-index-main-nav: 10;
+$z-index-features-dropdown: 1;
+$z-index-mobile-header: 10;
+$z-index-mobile-dropdown: 1;
+// Box Shadow
+$global-shadow: 0 6px 20px 0 rgba(60,63,64,0.07);
+$global-shadow-hover:  0 10px 25px 0 rgba(60,63,64,0.14);
+$global-wimpy-shadow: 0 3px 10px rgba(0,0,0,.12);
+// Fonts 
+$regular-font: 'Graphik-Regular';
+$medium-font: 'Graphik-Medium';
+$light-font: "Graphik-Light";
+
+// Transition
+$hero--split: 1s;
+$eggplant-block-transition-delay: .5s;
+$eggplant-block-transition: 1.5s;
+$logo-transition: 1s;
+$mobile-nav-transition: 0.22s;
+$mobile-easing: ease-in-out;
+
+// Navigation
+$side-nav-width: 283px;

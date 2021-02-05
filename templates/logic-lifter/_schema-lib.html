@@ -1,0 +1,85 @@
+{% macro returnWebpageSchema(entry) %}
+  {
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "url": "{{entry.url|default('https://copper.com/'~entry.slug)}}",
+    "inLanguage": "en-US",
+    "name": "{% if entry.seoTitle|length > 0 %} {{entry.seoTitle}} {% else %} Needs SEO title {% endif %}",
+    "description": "{% if entry.seoDescription|length > 0 %}{{entry.seoDescription}} {% else %} Needs SEO description {% endif %}",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Copper",
+        "url": "https://www.copper.com"
+    },
+    "isPartOf": {
+        "@type": "WebSite",
+            "@id":"https://www.copper.com/#website",
+        "url": "https://www.copper.com",
+        "name": "Copper"
+        }
+  }
+{% endmacro %}
+
+{% macro returnCopperAggregateRating() %}
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "{{g2crowdRating.rating}}",
+    "reviewCount": "{{g2crowdRating.reviewCount}}"
+  }
+{% endmacro %}
+
+{% macro returnCopperOffers() %}
+  "offers":{
+    "@type": "AggregateOffer",
+    "offerCount": "3",
+    "lowPrice": "19",
+    "highPrice": "119",
+    "availability": "https://schema.org/OnlineOnly",
+    "priceCurrency": "USD"
+  }
+{% endmacro %}
+
+{% macro resizedImagesForSchemas(image) %}
+{% set xsThumb = {
+  mode: 'stretch',
+  width: 500,
+  height: 500,
+  quality: 75
+} %}
+
+{% set shortThumb = {
+  mode: 'stretch',
+  width: 900,
+  height: 800,
+  quality: 75
+} %}
+
+{% set longThumb = {
+  mode: 'stretch',
+  width: 1600,
+  height: 900,
+  quality: 75
+} %}
+
+  {# Exact images are return in the schema #}
+  "{{image.getUrl(xsThumb)}}",
+  "{{image.getUrl(shortThumb)}}",
+  "{{image.getUrl(longThumb)}}"
+
+{% endmacro %}
+
+{# Webinars have a way of letting users know the duration of a video, this functions converts that into the time required for google #}
+{% macro obtainDurationWebinars(durationString) %}
+  {% set tempString = durationString %}
+
+  {% set tempString = tempString|trim|lower|replace({
+    "hours": "H",
+    "min": "M",
+    "minutes": "M",
+    "secs": "S",
+    " ": ""
+  }) %}
+
+  {% set duration = "PT" ~ tempString %}
+  "{{ duration }}"
+{% endmacro %}

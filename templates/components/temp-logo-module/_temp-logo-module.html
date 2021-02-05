@@ -1,0 +1,21 @@
+<section id="" class="c-single-column  bottom-padding-mobile home-proof background--cemento">
+  <div class="container">
+
+      <div class="col-md-12">
+        <div class="text-center extra-bottom-margin--small">{{matrixBlock.header}}</div>
+        <div class="smb-logo-icons">
+          <ul class="logo-section--one-column">
+            {% for i in matrixBlock.logos %}
+                {% if i %}
+                <li id="temp-logo-module--images" class="logo-section--images " >
+                    <img src="{{ i.url }}" alt="{{ i.title }}">
+                </li>
+                {% endif %}
+            {% endfor %}
+            </ul>
+          </ul>
+        </div>
+      </div>
+
+  </div>
+</section>

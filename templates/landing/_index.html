@@ -1,0 +1,89 @@
+{% extends "_top-nav.html" %}
+
+{% block topNav %}
+
+{% set pageHeroSynced = 0 %}
+
+<!-- landing _index template -->
+
+{% if entry.slug == 'project-management-crm' %}
+
+  {% include "landing-gtm-projects/_index.html" %}
+
+{% else %}
+
+
+{% import "logic-lifter/_schema-lib.html" as schemaLib %} 
+<script type="application/ld+json">
+  {{ schemaLib.returnWebpageSchema(entry) }}
+</script>
+
+{% for matrixBlock in entry.landingBlocks.all() %}
+  {% set loopIndex = loop.index %}
+    {% switch matrixBlock.type %}
+      {% case "hero" %}
+        {% if loop.index > 1 %}
+          {#  attibute to adapt hero spacing depending on its position#}
+          {% set notFirstHero = 1 %}
+        {% endif %}
+        {% include 'sections/landing/hero.html' %}
+      {% case "syncedHero" %}
+        {% set pageHeroSynced = 1 %}
+        {% include 'sections/landing/synced-hero.html' %}
+      {% case "g2CrowdModule" %}
+        {% include 'components/slider/_slider.html' %}
+      {% case "pricingPlans" %}
+        {% include 'sections/pricing/hero.html' %}
+      {% case "table" %}
+        {% include 'sections/landing/table/comparison-table.html' %}
+      {% case "cta" %}
+        {% include 'sections/pricing/cta.html' %}
+      {% case "oneColumn" %}
+        {% include 'sections/landing/one-column/one-column.html' %}
+      {% case "oneColumnSimpleFullScreenImage" %}
+        {% import 'sections/landing/_simple-one-col-manager.html' as simpleOneColManager %}      
+        {{ simpleOneColManager.createSimpleFullScreenOneColumn(matrixBlock.backgroundImageClassText, matrixBlock.copy, matrixBlock.ctaText, matrixBlock.ctaUrl) }}
+      {% case "twoColumn" %}
+        {% include 'sections/landing/two-column/two-column.html' %}
+      {% case "simpleTwoColOrientedTop" %}
+        {%import "sections/landing/_simple-two-cols-manager.html" as simpleTwoColManager%}
+        {{ simpleTwoColManager.createSimpleTowColOrientedTop(matrixBlock.copy, matrixBlock.image) }}
+      {% case "createSimpleTwoColColorConfined" %}
+        {%import "sections/landing/_simple-two-cols-manager.html" as simpleTwoColManager%}
+        {{ simpleTwoColManager.createSimpleTowColColorConfined(matrixBlock.backgroundColor, matrixBlock.eyebrow, matrixBlock.copy, matrixBlock.image, matrixBlock.ctaText, matrixBlock.ctaUrl) }}
+      {% case "threeColumn" %}
+        {% include 'sections/landing/three-column/three-column.html' %}
+        {% case "jumbleModule" %}
+          {% include 'sections/landing/jumble-module/jumble-module.html' %}
+      {% case "testimonial" %}
+        {% include 'sections/landing/testimonial.html' %}
+      {% case "testimonialSlider" %}
+        {% include 'sections/landing/testimonial-slider/testimonial-slider.html' %}
+      {% case "details" %}
+        {% include 'sections/landing/details.html' %}
+      {% case 'embeddedVideo' %}
+        {% include 'sections/landing/embedded-video.html' %}
+      {% case 'logoSection' %}
+        {% import 'components/_components.html' as component %}
+        {{ component.logoSection(matrixBlock) }}
+      {% case 'latestWebinarsModule' %}
+        {% include 'sections/webinars/_webinars-module.html' %}
+      {% case "temporalLogoModule" %}
+        {% include 'components/temp-logo-module/_temp-logo-module.html' %}
+      {% case "underlineNumbers" %}
+        {% import 'components/underline-4-number/_underline-4-number.html' as component %}
+        {{ component.underline4NumberComponent(matrixBlock) }}
+      {% case 'customSection' %}
+        {% include 'sections/landing/custom-section/custom-section.html' %}
+    
+    {% endswitch %}
+  {% endfor %}
+  {% if entry.turnOnScrollspyPopup is defined %}
+    {% if entry.turnOnScrollspyPopup %}
+      {% include "sections/landing/right-sidebar-button.html" %}
+    {% endif %}
+  {% endif %}
+
+  {% endif %}
+
+{% endblock %}

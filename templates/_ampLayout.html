@@ -1,0 +1,82 @@
+{% set x_1 = {
+  mode: 'crop',
+  width: 500,
+  height: 500,
+  quality: 75,
+  position: 'top-center'
+} %}
+{% set x_2 = {
+  mode: 'crop',
+  width: 900,
+  height: 800,
+  quality: 75,
+  position: 'top-center'
+} %}
+{% set x_3 = {
+  mode: 'crop',
+  width: 1600,
+  height: 900,
+  quality: 75,
+  position: 'top-center'
+} %}
+<!doctype html>
+<html ⚡ lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <meta name="description" content="{% if entry.seoDescription %}{{entry.seoDescription}}{% else %} {{entry.title}} {% endif %}">
+    <link rel="preload" as="script" href="https://cdn.ampproject.org/v0.js">
+    <link rel="preload" href="{{ entry.featuredImage.one().url }}" as="image">
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+    {# <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script> #}
+    {# <script async custom-element="amp-app-banner" src="https://cdn.ampproject.org/v0/amp-app-banner-0.1.js"></script> #}
+    <!-- Import other AMP Extensions here -->
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <link rel="canonical" href="{{ craft.app.request.absoluteUrl |replace('/amp','')}}">
+    <title>{{entry.title}}</title>
+    {% if entry.featuredImage.one().url %}
+    <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "NewsArticle",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{entry.url}}"
+      },
+      "headline": "{{entry.title|slice(0, 110)}}",
+      "image": [
+        "{{ entry.featuredImage.one().getUrl(x_1) }}",
+        "{{ entry.featuredImage.one().getUrl(x_2) }}",
+        "{{ entry.featuredImage.one().getUrl(x_3) }}"
+      ],
+      "datePublished": "{{entry.postDate |atom }}",
+      "dateModified": "{{ entry.dateUpdated |atom }}",
+      "author": {
+        "@type": "Person",
+        "name": "{{entry.author}}"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Copper CRM",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "/imgs/copper_amp_logo.jpg"
+        }
+      },
+      "description": "{% if entry.seoDescription %}{{entry.seoDescription}}{% else %} {{entry.title}} {% endif %}"
+    }
+    </script>
+    {% endif %}
+    {# THIS IS THE AMP CYSTOM TAG FOR BLOG ENTRIES #}
+    {% include 'amp-styles/blog-entries-style.html' %}
+
+  </head>
+  <body>
+    {% block content %}
+        <h1>Welcome to the mobile web</h1>
+    {% endblock %}
+    
+  </body>
+</html>

@@ -1,0 +1,3186 @@
+    {
+      "__schema": {
+        "types": [
+          {
+            "name": "Query",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "String",
+            "kind": "SCALAR",
+            "possibleTypes": null
+          },
+          {
+            "name": "QueryParameter",
+            "kind": "SCALAR",
+            "possibleTypes": null
+          },
+          {
+            "name": "Boolean",
+            "kind": "SCALAR",
+            "possibleTypes": null
+          },
+          {
+            "name": "Int",
+            "kind": "SCALAR",
+            "possibleTypes": null
+          },
+          {
+            "name": "EntryInterface",
+            "kind": "INTERFACE",
+            "possibleTypes": [
+              {
+                "name": "company_company_Entry",
+                "description": null
+              },
+              {
+                "name": "pricing_pricing_Entry",
+                "description": null
+              },
+              {
+                "name": "product_productivity_Entry",
+                "description": null
+              },
+              {
+                "name": "product_collaboration_Entry",
+                "description": null
+              },
+              {
+                "name": "product_insights_Entry",
+                "description": null
+              },
+              {
+                "name": "product_implementation_Entry",
+                "description": null
+              },
+              {
+                "name": "product_integrations_Entry",
+                "description": null
+              },
+              {
+                "name": "blog_blog_Entry",
+                "description": null
+              },
+              {
+                "name": "homepage_homepage_Entry",
+                "description": null
+              },
+              {
+                "name": "ctas_ctas_Entry",
+                "description": null
+              },
+              {
+                "name": "pricingCapstone_pricingCapstone_Entry",
+                "description": null
+              },
+              {
+                "name": "pricingFeatures_pricingFeatures_Entry",
+                "description": null
+              },
+              {
+                "name": "accordion_accordion_Entry",
+                "description": null
+              },
+              {
+                "name": "legal_legal_Entry",
+                "description": null
+              },
+              {
+                "name": "legal_cookies_Entry",
+                "description": null
+              },
+              {
+                "name": "legal_privacy_Entry",
+                "description": null
+              },
+              {
+                "name": "legal_tos_Entry",
+                "description": null
+              },
+              {
+                "name": "landingPage_landingPage_Entry",
+                "description": null
+              },
+              {
+                "name": "numbers_numbers_Entry",
+                "description": null
+              },
+              {
+                "name": "list_list_Entry",
+                "description": null
+              },
+              {
+                "name": "suggestedContent_suggestedContent_Entry",
+                "description": null
+              },
+              {
+                "name": "seoPage_seoPage_Entry",
+                "description": null
+              },
+              {
+                "name": "demo_demo_Entry",
+                "description": null
+              },
+              {
+                "name": "demoThumbnail_demoThumbnail_Entry",
+                "description": null
+              },
+              {
+                "name": "crmComparison_crmComparison_Entry",
+                "description": null
+              },
+              {
+                "name": "pressArticle_pressArticle_Entry",
+                "description": null
+              },
+              {
+                "name": "company_press_Entry",
+                "description": null
+              },
+              {
+                "name": "company_contact_Entry",
+                "description": null
+              },
+              {
+                "name": "about_about_Entry",
+                "description": null
+              },
+              {
+                "name": "blogIndex_blogIndex_Entry",
+                "description": null
+              },
+              {
+                "name": "legal_legalTemplate_Entry",
+                "description": null
+              },
+              {
+                "name": "video_video_Entry",
+                "description": null
+              },
+              {
+                "name": "image_image_Entry",
+                "description": null
+              },
+              {
+                "name": "product_gSuite_Entry",
+                "description": null
+              },
+              {
+                "name": "industries_industries_Entry",
+                "description": null
+              },
+              {
+                "name": "industries_agencies_Entry",
+                "description": null
+              },
+              {
+                "name": "industries_realEstate_Entry",
+                "description": null
+              },
+              {
+                "name": "industries_technology_Entry",
+                "description": null
+              },
+              {
+                "name": "industries_consulting_Entry",
+                "description": null
+              },
+              {
+                "name": "customers_customers_Entry",
+                "description": null
+              },
+              {
+                "name": "featureDetail_featureDetail_Entry",
+                "description": null
+              },
+              {
+                "name": "partners_partners_Entry",
+                "description": null
+              },
+              {
+                "name": "partnersSignUp_partnersSignUp_Entry",
+                "description": null
+              },
+              {
+                "name": "events_events_Entry",
+                "description": null
+              },
+              {
+                "name": "eventListing_eventsListing_Entry",
+                "description": null
+              },
+              {
+                "name": "demoThumbnail_demoAdvert_Entry",
+                "description": null
+              },
+              {
+                "name": "comparisonCard_comparisonCard_Entry",
+                "description": null
+              },
+              {
+                "name": "comparisonFeature_comparisonFeature_Entry",
+                "description": null
+              },
+              {
+                "name": "plainCard_plainCard_Entry",
+                "description": null
+              },
+              {
+                "name": "ctas_imageCta_Entry",
+                "description": null
+              },
+              {
+                "name": "industries_corpDev_Entry",
+                "description": null
+              },
+              {
+                "name": "product_security_Entry",
+                "description": null
+              },
+              {
+                "name": "integrations_integrations_Entry",
+                "description": null
+              },
+              {
+                "name": "ctas_link_Entry",
+                "description": null
+              },
+              {
+                "name": "authorsIndex_authorsIndex_Entry",
+                "description": null
+              },
+              {
+                "name": "blog_blogBuilder_Entry",
+                "description": null
+              },
+              {
+                "name": "blogFeatured_blogFeatured_Entry",
+                "description": null
+              },
+              {
+                "name": "blogSearchResults_blogSearchResults_Entry",
+                "description": null
+              },
+              {
+                "name": "segmentation_segmentation_Entry",
+                "description": null
+              },
+              {
+                "name": "segmentation_midMarket_Entry",
+                "description": null
+              },
+              {
+                "name": "segmentation_enterprise_Entry",
+                "description": null
+              },
+              {
+                "name": "segmentation_smallBusiness_Entry",
+                "description": null
+              },
+              {
+                "name": "googleNext_googleNext_Entry",
+                "description": null
+              },
+              {
+                "name": "features_features_Entry",
+                "description": null
+              },
+              {
+                "name": "featureDescription_featureDescription_Entry",
+                "description": null
+              },
+              {
+                "name": "resources_eBook_Entry",
+                "description": null
+              },
+              {
+                "name": "chapterDetails_chapterDetails_Entry",
+                "description": null
+              },
+              {
+                "name": "resources_download_Entry",
+                "description": null
+              },
+              {
+                "name": "webinars_webinars_Entry",
+                "description": null
+              },
+              {
+                "name": "webinars_register_Entry",
+                "description": null
+              },
+              {
+                "name": "webinarIndex_webinarIndex_Entry",
+                "description": null
+              },
+              {
+                "name": "toolsIndex_toolsIndex_Entry",
+                "description": null
+              },
+              {
+                "name": "tools_tools_Entry",
+                "description": null
+              },
+              {
+                "name": "crmComparisonIndex_crmComparisonIndex_Entry",
+                "description": null
+              },
+              {
+                "name": "resourcesIndex_resourcesIndex_Entry",
+                "description": null
+              },
+              {
+                "name": "customerStories_customerStories_Entry",
+                "description": null
+              },
+              {
+                "name": "lps_lps_Entry",
+                "description": null
+              },
+              {
+                "name": "lps_freeTrialPers_Entry",
+                "description": null
+              },
+              {
+                "name": "lps_hello_Entry",
+                "description": null
+              },
+              {
+                "name": "lps_demoRequestPers_Entry",
+                "description": null
+              },
+              {
+                "name": "product_trackLeads_Entry",
+                "description": null
+              },
+              {
+                "name": "product_manageContacts_Entry",
+                "description": null
+              },
+              {
+                "name": "product_automateSales_Entry",
+                "description": null
+              },
+              {
+                "name": "product_salesReporting_Entry",
+                "description": null
+              },
+              {
+                "name": "webinars_webinarSpecial_Entry",
+                "description": null
+              },
+              {
+                "name": "emailTemplate_emailTemplate_Entry",
+                "description": null
+              },
+              {
+                "name": "lps_generalLps_Entry",
+                "description": null
+              },
+              {
+                "name": "theWayWorkWorks_theWayWorkWorks_Entry",
+                "description": null
+              },
+              {
+                "name": "emailSignature_emailSignature_Entry",
+                "description": null
+              },
+              {
+                "name": "greatnessPage_greatnessPage_Entry",
+                "description": null
+              }
+            ]
+          },
+          {
+            "name": "ID",
+            "kind": "SCALAR",
+            "possibleTypes": null
+          },
+          {
+            "name": "DateTime",
+            "kind": "SCALAR",
+            "possibleTypes": null
+          },
+          {
+            "name": "UserInterface",
+            "kind": "INTERFACE",
+            "possibleTypes": [
+              {
+                "name": "User",
+                "description": null
+              }
+            ]
+          },
+          {
+            "name": "AssetInterface",
+            "kind": "INTERFACE",
+            "possibleTypes": [
+              {
+                "name": "blogImages_Asset",
+                "description": null
+              },
+              {
+                "name": "landingPageImages_Asset",
+                "description": null
+              },
+              {
+                "name": "integrations_Asset",
+                "description": null
+              },
+              {
+                "name": "blogAds_Asset",
+                "description": null
+              },
+              {
+                "name": "webinars_Asset",
+                "description": null
+              },
+              {
+                "name": "emailtemp_Asset",
+                "description": null
+              }
+            ]
+          },
+          {
+            "name": "Float",
+            "kind": "SCALAR",
+            "possibleTypes": null
+          },
+          {
+            "name": "GlobalSetInterface",
+            "kind": "INTERFACE",
+            "possibleTypes": [
+              {
+                "name": "g2crowdRating_GlobalSet",
+                "description": null
+              },
+              {
+                "name": "promotedBlogPosts_GlobalSet",
+                "description": null
+              },
+              {
+                "name": "webBanner_GlobalSet",
+                "description": null
+              }
+            ]
+          },
+          {
+            "name": "CategoryInterface",
+            "kind": "INTERFACE",
+            "possibleTypes": [
+              {
+                "name": "backgroundColor_Category",
+                "description": null
+              },
+              {
+                "name": "blogCategories_Category",
+                "description": null
+              },
+              {
+                "name": "buttonColors_Category",
+                "description": null
+              },
+              {
+                "name": "color_Category",
+                "description": null
+              },
+              {
+                "name": "lpCategory_Category",
+                "description": null
+              }
+            ]
+          },
+          {
+            "name": "Element",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "ElementInterface",
+            "kind": "INTERFACE",
+            "possibleTypes": [
+              {
+                "name": "Element",
+                "description": null
+              },
+              {
+                "name": "company_company_Entry",
+                "description": null
+              },
+              {
+                "name": "pricing_pricing_Entry",
+                "description": null
+              },
+              {
+                "name": "pricingBlocks_pricingHero_BlockType",
+                "description": null
+              },
+              {
+                "name": "pricingBlocks_cta_BlockType",
+                "description": null
+              },
+              {
+                "name": "pricingBlocks_pricingTable_BlockType",
+                "description": null
+              },
+              {
+                "name": "pricingBlocks_pricingFaq_BlockType",
+                "description": null
+              },
+              {
+                "name": "pricingBlocks_finalPlea_BlockType",
+                "description": null
+              },
+              {
+                "name": "product_productivity_Entry",
+                "description": null
+              },
+              {
+                "name": "product_collaboration_Entry",
+                "description": null
+              },
+              {
+                "name": "product_insights_Entry",
+                "description": null
+              },
+              {
+                "name": "product_implementation_Entry",
+                "description": null
+              },
+              {
+                "name": "product_integrations_Entry",
+                "description": null
+              },
+              {
+                "name": "blog_blog_Entry",
+                "description": null
+              },
+              {
+                "name": "homepage_homepage_Entry",
+                "description": null
+              },
+              {
+                "name": "ctas_ctas_Entry",
+                "description": null
+              },
+              {
+                "name": "pricingCapstone_pricingCapstone_Entry",
+                "description": null
+              },
+              {
+                "name": "pricingFeatures_pricingFeatures_Entry",
+                "description": null
+              },
+              {
+                "name": "accordion_accordion_Entry",
+                "description": null
+              },
+              {
+                "name": "legal_legal_Entry",
+                "description": null
+              },
+              {
+                "name": "legal_cookies_Entry",
+                "description": null
+              },
+              {
+                "name": "legal_privacy_Entry",
+                "description": null
+              },
+              {
+                "name": "legal_tos_Entry",
+                "description": null
+              },
+              {
+                "name": "landingPage_landingPage_Entry",
+                "description": null
+              },
+              {
+                "name": "landingBlocks_hero_BlockType",
+                "description": null
+              },
+              {
+                "name": "landingBlocks_pricingPlans_BlockType",
+                "description": null
+              },
+              {
+                "name": "landingBlocks_table_BlockType",
+                "description": null
+              },
+              {
+                "name": "landingBlocks_cta_BlockType",
+                "description": null
+              },
+              {
+                "name": "landingBlocks_twoColumn_BlockType",
+                "description": null
+              },
+              {
+                "name": "landingBlocks_threeColumn_BlockType",
+                "description": null
+              },
+              {
+                "name": "landingBlocks_testimonial_BlockType",
+                "description": null
+              },
+              {
+                "name": "landingBlocks_oneColumn_BlockType",
+                "description": null
+              },
+              {
+                "name": "landingBlocks_details_BlockType",
+                "description": null
+              },
+              {
+                "name": "landingBlocks_embeddedVideo_BlockType",
+                "description": null
+              },
+              {
+                "name": "landingBlocks_logoSection_BlockType",
+                "description": null
+              },
+              {
+                "name": "landingBlocks_customSection_BlockType",
+                "description": null
+              },
+              {
+                "name": "layout_BlockType",
+                "description": null
+              },
+              {
+                "name": "buildSection_sectionTitle_BlockType",
+                "description": null
+              },
+              {
+                "name": "buildSection_sectionSubtitle_BlockType",
+                "description": null
+              },
+              {
+                "name": "buildSection_urlLink_BlockType",
+                "description": null
+              },
+              {
+                "name": "buildSection_ctaLink_BlockType",
+                "description": null
+              },
+              {
+                "name": "buildSection_image_BlockType",
+                "description": null
+              },
+              {
+                "name": "numbers_numbers_Entry",
+                "description": null
+              },
+              {
+                "name": "list_list_Entry",
+                "description": null
+              },
+              {
+                "name": "suggestedContent_suggestedContent_Entry",
+                "description": null
+              },
+              {
+                "name": "seoPage_seoPage_Entry",
+                "description": null
+              },
+              {
+                "name": "demo_demo_Entry",
+                "description": null
+              },
+              {
+                "name": "demoBlocks_demoHero_BlockType",
+                "description": null
+              },
+              {
+                "name": "demoBlocks_demoThumbnails_BlockType",
+                "description": null
+              },
+              {
+                "name": "demoBlocks_cta_BlockType",
+                "description": null
+              },
+              {
+                "name": "demoBlocks_finalPlea_BlockType",
+                "description": null
+              },
+              {
+                "name": "demoThumbnail_demoThumbnail_Entry",
+                "description": null
+              },
+              {
+                "name": "crmComparison_crmComparison_Entry",
+                "description": null
+              },
+              {
+                "name": "pressArticle_pressArticle_Entry",
+                "description": null
+              },
+              {
+                "name": "company_press_Entry",
+                "description": null
+              },
+              {
+                "name": "pressBlocks_popular_BlockType",
+                "description": null
+              },
+              {
+                "name": "pressBlocks_articles_BlockType",
+                "description": null
+              },
+              {
+                "name": "company_contact_Entry",
+                "description": null
+              },
+              {
+                "name": "about_about_Entry",
+                "description": null
+              },
+              {
+                "name": "blogIndex_blogIndex_Entry",
+                "description": null
+              },
+              {
+                "name": "legal_legalTemplate_Entry",
+                "description": null
+              },
+              {
+                "name": "video_video_Entry",
+                "description": null
+              },
+              {
+                "name": "image_image_Entry",
+                "description": null
+              },
+              {
+                "name": "product_gSuite_Entry",
+                "description": null
+              },
+              {
+                "name": "industries_industries_Entry",
+                "description": null
+              },
+              {
+                "name": "industries_agencies_Entry",
+                "description": null
+              },
+              {
+                "name": "industries_realEstate_Entry",
+                "description": null
+              },
+              {
+                "name": "industries_technology_Entry",
+                "description": null
+              },
+              {
+                "name": "industries_consulting_Entry",
+                "description": null
+              },
+              {
+                "name": "customers_customers_Entry",
+                "description": null
+              },
+              {
+                "name": "featureDetail_featureDetail_Entry",
+                "description": null
+              },
+              {
+                "name": "partners_partners_Entry",
+                "description": null
+              },
+              {
+                "name": "partnersSignUp_partnersSignUp_Entry",
+                "description": null
+              },
+              {
+                "name": "events_events_Entry",
+                "description": null
+              },
+              {
+                "name": "eventListing_eventsListing_Entry",
+                "description": null
+              },
+              {
+                "name": "demoThumbnail_demoAdvert_Entry",
+                "description": null
+              },
+              {
+                "name": "comparisonCard_comparisonCard_Entry",
+                "description": null
+              },
+              {
+                "name": "comparisonFeature_comparisonFeature_Entry",
+                "description": null
+              },
+              {
+                "name": "plainCard_plainCard_Entry",
+                "description": null
+              },
+              {
+                "name": "ctas_imageCta_Entry",
+                "description": null
+              },
+              {
+                "name": "industries_corpDev_Entry",
+                "description": null
+              },
+              {
+                "name": "product_security_Entry",
+                "description": null
+              },
+              {
+                "name": "integrations_integrations_Entry",
+                "description": null
+              },
+              {
+                "name": "integrationsBlocks_hero_BlockType",
+                "description": null
+              },
+              {
+                "name": "integrationsBlocks_twoColumn_BlockType",
+                "description": null
+              },
+              {
+                "name": "integrationsBlocks_moreInfo_BlockType",
+                "description": null
+              },
+              {
+                "name": "ctas_link_Entry",
+                "description": null
+              },
+              {
+                "name": "authorsIndex_authorsIndex_Entry",
+                "description": null
+              },
+              {
+                "name": "blog_blogBuilder_Entry",
+                "description": null
+              },
+              {
+                "name": "blogBuilder_tldr_BlockType",
+                "description": null
+              },
+              {
+                "name": "blogBuilder_copyEditor_BlockType",
+                "description": null
+              },
+              {
+                "name": "blogBuilder_media_BlockType",
+                "description": null
+              },
+              {
+                "name": "blogBuilder_callout_BlockType",
+                "description": null
+              },
+              {
+                "name": "blogBuilder_card_BlockType",
+                "description": null
+              },
+              {
+                "name": "blogBuilder_quote_BlockType",
+                "description": null
+              },
+              {
+                "name": "blogBuilder_adA_BlockType",
+                "description": null
+              },
+              {
+                "name": "blogBuilder_adB_BlockType",
+                "description": null
+              },
+              {
+                "name": "blogBuilder_wistiaVideo_BlockType",
+                "description": null
+              },
+              {
+                "name": "blogFeatured_blogFeatured_Entry",
+                "description": null
+              },
+              {
+                "name": "blogSearchResults_blogSearchResults_Entry",
+                "description": null
+              },
+              {
+                "name": "segmentation_segmentation_Entry",
+                "description": null
+              },
+              {
+                "name": "segmentation_midMarket_Entry",
+                "description": null
+              },
+              {
+                "name": "segmentation_enterprise_Entry",
+                "description": null
+              },
+              {
+                "name": "segmentation_smallBusiness_Entry",
+                "description": null
+              },
+              {
+                "name": "googleNext_googleNext_Entry",
+                "description": null
+              },
+              {
+                "name": "features_features_Entry",
+                "description": null
+              },
+              {
+                "name": "featureGroupBlocks_featureGroup_BlockType",
+                "description": null
+              },
+              {
+                "name": "featureDescription_featureDescription_Entry",
+                "description": null
+              },
+              {
+                "name": "resources_eBook_Entry",
+                "description": null
+              },
+              {
+                "name": "eBookbuilder_chapterHeader_BlockType",
+                "description": null
+              },
+              {
+                "name": "eBookbuilder_tldr_BlockType",
+                "description": null
+              },
+              {
+                "name": "eBookbuilder_copyEditor_BlockType",
+                "description": null
+              },
+              {
+                "name": "eBookbuilder_media_BlockType",
+                "description": null
+              },
+              {
+                "name": "eBookbuilder_callout_BlockType",
+                "description": null
+              },
+              {
+                "name": "eBookbuilder_card_BlockType",
+                "description": null
+              },
+              {
+                "name": "eBookbuilder_quote_BlockType",
+                "description": null
+              },
+              {
+                "name": "eBookbuilder_adA_BlockType",
+                "description": null
+              },
+              {
+                "name": "eBookbuilder_adB_BlockType",
+                "description": null
+              },
+              {
+                "name": "chapterDetails_chapterDetails_Entry",
+                "description": null
+              },
+              {
+                "name": "resources_download_Entry",
+                "description": null
+              },
+              {
+                "name": "webinars_webinars_Entry",
+                "description": null
+              },
+              {
+                "name": "webinars_register_Entry",
+                "description": null
+              },
+              {
+                "name": "webinarIndex_webinarIndex_Entry",
+                "description": null
+              },
+              {
+                "name": "toolsIndex_toolsIndex_Entry",
+                "description": null
+              },
+              {
+                "name": "tools_tools_Entry",
+                "description": null
+              },
+              {
+                "name": "toolsDetails_toolInfo_BlockType",
+                "description": null
+              },
+              {
+                "name": "crmComparisonIndex_crmComparisonIndex_Entry",
+                "description": null
+              },
+              {
+                "name": "crmCards_crmCardComparison_BlockType",
+                "description": null
+              },
+              {
+                "name": "customerStories_customerStories_BlockType",
+                "description": null
+              },
+              {
+                "name": "copperFeatures_copperFeatures_BlockType",
+                "description": null
+              },
+              {
+                "name": "resourcesIndex_resourcesIndex_Entry",
+                "description": null
+              },
+              {
+                "name": "customerStories_customerStories_Entry",
+                "description": null
+              },
+              {
+                "name": "contentBuilder_tldr_BlockType",
+                "description": null
+              },
+              {
+                "name": "contentBuilder_copyEditor_BlockType",
+                "description": null
+              },
+              {
+                "name": "contentBuilder_media_BlockType",
+                "description": null
+              },
+              {
+                "name": "contentBuilder_callout_BlockType",
+                "description": null
+              },
+              {
+                "name": "contentBuilder_card_BlockType",
+                "description": null
+              },
+              {
+                "name": "contentBuilder_quote_BlockType",
+                "description": null
+              },
+              {
+                "name": "contentBuilder_wistiaVideo_BlockType",
+                "description": null
+              },
+              {
+                "name": "contentBuilder_adA_BlockType",
+                "description": null
+              },
+              {
+                "name": "lps_lps_Entry",
+                "description": null
+              },
+              {
+                "name": "lps_freeTrialPers_Entry",
+                "description": null
+              },
+              {
+                "name": "lps_hello_Entry",
+                "description": null
+              },
+              {
+                "name": "lps_demoRequestPers_Entry",
+                "description": null
+              },
+              {
+                "name": "product_trackLeads_Entry",
+                "description": null
+              },
+              {
+                "name": "product_manageContacts_Entry",
+                "description": null
+              },
+              {
+                "name": "product_automateSales_Entry",
+                "description": null
+              },
+              {
+                "name": "product_salesReporting_Entry",
+                "description": null
+              },
+              {
+                "name": "webinars_webinarSpecial_Entry",
+                "description": null
+              },
+              {
+                "name": "webinarBoilerplate_boilerplate_BlockType",
+                "description": null
+              },
+              {
+                "name": "emailTemplate_emailTemplate_Entry",
+                "description": null
+              },
+              {
+                "name": "emailTemplateField_BlockType",
+                "description": null
+              },
+              {
+                "name": "card_logoHeader_BlockType",
+                "description": null
+              },
+              {
+                "name": "card_cardTitle_BlockType",
+                "description": null
+              },
+              {
+                "name": "card_cardSubTitle_BlockType",
+                "description": null
+              },
+              {
+                "name": "card_cardSpacer_BlockType",
+                "description": null
+              },
+              {
+                "name": "card_cardLineDivider_BlockType",
+                "description": null
+              },
+              {
+                "name": "card_cardBody_BlockType",
+                "description": null
+              },
+              {
+                "name": "card_cardTime_BlockType",
+                "description": null
+              },
+              {
+                "name": "card_cardCta_BlockType",
+                "description": null
+              },
+              {
+                "name": "card_cardFullWidthMedia_BlockType",
+                "description": null
+              },
+              {
+                "name": "card_cardArticles_BlockType",
+                "description": null
+              },
+              {
+                "name": "card_cardLogoList_BlockType",
+                "description": null
+              },
+              {
+                "name": "lps_generalLps_Entry",
+                "description": null
+              },
+              {
+                "name": "generallanding_hero_BlockType",
+                "description": null
+              },
+              {
+                "name": "generallanding_pricingPlans_BlockType",
+                "description": null
+              },
+              {
+                "name": "generallanding_cta_BlockType",
+                "description": null
+              },
+              {
+                "name": "generallanding_twoColumn_BlockType",
+                "description": null
+              },
+              {
+                "name": "generallanding_threeColumn_BlockType",
+                "description": null
+              },
+              {
+                "name": "generallanding_testimonial_BlockType",
+                "description": null
+              },
+              {
+                "name": "generallanding_oneColumn_BlockType",
+                "description": null
+              },
+              {
+                "name": "generallanding_details_BlockType",
+                "description": null
+              },
+              {
+                "name": "generallanding_logoSection_BlockType",
+                "description": null
+              },
+              {
+                "name": "g2CrowdReviews_g2CrowdReviews_BlockType",
+                "description": null
+              },
+              {
+                "name": "theWayWorkWorks_theWayWorkWorks_Entry",
+                "description": null
+              },
+              {
+                "name": "emailSignature_emailSignature_Entry",
+                "description": null
+              },
+              {
+                "name": "greatnessPage_greatnessPage_Entry",
+                "description": null
+              },
+              {
+                "name": "blogImages_Asset",
+                "description": null
+              },
+              {
+                "name": "landingPageImages_Asset",
+                "description": null
+              },
+              {
+                "name": "integrations_Asset",
+                "description": null
+              },
+              {
+                "name": "blogAds_Asset",
+                "description": null
+              },
+              {
+                "name": "webinars_Asset",
+                "description": null
+              },
+              {
+                "name": "emailtemp_Asset",
+                "description": null
+              },
+              {
+                "name": "User",
+                "description": null
+              },
+              {
+                "name": "g2crowdRating_GlobalSet",
+                "description": null
+              },
+              {
+                "name": "promotedBlogPosts_GlobalSet",
+                "description": null
+              },
+              {
+                "name": "webBanner_GlobalSet",
+                "description": null
+              },
+              {
+                "name": "backgroundColor_Category",
+                "description": null
+              },
+              {
+                "name": "blogCategories_Category",
+                "description": null
+              },
+              {
+                "name": "buttonColors_Category",
+                "description": null
+              },
+              {
+                "name": "color_Category",
+                "description": null
+              },
+              {
+                "name": "lpCategory_Category",
+                "description": null
+              }
+            ]
+          },
+          {
+            "name": "company_company_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "pricing_pricing_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "pricingBlocks_MatrixField",
+            "kind": "UNION",
+            "possibleTypes": [
+              {
+                "name": "pricingBlocks_pricingHero_BlockType",
+                "description": null
+              },
+              {
+                "name": "pricingBlocks_cta_BlockType",
+                "description": null
+              },
+              {
+                "name": "pricingBlocks_pricingTable_BlockType",
+                "description": null
+              },
+              {
+                "name": "pricingBlocks_pricingFaq_BlockType",
+                "description": null
+              },
+              {
+                "name": "pricingBlocks_finalPlea_BlockType",
+                "description": null
+              }
+            ]
+          },
+          {
+            "name": "pricingBlocks_pricingHero_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "MatrixBlockInterface",
+            "kind": "INTERFACE",
+            "possibleTypes": [
+              {
+                "name": "pricingBlocks_pricingHero_BlockType",
+                "description": null
+              },
+              {
+                "name": "pricingBlocks_cta_BlockType",
+                "description": null
+              },
+              {
+                "name": "pricingBlocks_pricingTable_BlockType",
+                "description": null
+              },
+              {
+                "name": "pricingBlocks_pricingFaq_BlockType",
+                "description": null
+              },
+              {
+                "name": "pricingBlocks_finalPlea_BlockType",
+                "description": null
+              },
+              {
+                "name": "landingBlocks_hero_BlockType",
+                "description": null
+              },
+              {
+                "name": "landingBlocks_pricingPlans_BlockType",
+                "description": null
+              },
+              {
+                "name": "landingBlocks_table_BlockType",
+                "description": null
+              },
+              {
+                "name": "landingBlocks_cta_BlockType",
+                "description": null
+              },
+              {
+                "name": "landingBlocks_twoColumn_BlockType",
+                "description": null
+              },
+              {
+                "name": "landingBlocks_threeColumn_BlockType",
+                "description": null
+              },
+              {
+                "name": "landingBlocks_testimonial_BlockType",
+                "description": null
+              },
+              {
+                "name": "landingBlocks_oneColumn_BlockType",
+                "description": null
+              },
+              {
+                "name": "landingBlocks_details_BlockType",
+                "description": null
+              },
+              {
+                "name": "landingBlocks_embeddedVideo_BlockType",
+                "description": null
+              },
+              {
+                "name": "landingBlocks_logoSection_BlockType",
+                "description": null
+              },
+              {
+                "name": "landingBlocks_customSection_BlockType",
+                "description": null
+              },
+              {
+                "name": "buildSection_sectionTitle_BlockType",
+                "description": null
+              },
+              {
+                "name": "buildSection_sectionSubtitle_BlockType",
+                "description": null
+              },
+              {
+                "name": "buildSection_urlLink_BlockType",
+                "description": null
+              },
+              {
+                "name": "buildSection_ctaLink_BlockType",
+                "description": null
+              },
+              {
+                "name": "buildSection_image_BlockType",
+                "description": null
+              },
+              {
+                "name": "demoBlocks_demoHero_BlockType",
+                "description": null
+              },
+              {
+                "name": "demoBlocks_demoThumbnails_BlockType",
+                "description": null
+              },
+              {
+                "name": "demoBlocks_cta_BlockType",
+                "description": null
+              },
+              {
+                "name": "demoBlocks_finalPlea_BlockType",
+                "description": null
+              },
+              {
+                "name": "pressBlocks_popular_BlockType",
+                "description": null
+              },
+              {
+                "name": "pressBlocks_articles_BlockType",
+                "description": null
+              },
+              {
+                "name": "integrationsBlocks_hero_BlockType",
+                "description": null
+              },
+              {
+                "name": "integrationsBlocks_twoColumn_BlockType",
+                "description": null
+              },
+              {
+                "name": "integrationsBlocks_moreInfo_BlockType",
+                "description": null
+              },
+              {
+                "name": "blogBuilder_tldr_BlockType",
+                "description": null
+              },
+              {
+                "name": "blogBuilder_copyEditor_BlockType",
+                "description": null
+              },
+              {
+                "name": "blogBuilder_media_BlockType",
+                "description": null
+              },
+              {
+                "name": "blogBuilder_callout_BlockType",
+                "description": null
+              },
+              {
+                "name": "blogBuilder_card_BlockType",
+                "description": null
+              },
+              {
+                "name": "blogBuilder_quote_BlockType",
+                "description": null
+              },
+              {
+                "name": "blogBuilder_adA_BlockType",
+                "description": null
+              },
+              {
+                "name": "blogBuilder_adB_BlockType",
+                "description": null
+              },
+              {
+                "name": "blogBuilder_wistiaVideo_BlockType",
+                "description": null
+              },
+              {
+                "name": "featureGroupBlocks_featureGroup_BlockType",
+                "description": null
+              },
+              {
+                "name": "eBookbuilder_chapterHeader_BlockType",
+                "description": null
+              },
+              {
+                "name": "eBookbuilder_tldr_BlockType",
+                "description": null
+              },
+              {
+                "name": "eBookbuilder_copyEditor_BlockType",
+                "description": null
+              },
+              {
+                "name": "eBookbuilder_media_BlockType",
+                "description": null
+              },
+              {
+                "name": "eBookbuilder_callout_BlockType",
+                "description": null
+              },
+              {
+                "name": "eBookbuilder_card_BlockType",
+                "description": null
+              },
+              {
+                "name": "eBookbuilder_quote_BlockType",
+                "description": null
+              },
+              {
+                "name": "eBookbuilder_adA_BlockType",
+                "description": null
+              },
+              {
+                "name": "eBookbuilder_adB_BlockType",
+                "description": null
+              },
+              {
+                "name": "toolsDetails_toolInfo_BlockType",
+                "description": null
+              },
+              {
+                "name": "crmCards_crmCardComparison_BlockType",
+                "description": null
+              },
+              {
+                "name": "customerStories_customerStories_BlockType",
+                "description": null
+              },
+              {
+                "name": "copperFeatures_copperFeatures_BlockType",
+                "description": null
+              },
+              {
+                "name": "contentBuilder_tldr_BlockType",
+                "description": null
+              },
+              {
+                "name": "contentBuilder_copyEditor_BlockType",
+                "description": null
+              },
+              {
+                "name": "contentBuilder_media_BlockType",
+                "description": null
+              },
+              {
+                "name": "contentBuilder_callout_BlockType",
+                "description": null
+              },
+              {
+                "name": "contentBuilder_card_BlockType",
+                "description": null
+              },
+              {
+                "name": "contentBuilder_quote_BlockType",
+                "description": null
+              },
+              {
+                "name": "contentBuilder_wistiaVideo_BlockType",
+                "description": null
+              },
+              {
+                "name": "contentBuilder_adA_BlockType",
+                "description": null
+              },
+              {
+                "name": "webinarBoilerplate_boilerplate_BlockType",
+                "description": null
+              },
+              {
+                "name": "card_logoHeader_BlockType",
+                "description": null
+              },
+              {
+                "name": "card_cardTitle_BlockType",
+                "description": null
+              },
+              {
+                "name": "card_cardSubTitle_BlockType",
+                "description": null
+              },
+              {
+                "name": "card_cardSpacer_BlockType",
+                "description": null
+              },
+              {
+                "name": "card_cardLineDivider_BlockType",
+                "description": null
+              },
+              {
+                "name": "card_cardBody_BlockType",
+                "description": null
+              },
+              {
+                "name": "card_cardTime_BlockType",
+                "description": null
+              },
+              {
+                "name": "card_cardCta_BlockType",
+                "description": null
+              },
+              {
+                "name": "card_cardFullWidthMedia_BlockType",
+                "description": null
+              },
+              {
+                "name": "card_cardArticles_BlockType",
+                "description": null
+              },
+              {
+                "name": "card_cardLogoList_BlockType",
+                "description": null
+              },
+              {
+                "name": "generallanding_hero_BlockType",
+                "description": null
+              },
+              {
+                "name": "generallanding_pricingPlans_BlockType",
+                "description": null
+              },
+              {
+                "name": "generallanding_cta_BlockType",
+                "description": null
+              },
+              {
+                "name": "generallanding_twoColumn_BlockType",
+                "description": null
+              },
+              {
+                "name": "generallanding_threeColumn_BlockType",
+                "description": null
+              },
+              {
+                "name": "generallanding_testimonial_BlockType",
+                "description": null
+              },
+              {
+                "name": "generallanding_oneColumn_BlockType",
+                "description": null
+              },
+              {
+                "name": "generallanding_details_BlockType",
+                "description": null
+              },
+              {
+                "name": "generallanding_logoSection_BlockType",
+                "description": null
+              },
+              {
+                "name": "g2CrowdReviews_g2CrowdReviews_BlockType",
+                "description": null
+              }
+            ]
+          },
+          {
+            "name": "pricingBlocks_cta_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "pricingBlocks_pricingTable_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "pricingBlocks_pricingFaq_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "pricingBlocks_finalPlea_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "product_productivity_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "product_collaboration_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "product_insights_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "product_implementation_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "product_integrations_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "blog_blog_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "homepage_homepage_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "ctas_ctas_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "pricingCapstone_pricingCapstone_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "pricingFeatures_pricingFeatures_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "accordion_accordion_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "legal_legal_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "legal_cookies_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "legal_privacy_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "legal_tos_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "landingPage_landingPage_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "landingBlocks_MatrixField",
+            "kind": "UNION",
+            "possibleTypes": [
+              {
+                "name": "landingBlocks_hero_BlockType",
+                "description": null
+              },
+              {
+                "name": "landingBlocks_pricingPlans_BlockType",
+                "description": null
+              },
+              {
+                "name": "landingBlocks_table_BlockType",
+                "description": null
+              },
+              {
+                "name": "landingBlocks_cta_BlockType",
+                "description": null
+              },
+              {
+                "name": "landingBlocks_twoColumn_BlockType",
+                "description": null
+              },
+              {
+                "name": "landingBlocks_threeColumn_BlockType",
+                "description": null
+              },
+              {
+                "name": "landingBlocks_testimonial_BlockType",
+                "description": null
+              },
+              {
+                "name": "landingBlocks_oneColumn_BlockType",
+                "description": null
+              },
+              {
+                "name": "landingBlocks_details_BlockType",
+                "description": null
+              },
+              {
+                "name": "landingBlocks_embeddedVideo_BlockType",
+                "description": null
+              },
+              {
+                "name": "landingBlocks_logoSection_BlockType",
+                "description": null
+              },
+              {
+                "name": "landingBlocks_customSection_BlockType",
+                "description": null
+              }
+            ]
+          },
+          {
+            "name": "landingBlocks_hero_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "bulletItemsInHero_TableRow",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "landingBlocks_pricingPlans_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "landingBlocks_table_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "landingBlocks_cta_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "landingBlocks_twoColumn_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "landingBlocks_threeColumn_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "landingBlocks_testimonial_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "landingBlocks_oneColumn_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "landingBlocks_details_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "landingBlocks_embeddedVideo_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "landingBlocks_logoSection_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "twoColSettings_TableRow",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "oneColSettings_TableRow",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "landingBlocks_customSection_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "settings_TableRow",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "layout_SuperTableField",
+            "kind": "UNION",
+            "possibleTypes": [
+              {
+                "name": "layout_BlockType",
+                "description": null
+              }
+            ]
+          },
+          {
+            "name": "layout_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "SuperTableBlockInterface",
+            "kind": "INTERFACE",
+            "possibleTypes": [
+              {
+                "name": "layout_BlockType",
+                "description": null
+              },
+              {
+                "name": "emailTemplateField_BlockType",
+                "description": null
+              }
+            ]
+          },
+          {
+            "name": "sectionSettings_TableRow",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "mobileSettings_TableRow",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "buildSection_MatrixField",
+            "kind": "UNION",
+            "possibleTypes": [
+              {
+                "name": "buildSection_sectionTitle_BlockType",
+                "description": null
+              },
+              {
+                "name": "buildSection_sectionSubtitle_BlockType",
+                "description": null
+              },
+              {
+                "name": "buildSection_urlLink_BlockType",
+                "description": null
+              },
+              {
+                "name": "buildSection_ctaLink_BlockType",
+                "description": null
+              },
+              {
+                "name": "buildSection_image_BlockType",
+                "description": null
+              }
+            ]
+          },
+          {
+            "name": "buildSection_sectionTitle_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "buildSection_sectionSubtitle_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "buildSection_urlLink_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "buildSection_ctaLink_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "buildSection_image_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "numbers_numbers_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "list_list_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "suggestedContent_suggestedContent_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "seoPage_seoPage_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "demo_demo_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "demoBlocks_MatrixField",
+            "kind": "UNION",
+            "possibleTypes": [
+              {
+                "name": "demoBlocks_demoHero_BlockType",
+                "description": null
+              },
+              {
+                "name": "demoBlocks_demoThumbnails_BlockType",
+                "description": null
+              },
+              {
+                "name": "demoBlocks_cta_BlockType",
+                "description": null
+              },
+              {
+                "name": "demoBlocks_finalPlea_BlockType",
+                "description": null
+              }
+            ]
+          },
+          {
+            "name": "demoBlocks_demoHero_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "demoBlocks_demoThumbnails_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "demoBlocks_cta_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "demoBlocks_finalPlea_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "demoThumbnail_demoThumbnail_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "crmComparison_crmComparison_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "pressArticle_pressArticle_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "company_press_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "pressBlocks_MatrixField",
+            "kind": "UNION",
+            "possibleTypes": [
+              {
+                "name": "pressBlocks_popular_BlockType",
+                "description": null
+              },
+              {
+                "name": "pressBlocks_articles_BlockType",
+                "description": null
+              }
+            ]
+          },
+          {
+            "name": "pressBlocks_popular_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "pressBlocks_articles_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "company_contact_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "about_about_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "blogIndex_blogIndex_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "legal_legalTemplate_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "video_video_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "image_image_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "product_gSuite_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "industries_industries_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "industries_agencies_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "industries_realEstate_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "industries_technology_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "industries_consulting_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "customers_customers_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "featureDetail_featureDetail_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "partners_partners_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "partnersSignUp_partnersSignUp_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "events_events_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "eventListing_eventsListing_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "demoThumbnail_demoAdvert_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "comparisonCard_comparisonCard_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "comparisonFeature_comparisonFeature_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "plainCard_plainCard_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "ctas_imageCta_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "industries_corpDev_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "product_security_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "integrations_integrations_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "integrationsBlocks_MatrixField",
+            "kind": "UNION",
+            "possibleTypes": [
+              {
+                "name": "integrationsBlocks_hero_BlockType",
+                "description": null
+              },
+              {
+                "name": "integrationsBlocks_twoColumn_BlockType",
+                "description": null
+              },
+              {
+                "name": "integrationsBlocks_moreInfo_BlockType",
+                "description": null
+              }
+            ]
+          },
+          {
+            "name": "integrationsBlocks_hero_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "integrationsBlocks_twoColumn_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "integrationsBlocks_moreInfo_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "ctas_link_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "authorsIndex_authorsIndex_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "blog_blogBuilder_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "blogBuilder_MatrixField",
+            "kind": "UNION",
+            "possibleTypes": [
+              {
+                "name": "blogBuilder_tldr_BlockType",
+                "description": null
+              },
+              {
+                "name": "blogBuilder_copyEditor_BlockType",
+                "description": null
+              },
+              {
+                "name": "blogBuilder_media_BlockType",
+                "description": null
+              },
+              {
+                "name": "blogBuilder_callout_BlockType",
+                "description": null
+              },
+              {
+                "name": "blogBuilder_card_BlockType",
+                "description": null
+              },
+              {
+                "name": "blogBuilder_quote_BlockType",
+                "description": null
+              },
+              {
+                "name": "blogBuilder_adA_BlockType",
+                "description": null
+              },
+              {
+                "name": "blogBuilder_adB_BlockType",
+                "description": null
+              },
+              {
+                "name": "blogBuilder_wistiaVideo_BlockType",
+                "description": null
+              }
+            ]
+          },
+          {
+            "name": "blogBuilder_tldr_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "blogBuilder_copyEditor_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "blogBuilder_media_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "blogBuilder_callout_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "blogBuilder_card_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "blogBuilder_quote_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "blogBuilder_adA_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "blogBuilder_adB_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "blogBuilder_wistiaVideo_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "blogFeatured_blogFeatured_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "blogSearchResults_blogSearchResults_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "segmentation_segmentation_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "segmentation_midMarket_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "segmentation_enterprise_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "segmentation_smallBusiness_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "googleNext_googleNext_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "features_features_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "featureGroupBlocks_MatrixField",
+            "kind": "UNION",
+            "possibleTypes": [
+              {
+                "name": "featureGroupBlocks_featureGroup_BlockType",
+                "description": null
+              }
+            ]
+          },
+          {
+            "name": "featureGroupBlocks_featureGroup_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "featureDescription_featureDescription_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "resources_eBook_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "eBookbuilder_MatrixField",
+            "kind": "UNION",
+            "possibleTypes": [
+              {
+                "name": "eBookbuilder_chapterHeader_BlockType",
+                "description": null
+              },
+              {
+                "name": "eBookbuilder_tldr_BlockType",
+                "description": null
+              },
+              {
+                "name": "eBookbuilder_copyEditor_BlockType",
+                "description": null
+              },
+              {
+                "name": "eBookbuilder_media_BlockType",
+                "description": null
+              },
+              {
+                "name": "eBookbuilder_callout_BlockType",
+                "description": null
+              },
+              {
+                "name": "eBookbuilder_card_BlockType",
+                "description": null
+              },
+              {
+                "name": "eBookbuilder_quote_BlockType",
+                "description": null
+              },
+              {
+                "name": "eBookbuilder_adA_BlockType",
+                "description": null
+              },
+              {
+                "name": "eBookbuilder_adB_BlockType",
+                "description": null
+              }
+            ]
+          },
+          {
+            "name": "eBookbuilder_chapterHeader_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "eBookbuilder_tldr_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "eBookbuilder_copyEditor_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "eBookbuilder_media_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "eBookbuilder_callout_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "eBookbuilder_card_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "eBookbuilder_quote_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "eBookbuilder_adA_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "eBookbuilder_adB_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "chapterDetails_chapterDetails_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "resources_download_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "webinars_webinars_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "webinars_register_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "webinarIndex_webinarIndex_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "toolsIndex_toolsIndex_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "tools_tools_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "toolsDetails_MatrixField",
+            "kind": "UNION",
+            "possibleTypes": [
+              {
+                "name": "toolsDetails_toolInfo_BlockType",
+                "description": null
+              }
+            ]
+          },
+          {
+            "name": "toolsDetails_toolInfo_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "crmComparisonIndex_crmComparisonIndex_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "crmCards_MatrixField",
+            "kind": "UNION",
+            "possibleTypes": [
+              {
+                "name": "crmCards_crmCardComparison_BlockType",
+                "description": null
+              }
+            ]
+          },
+          {
+            "name": "crmCards_crmCardComparison_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "customerStories_MatrixField",
+            "kind": "UNION",
+            "possibleTypes": [
+              {
+                "name": "customerStories_customerStories_BlockType",
+                "description": null
+              }
+            ]
+          },
+          {
+            "name": "customerStories_customerStories_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "copperFeatures_MatrixField",
+            "kind": "UNION",
+            "possibleTypes": [
+              {
+                "name": "copperFeatures_copperFeatures_BlockType",
+                "description": null
+              }
+            ]
+          },
+          {
+            "name": "copperFeatures_copperFeatures_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "resourcesIndex_resourcesIndex_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "customerStories_customerStories_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "contentBuilder_MatrixField",
+            "kind": "UNION",
+            "possibleTypes": [
+              {
+                "name": "contentBuilder_tldr_BlockType",
+                "description": null
+              },
+              {
+                "name": "contentBuilder_copyEditor_BlockType",
+                "description": null
+              },
+              {
+                "name": "contentBuilder_media_BlockType",
+                "description": null
+              },
+              {
+                "name": "contentBuilder_callout_BlockType",
+                "description": null
+              },
+              {
+                "name": "contentBuilder_card_BlockType",
+                "description": null
+              },
+              {
+                "name": "contentBuilder_quote_BlockType",
+                "description": null
+              },
+              {
+                "name": "contentBuilder_wistiaVideo_BlockType",
+                "description": null
+              },
+              {
+                "name": "contentBuilder_adA_BlockType",
+                "description": null
+              }
+            ]
+          },
+          {
+            "name": "contentBuilder_tldr_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "contentBuilder_copyEditor_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "contentBuilder_media_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "contentBuilder_callout_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "contentBuilder_card_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "contentBuilder_quote_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "contentBuilder_wistiaVideo_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "contentBuilder_adA_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "lps_lps_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "lps_freeTrialPers_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "lps_hello_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "lps_demoRequestPers_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "product_trackLeads_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "product_manageContacts_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "product_automateSales_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "product_salesReporting_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "webinars_webinarSpecial_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "webinarBoilerplate_MatrixField",
+            "kind": "UNION",
+            "possibleTypes": [
+              {
+                "name": "webinarBoilerplate_boilerplate_BlockType",
+                "description": null
+              }
+            ]
+          },
+          {
+            "name": "webinarBoilerplate_boilerplate_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "emailTemplate_emailTemplate_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "emailTemplateField_SuperTableField",
+            "kind": "UNION",
+            "possibleTypes": [
+              {
+                "name": "emailTemplateField_BlockType",
+                "description": null
+              }
+            ]
+          },
+          {
+            "name": "emailTemplateField_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "card_MatrixField",
+            "kind": "UNION",
+            "possibleTypes": [
+              {
+                "name": "card_logoHeader_BlockType",
+                "description": null
+              },
+              {
+                "name": "card_cardTitle_BlockType",
+                "description": null
+              },
+              {
+                "name": "card_cardSubTitle_BlockType",
+                "description": null
+              },
+              {
+                "name": "card_cardSpacer_BlockType",
+                "description": null
+              },
+              {
+                "name": "card_cardLineDivider_BlockType",
+                "description": null
+              },
+              {
+                "name": "card_cardBody_BlockType",
+                "description": null
+              },
+              {
+                "name": "card_cardTime_BlockType",
+                "description": null
+              },
+              {
+                "name": "card_cardCta_BlockType",
+                "description": null
+              },
+              {
+                "name": "card_cardFullWidthMedia_BlockType",
+                "description": null
+              },
+              {
+                "name": "card_cardArticles_BlockType",
+                "description": null
+              },
+              {
+                "name": "card_cardLogoList_BlockType",
+                "description": null
+              }
+            ]
+          },
+          {
+            "name": "card_logoHeader_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "logoHeaderSettings_TableRow",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "card_cardTitle_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "titleglobalSettings_TableRow",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "titleMobileSettings_TableRow",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "titleDesktopSettings_TableRow",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "card_cardSubTitle_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "subtitleGlobalSettings_TableRow",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "subtitleMobileSettings_TableRow",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "subtitleDesktopSettings_TableRow",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "card_cardSpacer_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "card_cardLineDivider_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "card_cardBody_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "bodySettings_TableRow",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "card_cardTime_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "card_cardCta_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "CtaSettings_TableRow",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "card_cardFullWidthMedia_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "card_cardArticles_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "articleTitleSettings_TableRow",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "articleBodySettings_TableRow",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "articleLinkSettings_TableRow",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "card_cardLogoList_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "listLogoSettings_TableRow",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "lps_generalLps_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "generallanding_MatrixField",
+            "kind": "UNION",
+            "possibleTypes": [
+              {
+                "name": "generallanding_hero_BlockType",
+                "description": null
+              },
+              {
+                "name": "generallanding_pricingPlans_BlockType",
+                "description": null
+              },
+              {
+                "name": "generallanding_cta_BlockType",
+                "description": null
+              },
+              {
+                "name": "generallanding_twoColumn_BlockType",
+                "description": null
+              },
+              {
+                "name": "generallanding_threeColumn_BlockType",
+                "description": null
+              },
+              {
+                "name": "generallanding_testimonial_BlockType",
+                "description": null
+              },
+              {
+                "name": "generallanding_oneColumn_BlockType",
+                "description": null
+              },
+              {
+                "name": "generallanding_details_BlockType",
+                "description": null
+              },
+              {
+                "name": "generallanding_logoSection_BlockType",
+                "description": null
+              }
+            ]
+          },
+          {
+            "name": "generallanding_hero_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "generallanding_pricingPlans_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "generallanding_cta_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "generallanding_twoColumn_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "generallanding_threeColumn_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "generallanding_testimonial_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "generallanding_oneColumn_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "generallanding_details_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "generallanding_logoSection_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "g2CrowdReviews_MatrixField",
+            "kind": "UNION",
+            "possibleTypes": [
+              {
+                "name": "g2CrowdReviews_g2CrowdReviews_BlockType",
+                "description": null
+              }
+            ]
+          },
+          {
+            "name": "g2CrowdReviews_g2CrowdReviews_BlockType",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "theWayWorkWorks_theWayWorkWorks_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "emailSignature_emailSignature_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "greatnessPage_greatnessPage_Entry",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "blogImages_Asset",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "landingPageImages_Asset",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "integrations_Asset",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "blogAds_Asset",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "webinars_Asset",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "emailtemp_Asset",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "User",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "g2crowdRating_GlobalSet",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "promotedBlogPosts_GlobalSet",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "webBanner_GlobalSet",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "backgroundColor_Category",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "blogCategories_Category",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "buttonColors_Category",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "color_Category",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "lpCategory_Category",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "__Schema",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "__Type",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "__TypeKind",
+            "kind": "ENUM",
+            "possibleTypes": null
+          },
+          {
+            "name": "__Field",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "__InputValue",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "__EnumValue",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "__Directive",
+            "kind": "OBJECT",
+            "possibleTypes": null
+          },
+          {
+            "name": "__DirectiveLocation",
+            "kind": "ENUM",
+            "possibleTypes": null
+          }
+        ]
+      }
+    }
+  

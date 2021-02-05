@@ -1,0 +1,44 @@
+#about-bio-Modal{
+  #leader-name{
+    margin: 0px;
+    line-height: 1;
+    font-weight: bold;
+    font-size: 26px;
+  }
+  #leader-title {
+    margin-top: 5px;
+    margin-bottom: 20px;
+  }
+  .social-links{
+    margin-top: 30px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    a{
+      margin-right: 10px;
+      &:hover{
+        text-decoration: none;
+      }
+      svg{
+        width: 25px;
+        height: auto;
+        g{
+          fill: #3C3F40;
+        }
+      }
+    }
+  }
+  .leader-img{
+      height: 0px;
+      padding-top: 90%;
+      overflow: hidden;
+      position: relative;
+      width: 90%;
+      img{
+        position: absolute;
+        top: 0px;
+        left: 0px;
+      }
+    
+  }
+}

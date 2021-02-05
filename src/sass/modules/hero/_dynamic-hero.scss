@@ -1,0 +1,379 @@
+/*
+Extension for dynamic heros
+
+*/
+
+.c-hero{
+  @at-root{
+    #{&}--split {
+      &.landing-hero{
+        
+        .col-md, .col-md-6 {
+          &.c-image{
+            img{
+              max-width: 433px;
+            }
+          }
+
+          @include media-breakpoint-up(md){
+          }
+
+          @include media-breakpoint-down(sm){
+            &.c-image{
+              img{
+                margin-left: auto;
+                margin-right: auto;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.c-hero--general-signup-form{
+  $mobile-linear-ratio: 56%; // Variable for the length the clor in mobile
+
+  padding: 140px 0px 45px;
+  background: rgb(255, 255, 255);
+
+  &.purple{
+    background: -webkit-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 50%, $color-eggplant 50%, $color-eggplant 100%);
+    background: -o-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 50%, $color-eggplant 50%, $color-eggplant 100%);
+    background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 50%, $color-eggplant 50%, $color-eggplant 100%);
+    @include media-breakpoint-down(sm){
+      background: none;
+    }
+  }
+
+  &.no-background{
+    background: none;
+  }
+
+  @include linearBackgroundMixin(left);
+
+  .col-md, .col-md-6 {
+    h1 {
+        font-size: 2em;
+        line-height: 50px;
+        @include media-breakpoint-down(sm){
+          margin-top: 75px !important;
+        }
+    }
+
+    @include media-breakpoint-up(md){
+      padding-right: 107px;
+      &.c-image {
+        padding-right: 0px;
+      }
+      h1 {
+          font-size: 52px;
+          line-height: 64px;
+      }
+      &.col-margin-inverted{
+        padding-left: 107px;
+        padding-right: 15px;
+      }
+    }
+  }
+  @include media-breakpoint-down(sm){
+    background: none;
+    padding: 30px 0px;
+    .c-image {
+      overflow: visible;
+    }
+    .disclaimer {
+      max-width: 315px;
+      text-align: center;
+      margin: 16px auto;
+    }
+    .signup_form_subtext {
+      display: none;
+    }
+    .google_light_btn {
+      margin-bottom: 36px;
+    }
+  }
+  
+  h1 {
+    font-size: 52px;
+    line-height: 64px;
+  }
+  .col-md {
+    .c-image .home-floating-image {
+      left: inherit;
+      &.large-image {
+        max-width: inherit !important;
+        right: initial;
+        top: 45%;
+        @include media-breakpoint-only(md) { 
+          width: 136% !important;
+        }
+        @include media-breakpoint-down(sm){
+          top: 0%;
+          display: none;
+        }
+      }
+    }
+  }
+  .form-subtitle {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 30px;
+    margin-top: 0px;
+    margin-bottom: 20px;
+  }
+  .signup_form {
+    .google_light_btn {
+      padding: 10px 0px;
+      /*margin-top: 14px;*/
+      text-align: center;
+      display: block;
+      background: #FCFEFF;
+      /* Full Color Kit/Grey/$grey-5 */
+      border: 1px solid #B0B7BA;
+      box-sizing: border-box;
+      border-radius: 4px;
+      &:hover{
+        text-decoration: none;
+      }
+      .google_icon {
+        width: 24px;
+        display: inline-block;
+        height: 24px;
+      }
+      .google_light_btn_label {
+        display: inline-block;
+        font-size: 14px;
+        line-height: 17px;
+        text-align: center;
+        letter-spacing: 0.21875px;
+        color: #3C3F40;
+      }
+    }
+    .signup_form_subtext {
+      text-align: center;
+      font-size: 12px;
+      line-height: 14px;
+      margin: 17px 0px 9px;
+    }
+    .field {
+      .form_text_field_container {
+        position: relative;
+        margin: 18px 0px 22px; 
+        label {
+          display: block;
+          padding: 5px;
+          margin-left: 10px;
+          font-size: 12px;
+          line-height: 14px;
+          position: absolute;
+          top: -13px;
+          background-color: white;
+          
+        }
+        input.text_field {
+          padding: 20px 15px 11px;
+          display: block;
+          font-size: 14px;
+          line-height: 17px;
+          width: 100%;
+          border: 1px solid #D9D9D9;
+          box-sizing: border-box;
+          border-radius: 4px;
+        }
+        @include placeholder {
+          color: #D9D9D9;
+        }
+      }
+    }
+    .submit-button-row {
+
+      .submit_button {
+        cursor: pointer;
+        width: 100%;
+        background: #FF3465;
+        border-radius: 25px;
+        color: white;
+        font-size: 14px;
+        line-height: 17px;
+        font-weight: bold;
+        padding: 16px;
+        text-align: center;
+        letter-spacing: 0.21875px;
+        &.with-no-border{
+          border:none;
+        }
+
+      }
+    }
+  }
+
+  &.split-background--inverted {
+    padding: 140px 0px 45px;
+
+    &.purple{
+      background: rgb(255,255,255);
+      background: -webkit-linear-gradient(left, rgba(49,29,64,1) 0%, rgba(49,29,64,1) 50%,  rgba(255,255,255,1)  50% , rgba(255,255,255,1) 100%);
+      background: -o-linear-gradient(left, rgba(49,29,64,1) 0%, rgba(49,29,64,1) 50%,  rgba(255,255,255,1)  50% , rgba(255,255,255,1) 100%);
+      background: linear-gradient(to right, rgba(49,29,64,1) 0%, rgba(49,29,64,1) 50%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 100%);
+    }
+
+    @include linearBackgroundMixin(right);
+
+    .col-md, .col-md-6 {
+      h1 {
+          font-size: 2em;
+          line-height: 50px;
+          @include media-breakpoint-down(sm){
+            margin-top: 0px !important;
+          }
+      }
+      @include media-breakpoint-up(md){
+        padding-left: 107px;
+        padding-right: 0px;
+        h1 {
+              font-size: 52px;
+              line-height: 64px;
+        }
+
+        &.col-margin-inverted{
+          padding-left: 0px;
+          padding-right: 107px;
+        }
+      }
+    }
+  }
+
+  .disclaimer {
+    font-size: 12px;
+    line-height: 14px;
+    text-align: center;
+  }
+  .c-image {
+    .home-floating-image {
+      max-width: 465px !important;
+      right: -5%;
+    }
+  }
+
+  .copy-aconditioner{
+    @include media-breakpoint-down(sm){
+      padding-bottom: 28px;
+      @include backgroundColor();
+    }
+  }
+
+  .signup-aconditioner{
+    @include media-breakpoint-down(sm){
+      background: $color-white;
+    }
+  }
+
+  .row{
+    &.keep-order{
+      @include media-breakpoint-down(sm){
+        flex-direction: column;
+      }
+    }
+  }
+  
+  &.enclosed-form{
+    background: #FFFFFF;
+
+    @include backgroundColor();
+
+    .enclosed-container{
+      padding-left: 44px;
+      padding-right: 44px;
+      padding-bottom: 35px;
+      background: #FFFFFF;
+
+      @include media-breakpoint-down(sm){
+        margin-top: 20px;
+      }
+    }
+
+    .enclosed-transparent{
+      .signup_form .field .form_text_field_container{
+        label{
+          margin-left: 1px;
+          font-size: 13px;
+          background: transparent !important;
+          top: -21px !important;
+        }
+      }
+
+      @include media-breakpoint-down(sm){
+        margin-top: 20px;
+        background: transparent;
+      }
+    }
+
+    #right-hero-container{
+      padding-left: 44px;
+      padding-right: 44px;
+      padding-bottom: 35px;
+      background: #FFFFFF;
+
+      @include media-breakpoint-down(sm){
+        margin-top: 20px;
+      }
+    }
+
+    @media screen and (max-width: 600px){
+      padding-bottom: 0px;
+    }
+  }
+}
+
+
+#c-thank-you-message, #c-thank-you-message--default-hero{
+  flex-direction: column;
+  width: 100%;
+  margin: 10px 20px;
+  text-align: left;
+  color: #000000;
+}
+#c-thank-you-message--default-hero{
+  width: calc(100% - 40px);
+
+  .wistia_responsive_padding{
+    margin-top: 10px;
+  }
+}
+
+.invisible-start{
+  display: none !important;
+  opacity: 0;
+}
+
+.m-fade-in {
+  display: flex;
+  opacity: 1;
+  transition: display 0s linear 0s, opacity 300ms;
+}
+
+.hero-logo{
+  height: 85px;
+  width: 85px;
+  margin-bottom: 40px;
+  img{
+    height: 100%;
+    width: auto;
+  }
+  @at-root{
+    #{&}--double-size{
+      height: 130px;
+      width: auto;
+      margin-bottom: 10px;
+
+      img{
+        height: 100%;
+        width: auto;
+      }
+    }
+  }
+}

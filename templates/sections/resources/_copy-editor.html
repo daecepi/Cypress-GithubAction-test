@@ -1,0 +1,8 @@
+<div {% if (matrixBlock.copyEditorSectionId) | length %}id="{{matrixBlock.copyEditorSectionId}}" {% endif %}class="c-resource-copy__editor">
+  <div class="row">
+    {% if (matrixBlock.calloutSentence | length) %}
+      <div class="col-md-10 callout" ><h2>{{ matrixBlock.calloutSentence }}</h2></div>
+    {% endif %}
+      <div class="col-md-10 offset-md-1 copy t-pink-bullet-points t-pink-bullet-points--pull-left">{{ matrixBlock.copy }}</div>
+  </div>
+</div>

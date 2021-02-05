@@ -1,0 +1,186 @@
+{% include 'sections/resources/_featured-image.html' %}
+
+{% include 'sections/resources/e-book/_mobile-menu.html' %}
+
+{% include 'sections/resources/_form.html' %}
+
+<section class="c-resource-content c-resource-content--overlap d-none" id="c-ebook">
+  <div class="c-resource-content__container container">
+    <div class="col-sm-12">
+      <div class="c-e-book-builder__header col-md-12">
+        <span class="t-eyebrow hot-pink"><strong>{{entry.eyebrow}}</strong></span>
+        <div class="col-md-12 t-vertical-line-below">
+          <h1 class="d-none d-md-flex" style="font-size: 60px;
+    max-width: 930px;margin: 0px auto !important;">{{ entry.title }}</h1>
+          <h2 class="d-flex d-md-none">{{ entry.title }}</h2>
+        </div>
+        <h3>{{ entry.subText }}</h3>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+        <div class="c-e-book-builder__introduction col-md-12 t-center">
+        <pre class="t-eyebrow">Introduction</pre>
+        <h2>{{ entry.introHeader }}</h2>
+        <div class="col-md-10 offset-md-1 copy">{{ entry.introParagraph }}</div>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-10 offset-md-1 col-lg-10 offset-lg-1">
+      <div class="c-e-book-builder__table-of-content col-md-12">
+        {% for entry in entry.tableOfContent.all() %}
+          <div class="e-book-chapter-ids d-none">e-book-chapter-anchor-{{entry.number}}</div>
+            {% include 'sections/resources/e-book/_table-of-content.html' %}
+          <br class="d-none d-md-flex"><br class="d-none d-md-flex">
+        {% endfor %}
+      </div>
+
+      <div id="e-book-start"></div>
+
+      <div class="c-e-book-builder__chapter-numbers d-none">
+        {% for entry in entry.tableOfContent.all() %}
+        <a href="#e-book-chapter-anchor-{{entry.number}}" id="e-book-chapter-links-{{entry.number}}" class="e-book-chapter-links">
+          <div class="t-strikethrough">
+              <div class="t-strikethrough__container">
+                <div>{{entry.number}}</div>
+                <div class="t-strikethrough__container__title"></div>
+              </div>
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+
+      <div class="c-e-book--social-share d-none">
+        {% include 'sections/resources/_social-share.html' %} 
+      </div>
+
+      {% for matrixBlock in entry.eBookbuilder.all() %}
+        {% switch matrixBlock.type %}
+          {% case "chapterHeader" %}
+             {% include 'sections/resources/_chapter-header.html' %}
+          {% case "tldr" %}
+            <div class="t-center">
+            {% set tldr = matrixBlock.tldr %}
+            {% include 'sections/resources/_tldr.html' %}
+            </div>
+          {% case "copyEditor" %}
+            {% include 'sections/resources/_copy-editor.html' %}
+          {% case "media" %}
+            {% include 'sections/resources/_media.html'%}
+          {% case "callout" %}
+            {% include 'sections/resources/_callout.html' %}
+          {% case "card" %}
+            {% include 'sections/resources/_card.html' %}
+          {% case "quote" %}
+            {% include 'sections/resources/_quote.html' %}
+          {% case 'adA' %}
+            {% include 'sections/resources/_adA.html' %}
+          {% case "adB" %}
+            {% include 'sections/resources/_adB.html' %}
+        {% endswitch %}
+      {% endfor %} 
+    </div> 
+    <div id="e-book-end"></div>
+  </div>
+</section>
+
+<div class="d-none" id="c-ebook-final-plea">
+  {% include 'sections/final-plea.html' %}
+</div>
+
+{% include 'sections/footer_simple.html' %}
+
+<script>
+LazyLoad.js(['https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js','/js/vendor/js-cookie.js','/js/functions.min.{{ staticAssetsVersion }}.js'],function(){
+
+  $('footer, .c-footer__legal').addClass('d-none');
+
+  // Use the entry id so its unique to that entry not just the form
+  var getUserInfo = Cookies.get('form_gate_{{entry.id}}', { domain:  sndleveldomain });
+
+  function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var   regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+  }
+  // adds some backend stuff
+  
+  if (getUserInfo || getParameterByName('utm_source') == 'guide_email' ) {
+    $("#c-ebook-gate").addClass('d-none');
+    $("#c-ebook").removeClass('d-none');
+    $("#c-ebook-final-plea").removeClass('d-none');
+    $('.c-footer').removeClass('d-none');
+    $('.c-footer__legal').removeClass('d-none');
+  } else {
+    $('.c-footer--simple').removeClass('d-none');
+  }
+
+
+
+// Fixed chapter navigation on the left
+var anchorHeights = [];
+var getLinks = [];
+var getIds = [];
+var idsArr = [];
+function sticky_relocate() {
+    var window_top = $(window).scrollTop();
+    var start = $('#e-book-start').offset().top;
+    var end = $('#e-book-end').offset().top;
+
+    if (window_top > end) {
+      $('.c-e-book-builder__chapter-numbers').addClass('d-none');
+      $('.c-e-book--social-share').addClass('d-none');
+      return;
+    } else {
+      $('.c-e-book-builder__chapter-numbers').removeClass('d-none');
+      $('.c-e-book--social-share').removeClass('d-none');
+    } 
+
+    if (window_top > start) {
+      $('.c-e-book-builder__chapter-numbers').removeClass('d-none');
+      $('.c-e-book--social-share').removeClass('d-none');
+    } else {
+      $('.c-e-book-builder__chapter-numbers').addClass('d-none');
+      $('.c-e-book--social-share').addClass('d-none');
+      return;
+    } 
+
+    var active;
+
+    for(var i = 0; i < anchorHeights.length; i++ ) {
+      if(window_top > anchorHeights[i]  ){
+        active = i;
+      }
+    }
+
+    getLinks.removeClass('active');
+    $(`#${getLinks[active].id}`).addClass('active');
+    
+}
+
+function get_chapter_coords(){
+  anchorHeights = idsArr.map( function(element){
+    return $(`#${element}`).offset().top;
+  });
+}
+
+// Wait for page to fully load
+$(window).bind("load", function() {
+    getIds = $('.e-book-chapter-ids');
+    getLinks = $('.e-book-chapter-links');
+
+    for(var i = 0; i < getIds.length; i++ ){
+      idsArr.push(getIds[i].innerText)
+    } 
+
+    get_chapter_coords();
+    sticky_relocate();
+
+    $(window).scroll(sticky_relocate);
+    $(window).resize(get_chapter_coords);
+    
+});
+})
+</script>

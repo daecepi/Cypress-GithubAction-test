@@ -1,0 +1,125 @@
+.c-single-column {
+  .c-single-column__buttons {
+    margin-top: 44px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    @include media-breakpoint-up(md) {
+      display: block;
+    }
+  }
+  .c-single-column__container {
+    text-align: center;
+    padding: $global-mobile-padding;
+    @include media-breakpoint-up(lg) {
+      padding: $global-desktop-padding;
+    }
+  }
+  .h-hairline {
+    border-bottom: 2px solid $color-putty;
+    @include media-breakpoint-down(md) {
+	    border-bottom: 0;
+    }
+  }
+  img, .c-video {
+    margin-top: -20px;
+    width: 100%;
+    @include media-breakpoint-up(md) {
+      margin-top: -40px;
+    }
+    @include media-breakpoint-up(lg) {
+      margin: 0 auto;
+      max-width: 958px;   
+      display: block;
+      margin-top: -100px;      
+    }
+  }
+  img {
+    @include media-breakpoint-up(lg) {
+      max-width: 958px; 
+    }    
+  }
+  .c-video {
+    @include media-breakpoint-up(lg) {
+      max-width: 100%;   
+    }
+  }
+  .c-single-column__logo-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-bottom: 50px;
+    padding-top: 40px;
+    img {
+      width: auto;
+      height: 53px;
+      margin-top: 14px;
+      @include media-breakpoint-up(md) {
+        margin-top: 0;
+      }
+    }
+  }
+  &.gsuite-cloud {
+	  overflow: visible;
+	  &:before {
+		  content: '';
+      // background: url(/imgs/gsuite/SMB-Cloud.png) 50% 0% no-repeat; 
+      background: url(/imgs/gsuite/Group25Copy.png) 50% 0% no-repeat; 
+      // background-size: contain;
+      background-size: 104%;
+	    position: absolute;
+	    top: -9%;
+	    left: 50%;
+	    max-width: 1435px;
+	    height: 616px;
+	    z-index: 1;
+	    transform: translateX(-50%);
+	    margin-left: -4%;
+	    width: 100%;
+	    display: none;
+	  }
+	  @include media-breakpoint-up(sm) {
+		  &:before {
+			  content: '';
+		    top: -18%;
+		    display: block;
+		  }
+	  }
+	  @include media-breakpoint-up(md) {
+		  &:before {
+			  content: '';
+		    top: -23%;
+		    max-width: 1435px;
+		    height: 616px;
+		    margin-left: -4%;
+		  }
+	  }
+	  .c-single-column__container {
+		  z-index: 1;
+	  }
+  }
+  
+  p {
+	  strong {
+		  font-weight: inherit;
+		  background-color: $color-volt;
+	  }
+  }
+  // Patches for the product pages
+  &.product-page {
+    .c-single-column__container {
+      padding-bottom: 0px;
+    }
+    .pull-to-center {
+      padding-top: 73px;
+      padding-bottom: 20px;
+      margin: 0px auto;
+      
+      overflow:visible
+
+    }
+    img {
+      margin-top: initial;
+    }
+  }
+}

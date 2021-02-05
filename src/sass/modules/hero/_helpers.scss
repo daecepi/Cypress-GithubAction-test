@@ -1,0 +1,177 @@
+.c-hero--split {
+  .c-image img.h-image-contain {
+    object-fit: contain;
+    object-position: left;
+  }
+  &.background--putty {
+    color: $color-graphite;
+  }
+  &.background--sky{
+    background-color: $color-sky;
+  }
+  &.background--agency {
+    background-image: url('../imgs/industry/industry-agency-hero@2x.jpg');
+    color: $color-graphite;
+    background-color: #e6e8e9; 
+    background-size: 540px auto;
+    background-position: right top;
+    background-repeat: no-repeat;
+    @include media-breakpoint-up(md) {
+      background-position: 47% 0;
+      background-size: auto 720px;
+    }
+    @include media-breakpoint-up(lg) {
+      background-position: right 0;
+    }
+    .c-valign--middle {
+      padding-top: 250px;
+      @include media-breakpoint-up(md) {
+        padding-top: 0;
+      }
+    }
+  }
+  &.background--segmentation {
+    color: $color-graphite;
+    background-color: #EAEAED; 
+    background-size: 330px auto;
+    background-position: right top;
+    background-repeat: no-repeat;
+    @include media-breakpoint-up(md) {
+      background-position: 47% 0;
+      background-size: auto 720px;
+    }
+    @include media-breakpoint-up(lg) {
+      background-position: right 0;
+    }
+    .c-valign--middle {
+      padding-top: 272px;
+      @include media-breakpoint-up(md) {
+        padding-top: 0;
+      }
+    }
+  }
+  &.background--enterprise {
+    background-image: url('../imgs/segmentation/segmentation-enterprise-hero.jpg');
+  }
+  &.background--smb {
+    background-image: url('../imgs/segmentation/segmentation-smb-hero.jpg');
+  }    
+  &.background--mm {
+    background-image: url('../imgs/segmentation/segmentation-mm-hero.jpg');
+  }   
+  &.background--consulting {
+    // background-image: url('../imgs/industry/consulting-hero.jpg');
+    background-image: url('../imgs/industry/industry-consulting-hero@2x.jpg');
+    color: $color-white;
+    background-color: #54498e; 
+    // background-size: 540px auto;
+    background-size: contain;
+    background-position: right top;
+    background-repeat: no-repeat;
+    @include media-breakpoint-up(md) {
+      background-position: 47% 0;
+      // background-size: auto 720px;
+      background-size: contain;
+    }
+    @include media-breakpoint-up(lg) {
+      background-position: right 0;
+    }
+    .c-valign--middle {
+      padding-top: 250px;
+      @include media-breakpoint-up(md) {
+        padding-top: 0;
+      }
+    }
+  }  
+  &.background--tech {
+    background-image: url('../imgs/industry/industry-tech-hero@2x.jpg ');
+    color: $color-graphite;
+    background-color: #e6e8e9; 
+    background-size: 540px auto;
+    background-position: right top;
+    background-repeat: no-repeat;
+    @include media-breakpoint-up(md) {
+      background-position: 47% 0;
+      background-size: auto 720px;
+    }
+    @include media-breakpoint-up(lg) {
+      background-position: right 0;
+    }
+    .c-valign--middle {
+      padding-top: 250px;
+      @include media-breakpoint-up(md) {
+        padding-top: 0;
+      }
+    }
+  }  
+  &.background--corp-dev {
+    background-image: url('../imgs/industry/industry-corp-dev-hero@2x.jpg ');
+    color: $color-graphite;
+    background-color: #f4f4f4; 
+    background-size: 540px auto;
+    background-position: right top;
+    background-repeat: no-repeat;
+    @include media-breakpoint-up(md) {
+      background-position: 47% 0;
+      background-size: auto 720px;
+    }
+    @include media-breakpoint-up(lg) {
+      background-position: right 0;
+    }
+    .c-valign--middle {
+      padding-top: 250px;
+      @include media-breakpoint-up(md) {
+        padding-top: 0;
+      }
+    }
+  }    
+  &.background--real-estate {
+    background-image: url('../imgs/industry/industry-real-estate-hero@2x.jpg ');
+    color: $color-graphite;
+    background-color: #e3e3e3; 
+    background-size: 540px auto;
+    background-position: right top;
+    background-repeat: no-repeat;
+    @include media-breakpoint-up(md) {
+      background-position: 47% 0;
+      background-size: auto 720px;
+    }
+    @include media-breakpoint-up(lg) {
+      background-position: right 0;
+    }
+    .c-valign--middle {
+      padding-top: 250px;
+      @include media-breakpoint-up(md) {
+        padding-top: 0;
+      }
+    }
+  }
+  &.fifty-fifty {
+    .c-image {
+      width: 50vw;
+      left: 50vw;
+    }
+  }
+  &.h-overhang {
+    @include media-breakpoint-up(md) {
+      overflow: visible;
+      .c-image {
+        width: 50vw;
+        left: 50vw;
+        top: 130px;
+      }
+    }
+  }
+  .container--footer {
+		max-width: 1413px;
+    padding: 70px;
+
+    @include media-breakpoint-down(sm){
+      padding: 20px;
+    }
+    
+    @media (max-width: 300px) {
+      padding: 2px;
+    }
+	}  
+}

@@ -1,0 +1,57 @@
+{#
+  This component recieves the most basic stardized for a copy in the site
+  eyebrow
+  EyebrowSettings: eyevbrow - just now only the color
+  copyLogo
+  bulletItemsInHero
+  #}
+
+{#{% macro generalCopyComponent(data) %}
+  {% set copyInformation = {data} %}  
+
+
+{% endmacro %}#}
+
+
+{% set eyebrowSettings = matrixBlock.eyebrowSettings|first %}
+{% if matrixBlock.eyebrow|length %}<pre class="c-eyebrow c-eyebrow--{{ eyebrowSettings.eyebrowColor is not null and eyebrowSettings.eyebrowColor.one() is not null ? eyebrowSettings.eyebrowColor.one().slug : 'light' }}">{{ matrixBlock.eyebrow }}</pre>{% endif %}
+{% set image = matrixBlock.copyLogo.one() %}
+{% if image is not null %}
+  <div class="hero-logo{{entry.slug == 'try-free-crm-capterra' and loopIndex == 1 ? '--double-size' : ''}}">
+    <img src="{{image.url}}" alt="{{image.title}}">
+  </div>
+{% endif %}
+
+<div class="hero-text">{{ matrixBlock.richText }}</div>
+{# Bullet points section #}
+{% if heroValues.bulletItemsInHero | length %}
+    <ul  class="ul-list__container ul-list--white-checks ">
+    {% for row in heroValues.bulletItemsInHero %}
+        {# Assuming 'text' is the column handle of the text field #}
+        <li class="{{ row.bulletHeader|length ? 'ul-list--li-paragraph-design' : '' }}">
+          <h4 class="ul-list__bullet-header">{{ row.bulletHeader }}</h4>
+          <p class="ul_list__bullet-description">{{ row.bulletContent }}</p>
+        </li> 
+    {% endfor %}
+    </ul>
+{% endif %}
+{# Special bullet points with logos section #}
+{% if heroValues.bulletPointsMode == 'displayAsBulletPoints' and matrixBlock.specialBulletLogos is not null and matrixBlock.specialBulletsText is not null %}
+  <div class="c-logo-bullets">
+    {% for bulletLogo in heroValues.specialBulletLogos.all() %}
+      <div class="c-logo-bullets--element">
+        <img src="{{ bulletLogo.url }}" alt="Logo">
+        <h3>{{ matrixBlock.specialBulletsText is not null and matrixBlock.specialBulletsText|length >= (loop.index - 1) ? matrixBlock.specialBulletsText[loop.index - 1].header : '' }}</h3>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+{# CTAs section #}
+{% if heroValues.cta|length %}
+  {% set ctas = heroValues.cta %}
+  {% include 'components/cta/_index.html' %}
+{% elseif entry.slug == 'demo-request-pers' %}
+  <a class="c-button c-button--large" href="/demos">Request Demo</a>
+{% elseif entry.slug == 'free-trial-pers' %}
+  <a class="c-button c-button--large sendUTMsToAmplitude" href="{{ craft.app.config.general.signUpUrl }}">Try Free</a>
+{% endif %}

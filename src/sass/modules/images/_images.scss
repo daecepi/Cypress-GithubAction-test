@@ -1,0 +1,73 @@
+// Circular Images
+//
+// Crop portrait image into circular "display pic" images
+//
+// Markup:
+// <div class="circle-img" >
+//   <img src="https://upload.wikimedia.org/wikipedia/commons/1/14/Albert_Einstein_1947.jpg" alt="Image"  />
+// </div>
+//
+// Styleguide Components.Images.Circular  
+
+.square-image{
+  width: 150px;
+  height: 150px;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: cover;
+  transition: box-shadow 0.15s ease-in-out;
+  &:hover {
+    cursor: pointer;
+    box-shadow: $global-shadow-hover;
+  }
+}
+
+
+.circle-img {
+  width: 150px;
+  height: 150px;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  border-radius: 50%;
+  background-size: cover;
+  transition: box-shadow 0.15s ease-in-out;
+  &:hover {
+    cursor: pointer;
+    box-shadow: $global-shadow-hover;
+  }
+}
+
+
+.circle-img--leaders {
+  width: 150px;
+  height: 150px;
+  display: inline-block;
+  overflow: hidden;
+  border-radius: 50%;
+  transition: box-shadow 0.15s ease-in-out;
+  &:hover {
+    cursor: pointer;
+    box-shadow: $global-shadow-hover;
+  }
+  img{
+    margin: 0 auto;
+    width: 100%;
+    height: auto;
+  }
+}
+
+.c-image--video {
+	cursor: pointer;
+	transition: box-shadow 0.25s ease-in-out;
+	&:hover {
+		box-shadow: $global-shadow-hover;
+	}
+}
+
+.c-image--video__container {
+  position: relative;
+}
+
+img.fit-cover{
+  object-fit: cover;
+}

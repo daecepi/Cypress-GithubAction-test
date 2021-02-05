@@ -1,0 +1,147 @@
+.free-trial-lps, .general-lps {
+	.img-fluid { 
+		max-width: 100%; 
+		    @include media-breakpoint-down(sm) {
+		    	margin-top: 20px;
+		    }
+
+	}
+	.c-button--large {
+		width: 90%;
+		max-width: 430px;
+		text-align: center;
+		display: block;
+	}
+	.c-single-column {
+		padding-top: 60px;
+		.text-center {
+			margin-bottom: 46px;
+		}
+		img {
+			margin-top: initial;
+		}
+		&.less-padding {
+			padding-top: 40px;
+		}
+	}
+	.smb-logos{
+		.text-center{
+			margin-bottom: 33px;;
+		}
+		.c-single-column__buttons{
+			a{
+				min-width: 160px;
+				justify-content: center;
+			}
+		}
+	}
+	.last-module{
+		.c-single-column__buttons{
+			a{
+				min-width: 160px;
+				justify-content: center;
+			}
+		}
+
+		.c-single-column__container{
+			@include media-breakpoint-up(lg) {
+				padding-top: 30px;
+			}
+		}
+	}
+	.c-hero--split{
+		padding-top: 150px;
+		@include media-breakpoint-down(md){
+			padding-top: 60px;
+		}
+	}
+	.smb-logo-icons {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+		div {
+			margin: 10px 40px;
+			img{
+				width: fit-content;
+				min-width: 100px;
+				max-width: 100px;
+			}
+		}
+		
+	}
+	.hide-md-down{
+		@include media-breakpoint-down(md){
+			display: none;
+		}
+	}
+	.hide-sm-down{
+		@include media-breakpoint-down(sm){
+			display: none;
+		}
+	}
+	.a-little-more-space {
+		margin-bottom: 120px;
+	}
+	.one-last-thing {
+		text-align: center;
+		padding-top: 35px;
+		margin-bottom: 76px;
+	}
+	
+	@include media-breakpoint-down(sm){
+		.mobile-margin-adder{
+			margin-bottom: 150px;
+			.relativise{
+				height: 150px;
+				max-width: 371px;
+				.move-middle-bottom{
+					width: 100%;
+					position: absolute;
+					top: 10px;
+					bottom: 0px;
+				}
+			}
+		}
+
+		.smb-logo-icons div{
+			margin-bottom: 60px;
+		}
+	}
+
+	.c-nav--mobile{
+		@include media-breakpoint-down(sm){
+			top: 0px;
+		}
+	}
+}
+
+.general-lps{
+	.c-hero__buttons{
+		@include media-breakpoint-down(sm){
+			margin-right: 0;
+		}
+	}
+}
+
+.hello, .free-trial-pers, .request-demo-pers, .demo-request-pers{
+	.c-nav--mobile{
+		@include media-breakpoint-down(sm){
+			top: 0px;
+		}
+	}
+}
+ .hello{
+	 .c-single-column{
+		 padding-top: 60px;
+	 }
+
+	 .one-last-thing{
+		 margin-bottom: 100px;
+	 }
+
+	 .c-single-column__container{
+		 padding-top: 29px;
+		 padding-bottom: 74px;
+	 }
+ }

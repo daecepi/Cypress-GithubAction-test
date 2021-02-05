@@ -1,0 +1,37 @@
+{% extends "_top-nav.html" %}
+
+{% block topNav %}
+
+{# Filter section #}
+
+{# Hero and Slider sections #}
+{% set page = craft.app.request.getParam('pg') %}
+<!-- vue start here -->
+  {# Give vue page type #}
+  <div id="vue-resource-type" style="display:none;">index</div>
+  <div id="vue-blog-page-num" style="display:none;">{{page}}</div>
+
+  {% verbatim %}
+    <div id="app"></div>
+     <!--<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>-->
+     <!-- <script>
+        LazyLoad.js([
+      'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js',
+      '/js/vue.min.js',
+      '/js/vue/resources.js'
+      ],function(){
+        
+      })
+     </script> -->
+    <!-- <script src="/js/vue.min.js"></script>
+	<script src="/js/vue/resources.js"></script> -->
+
+  {% endverbatim %}
+
+{# {% include "sections/library/_filter.html" %} #}
+
+{# {% include "sections/library/_hero-slider.html" %} #}
+
+{# {% include "sections/library/_library-index.html" %} #}
+
+{% endblock %}

@@ -1,0 +1,65 @@
+{% if matrixBlock.linkToNav|length %}
+  {% set linkId = matrixBlock.linkToNav |camel %}
+  {% set sectionId = entry[linkId] |camel  %}
+  <a class="anchor" id="{{sectionId}}"></a>
+{% endif %}
+
+<section id="{% if matrixBlock.stickyNavName != '' %}{{matrixBlock.stickyNavName |lower }}{% endif %}" class="c-case-study c-case-study--align-left">
+    <div class="container colorblock--mint">
+  
+      <div class="c-case-study__container col-md-11 no-padding">
+        
+        <div class="c-case-study__content c-valign--middle">
+            
+            <div class="row row-eq-height align-items-center">
+              <div class="col-md-6 c-align--center">
+                <div class="c-image">
+                    {% if matrixBlock.eyebrow|length %}<pre class="c-eyebrow c-eyebrow--{{ matrixBlock.eyebrowColor is not null and matrixBlock.eyebrowColor.one() is not null ? matrixBlock.eyebrowColor.one().slug : 'dark' }}">{{ matrixBlock.eyebrow }}</pre>{% endif %}
+                    {% if matrixBlock.image|length %}
+                      {% set image = matrixBlock.image.one() %}
+                      {% if image|length %}
+                    {% endif %}
+                      <img src="{{ image.url }}" alt="{{ image.title }}">
+                    {% endif %}
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="c-panel__blockquote c-valign--middle">
+                  {% if matrixBlock.logoPositioning is defined and matrixBlock.logoPositioning == "beforeQuote" %}
+                    <div class="c-panel__blockquote--logo extra-bottom-margin--x-small">
+                      {% set logo = matrixBlock.logo.one() %}
+                      {% if logo|length %}
+                        <img src="{{ logo.url }}" alt="{{ logo.title }}">
+                      {% endif %}
+                    </div>
+                  {% endif %}
+                  <blockquote>{{ matrixBlock.quote }}</blockquote>
+                  <cite>{{ matrixBlock.author}}<span class="c-panel__blockquote--position">{{ matrixBlock.jobTitle }}</span></cite>
+                  {% if matrixBlock.logoPositioning is defined and matrixBlock.logoPositioning == "afterJobtitle" %}
+                    <div class="c-panel__blockquote--logo">
+                      {% set logo = matrixBlock.logo.one() %}
+                      {% if logo|length %}
+                        <img src="{{ logo.url }}" alt="{{ logo.title }}">
+                      {% endif %}
+                    </div>
+                  {% endif %}
+                  {# CTAs section #}
+                  {% if matrixBlock.cta is defined and matrixBlock.cta|length > 0 %}
+                    {% set ctas = matrixBlock.cta %}
+                    {% include 'components/cta/_index.html' %}
+                  {% endif %}
+
+                </div>
+                <!--
+                <div class="col-md-12 c-align--right c-case-study__link">
+                  <a class="t-link" href="#">See Case Study</a>
+                </div>
+                -->
+              </div>
+            </div>
+                    
+        </div>
+      </div>
+  
+    </div>
+  </section>
